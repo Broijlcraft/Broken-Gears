@@ -19,6 +19,10 @@ public class Grid : MonoBehaviour {
         CreateGrid();
     }
 
+    private void Update() {
+        CreateGrid();
+    }
+
     void CreateGrid() {
         grid = new Node[gridSizeX, gridSizeY];
         Vector3 bottomLeft = transform.position - Vector3.right * gridWolrdSize.x / 2 - Vector3.forward * gridWolrdSize.y / 2;
