@@ -18,7 +18,7 @@ public class ProceduralGrid : MonoBehaviour {
     }
 
     void Update() {
-        MakeContiguousProceduralGrid();
+        MakeContinuousProceduralGrid();
         UpdateMesh();
     }
 
@@ -52,7 +52,7 @@ public class ProceduralGrid : MonoBehaviour {
         }
     }
 
-    void MakeContiguousProceduralGrid() {
+    void MakeContinuousProceduralGrid() {
         vertices = new Vector3[(sizeX + 1) * (sizeY + 1)];
         triangles = new int[sizeX * sizeY * 6];
 
