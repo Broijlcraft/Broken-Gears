@@ -11,4 +11,8 @@ public class ZoomAndSelectTile : MonoBehaviour {
         cam = GetComponent<Camera>();
         cam.fieldOfView = zoom;
     }
+
+    private void Update() {
+
+    }
 }
