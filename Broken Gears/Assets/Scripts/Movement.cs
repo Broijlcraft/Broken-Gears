@@ -5,22 +5,16 @@ using UnityEngine;
 public class Movement : MonoBehaviour {
     Vector3 v;
     public float speed;
-    GameObject holder;
     GameObject cam;
     public float rotationSpeed;
     public Vector2 camClamp;
     Vector3 hor;
 
     private void Start() {
-        holder = transform.GetChild(0).gameObject;
-        cam = holder.transform.GetChild(0).gameObject;
+        cam = transform.GetChild(0).gameObject;
     }
 
-    private void FixedUpdate() {
-        v.x = Input.GetAxis("Horizontal");
-        v.z = Input.GetAxis("Vertical");
-        transform.Translate(v * speed * Time.deltaTime);
-
+    private void LateUpdate() {
         hor.y = Input.GetAxis("Mouse X") * rotationSpeed;
         float yRot = Input.GetAxis("Mouse Y") * (rotationSpeed * rotationSpeed) * Time.deltaTime;
         Vector3 rot = cam.transform.localRotation.eulerAngles + new Vector3(-yRot, 0f, 0f);
@@ -28,6 +22,16 @@ public class Movement : MonoBehaviour {
 
         cam.transform.localEulerAngles = rot;
         transform.Rotate(hor * (rotationSpeed * Time.deltaTime));
+}
+
+    private void FixedUpdate() {
+        v.x = Input.GetAxis("Horizontal");
+        v.z = Input.GetAxis("Vertical");
+        if (Input.GetButton("Fire1")) {
+            transform.Translate(v * speed / 2 * Time.deltaTime);
+        } else {
+            transform.Translate(v * speed * Time.deltaTime);
+        }
     }
 
     float ClampAngle(float angle, float from, float to) {
