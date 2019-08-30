@@ -15,14 +15,16 @@ public class Movement : MonoBehaviour {
     }
 
     private void LateUpdate() {
-        hor.y = Input.GetAxis("Mouse X") * rotationSpeed;
-        float yRot = Input.GetAxis("Mouse Y") * (rotationSpeed * rotationSpeed) * Time.deltaTime;
-        Vector3 rot = cam.transform.localRotation.eulerAngles + new Vector3(-yRot, 0f, 0f);
-        rot.x = ClampAngle(rot.x, -camClamp.x, camClamp.y);
+        if (Input.GetMouseButton(2)) {
+            hor.y = Input.GetAxis("Mouse X") * rotationSpeed;
+            float yRot = Input.GetAxis("Mouse Y") * (rotationSpeed * rotationSpeed) * Time.deltaTime;
+            Vector3 rot = cam.transform.localRotation.eulerAngles + new Vector3(-yRot, 0f, 0f);
+            rot.x = ClampAngle(rot.x, -camClamp.x, camClamp.y);
 
-        cam.transform.localEulerAngles = rot;
-        transform.Rotate(hor * (rotationSpeed * Time.deltaTime));
-}
+            cam.transform.localEulerAngles = rot;
+            transform.Rotate(hor * (rotationSpeed * Time.deltaTime));
+        }
+    }
 
     private void FixedUpdate() {
         v.x = Input.GetAxis("Horizontal");
