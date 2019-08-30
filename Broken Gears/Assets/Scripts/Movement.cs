@@ -15,6 +15,15 @@ public class Movement : MonoBehaviour {
     }
 
     private void LateUpdate() {
+        //if (Input.GetMouseButtonDown(2)) {
+        //    Cursor.lockState = CursorLockMode.Locked;
+        //    Cursor.visible = false;
+        //}
+        //if (Input.GetMouseButtonUp(2)) {
+        //    Cursor.lockState = CursorLockMode.None;
+        //    Cursor.visible = true;
+        //}
+
         if (Input.GetMouseButton(2)) {
             hor.y = Input.GetAxis("Mouse X") * rotationSpeed;
             float yRot = Input.GetAxis("Mouse Y") * (rotationSpeed * rotationSpeed) * Time.deltaTime;
@@ -29,7 +38,7 @@ public class Movement : MonoBehaviour {
     private void FixedUpdate() {
         v.x = Input.GetAxis("Horizontal");
         v.z = Input.GetAxis("Vertical");
-        if (Input.GetButton("Fire1")) {
+        if (Input.GetButton("Slow")) {
             transform.Translate(v * speed / 2 * Time.deltaTime);
         } else {
             transform.Translate(v * speed * Time.deltaTime);

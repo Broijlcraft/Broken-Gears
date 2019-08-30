@@ -755,8 +755,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSize: {x: 50, y: 40}
   tile:
-  - {fileID: 1962567112077175540, guid: 4a2e67607e840f0439ffac54117ea9b3, type: 3}
-  - {fileID: 3631953760917019661, guid: f0a1576be7358e44b8f6603ce202033e, type: 3}
+  - {fileID: 5976245940681388738, guid: e5163401553ef8644b95a9910f09ec27, type: 3}
+  - {fileID: 8452799529197308812, guid: 3487542c2f0ca204a80731e58c341ee1, type: 3}
 --- !u!1 &2143772442
 GameObject:
   m_ObjectHideFlags: 0
