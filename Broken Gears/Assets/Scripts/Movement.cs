@@ -15,15 +15,6 @@ public class Movement : MonoBehaviour {
     }
 
     private void LateUpdate() {
-        //if (Input.GetMouseButtonDown(2)) {
-        //    Cursor.lockState = CursorLockMode.Locked;
-        //    Cursor.visible = false;
-        //}
-        //if (Input.GetMouseButtonUp(2)) {
-        //    Cursor.lockState = CursorLockMode.None;
-        //    Cursor.visible = true;
-        //}
-
         if (Input.GetMouseButton(2)) {
             hor.y = Input.GetAxis("Mouse X") * rotationSpeed;
             float yRot = Input.GetAxis("Mouse Y") * (rotationSpeed * rotationSpeed) * Time.deltaTime;
@@ -43,6 +34,7 @@ public class Movement : MonoBehaviour {
         } else {
             transform.Translate(v * speed * Time.deltaTime);
         }
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
     float ClampAngle(float angle, float from, float to) {

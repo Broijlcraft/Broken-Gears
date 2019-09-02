@@ -7,4 +7,6 @@ public class Tile : MonoBehaviour {
     public bool path;
     public bool buildable;
 
+
+
 }
