@@ -356,6 +356,9 @@ MonoBehaviour:
   zoomIncrease: 2
   maxZoomIn: 15
   maxZoomOut: 35
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
   g: {fileID: 5459652222670085955, guid: a33a79944e2fe8a46a07c6c45cfc8de3, type: 3}
 --- !u!1 &812403305
 GameObject:
@@ -756,8 +759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSize: {x: 50, y: 40}
   tile:
-  - {fileID: 5976245940681388738, guid: e5163401553ef8644b95a9910f09ec27, type: 3}
-  - {fileID: 8452799529197308812, guid: 3487542c2f0ca204a80731e58c341ee1, type: 3}
+  - {fileID: 684670391532801029, guid: 4671667d01226da44ac589eee4981354, type: 3}
 --- !u!1 &2143772442
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class ZoomAndSelectTile : MonoBehaviour {
     public float zoomIncrease;
     public float maxZoomIn;
     public float maxZoomOut;
+    public LayerMask layerMask;
     public RaycastHit hit;
     public GameObject g;
     Camera cam;
@@ -37,9 +38,9 @@ public class ZoomAndSelectTile : MonoBehaviour {
         }
 
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit)) {
-            if (Input.GetMouseButtonDown(0)) {
-                Instantiate(g, hit.point, Quaternion.identity);
+        if (Input.GetMouseButtonDown(0)) {
+            if (Physics.Raycast(ray, out hit, 1000, layerMask)) {
+                Instantiate(g, new Vector3(hit.transform.position.x, hit.transform.position.y + 0.5f, hit.transform.position.z), Quaternion.identity);
             }
         }
     }
