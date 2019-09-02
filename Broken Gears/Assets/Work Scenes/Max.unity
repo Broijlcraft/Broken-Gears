@@ -356,6 +356,7 @@ MonoBehaviour:
   zoomIncrease: 2
   maxZoomIn: 15
   maxZoomOut: 35
+  g: {fileID: 5459652222670085955, guid: a33a79944e2fe8a46a07c6c45cfc8de3, type: 3}
 --- !u!1 &812403305
 GameObject:
   m_ObjectHideFlags: 0
