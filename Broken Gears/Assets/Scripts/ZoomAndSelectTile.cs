@@ -28,9 +28,7 @@ public class ZoomAndSelectTile : MonoBehaviour {
                 zoom -= zoomIncrease;
                 cam.fieldOfView = zoom;
             }
-        }
-
-        if (Input.GetAxis("Mouse ScrollWheel") < 0) {
+        } else if (Input.GetAxis("Mouse ScrollWheel") < 0) {
             if (zoom < maxZoomOut) {
                 zoom += zoomIncrease;
                 cam.fieldOfView = zoom;
