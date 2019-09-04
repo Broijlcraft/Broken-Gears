@@ -42,24 +42,11 @@ public class XmlManager : MonoBehaviour {
     public void LoadIn() {
         dataBase = Load();
 
-        //controls
-        if (dataBase.cameraSensitivity != 0) {
-            menuScript.camSensitivity.value = dataBase.cameraSensitivity;
-        }
-        if (dataBase.zoomSensitivity != 0) {
-            zoomAndSelectTile.zoomIncrease = dataBase.zoomSensitivity;
-        }
-
-        //volume
-        if (dataBase.masterVolume != 0) {
-            menuScript.volume.value = dataBase.masterVolume;
-        }
-        if (dataBase.sfx != 0) {
-            menuScript.sfx.value = dataBase.sfx;
-        }
-        if (dataBase.music != 0) {
-            menuScript.music.value = dataBase.music;
-        }
+        menuScript.camSensitivity.value = dataBase.cameraSensitivity;
+        zoomAndSelectTile.zoomIncrease = dataBase.zoomSensitivity;
+        menuScript.volume.value = dataBase.masterVolume;
+        menuScript.sfx.value = dataBase.sfx;
+        menuScript.music.value = dataBase.music;
     }
 
     public void Save() {
