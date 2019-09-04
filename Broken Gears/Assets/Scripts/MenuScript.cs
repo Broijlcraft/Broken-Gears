@@ -19,13 +19,19 @@ public class MenuScript : MonoBehaviour {
     public Slider music;
     public float maxMusic = 1f;
     public float minMusic;
-    GameObject canvas;
+
+    public GameObject menusHolder;
+    public GameObject menu;
+    public GameObject optionsMenu;
 
     GameObject[] slid;
 
     private void Start() {
-        canvas = GameObject.Find("Canvas");
+        menusHolder.SetActive(true);
+        optionsMenu.SetActive(true);
+        
         slid = GameObject.FindGameObjectsWithTag("Slider");
+
         for (int i = 0; i < slid.Length; i++) {
             if (slid[i].name == "CamSense") {
                 camSensitivity = slid[i].GetComponentInChildren<Slider>();
@@ -43,6 +49,7 @@ public class MenuScript : MonoBehaviour {
                 music = slid[i].GetComponentInChildren<Slider>();
             }
         }
+
         camSensitivity.onValueChanged.AddListener(CamSenseChanged); 
         SetSliderValues(camSensitivity, maxCamSense, minCamSense);
         zoomSensitivity.onValueChanged.AddListener(ZoomSenseChanged);
@@ -53,6 +60,15 @@ public class MenuScript : MonoBehaviour {
         SetSliderValues(sfx, maxSFX, minSFX);
         music.onValueChanged.AddListener(MusicSenseChanged);
         SetSliderValues(music, maxMusic, minMusic);
+
+        menusHolder.SetActive(false);
+        optionsMenu.SetActive(false);
+    }
+
+    private void Update() {
+        if (Input.GetButtonDown("Cancel")) {
+            MenuSwitch();
+        }
     }
 
     void SetSliderValues(Slider slider, float max, float min) {
@@ -61,6 +77,33 @@ public class MenuScript : MonoBehaviour {
             slider.maxValue = max - min;
             slider.value = slider.maxValue / 2;
         }
+    }
+
+    void MenuSwitch() {
+        if (menusHolder.activeSelf == false) {
+            menusHolder.SetActive(true);
+            menu.SetActive(true);
+            optionsMenu.SetActive(false);
+            Time.timeScale = 0;
+        } else {
+            if (menu.activeSelf == false) {
+                optionsMenu.SetActive(false);
+                menu.SetActive(true);
+            } else {
+                menusHolder.SetActive(false);
+                Time.timeScale = 1;
+            }
+        }
+    }
+
+    public void ResetToDefault() {
+        for (int i = 0; i < slid.Length; i++) {
+            ResetSlider(slid[i].GetComponentInChildren<Slider>());
+        }
+    }
+
+    void ResetSlider(Slider slider) {
+        slider.value = slider.maxValue / 2;
     }
 
     void CamSenseChanged(float value) {

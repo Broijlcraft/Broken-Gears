@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tag
   - Slider
+  - OptionsMenu
   layers:
   - Default
   - TransparentFX
