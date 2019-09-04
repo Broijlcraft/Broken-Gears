@@ -26,7 +26,7 @@ public class XmlManager : MonoBehaviour {
         path = Application.persistentDataPath;
         print(path);
         //Save();
-        //LoadIn();
+        LoadIn();
     }
 
     private void Update() {

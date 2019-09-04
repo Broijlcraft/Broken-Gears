@@ -1533,7 +1533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678dc1a8e001a3341981963606ff162d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topLock: 0
+  topLock: 40
   bottomLock: 90
   multiplier: 13
   movement: {fileID: 812403306}
