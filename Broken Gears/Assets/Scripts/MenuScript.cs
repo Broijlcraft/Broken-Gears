@@ -24,6 +24,7 @@ public class MenuScript : MonoBehaviour {
     public GameObject menu;
     public GameObject optionsMenu;
 
+    GameObject gameManager;
     GameObject cameraControl;
 
     Movement movement;
@@ -36,6 +37,7 @@ public class MenuScript : MonoBehaviour {
         menusHolder.SetActive(true);
         optionsMenu.SetActive(true);
 
+        gameManager = GameObject.Find("GameManager");
         cameraControl = GameObject.Find("CamControl");
         zoomAndSelectTile = cameraControl.GetComponentInChildren<ZoomAndSelectTile>();
         playerLook = cameraControl.GetComponentInChildren<PlayerLook>();
@@ -103,6 +105,7 @@ public class MenuScript : MonoBehaviour {
                 menu.SetActive(true);
             } else {
                 menusHolder.SetActive(false);
+                gameManager.GetComponent<XmlManager>().Save();
                 Time.timeScale = 1;
             }
         }
