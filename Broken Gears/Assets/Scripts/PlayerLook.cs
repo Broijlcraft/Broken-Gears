@@ -10,12 +10,11 @@ public class PlayerLook : MonoBehaviour {
     public float multiplier;
     private float xAxisClamp;
 
-    Movement movement;
+    public Movement movement;
 
-    private void Start() {
-        movement = GetComponentInParent<Movement>();
-        mouseSensitivity = movement.rotationSpeed * multiplier;
-        xAxisClamp = 0.0f;
+    private void Awake() {
+        UpdateLookValue();
+        xAxisClamp = 0f;
         VerticalCameraRotation();
     }
 
@@ -33,15 +32,19 @@ public class PlayerLook : MonoBehaviour {
 
         if (xAxisClamp > -topLock) {
             xAxisClamp = -topLock;
-            mouseY = 0.0f;
+            mouseY = 0f;
             ClampXAxisRotationToValue(topLock);
         } else if (xAxisClamp < -bottomLock) {
             xAxisClamp = -bottomLock;
-            mouseY = 0.0f;
+            mouseY = 0f;
             ClampXAxisRotationToValue(bottomLock);
         }
 
         transform.Rotate(Vector3.left * mouseY);
+    }
+
+    public void UpdateLookValue() {
+        mouseSensitivity = movement.rotationSpeed * multiplier;
     }
 
     private void ClampXAxisRotationToValue(float value) {

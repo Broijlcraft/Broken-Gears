@@ -28,15 +28,17 @@ public class MenuScript : MonoBehaviour {
 
     Movement movement;
     ZoomAndSelectTile zoomAndSelectTile;
+    PlayerLook playerLook;
 
     GameObject[] slid;
 
-    private void Start() {
+    private void Awake() {
         menusHolder.SetActive(true);
         optionsMenu.SetActive(true);
 
         cameraControl = GameObject.Find("CamControl");
         zoomAndSelectTile = cameraControl.GetComponentInChildren<ZoomAndSelectTile>();
+        playerLook = cameraControl.GetComponentInChildren<PlayerLook>();
         movement = cameraControl.GetComponent<Movement>();
         
         slid = GameObject.FindGameObjectsWithTag("Slider");
@@ -122,6 +124,7 @@ public class MenuScript : MonoBehaviour {
 
     void CamSenseChanged(float value) {
         movement.rotationSpeed = value + minCamSense;
+        playerLook.UpdateLookValue();
     }
 
     void ZoomSenseChanged(float value) {
