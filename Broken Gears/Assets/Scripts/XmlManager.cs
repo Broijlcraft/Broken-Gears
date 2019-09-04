@@ -17,7 +17,6 @@ public class XmlManager : MonoBehaviour {
     MenuScript menuScript;
     ZoomAndSelectTile zoomAndSelectTile;
 
-
     private void Start() {
         gameManager = GameObject.Find("GameManager");
         camControl = GameObject.Find("CamControl");
@@ -25,23 +24,12 @@ public class XmlManager : MonoBehaviour {
         menuScript = gameManager.GetComponent<MenuScript>();
         path = Application.persistentDataPath;
         print(path);
-        //Save();
-        LoadIn();
+        Save();
+        SetSliderValues();
     }
 
-    private void Update() {
-        if (Input.GetButtonDown("Jump")) {
-            Save();
-        }
-
-        if (Input.GetButtonDown("Slow")) {
-            LoadIn();
-        }
-    }
-
-    public void LoadIn() {
+    public void SetSliderValues() {
         dataBase = Load();
-
         menuScript.camSensitivity.value = dataBase.cameraSensitivity;
         zoomAndSelectTile.zoomIncrease = dataBase.zoomSensitivity;
         menuScript.volume.value = dataBase.masterVolume;

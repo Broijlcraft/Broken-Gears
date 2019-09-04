@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class DataBase {
 
+    public int firstTime = 0;
+
     public float cameraSensitivity;
     public float zoomSensitivity;
 

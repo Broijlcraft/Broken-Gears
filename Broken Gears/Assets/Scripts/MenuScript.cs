@@ -30,6 +30,7 @@ public class MenuScript : MonoBehaviour {
     Movement movement;
     ZoomAndSelectTile zoomAndSelectTile;
     PlayerLook playerLook;
+    XmlManager xmlManager;
 
     GameObject[] slid;
 
@@ -42,7 +43,8 @@ public class MenuScript : MonoBehaviour {
         zoomAndSelectTile = cameraControl.GetComponentInChildren<ZoomAndSelectTile>();
         playerLook = cameraControl.GetComponentInChildren<PlayerLook>();
         movement = cameraControl.GetComponent<Movement>();
-        
+        xmlManager = gameManager.GetComponent<XmlManager>();
+
         slid = GameObject.FindGameObjectsWithTag("Slider");
 
         for (int i = 0; i < slid.Length; i++) {
@@ -63,17 +65,18 @@ public class MenuScript : MonoBehaviour {
             }
         }
 
-        camSensitivity.onValueChanged.AddListener(CamSenseChanged);
         camSensitivity.wholeNumbers = true;
-        SetSliderValues(camSensitivity, maxCamSense, minCamSense);
+        camSensitivity.onValueChanged.AddListener(CamSenseChanged);
         zoomSensitivity.onValueChanged.AddListener(ZoomSenseChanged);
-        SetSliderValues(zoomSensitivity, maxZoomSense, minZoomSense);
         volume.onValueChanged.AddListener(VolumeChanged);
-        SetSliderValues(volume, maxVolume, minVolume);
         sfx.onValueChanged.AddListener(SFXSenseChanged);
-        SetSliderValues(sfx, maxSFX, minSFX);
         music.onValueChanged.AddListener(MusicSenseChanged);
-        SetSliderValues(music, maxMusic, minMusic);
+        
+        SetSliderRange(camSensitivity, maxCamSense, minCamSense);
+        SetSliderRange(zoomSensitivity, maxZoomSense, minZoomSense);
+        SetSliderRange(volume, maxVolume, minVolume);
+        SetSliderRange(sfx, maxSFX, minSFX);
+        SetSliderRange(music, maxMusic, minMusic);
 
         menusHolder.SetActive(false);
         optionsMenu.SetActive(false);
@@ -85,9 +88,8 @@ public class MenuScript : MonoBehaviour {
         }
     }
 
-    void SetSliderValues(Slider slider, float max, float min) {
+    void SetSliderRange(Slider slider, float max, float min) {
         if (slider != null) {
-            //if xml doesn't have value
             slider.maxValue = max - min;
             slider.value = slider.maxValue / 2;
         }
@@ -105,7 +107,7 @@ public class MenuScript : MonoBehaviour {
                 menu.SetActive(true);
             } else {
                 menusHolder.SetActive(false);
-                gameManager.GetComponent<XmlManager>().Save();
+                xmlManager.Save();
                 Time.timeScale = 1;
             }
         }
@@ -119,6 +121,7 @@ public class MenuScript : MonoBehaviour {
         for (int i = 0; i < slid.Length; i++) {
             ResetSlider(slid[i].GetComponentInChildren<Slider>());
         }
+        xmlManager.Save();
     }
 
     void ResetSlider(Slider slider) {
