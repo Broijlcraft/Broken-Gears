@@ -24,11 +24,20 @@ public class MenuScript : MonoBehaviour {
     public GameObject menu;
     public GameObject optionsMenu;
 
+    GameObject cameraControl;
+
+    Movement movement;
+    ZoomAndSelectTile zoomAndSelectTile;
+
     GameObject[] slid;
 
     private void Start() {
         menusHolder.SetActive(true);
         optionsMenu.SetActive(true);
+
+        cameraControl = GameObject.Find("CamControl");
+        zoomAndSelectTile = cameraControl.GetComponentInChildren<ZoomAndSelectTile>();
+        movement = cameraControl.GetComponent<Movement>();
         
         slid = GameObject.FindGameObjectsWithTag("Slider");
 
@@ -50,7 +59,8 @@ public class MenuScript : MonoBehaviour {
             }
         }
 
-        camSensitivity.onValueChanged.AddListener(CamSenseChanged); 
+        camSensitivity.onValueChanged.AddListener(CamSenseChanged);
+        camSensitivity.wholeNumbers = true;
         SetSliderValues(camSensitivity, maxCamSense, minCamSense);
         zoomSensitivity.onValueChanged.AddListener(ZoomSenseChanged);
         SetSliderValues(zoomSensitivity, maxZoomSense, minZoomSense);
@@ -79,7 +89,7 @@ public class MenuScript : MonoBehaviour {
         }
     }
 
-    void MenuSwitch() {
+    public void MenuSwitch() {
         if (menusHolder.activeSelf == false) {
             menusHolder.SetActive(true);
             menu.SetActive(true);
@@ -96,6 +106,10 @@ public class MenuScript : MonoBehaviour {
         }
     }
 
+    public void QuitGame() {
+        Application.Quit();
+    }
+
     public void ResetToDefault() {
         for (int i = 0; i < slid.Length; i++) {
             ResetSlider(slid[i].GetComponentInChildren<Slider>());
@@ -107,11 +121,11 @@ public class MenuScript : MonoBehaviour {
     }
 
     void CamSenseChanged(float value) {
-
+        movement.rotationSpeed = value + minCamSense;
     }
 
     void ZoomSenseChanged(float value) {
-
+        zoomAndSelectTile.zoomIncrease = value + minZoomSense;
     }
 
     void VolumeChanged(float value) {

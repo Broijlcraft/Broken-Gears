@@ -3,26 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerLook : MonoBehaviour {
-    public float mouseSensitivity;
+    float mouseSensitivity;
 
     public float topLock;
     public float bottomLock;
-
+    public float multiplier;
     private float xAxisClamp;
 
-    private void Awake() {
+    Movement movement;
+
+    private void Start() {
+        movement = GetComponentInParent<Movement>();
+        mouseSensitivity = movement.rotationSpeed * multiplier;
         xAxisClamp = 0.0f;
-        CameraRotation();
+        VerticalCameraRotation();
     }
 
-    private void Update() {
-        //if (Input.GetMouseButton(2)) {
-        //    CameraRotation();
-        //}
-        CameraRotation();
+    private void LateUpdate() {
+        if (Input.GetMouseButton(2)) {
+            VerticalCameraRotation();
+            movement.HorizontalCameraRotation();
+        }
     }
 
-    private void CameraRotation() {
+    private void VerticalCameraRotation() {
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
         xAxisClamp += mouseY;

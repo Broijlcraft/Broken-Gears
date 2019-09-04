@@ -23,20 +23,28 @@ public class ZoomAndSelectTile : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetAxis("Mouse ScrollWheel") > 0) {
-            if (zoom > maxZoomIn) {
-                zoom -= zoomIncrease;
-                cam.fieldOfView = zoom;
-            }
-        } else if (Input.GetAxis("Mouse ScrollWheel") < 0) {
-            if (zoom < maxZoomOut) {
-                zoom += zoomIncrease;
-                cam.fieldOfView = zoom;
+        if (Time.timeScale == 1) {
+            if (Input.GetAxis("Mouse ScrollWheel") > 0) {
+                if (zoom > maxZoomIn) {
+                    zoom -= zoomIncrease;
+                    if (zoom < maxZoomIn) {
+                        zoom = maxZoomIn;
+                    }
+                    cam.fieldOfView = zoom;
+                }
+            } else if (Input.GetAxis("Mouse ScrollWheel") < 0) {
+                if (zoom < maxZoomOut) {
+                    zoom += zoomIncrease;
+                    if (zoom > maxZoomOut) {
+                        zoom = maxZoomOut;
+                    }
+                    cam.fieldOfView = zoom;
+                }
             }
         }
 
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) && Time.timeScale == 1) {
             if (Physics.Raycast(ray, out hit, 1000, layerMask)) {
                 Instantiate(g, new Vector3(hit.transform.position.x, hit.transform.position.y + 0.5f, hit.transform.position.z), Quaternion.identity);
             }
