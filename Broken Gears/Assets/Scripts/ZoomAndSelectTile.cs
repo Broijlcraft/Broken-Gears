@@ -46,7 +46,10 @@ public class ZoomAndSelectTile : MonoBehaviour {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         if (Input.GetMouseButtonDown(0) && Time.timeScale == 1) {
             if (Physics.Raycast(ray, out hit, 1000, layerMask)) {
-                Instantiate(g, new Vector3(hit.transform.position.x, hit.transform.position.y + 0.5f, hit.transform.position.z), Quaternion.identity);
+                if (hit.transform.GetComponent<Tile>().buildable == true) {
+                    Instantiate(g, new Vector3(hit.transform.position.x, hit.transform.position.y + 0.5f, hit.transform.position.z), Quaternion.identity);
+                    hit.transform.GetComponent<Tile>().PlaceTower();
+                }
             }
         }
     }

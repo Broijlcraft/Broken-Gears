@@ -24,7 +24,6 @@ public class XmlManager : MonoBehaviour {
         menuScript = gameManager.GetComponent<MenuScript>();
         path = Application.persistentDataPath;
         print(path);
-        Save();
         SetSliderValues();
     }
 
@@ -43,7 +42,7 @@ public class XmlManager : MonoBehaviour {
         //controls
         dataBase.cameraSensitivity = menuScript.camSensitivity.value;
         dataBase.zoomSensitivity = zoomAndSelectTile.zoomIncrease;
-
+        
         //volume
         dataBase.masterVolume = menuScript.volume.value;
         dataBase.sfx = menuScript.sfx.value;

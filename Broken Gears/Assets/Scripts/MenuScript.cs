@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class MenuScript : MonoBehaviour {
     public Slider camSensitivity;
-    public float maxCamSense = 300f;
-    public float minCamSense = 30f;
+    public float maxCamSense;
+    public float minCamSense;
     public Slider zoomSensitivity;
-    public float maxZoomSense = 5f;
-    public float minZoomSense = 1f; 
+    public float maxZoomSense;
+    public float minZoomSense; 
     public Slider volume;
     public float maxVolume = 1f;
     public float minVolume; 
@@ -102,18 +102,19 @@ public class MenuScript : MonoBehaviour {
             optionsMenu.SetActive(false);
             Time.timeScale = 0;
         } else {
+            xmlManager.Save();
             if (menu.activeSelf == false) {
                 optionsMenu.SetActive(false);
                 menu.SetActive(true);
             } else {
                 menusHolder.SetActive(false);
-                xmlManager.Save();
                 Time.timeScale = 1;
             }
         }
     }
 
     public void QuitGame() {
+        xmlManager.Save();
         Application.Quit();
     }
 
