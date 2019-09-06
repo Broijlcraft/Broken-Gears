@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CamSlideFollow : MonoBehaviour {
 
-    public bool beam;
     public bool slide;
+    public bool beam;
+
     GameObject camControl;
     Vector3 v;
 
@@ -18,10 +19,10 @@ public class CamSlideFollow : MonoBehaviour {
             v = transform.position;
             v.z = camControl.transform.position.z;
             transform.position = v;
-        } else if (slide == true){
+        } else if (slide == true) {
             v = transform.position;
-            v.z = camControl.transform.position.z;
             v.x = camControl.transform.position.x;
+            v.z = camControl.transform.position.z;
             transform.position = v;
         }
     }

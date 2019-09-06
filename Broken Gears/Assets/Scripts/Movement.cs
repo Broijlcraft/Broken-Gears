@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour {
     public float speed;
     public float rotationSpeed;
     Vector3 hor;
+
     private void FixedUpdate() {
         v.x = Input.GetAxis("Horizontal");
         v.z = Input.GetAxis("Vertical");
