@@ -7,6 +7,7 @@ TagManager:
   - Tag
   - Slider
   - OptionsMenu
+  - Waypoint
   layers:
   - Default
   - TransparentFX
