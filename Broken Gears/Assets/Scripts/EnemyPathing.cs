@@ -30,6 +30,7 @@ public class EnemyPathing : MonoBehaviour {
             targetValue++;
         } else {
             speed = 0;
+            //start doorbanging animation
         }
     }
 }
