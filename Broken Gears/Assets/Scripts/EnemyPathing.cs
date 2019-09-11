@@ -8,25 +8,29 @@ public class EnemyPathing : MonoBehaviour {
     public float speed;
     public int targetValue;
     public float maxDistance;
+    bool turning;
+    float turnTimer;
+    public float maxRotateTime;
+
+    public GameObject enemyChild;
 
     private void Start() {
-        SetTarget(targetValue);
+        SetTarget();
     }
 
     private void Update() {
         Vector3 direction = targetPoint.transform.position - transform.position;
         transform.Translate(direction.normalized * speed * Time.deltaTime);
-        float f = Vector3.Distance(targetPoint.transform.position, transform.position);
-        print(direction);
+       
         if (direction.z <= maxDistance) {
-            SetTarget(targetValue);
-        }
-        
+            SetTarget();
+        }  
     }
 
-    void SetTarget(int next) {
-        if (Waypoints.waypoint.Length > next) {
-            targetPoint = Waypoints.waypoint[next];
+    void SetTarget() {
+        if (Waypoints.waypoint.Length > targetValue) {
+            targetPoint = Waypoints.waypoint[targetValue];
+            enemyChild.transform.LookAt(targetPoint.transform);
             targetValue++;
         } else {
             speed = 0;
