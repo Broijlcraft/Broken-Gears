@@ -15,6 +15,9 @@ public class EnemyPathing : MonoBehaviour {
     public GameObject enemyChild;
 
     private void Start() {
+        if (enemyChild == null) {
+            transform.GetChild(0);
+        }
         SetTarget();
     }
 
