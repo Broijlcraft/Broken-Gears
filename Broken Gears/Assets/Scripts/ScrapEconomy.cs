@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class ScrapEconomy : MonoBehaviour {
 
-    public static Sprite scrap;
+    public GameObject scrapFab;
     public int currentScrapValue;
     public string scrapText;
+
+    //public int scrapAddOnSalvage;
 
     public Text uiScrap;
 

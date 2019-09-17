@@ -8,6 +8,8 @@ public class Health : MonoBehaviour {
     public float maxHealth;
     public float currentHealth;
 
+    public int scrapAdd;
+
     public GameObject healthPrefab;
     GameObject g;
 
@@ -36,7 +38,11 @@ public class Health : MonoBehaviour {
 
     public void Death() {
         //death animation
-        Instantiate(ScrapEconomy.scrap, new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), Quaternion.identity);
+        GameObject gA = Instantiate(Manager.scrapEconomy.scrapFab, Camera.main.WorldToScreenPoint(transform.position), Quaternion.identity);
+        Destroy(g);
+        Manager.scrapEconomy.AddScrap(scrapAdd);
+        gA.GetComponentInChildren<Text>().text = "+" + scrapAdd;
+        gA.transform.SetParent(Manager.mobileCanvas);
         Destroy(gameObject);
     }
 }
