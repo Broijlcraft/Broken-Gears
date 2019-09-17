@@ -14,7 +14,7 @@ public class Health : MonoBehaviour {
     private void Start() {
         currentHealth = maxHealth;
         g = Instantiate(healthPrefab, Vector3.zero, Quaternion.identity);
-        g.transform.SetParent(GameObject.Find("EnemyHealthCanvas").transform);
+        g.transform.SetParent(Manager.mobileCanvas.transform);
     }
 
     private void Update() {
@@ -27,8 +27,6 @@ public class Health : MonoBehaviour {
 
     public void Damage(int dmg) {
         currentHealth -= dmg;
-        float f = currentHealth / maxHealth;
-        print(f);
         g.transform.Find("Fill").GetComponent<Image>().fillAmount = currentHealth/maxHealth;
         if (currentHealth <= 0) {
             currentHealth = 0;
@@ -37,6 +35,8 @@ public class Health : MonoBehaviour {
     }
 
     public void Death() {
-
+        //death animation
+        Instantiate(ScrapEconomy.scrap, new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), Quaternion.identity);
+        Destroy(gameObject);
     }
 }
