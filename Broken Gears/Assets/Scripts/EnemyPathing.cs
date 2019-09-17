@@ -31,6 +31,7 @@ public class EnemyPathing : MonoBehaviour {
         if (Waypoints.waypoint.Length > targetValue) {
             targetPoint = Waypoints.waypoint[targetValue];
             enemyChild.transform.LookAt(targetPoint.transform);
+            enemyChild.transform.rotation = Quaternion.Euler(0, enemyChild.transform.localRotation.eulerAngles.y, 0);
             targetValue++;
         } else {
             speed = 0;

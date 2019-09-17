@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour {
 
-    public int maxHealth;
-    int currentHealth;
+    public float maxHealth;
+    public float currentHealth;
 
     public GameObject healthPrefab;
     GameObject g;
@@ -18,7 +18,7 @@ public class Health : MonoBehaviour {
     }
 
     private void Update() {
-        print(g.transform.Find("Fill").GetComponent<Image>().fillAmount);
+        Damage(0); 
     }
 
     private void LateUpdate() {
@@ -27,7 +27,9 @@ public class Health : MonoBehaviour {
 
     public void Damage(int dmg) {
         currentHealth -= dmg;
-        //g.transform.Find("Fill").GetComponent<Image>().fillAmount;
+        float f = currentHealth / maxHealth;
+        print(f);
+        g.transform.Find("Fill").GetComponent<Image>().fillAmount = currentHealth/maxHealth;
         if (currentHealth <= 0) {
             currentHealth = 0;
             Death();
