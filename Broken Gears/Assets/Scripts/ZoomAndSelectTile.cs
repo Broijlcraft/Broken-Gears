@@ -11,14 +11,23 @@ public class ZoomAndSelectTile : MonoBehaviour {
     public LayerMask layerMask;
     public RaycastHit hit;
     public GameObject g;
+
     Camera cam;
+
+    Camera monitorCam;
 
     private void Start() {
         cam = GetComponent<Camera>();
+        if (Manager.staticMonitor == true) {
+            monitorCam = transform.GetChild(0).GetComponent<Camera>();
+        }
         if (zoom == 0) {
             zoom = cam.fieldOfView;
         } else {
             cam.fieldOfView = zoom;
+            if (Manager.staticMonitor == true) {
+                monitorCam.fieldOfView = zoom;
+            }
         }
     }
 
@@ -30,7 +39,7 @@ public class ZoomAndSelectTile : MonoBehaviour {
                     if (zoom < maxZoomIn) {
                         zoom = maxZoomIn;
                     }
-                    cam.fieldOfView = zoom;
+                    Zoom();
                 }
             } else if (Input.GetAxis("Mouse ScrollWheel") < 0) {
                 if (zoom < maxZoomOut) {
@@ -38,7 +47,7 @@ public class ZoomAndSelectTile : MonoBehaviour {
                     if (zoom > maxZoomOut) {
                         zoom = maxZoomOut;
                     }
-                    cam.fieldOfView = zoom;
+                    Zoom();
                 }
             }
         }
@@ -52,5 +61,12 @@ public class ZoomAndSelectTile : MonoBehaviour {
                 }
             }
         }
+    }
+
+    void Zoom() {
+        if (Manager.staticMonitor == true) {
+        monitorCam.fieldOfView = zoom;
+        }
+        cam.fieldOfView = zoom;
     }
 }

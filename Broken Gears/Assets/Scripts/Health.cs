@@ -20,14 +20,13 @@ public class Health : MonoBehaviour {
     }
 
     private void Update() {
-        Damage(0); 
         if (Input.GetButtonDown("Jump")) {
-            Death();
+            Damage(Mathf.RoundToInt(maxHealth*0.25f));
         }
     }
 
     private void LateUpdate() {
-        g.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1f, 0));
+        g.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1.5f, 0));
     }
 
     public void Damage(int dmg) {
@@ -41,9 +40,9 @@ public class Health : MonoBehaviour {
 
     public void Death() {
         //death animation
-        GameObject gA = Instantiate(Manager.scrapEconomy.scrapFab, Vector3.zero, Quaternion.identity);
+        GameObject gA = Instantiate(Manager.scrapEconomy.scrapFab, transform.position + new Vector3(0, 2f, 0), Quaternion.identity);
         gA.transform.SetParent(Manager.mobileCanvas);
-        gA.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, -5f, 0));
+        gA.transform.position = Camera.main.WorldToScreenPoint(transform.position);
         gA.GetComponentInChildren<Text>().text = "+" + scrapAdd;
         Manager.scrapEconomy.AddScrap(scrapAdd);
         Destroy(g);
