@@ -41,11 +41,12 @@ public class Health : MonoBehaviour {
 
     public void Death() {
         //death animation
-        GameObject gA = Instantiate(Manager.scrapEconomy.scrapFab, Camera.main.WorldToScreenPoint(transform.position), Quaternion.identity);
-        Destroy(g);
-        Manager.scrapEconomy.AddScrap(scrapAdd);
-        gA.GetComponentInChildren<Text>().text = "+" + scrapAdd;
+        GameObject gA = Instantiate(Manager.scrapEconomy.scrapFab, Vector3.zero, Quaternion.identity);
         gA.transform.SetParent(Manager.mobileCanvas);
+        gA.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, -5f, 0));
+        gA.GetComponentInChildren<Text>().text = "+" + scrapAdd;
+        Manager.scrapEconomy.AddScrap(scrapAdd);
+        Destroy(g);
         Destroy(gameObject);
     }
 }
