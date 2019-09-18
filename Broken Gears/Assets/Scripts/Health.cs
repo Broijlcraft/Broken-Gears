@@ -21,6 +21,9 @@ public class Health : MonoBehaviour {
 
     private void Update() {
         Damage(0); 
+        if (Input.GetButtonDown("Jump")) {
+            Death();
+        }
     }
 
     private void LateUpdate() {
