@@ -17,18 +17,21 @@ public class Waves : MonoBehaviour {
     public bool tutorial;
 
     private void Update() {
-        if (startCountDown == true) {
-
+        if (Input.GetButtonDown("Jump")) {
+            startCountDown = true;
         }
-    }
-
-    public void StartCountDown() {
-        startCountDown = true;
+        if (startCountDown == true) {
+            if (waveCountDownTimer < waveCountDown) {
+                waveCountDownTimer += Time.deltaTime;
+            } else {
+                startCountDown = false;
+                print("DaKing");
+                waveCountDownTimer = 0;
+            }
+        }
     }
 
     public void StartNextWave() {
-        if (tutorial == false) {
 
-        }
     }
 }

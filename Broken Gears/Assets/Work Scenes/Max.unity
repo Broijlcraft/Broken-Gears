@@ -45872,9 +45872,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnpoint: {fileID: 0}
-  maxWaves: 0
+  maxWaves: 5
   currentWave: 0
-  waveCountDown: 0
+  waveCountDown: 1
   missionIntroTime: 0
   startCountDown: 0
   tutorial: 0
