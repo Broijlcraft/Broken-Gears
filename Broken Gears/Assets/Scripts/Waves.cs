@@ -12,13 +12,23 @@ public class Waves : MonoBehaviour {
     List<GameObject> enemiesLeft = new List<GameObject>();
     float waveCountDownTimer;
 
+    public bool startCountDown;
+
     public bool tutorial;
 
-    public void StartCountDown() {
+    private void Update() {
+        if (startCountDown == true) {
 
+        }
+    }
+
+    public void StartCountDown() {
+        startCountDown = true;
     }
 
     public void StartNextWave() {
+        if (tutorial == false) {
 
+        }
     }
 }
