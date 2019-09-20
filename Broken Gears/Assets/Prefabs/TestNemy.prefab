@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 1428923852968949197}
   - component: {fileID: 1428923852968949198}
   - component: {fileID: 1428923852968949199}
+  - component: {fileID: 5050010158399030390}
   m_Layer: 0
   m_Name: TestNemy
   m_TagString: Untagged
@@ -99,6 +100,20 @@ MonoBehaviour:
   scrapAdd: 5
   healthPrefab: {fileID: 127101210190714883, guid: 15ec6d577b45cde46b589375d0cbabec,
     type: 3}
+--- !u!64 &5050010158399030390
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428923852968949193}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 0}
 --- !u!1001 &7268195325780357854
 PrefabInstance:
   m_ObjectHideFlags: 0
