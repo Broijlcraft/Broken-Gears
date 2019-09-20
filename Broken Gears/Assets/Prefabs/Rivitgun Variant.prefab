@@ -75,8 +75,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunBarrel: {fileID: 417753260}
-  weap: {fileID: 0}
-  turnSpeed: 0
+  weap: {fileID: 4463714479996037703}
+  turnSpeed: 10
 --- !u!114 &1463600063289276450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,6 +99,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 840226392553715741}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: a1e364f0e4fbb8545adbc14abc9a3b3a,
+        type: 3}
+      propertyPath: m_Name
+      value: tower (rivit gun) 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a1e364f0e4fbb8545adbc14abc9a3b3a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -117,22 +122,22 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: a1e364f0e4fbb8545adbc14abc9a3b3a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a1e364f0e4fbb8545adbc14abc9a3b3a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a1e364f0e4fbb8545adbc14abc9a3b3a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a1e364f0e4fbb8545adbc14abc9a3b3a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a1e364f0e4fbb8545adbc14abc9a3b3a,
         type: 3}
@@ -154,13 +159,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: a1e364f0e4fbb8545adbc14abc9a3b3a,
-        type: 3}
-      propertyPath: m_Name
-      value: tower (rivit gun) 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1e364f0e4fbb8545adbc14abc9a3b3a, type: 3}
+--- !u!1 &4463714479996037703 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: a1e364f0e4fbb8545adbc14abc9a3b3a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5680061388582630222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &840226391721547860 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: a1e364f0e4fbb8545adbc14abc9a3b3a,
@@ -174,6 +180,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 565772791}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 3e21b8b7c862f734b9d2341673d064c8,
+        type: 3}
+      propertyPath: m_Name
+      value: tower (rivit arms)
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3e21b8b7c862f734b9d2341673d064c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -229,11 +240,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 3e21b8b7c862f734b9d2341673d064c8,
-        type: 3}
-      propertyPath: m_Name
-      value: tower (rivit arms)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e21b8b7c862f734b9d2341673d064c8, type: 3}
 --- !u!4 &840226392553715741 stripped
@@ -249,6 +255,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 29d2337f5f135064c82220d47212aee3,
+        type: 3}
+      propertyPath: m_Name
+      value: Rivitgun Variant
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 29d2337f5f135064c82220d47212aee3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -303,11 +314,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 29d2337f5f135064c82220d47212aee3,
-        type: 3}
-      propertyPath: m_Name
-      value: Rivitgun Variant
       objectReference: {fileID: 0}
     - target: {fileID: -5178661895559278292, guid: 29d2337f5f135064c82220d47212aee3,
         type: 3}

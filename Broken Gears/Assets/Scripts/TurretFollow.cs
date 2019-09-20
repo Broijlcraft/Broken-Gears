@@ -14,13 +14,15 @@ public class TurretFollow : MonoBehaviour {
         weapon = GetComponentInParent<Weapon>();   
     }
     void Update() {
-        Vector3 dir = weapon.target.position - weap.transform.position;
-        Quaternion armLookRotation = Quaternion.LookRotation(dir);
-        Quaternion gunLookRotation = Quaternion.LookRotation(dir);
-        Vector3 armRotation = Quaternion.Lerp(transform.rotation, armLookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-        Vector3 gunRotation = Quaternion.Lerp(weap.transform.rotation, gunLookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-        transform.rotation = Quaternion.Euler(0f, armRotation.y, 0f);
-        weap.transform.localRotation = Quaternion.Euler(0f, 0f, gunRotation.z);
-        Debug.DrawRay(gunBarrel.transform.position, gunBarrel.transform.forward, Color.blue * 1000);
+        if (weapon.target != null) {
+            Vector3 dir = weapon.target.position - weap.transform.position;
+            Quaternion armLookRotation = Quaternion.LookRotation(dir);
+            Quaternion gunLookRotation = Quaternion.LookRotation(dir);
+            Vector3 armRotation = Quaternion.Lerp(transform.rotation, armLookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+            Vector3 gunRotation = Quaternion.Lerp(weap.transform.rotation, gunLookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+            transform.rotation = Quaternion.Euler(0f, armRotation.y, 0f);
+            weap.transform.localRotation = Quaternion.Euler(0f, 0f, gunRotation.z);
+            Debug.DrawRay(gunBarrel.transform.position, gunBarrel.transform.forward, Color.blue * 1000);
+        }
     }
 }
