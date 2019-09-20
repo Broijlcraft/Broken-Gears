@@ -5,6 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour {
 
     public Transform target;
+    public Transform defaultTarget;
     public Mesh mesh;
     public Material mat;
 
@@ -31,7 +32,7 @@ public class Weapon : MonoBehaviour {
         if (targetsInRange.Count > 0) {
             target = targetsInRange[0].transform;
         } else {
-            target = null;
+            target = defaultTarget;
         }
     }
 
@@ -41,6 +42,6 @@ public class Weapon : MonoBehaviour {
 
     private void OnDrawGizmos() {
         Gizmos.color = mat.color;
-        Gizmos.DrawMesh(mesh, transform.position, Quaternion.identity, new Vector3(range, range, range));
+        Gizmos.DrawMesh(mesh, transform.position, Quaternion.identity, new Vector3(range - 0.5f, range - 0.5f, range - 0.5f));
     }
 }
