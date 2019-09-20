@@ -74,8 +74,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe3de27c5e909fb45af2f0512f53ccaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gun: {fileID: 0}
   gunBarrel: {fileID: 417753260}
+  weap: {fileID: 0}
   turnSpeed: 0
 --- !u!114 &1463600063289276450
 MonoBehaviour:
@@ -99,11 +99,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 840226392553715741}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a1e364f0e4fbb8545adbc14abc9a3b3a,
-        type: 3}
-      propertyPath: m_Name
-      value: tower (rivit gun) 1
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a1e364f0e4fbb8545adbc14abc9a3b3a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -159,6 +154,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a1e364f0e4fbb8545adbc14abc9a3b3a,
+        type: 3}
+      propertyPath: m_Name
+      value: tower (rivit gun) 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1e364f0e4fbb8545adbc14abc9a3b3a, type: 3}
 --- !u!4 &840226391721547860 stripped
@@ -174,11 +174,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 565772791}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 3e21b8b7c862f734b9d2341673d064c8,
-        type: 3}
-      propertyPath: m_Name
-      value: tower (rivit arms)
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3e21b8b7c862f734b9d2341673d064c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -234,6 +229,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 3e21b8b7c862f734b9d2341673d064c8,
+        type: 3}
+      propertyPath: m_Name
+      value: tower (rivit arms)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e21b8b7c862f734b9d2341673d064c8, type: 3}
 --- !u!4 &840226392553715741 stripped
@@ -249,11 +249,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 29d2337f5f135064c82220d47212aee3,
-        type: 3}
-      propertyPath: m_Name
-      value: Rivitgun Variant
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 29d2337f5f135064c82220d47212aee3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -309,6 +304,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 29d2337f5f135064c82220d47212aee3,
+        type: 3}
+      propertyPath: m_Name
+      value: Rivitgun Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: -5178661895559278292, guid: 29d2337f5f135064c82220d47212aee3,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 3843450572761487331, guid: 1f1dd8b79d2961e479d2bba8bb1bd8d5,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29d2337f5f135064c82220d47212aee3, type: 3}
 --- !u!1 &4463714478293380112 stripped
