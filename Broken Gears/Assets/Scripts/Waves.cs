@@ -13,19 +13,28 @@ public class Waves : MonoBehaviour {
     public int currentWave;
     public int waveCountDown;
     public int missionIntroTime;
-    List<GameObject> enemiesLeft = new List<GameObject>();
+    List<GameObject> activeEnemies = new List<GameObject>();
     float waveCountDownTimer;
 
     public bool startCountDown;
 
+    public bool endless;
     public bool tutorial;
 
     private void Update() {
         testTimer += Time.deltaTime;
         if (testTimer > testTime) {
             GameObject g = Instantiate(testEnemy, transform.position, Quaternion.identity);
-            enemiesLeft.Add(g);
+            activeEnemies.Add(g);
             testTimer = 0;
+        }
+    }
+
+    void EnemieCheck() {
+        for (int i = 0; i < activeEnemies.Count; i++) {
+            if (activeEnemies[i] == null) {
+                activeEnemies.RemoveAt(i);
+            }
         }
     }
 
