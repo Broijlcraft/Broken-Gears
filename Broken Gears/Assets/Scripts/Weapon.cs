@@ -19,7 +19,7 @@ public class Weapon : MonoBehaviour {
     }
 
     void UpdateTarget() {
-        GameObject[] targets = GameObject.FindGameObjectsWithTag("EnemyTarget");
+        //GameObject[] targets = GameObject.FindGameObjectsWithTag("EnemyTarget");
 
         for (int i = 0; i < targets.Length; i++) {
             if (distance(transform.position, targets[i].transform.position) < range && !targetsInRange.Contains(targets[i])) {
