@@ -20,12 +20,14 @@ public class MenuScript : MonoBehaviour {
     public float maxMusic = 1f;
     public float minMusic;
 
-    public GameObject menusHolder;
-    public GameObject menu;
-    public GameObject optionsMenu;
+    //public GameObject menusHolder;
+    //public GameObject menu;
+    //public GameObject optionsMenu;
 
     GameObject gameManager;
     GameObject cameraControl;
+
+    UiManager uiManager;
 
     Movement movement;
     ZoomAndSelectTile zoomAndSelectTile;
@@ -35,9 +37,10 @@ public class MenuScript : MonoBehaviour {
     GameObject[] slid;
 
     private void Awake() {
-        menusHolder.SetActive(true);
-        optionsMenu.SetActive(true);
-
+        uiManager = GameObject.Find("Canvas").GetComponent<UiManager>();
+        uiManager.menusHolder.SetActive(true);
+        uiManager.optionsMenu.SetActive(true);
+        
         gameManager = GameObject.Find("GameManager");
         cameraControl = GameObject.Find("CamControl");
         zoomAndSelectTile = cameraControl.GetComponentInChildren<ZoomAndSelectTile>();
@@ -78,8 +81,8 @@ public class MenuScript : MonoBehaviour {
         SetSliderRange(sfx, maxSFX, minSFX);
         SetSliderRange(music, maxMusic, minMusic);
 
-        menusHolder.SetActive(false);
-        optionsMenu.SetActive(false);
+        uiManager.menusHolder.SetActive(false);
+        uiManager.optionsMenu.SetActive(false);
     }
 
     private void Update() {
@@ -96,18 +99,18 @@ public class MenuScript : MonoBehaviour {
     }
 
     public void MenuSwitch() {
-        if (menusHolder.activeSelf == false) {
-            menusHolder.SetActive(true);
-            menu.SetActive(true);
-            optionsMenu.SetActive(false);
+        if (uiManager.menusHolder.activeSelf == false) {
+            uiManager.menusHolder.SetActive(true);
+            uiManager.menu.SetActive(true);
+            uiManager.optionsMenu.SetActive(false);
             Time.timeScale = 0;
         } else {
             xmlManager.Save();
-            if (menu.activeSelf == false) {
-                optionsMenu.SetActive(false);
-                menu.SetActive(true);
+            if (uiManager.menu.activeSelf == false) {
+                uiManager.optionsMenu.SetActive(false);
+                uiManager.menu.SetActive(true);
             } else {
-                menusHolder.SetActive(false);
+                uiManager.menusHolder.SetActive(false);
                 Time.timeScale = 1;
             }
         }

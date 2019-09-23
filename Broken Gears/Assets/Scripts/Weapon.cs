@@ -30,7 +30,11 @@ public class Weapon : MonoBehaviour {
         }
 
         if (targetsInRange.Count > 0) {
-            target = targetsInRange[0].transform;
+            if (targetsInRange[0] != null) {
+                target = targetsInRange[0].transform;
+            } else {
+                targetsInRange.RemoveAt(0);
+            }
         } else {
             target = defaultTarget;
         }

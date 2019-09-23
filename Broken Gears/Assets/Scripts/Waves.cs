@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Waves : MonoBehaviour {
 
+    public float testTime;
+    float testTimer;
+    public GameObject testEnemy;
+
     public Transform spawnpoint;
     public int maxWaves;
     public int currentWave;
@@ -17,17 +21,11 @@ public class Waves : MonoBehaviour {
     public bool tutorial;
 
     private void Update() {
-        if (Input.GetButtonDown("Jump")) {
-            startCountDown = true;
-        }
-        if (startCountDown == true) {
-            if (waveCountDownTimer < waveCountDown) {
-                waveCountDownTimer += Time.deltaTime;
-            } else {
-                startCountDown = false;
-                print("DaKing");
-                waveCountDownTimer = 0;
-            }
+        testTimer += Time.deltaTime;
+        if (testTimer > testTime) {
+            GameObject g = Instantiate(testEnemy, transform.position, Quaternion.identity);
+            enemiesLeft.Add(g);
+            testTimer = 0;
         }
     }
 
