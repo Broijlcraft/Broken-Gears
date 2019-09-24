@@ -80,7 +80,10 @@ MonoBehaviour:
   defaultTarget: {fileID: 3259383529154732778}
   mesh: {fileID: 2534964839176971238, guid: a5dc0faef6624c14489fc3ad4af0da5e, type: 3}
   mat: {fileID: 2100000, guid: 68685fe7c0887e94086888a82a20e5bd, type: 2}
-  barrel: {fileID: 3259383530758022766}
+  pointOfAttack: {fileID: 3259383530758022766}
+  attackSpeed: 0
+  turnSpeed: 5
+  dmg: 0
   range: 4
   targetsInRange: []
 --- !u!1 &3259383530758022766
@@ -157,9 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe3de27c5e909fb45af2f0512f53ccaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunBarrel: {fileID: 3259383530758022766}
   weap: {fileID: 1732957496754283871}
-  turnSpeed: 5
 --- !u!1001 &3259383529499200998
 PrefabInstance:
   m_ObjectHideFlags: 0

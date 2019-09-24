@@ -9,7 +9,12 @@ public class Weapon : MonoBehaviour {
     public Mesh mesh;
     public Material mat;
 
-    public GameObject barrel;
+    public GameObject pointOfAttack;
+    public float attackSpeed;
+    public float turnSpeed;
+    public int dmg;
+    float attackDelay;
+    bool shot;
     public float range;
 
     public List<GameObject> targetsInRange = new List<GameObject>();
