@@ -9,18 +9,38 @@ public class Weapon : MonoBehaviour {
     public Mesh mesh;
     public Material mat;
 
+    public GameObject AttackSound;
     public GameObject pointOfAttack;
-    public float attackSpeed;
     public float turnSpeed;
+    public float attackSpeed;
     public int dmg;
+    public GameObject tempBullet;
     float attackDelay;
-    bool shot;
     public float range;
 
     public List<GameObject> targetsInRange = new List<GameObject>();
 
     private void Start() {
         InvokeRepeating("UpdateTarget", 0f, 0.1f);
+    }
+
+    private void Update() {
+        if (target != null && target != defaultTarget) {
+            if (attackDelay > attackSpeed) {
+                Attack();
+                attackDelay = 0;
+            }
+            attackDelay += Time.deltaTime;
+        }
+    }
+
+    void Attack() {
+        target.GetComponentInParent<Health>().Damage(dmg);
+        Instantiate(AttackSound, pointOfAttack.transform.position, Quaternion.identity);
+        RaycastHit hit;
+        if (Physics.Raycast(pointOfAttack.transform.position, pointOfAttack.transform.forward, out hit, range/2)) {
+            Instantiate(tempBullet, hit.point, Quaternion.identity);
+        }
     }
 
     void UpdateTarget() {

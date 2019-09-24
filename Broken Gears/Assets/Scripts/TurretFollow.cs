@@ -21,7 +21,6 @@ public class TurretFollow : MonoBehaviour {
             Vector3 weaponRotation = Quaternion.Lerp(weap.transform.rotation, weaponLookRotation, Time.deltaTime * weapon.turnSpeed).eulerAngles;
             transform.rotation = Quaternion.Euler(0f, armRotation.y, 0f);
             weap.transform.localRotation = Quaternion.Euler(0f, 0f, weaponRotation.z);
-            Debug.DrawRay(weapon.pointOfAttack.transform.position, weapon.pointOfAttack.transform.forward, Color.blue * 1000);
         }
     }
 }
