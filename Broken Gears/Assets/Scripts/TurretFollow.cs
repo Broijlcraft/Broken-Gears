@@ -5,6 +5,8 @@ using UnityEngine;
 public class TurretFollow : MonoBehaviour {
     public GameObject gunBarrel;
     public GameObject weap;
+    public float attackSpeed;
+    public int dmg;
     Weapon weapon;
     Transform t;
     Vector3 v;
