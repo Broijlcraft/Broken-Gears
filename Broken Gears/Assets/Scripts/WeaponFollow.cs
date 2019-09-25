@@ -7,6 +7,7 @@ public class WeaponFollow : MonoBehaviour {
     Weapon weapon;
     Transform t;
     Vector3 v;
+    public bool x;
 
     private void Start() {
         weapon = GetComponentInParent<Weapon>();   
@@ -14,16 +15,21 @@ public class WeaponFollow : MonoBehaviour {
 
     void Update() {
         if (weapon.armTarget != null && weapon.weaponTarget != null) {
-            Vector3 armDir = weapon.armTarget.position - weap.transform.position;
-            Vector3 weaponDir = weapon.weaponTarget.position - weap.transform.position;
-            Quaternion armLookRotation = Quaternion.LookRotation(armDir);
-            Quaternion weaponLookRotation = Quaternion.LookRotation(weaponDir);
-            Vector3 armRotation = Quaternion.Lerp(transform.rotation, armLookRotation, Time.deltaTime * weapon.turnSpeed).eulerAngles;
-            Vector3 weaponRotation = Quaternion.Lerp(weap.transform.rotation, weaponLookRotation, Time.deltaTime * weapon.turnSpeed).eulerAngles;
-            transform.rotation = Quaternion.Euler(0f, armRotation.y, 0f);
-            weap.transform.localRotation = Quaternion.Euler(0f, 0f, weaponRotation.z);
             Debug.DrawRay(transform.position, transform.forward, Color.yellow * 1000);
             Debug.DrawRay(weap.transform.position, weap.transform.forward, Color.cyan * 1000);
+            Vector3 armDir = weapon.armTarget.position - weapon.transform.position;
+            Quaternion armLookRotation = Quaternion.LookRotation(armDir);
+            Vector3 armRotation = Quaternion.Lerp(transform.rotation, armLookRotation, Time.deltaTime * weapon.turnSpeed).eulerAngles;
+            transform.rotation = Quaternion.Euler(0f, armRotation.y, 0f);
+            //weapon rot
+            Vector3 weaponDir = weapon.weaponTarget.position - weap.transform.position;
+            Quaternion weaponLookRotation = Quaternion.LookRotation(weaponDir);
+            Vector3 weaponRotation = Quaternion.Lerp(weap.transform.rotation, weaponLookRotation, Time.deltaTime * weapon.turnSpeed).eulerAngles;
+            if (x == false) {
+                weap.transform.localRotation = Quaternion.Euler(0f, 0f, weaponRotation.z);
+            } else {
+                weap.transform.localRotation = Quaternion.Euler(weaponRotation.x, 0f, 0f);
+            }
         }
     }
 }

@@ -27,15 +27,15 @@ public class Weapon : MonoBehaviour {
         InvokeRepeating("UpdateTarget", 0f, 0.1f);
     }
 
-    //private void Update() {
-    //    if (armTarget != null && armTarget != defaultArmTarget) {
-    //        if (attackDelay > attackSpeed) {
-    //            Attack();
-    //            attackDelay = 0;
-    //        }
-    //        attackDelay += Time.deltaTime;
-    //    }
-    //}
+    private void Update() {
+        if (armTarget != null && armTarget != defaultArmTarget) {
+            if (attackDelay > attackSpeed) {
+                Attack();
+                attackDelay = 0;
+            }
+            attackDelay += Time.deltaTime;
+        }
+    }
 
     void Attack() {
         armTarget.GetComponentInParent<Health>().Damage(dmg);
