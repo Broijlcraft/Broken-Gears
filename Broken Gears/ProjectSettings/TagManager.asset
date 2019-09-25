@@ -9,6 +9,7 @@ TagManager:
   - OptionsMenu
   - Waypoint
   - EnemyTarget
+  - Enemy
   layers:
   - Default
   - TransparentFX

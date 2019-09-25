@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 3259383529904023206}
   - component: {fileID: 3259383529904023207}
   m_Layer: 0
-  m_Name: RivetGun
+  m_Name: RivetGunTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weap: {fileID: 1732957496754283871}
+  x: 0
 --- !u!1 &3682447437672535561
 GameObject:
   m_ObjectHideFlags: 0
