@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretFollow : MonoBehaviour {
+public class WeaponFollow : MonoBehaviour {
     public GameObject weap;
     Weapon weapon;
     Transform t;
@@ -22,6 +22,8 @@ public class TurretFollow : MonoBehaviour {
             Vector3 weaponRotation = Quaternion.Lerp(weap.transform.rotation, weaponLookRotation, Time.deltaTime * weapon.turnSpeed).eulerAngles;
             transform.rotation = Quaternion.Euler(0f, armRotation.y, 0f);
             weap.transform.localRotation = Quaternion.Euler(0f, 0f, weaponRotation.z);
+            Debug.DrawRay(transform.position, transform.forward, Color.yellow * 1000);
+            Debug.DrawRay(weap.transform.position, weap.transform.forward, Color.cyan * 1000);
         }
     }
 }

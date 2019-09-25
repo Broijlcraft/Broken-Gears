@@ -27,22 +27,24 @@ public class Weapon : MonoBehaviour {
         InvokeRepeating("UpdateTarget", 0f, 0.1f);
     }
 
-    private void Update() {
-        if (armTarget != null && armTarget != defaultArmTarget) {
-            if (attackDelay > attackSpeed) {
-                Attack();
-                attackDelay = 0;
-            }
-            attackDelay += Time.deltaTime;
-        }
-    }
+    //private void Update() {
+    //    if (armTarget != null && armTarget != defaultArmTarget) {
+    //        if (attackDelay > attackSpeed) {
+    //            Attack();
+    //            attackDelay = 0;
+    //        }
+    //        attackDelay += Time.deltaTime;
+    //    }
+    //}
 
     void Attack() {
         armTarget.GetComponentInParent<Health>().Damage(dmg);
-        Instantiate(AttackSound, pointOfAttack.transform.position, Quaternion.identity);
-        RaycastHit hit;
-        if (Physics.Raycast(pointOfAttack.transform.position, pointOfAttack.transform.forward, out hit, range/2)) {
-            Instantiate(tempBullet, hit.point, Quaternion.identity);
+        if (AttackSound != null && pointOfAttack != null && tempBullet != null) {
+            Instantiate(AttackSound, pointOfAttack.transform.position, Quaternion.identity);
+            RaycastHit hit;
+            if (Physics.Raycast(pointOfAttack.transform.position, pointOfAttack.transform.forward, out hit, range/2)) {
+                Instantiate(tempBullet, hit.point, Quaternion.identity);
+            }
         }
     }
 
@@ -80,6 +82,6 @@ public class Weapon : MonoBehaviour {
 
     private void OnDrawGizmos() {
         Gizmos.color = mat.color;
-        Gizmos.DrawMesh(mesh, transform.position, Quaternion.identity, new Vector3(range - 0.5f, range - 0.5f, range - 0.5f));
+        Gizmos.DrawMesh(mesh, transform.position, Quaternion.identity, new Vector3(range*2, 0f, range*2));
     }
 }

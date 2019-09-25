@@ -80,7 +80,7 @@ MonoBehaviour:
   weaponTarget: {fileID: 0}
   defaultArmTarget: {fileID: 3259383529154732778}
   defaultWeaponTarget: {fileID: 129691608171309772}
-  mesh: {fileID: 2534964839176971238, guid: a5dc0faef6624c14489fc3ad4af0da5e, type: 3}
+  mesh: {fileID: 2534964839176971238, guid: 17b0bc1e6619214459655402b527732b, type: 3}
   mat: {fileID: 2100000, guid: 68685fe7c0887e94086888a82a20e5bd, type: 2}
   AttackSound: {fileID: 2250985672812085953, guid: 7f640c3e2b964664aa26575e6c6dd378,
     type: 3}
@@ -90,7 +90,7 @@ MonoBehaviour:
   dmg: 6
   tempBullet: {fileID: 5680039387516703996, guid: 7ec9c27e87bd54d43831ba1620429646,
     type: 3}
-  range: 4
+  range: 3.5
   targetsInRange: []
 --- !u!1 &3259383530758022766
 GameObject:
