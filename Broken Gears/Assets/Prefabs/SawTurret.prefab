@@ -167,7 +167,7 @@ MonoBehaviour:
   attackSpeed: 0.2
   dmg: 2
   tempBullet: {fileID: 0}
-  range: 3
+  range: 3.1
   targetsInRange: []
 --- !u!1 &1823145442551970552
 GameObject:
