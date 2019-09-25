@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour {
 
-    public Transform target;
-    public Transform defaultTarget;
+    public Transform armTarget;
+    public Transform weaponTarget;
+    public Transform defaultArmTarget;
+    public Transform defaultWeaponTarget;
+    
     public Mesh mesh;
     public Material mat;
 
@@ -25,7 +28,7 @@ public class Weapon : MonoBehaviour {
     }
 
     private void Update() {
-        if (target != null && target != defaultTarget) {
+        if (armTarget != null && armTarget != defaultArmTarget) {
             if (attackDelay > attackSpeed) {
                 Attack();
                 attackDelay = 0;
@@ -35,7 +38,7 @@ public class Weapon : MonoBehaviour {
     }
 
     void Attack() {
-        target.GetComponentInParent<Health>().Damage(dmg);
+        armTarget.GetComponentInParent<Health>().Damage(dmg);
         Instantiate(AttackSound, pointOfAttack.transform.position, Quaternion.identity);
         RaycastHit hit;
         if (Physics.Raycast(pointOfAttack.transform.position, pointOfAttack.transform.forward, out hit, range/2)) {
@@ -56,12 +59,18 @@ public class Weapon : MonoBehaviour {
 
         if (targetsInRange.Count > 0) {
             if (targetsInRange[0] != null) {
-                target = targetsInRange[0].transform;
+                armTarget = targetsInRange[0].transform;
+                weaponTarget = targetsInRange[0].transform;
             } else {
                 targetsInRange.RemoveAt(0);
             }
         } else {
-            target = defaultTarget;
+            armTarget = defaultArmTarget;
+            weaponTarget = defaultWeaponTarget;
+        }
+
+        if (armTarget != null){
+            //if ()
         }
     }
 

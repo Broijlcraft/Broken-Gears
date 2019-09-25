@@ -13,10 +13,11 @@ public class TurretFollow : MonoBehaviour {
     }
 
     void Update() {
-        if (weapon.target != null) {
-            Vector3 dir = weapon.target.position - weap.transform.position;
-            Quaternion armLookRotation = Quaternion.LookRotation(dir);
-            Quaternion weaponLookRotation = Quaternion.LookRotation(dir);
+        if (weapon.armTarget != null && weapon.weaponTarget != null) {
+            Vector3 armDir = weapon.armTarget.position - weap.transform.position;
+            Vector3 weaponDir = weapon.weaponTarget.position - weap.transform.position;
+            Quaternion armLookRotation = Quaternion.LookRotation(armDir);
+            Quaternion weaponLookRotation = Quaternion.LookRotation(weaponDir);
             Vector3 armRotation = Quaternion.Lerp(transform.rotation, armLookRotation, Time.deltaTime * weapon.turnSpeed).eulerAngles;
             Vector3 weaponRotation = Quaternion.Lerp(weap.transform.rotation, weaponLookRotation, Time.deltaTime * weapon.turnSpeed).eulerAngles;
             transform.rotation = Quaternion.Euler(0f, armRotation.y, 0f);
