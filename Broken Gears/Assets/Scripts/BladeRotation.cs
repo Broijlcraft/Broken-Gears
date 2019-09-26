@@ -25,6 +25,6 @@ public class BladeRotation : MonoBehaviour {
                 actualSpeed = 0;
             }
         }
-        transform.Rotate(rot * actualSpeed);
+        transform.Rotate(rot * actualSpeed * Time.deltaTime);
     }
 }
