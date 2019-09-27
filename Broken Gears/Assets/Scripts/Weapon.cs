@@ -20,6 +20,9 @@ public class Weapon : MonoBehaviour {
     public GameObject tempBullet;
     float attackDelay;
     public float range;
+    public float rangetest;
+
+    public GameObject weaponBase;
 
     public List<GameObject> targetsInRange = new List<GameObject>();
 
@@ -82,6 +85,7 @@ public class Weapon : MonoBehaviour {
 
     private void OnDrawGizmos() {
         Gizmos.color = mat.color;
-        Gizmos.DrawMesh(mesh, transform.position, Quaternion.identity, new Vector3(range*2, 0f, range*2));
+        Vector3 rang = new Vector3(weaponBase.transform.position.x, transform.position.y, weaponBase.transform.position.z);
+        Gizmos.DrawMesh(mesh, transform.position, Quaternion.identity, new Vector3(rangetest, 0f, rangetest));
     }
 }
