@@ -21,12 +21,14 @@ public class Waves : MonoBehaviour {
     public bool endless;
     public bool tutorial;
 
+    private void Start() {
+        SpawnEnemy();
+    }
+
     private void Update() {
         testTimer += Time.deltaTime;
         if (testTimer > testTime) {
-            GameObject g = Instantiate(testEnemy, transform.position, Quaternion.identity);
-            activeEnemies.Add(g);
-            testTimer = 0;
+            SpawnEnemy();
         }
     }
 
@@ -36,6 +38,12 @@ public class Waves : MonoBehaviour {
                 activeEnemies.RemoveAt(i);
             }
         }
+    }
+
+    void SpawnEnemy() {
+        GameObject g = Instantiate(testEnemy, transform.position, Quaternion.identity);
+        activeEnemies.Add(g);
+        testTimer = 0;
     }
 
     public void StartNextWave() {

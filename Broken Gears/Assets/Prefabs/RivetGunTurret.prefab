@@ -82,15 +82,15 @@ MonoBehaviour:
   defaultWeaponTarget: {fileID: 129691608171309772}
   mesh: {fileID: 2534964839176971238, guid: 17b0bc1e6619214459655402b527732b, type: 3}
   mat: {fileID: 2100000, guid: 68685fe7c0887e94086888a82a20e5bd, type: 2}
-  AttackSound: {fileID: 2250985672812085953, guid: 7f640c3e2b964664aa26575e6c6dd378,
-    type: 3}
+  AttackSound: {fileID: 0}
   pointOfAttack: {fileID: 3259383530758022766}
   turnSpeed: 5
   attackSpeed: 0.75
   dmg: 6
-  tempBullet: {fileID: 5680039387516703996, guid: 7ec9c27e87bd54d43831ba1620429646,
-    type: 3}
+  tempBullet: {fileID: 0}
   range: 3.5
+  rangetest: 5
+  weaponBase: {fileID: 3259383530848847120}
   targetsInRange: []
 --- !u!1 &3259383530758022766
 GameObject:

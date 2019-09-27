@@ -78,11 +78,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPoint: {fileID: 0}
+  secondTarget: {fileID: 0}
   speed: 1
-  targetValue: 0
-  maxDistance: 0
+  maxDistance: 0.1
   maxRotateTime: 0.1
-  enemyChild: {fileID: 0}
+  text: {fileID: 0}
+  waypoints: {fileID: 0}
+  enemyChild: {fileID: 4751189142320650163}
 --- !u!114 &1428923852968949199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +245,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 03bb3b9275e500d40b60ed50a20a42ae, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cd790b9f6caef24197496cf3fdcd9a7, type: 3}
+--- !u!1 &4751189142320650163 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2680288814168925549, guid: 3cd790b9f6caef24197496cf3fdcd9a7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7268195325780357854}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8625735252421240224 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1398672941187274622, guid: 3cd790b9f6caef24197496cf3fdcd9a7,
