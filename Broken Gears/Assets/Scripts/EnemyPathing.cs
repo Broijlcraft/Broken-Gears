@@ -58,17 +58,5 @@ public class EnemyPathing : MonoBehaviour {
             speed = 0;
             //attack animation
         }
-
-
-        //if (waypoints.waypoint.Length > targetValue) {
-        //    text.text = text.text + ("|length");
-        //    targetPoint = waypoints.waypoint[targetValue];
-        //    enemyChild.transform.LookAt(targetPoint.transform);
-        //    enemyChild.transform.rotation = Quaternion.Euler(0, enemyChild.transform.localRotation.eulerAngles.y, 0);
-        //    targetValue++;
-        //} else {
-        //    speed = 0;
-        //    //attack animation
-        //}
     }
 }
