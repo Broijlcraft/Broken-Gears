@@ -11,18 +11,7 @@ public class Waypoints : MonoBehaviour {
     //public List<Transform> wp = new List<Transform>();
 
     private void Awake() {
-        //waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
-        waypoint = waypoints;
-        //waypoint = GameObject.FindGameObjectsWithTag("Waypoint");
-        //GetWayPoints();
+        //waypoint = waypoints;
+        waypoint = GameObject.FindGameObjectsWithTag("Waypoint");
     }
-
-
-    //void GetWayPoints() {
-    //    foreach(Transform t in transform) {
-    //        if(t != transform) {
-    //            wp.Add(t);
-    //        }
-    //    }
-    //}
 }

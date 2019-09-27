@@ -80,7 +80,7 @@ MonoBehaviour:
   targetPoint: {fileID: 0}
   secondTarget: {fileID: 0}
   speed: 1
-  maxDistance: 0.4
+  maxDistance: 0.1
   maxRotateTime: 0.1
   text: {fileID: 0}
   waypoints: {fileID: 0}
