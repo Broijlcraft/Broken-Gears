@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour {
 
+    public LayerMask layerMask;
+
     public Transform armTarget;
     public Transform weaponTarget;
     public Transform defaultArmTarget;
@@ -24,6 +26,8 @@ public class Weapon : MonoBehaviour {
 
     public GameObject weaponBase;
 
+    public GameObject enemyCheck;
+
     public List<GameObject> targetsInRange = new List<GameObject>();
 
     private void Start() {
@@ -31,6 +35,13 @@ public class Weapon : MonoBehaviour {
     }
 
     private void Update() {
+        enemyCheck.transform.LookAt(armTarget);
+        Debug.DrawRay(enemyCheck.transform.position, enemyCheck.transform.forward, Color.red * 1000);
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Raycast(enemyCheck.transform.position, enemyCheck.transform.forward, out hit, range, layerMask)) {
+            print("Enemy");
+            print(hit.transform.name);
+        }
         if (armTarget != null && armTarget != defaultArmTarget) {
             if (attackDelay > attackSpeed) {
                 Attack();
@@ -72,10 +83,6 @@ public class Weapon : MonoBehaviour {
         } else {
             armTarget = defaultArmTarget;
             weaponTarget = defaultWeaponTarget;
-        }
-
-        if (armTarget != null){
-            //if ()
         }
     }
 

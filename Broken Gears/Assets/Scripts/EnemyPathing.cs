@@ -47,7 +47,6 @@ public class EnemyPathing : MonoBehaviour {
 
     //
     public void SetTarget() {
-        print(targetValue);
         if (Waypoints.waypoint.Length > targetValue) {
             //text.text = text.text + ("|length");
             targetPoint = Waypoints.waypoint[targetValue];

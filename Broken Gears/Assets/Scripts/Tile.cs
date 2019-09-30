@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour {
 
-    public bool path;
     public bool buildable;
+    public bool buildableChild;
 
     public void PlaceTower() {
 
