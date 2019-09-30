@@ -29,7 +29,7 @@ public class EnemyPathing : MonoBehaviour {
 
     private void Update() {
         Vector3 direction =  abs(targetPoint.transform.position, transform.position);
-        print(direction);
+        //print(direction);
         Vector3 test = targetPoint.transform.position - transform.position;
         transform.Translate(test.normalized * speed * Time.deltaTime);
         if (direction.z < maxDistance && direction.x < maxDistance) {
@@ -49,7 +49,7 @@ public class EnemyPathing : MonoBehaviour {
     public void SetTarget() {
         print(targetValue);
         if (Waypoints.waypoint.Length > targetValue) {
-            text.text = text.text + ("|length");
+            //text.text = text.text + ("|length");
             targetPoint = Waypoints.waypoint[targetValue];
             enemyChild.transform.LookAt(targetPoint.transform);
             enemyChild.transform.rotation = Quaternion.Euler(0, enemyChild.transform.localRotation.eulerAngles.y, 0);
