@@ -22,7 +22,7 @@ public class Waves : MonoBehaviour {
     public bool tutorial;
 
     private void Start() {
-        SpawnEnemy();
+        //SpawnEnemy();
     }
 
     private void Update() {

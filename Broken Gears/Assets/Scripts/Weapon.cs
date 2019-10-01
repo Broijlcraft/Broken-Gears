@@ -37,11 +37,6 @@ public class Weapon : MonoBehaviour {
     private void Update() {
         enemyCheck.transform.LookAt(armTarget);
         Debug.DrawRay(enemyCheck.transform.position, enemyCheck.transform.forward, Color.red * 1000);
-        RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(enemyCheck.transform.position, enemyCheck.transform.forward, out hit, range, layerMask)) {
-            print("Enemy");
-            print(hit.transform.name);
-        }
         if (armTarget != null && armTarget != defaultArmTarget) {
             if (attackDelay > attackSpeed) {
                 Attack();
@@ -63,6 +58,11 @@ public class Weapon : MonoBehaviour {
     }
 
     void UpdateTarget() {
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Raycast(enemyCheck.transform.position, enemyCheck.transform.forward, out hit, range)) {
+            //print(hit.transform.name);
+        }
+
         GameObject[] targets = GameObject.FindGameObjectsWithTag("EnemyTarget");
 
         for (int i = 0; i < targets.Length; i++) {
