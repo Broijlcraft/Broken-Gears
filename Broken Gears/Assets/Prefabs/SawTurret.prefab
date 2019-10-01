@@ -186,9 +186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e208dd9a8ade6cb448e50a6dc32ebb15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
   armTarget: {fileID: 0}
   weaponTarget: {fileID: 0}
   defaultArmTarget: {fileID: 1823145442551970553}
@@ -198,13 +195,13 @@ MonoBehaviour:
   AttackSound: {fileID: 0}
   pointOfAttack: {fileID: 0}
   turnSpeed: 5
-  attackSpeed: 0.22
-  dmg: 3
+  attackSpeed: 0.25
+  dmg: 2
   tempBullet: {fileID: 0}
   range: 3
   rangetest: 3.7
-  weaponBase: {fileID: 1823145441125587984}
-  enemyCheck: {fileID: 1640458927224171560}
+  weaponBase: {fileID: 3028408142553827636}
+  enemyCheck: {fileID: 6320094125784578498}
   targetsInRange: []
 --- !u!1 &1823145442551970552
 GameObject:

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour {
 
-    public LayerMask layerMask;
-
     public Transform armTarget;
     public Transform weaponTarget;
     public Transform defaultArmTarget;
@@ -24,9 +22,9 @@ public class Weapon : MonoBehaviour {
     public float range;
     public float rangetest;
 
-    public GameObject weaponBase;
+    public Transform weaponBase;
 
-    public GameObject enemyCheck;
+    public Transform enemyCheck;
 
     public List<GameObject> targetsInRange = new List<GameObject>();
 
@@ -35,8 +33,8 @@ public class Weapon : MonoBehaviour {
     }
 
     private void Update() {
-        enemyCheck.transform.LookAt(armTarget);
-        Debug.DrawRay(enemyCheck.transform.position, enemyCheck.transform.forward, Color.red * 1000);
+        enemyCheck.LookAt(armTarget);
+        Debug.DrawRay(enemyCheck.position, enemyCheck.forward, Color.red * 1000);
         if (armTarget != null && armTarget != defaultArmTarget) {
             if (attackDelay > attackSpeed) {
                 Attack();
@@ -59,7 +57,7 @@ public class Weapon : MonoBehaviour {
 
     void UpdateTarget() {
         RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(enemyCheck.transform.position, enemyCheck.transform.forward, out hit, range)) {
+        if (Physics.Raycast(enemyCheck.position, enemyCheck.forward, out hit, range)) {
             //print(hit.transform.name);
         }
 
@@ -92,7 +90,7 @@ public class Weapon : MonoBehaviour {
 
     private void OnDrawGizmos() {
         Gizmos.color = mat.color;
-        Vector3 rang = new Vector3(weaponBase.transform.position.x, transform.position.y, weaponBase.transform.position.z);
+        Vector3 rang = new Vector3(weaponBase.position.x, transform.position.y, weaponBase.position.z);
         Gizmos.DrawMesh(mesh, transform.position, Quaternion.identity, new Vector3(rangetest, 0f, rangetest));
     }
 }
