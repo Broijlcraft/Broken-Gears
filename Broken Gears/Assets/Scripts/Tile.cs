@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tile : MonoBehaviour {
 
     public bool buildable;
-    public bool buildableChild;
+    public Transform buildableParent;
 
     public void PlaceTower() {
 
