@@ -334,7 +334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 679490383615418840}
   m_Layer: 0
-  m_Name: Rail
+  m_Name: CamSLideFollow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
