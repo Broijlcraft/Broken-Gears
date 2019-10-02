@@ -61945,5 +61945,10 @@ PrefabInstance:
       propertyPath: rangeDividerRotation
       value: 37
       objectReference: {fileID: 0}
+    - target: {fileID: 7502146747934808290, guid: 6856ec53647f96244b6c292de5801410,
+        type: 3}
+      propertyPath: rotationDelay
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6856ec53647f96244b6c292de5801410, type: 3}
