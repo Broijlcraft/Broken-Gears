@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Waypoints : MonoBehaviour {
 
-    public GameObject[] waypoints;
-    public static GameObject[] waypoint;
+    public Transform[] waypoints;
+    public static Transform[] waypoint;
 
     private void Awake() {
         waypoint = waypoints;

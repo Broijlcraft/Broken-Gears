@@ -12,11 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MuchCleanTile
       objectReference: {fileID: 0}
-    - target: {fileID: 7064818351156276046, guid: e78057751888bc8448449f1f729da396,
+    - target: {fileID: 8806666850693193618, guid: e78057751888bc8448449f1f729da396,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: d76e3bbed1531824586f67541e1d1797, type: 2}
+      propertyPath: m_TagString
+      value: Tile
+      objectReference: {fileID: 0}
     - target: {fileID: 5506997513402477953, guid: e78057751888bc8448449f1f729da396,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -72,5 +72,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7064818351156276046, guid: e78057751888bc8448449f1f729da396,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d76e3bbed1531824586f67541e1d1797, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e78057751888bc8448449f1f729da396, type: 3}

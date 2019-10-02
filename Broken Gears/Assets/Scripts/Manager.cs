@@ -9,11 +9,14 @@ public class Manager : MonoBehaviour {
     public static ScrapEconomy scrapEconomy;
     public bool monitor;
     public static bool staticMonitor;
+    public GameObject healthTest;
+    public static GameObject helthTest;
 
     private void Awake() {
         canvas = GameObject.Find("Canvas").transform;
         mobileCanvas = GameObject.Find("MobileCanvas").transform;
         scrapEconomy = GetComponent<ScrapEconomy>();
         staticMonitor = monitor;
+        helthTest = healthTest;
     }
 }

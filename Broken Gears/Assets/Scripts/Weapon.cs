@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour {
 
-    public LayerMask layerMask;
-
     public Transform armTarget;
     public Transform weaponTarget;
     public Transform defaultArmTarget;
@@ -24,34 +22,42 @@ public class Weapon : MonoBehaviour {
     public float range;
     public float rangetest;
 
-    public GameObject weaponBase;
+    public Transform weaponBase;
 
-    public GameObject enemyCheck;
+    public Animator animator;
+    public string animationName;
+    public float animationDelay;
+
+    public Transform enemyCheck;
 
     public List<GameObject> targetsInRange = new List<GameObject>();
 
     private void Start() {
+        animator = GetComponentInChildren<Animator>();
         InvokeRepeating("UpdateTarget", 0f, 0.1f);
     }
 
     private void Update() {
-        enemyCheck.transform.LookAt(armTarget);
-        Debug.DrawRay(enemyCheck.transform.position, enemyCheck.transform.forward, Color.red * 1000);
-        RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(enemyCheck.transform.position, enemyCheck.transform.forward, out hit, range, layerMask)) {
-            print("Enemy");
-            print(hit.transform.name);
-        }
-        if (armTarget != null && armTarget != defaultArmTarget) {
-            if (attackDelay > attackSpeed) {
-                Attack();
-                attackDelay = 0;
-            }
+        enemyCheck.LookAt(armTarget);
+        Debug.DrawRay(enemyCheck.position, enemyCheck.forward, Color.red * 1000);
+        if (attackDelay > attackSpeed && armTarget != null && armTarget != defaultArmTarget) {
+            Attack();
+            attackDelay = 0;
+        } else if (attackDelay >= 0 ) {
             attackDelay += Time.deltaTime;
-        }
+        }        
     }
 
     void Attack() {
+        if (animator == null) {
+            DoAttack();
+        } else {
+            InvokeRepeating("AnimAsian", 1f, 0f);
+            InvokeRepeating("DoAttack", 1.2f, 0f);
+        }
+    }
+
+    void DoAttack() {
         armTarget.GetComponentInParent<Health>().Damage(dmg);
         if (AttackSound != null && pointOfAttack != null && tempBullet != null) {
             Instantiate(AttackSound, pointOfAttack.transform.position, Quaternion.identity);
@@ -62,7 +68,16 @@ public class Weapon : MonoBehaviour {
         }
     }
 
+    void AnimAsian() {
+        animator.SetTrigger(animationName);
+    }
+
     void UpdateTarget() {
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Raycast(enemyCheck.position, enemyCheck.forward, out hit, range)) {
+            //print(hit.transform.name);
+        }
+
         GameObject[] targets = GameObject.FindGameObjectsWithTag("EnemyTarget");
 
         for (int i = 0; i < targets.Length; i++) {
@@ -92,7 +107,7 @@ public class Weapon : MonoBehaviour {
 
     private void OnDrawGizmos() {
         Gizmos.color = mat.color;
-        Vector3 rang = new Vector3(weaponBase.transform.position.x, transform.position.y, weaponBase.transform.position.z);
+        Vector3 rang = new Vector3(weaponBase.position.x, transform.position.y, weaponBase.position.z);
         Gizmos.DrawMesh(mesh, transform.position, Quaternion.identity, new Vector3(rangetest, 0f, rangetest));
     }
 }

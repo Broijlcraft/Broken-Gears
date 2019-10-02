@@ -62,6 +62,7 @@ Transform:
   - {fileID: 6015186196337731471}
   - {fileID: 3259383530848847121}
   - {fileID: 3259383529154732778}
+  - {fileID: 6497989235195830072}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -77,9 +78,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e208dd9a8ade6cb448e50a6dc32ebb15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
   armTarget: {fileID: 0}
   weaponTarget: {fileID: 0}
   defaultArmTarget: {fileID: 3259383529154732778}
@@ -94,8 +92,8 @@ MonoBehaviour:
   tempBullet: {fileID: 0}
   range: 3.5
   rangetest: 5
-  weaponBase: {fileID: 3259383530848847120}
-  enemyCheck: {fileID: 8661891476963867891}
+  weaponBase: {fileID: 4718985234367383639}
+  enemyCheck: {fileID: 6015186196337731471}
   targetsInRange: []
 --- !u!1 &3259383530758022766
 GameObject:
@@ -173,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weap: {fileID: 1732957496754283871}
+  useWeaponRotation: 1
   x: 0
 --- !u!1 &3682447437672535561
 GameObject:
@@ -204,6 +203,50 @@ Transform:
   m_Father: {fileID: 3259383530848847121}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7996115792522792957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6497989235195830072}
+  - component: {fileID: 5136660454076507076}
+  m_Layer: 0
+  m_Name: TurretCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6497989235195830072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7996115792522792957}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3259383529904023206}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5136660454076507076
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7996115792522792957}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1, z: 1}
+  m_Center: {x: 0.50331175, y: 0, z: -4.706454e-17}
 --- !u!1 &8661891476963867891
 GameObject:
   m_ObjectHideFlags: 0
