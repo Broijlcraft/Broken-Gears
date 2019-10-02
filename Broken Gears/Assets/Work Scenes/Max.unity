@@ -16234,12 +16234,15 @@ MonoBehaviour:
   AttackSound: {fileID: 0}
   pointOfAttack: {fileID: 0}
   turnSpeed: 5
-  attackSpeed: 4
+  attackSpeed: 3
   dmg: 20
   tempBullet: {fileID: 0}
   range: 3.2
   rangetest: 4.3
   weaponBase: {fileID: 5326407705287216580}
+  animator: {fileID: 0}
+  animationName: StomperDown
+  animationDelay: 0
   enemyCheck: {fileID: 1128457780}
   targetsInRange: []
 --- !u!4 &540701369

@@ -24,11 +24,16 @@ public class Weapon : MonoBehaviour {
 
     public Transform weaponBase;
 
+    public Animator animator;
+    public string animationName;
+    public float animationDelay;
+
     public Transform enemyCheck;
 
     public List<GameObject> targetsInRange = new List<GameObject>();
 
     private void Start() {
+        animator = GetComponentInChildren<Animator>();
         InvokeRepeating("UpdateTarget", 0f, 0.1f);
     }
 
@@ -40,10 +45,19 @@ public class Weapon : MonoBehaviour {
             attackDelay = 0;
         } else if (attackDelay >= 0 ) {
             attackDelay += Time.deltaTime;
-        }
+        }        
     }
 
     void Attack() {
+        if (animator == null) {
+            DoAttack();
+        } else {
+            InvokeRepeating("AnimAsian", 1f, 0f);
+            InvokeRepeating("DoAttack", 1.2f, 0f);
+        }
+    }
+
+    void DoAttack() {
         armTarget.GetComponentInParent<Health>().Damage(dmg);
         if (AttackSound != null && pointOfAttack != null && tempBullet != null) {
             Instantiate(AttackSound, pointOfAttack.transform.position, Quaternion.identity);
@@ -52,6 +66,10 @@ public class Weapon : MonoBehaviour {
                 Instantiate(tempBullet, hit.point, Quaternion.identity);
             }
         }
+    }
+
+    void AnimAsian() {
+        animator.SetTrigger(animationName);
     }
 
     void UpdateTarget() {
