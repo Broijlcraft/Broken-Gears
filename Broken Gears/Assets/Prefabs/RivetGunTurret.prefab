@@ -89,7 +89,8 @@ MonoBehaviour:
   turnSpeed: 5
   attackSpeed: 0.75
   dmg: 6
-  tempBullet: {fileID: 0}
+  tempBullet: {fileID: 8487345798333726346, guid: 6e10699f8c74eae4ab500c42517a68f4,
+    type: 3}
   range: 3.5
   rangetest: 5
   weaponBase: {fileID: 4718985234367383639}

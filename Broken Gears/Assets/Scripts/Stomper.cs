@@ -12,30 +12,35 @@ public class Stomper : MonoBehaviour {
     public Transform targetPointDown;
     public float maxDistance;
 
+    bool b;
+
     private void Start() {
         actualSpeed = decentSpeed;
         target = targetPointDown;
     }
 
     private void Update() {
-        Vector3 direction = abs(targetPointDown.localPosition, transform.localPosition);
-        print(direction);
-        Vector3 test = target.localPosition - transform.localPosition;
-        if (direction.z < maxDistance && direction.x < maxDistance) {
-            ChangeDirection();
+        if (Input.GetButtonDown("Jump")) {
+            b = true;
         }
-        transform.Translate(test.normalized * actualSpeed * Time.deltaTime);
+        if (b == true) {
+            Vector3 direction = abs(targetPointDown.localPosition, transform.localPosition);
+            print(direction);
+            Vector3 test = target.localPosition - transform.localPosition;
+            if (direction.z < maxDistance && direction.x < maxDistance) {
+                ChangeDirection();
+            }
+            transform.Translate(test.normalized * actualSpeed * Time.deltaTime);
+        }
     }
 
     void ChangeDirection() {
+        b = false;
         transform.localPosition = target.localPosition;
         if (target == targetPointDown) {
             target = targetPointUp;
             actualSpeed = ascentSpeed;
             print("Yeah");
-        } else {
-            //target = targetPointDown;
-            //actualSpeed = decentSpeed;
         }
     }
 
