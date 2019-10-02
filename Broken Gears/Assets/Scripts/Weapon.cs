@@ -38,13 +38,10 @@ public class Weapon : MonoBehaviour {
     private void Start() {
         turnSpeedSave = turnSpeed;
         animator = GetComponentInChildren<Animator>();
-        //InvokeRepeating("UpdateTarget", 0f, 0.1f);
+        InvokeRepeating("UpdateTarget", 0f, 0.1f);
     }
 
     private void Update() {
-        if (Input.GetButtonDown("ShowCase")) {
-            Attack();
-        }
         enemyCheck.LookAt(armTarget);
         Debug.DrawRay(enemyCheck.position, enemyCheck.forward, Color.red * 1000);
         if (attackDelay > attackSpeed && armTarget != null && armTarget != defaultArmTarget) {
@@ -74,7 +71,7 @@ public class Weapon : MonoBehaviour {
 
     void DoAttack() {
         if (armTarget != null && armTarget != defaultArmTarget) {
-            //armTarget.GetComponentInParent<Health>().Damage(dmg);
+            armTarget.GetComponentInParent<Health>().Damage(dmg);
             if (AttackSound != null && pointOfAttack != null && tempBullet != null) {
                 Instantiate(AttackSound, pointOfAttack.transform.position, Quaternion.identity);
                 RaycastHit hit;
