@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weap: {fileID: 1823145441458980768}
+  useWeaponRotation: 1
   x: 1
 --- !u!1 &1823145441458980768
 GameObject:

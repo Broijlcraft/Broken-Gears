@@ -35,11 +35,10 @@ public class Weapon : MonoBehaviour {
     private void Update() {
         enemyCheck.LookAt(armTarget);
         Debug.DrawRay(enemyCheck.position, enemyCheck.forward, Color.red * 1000);
-        if (armTarget != null && armTarget != defaultArmTarget) {
-            if (attackDelay > attackSpeed) {
-                Attack();
-                attackDelay = 0;
-            }
+        if (attackDelay > attackSpeed && armTarget != null && armTarget != defaultArmTarget) {
+            Attack();
+            attackDelay = 0;
+        } else if (attackDelay >= 0 ) {
             attackDelay += Time.deltaTime;
         }
     }

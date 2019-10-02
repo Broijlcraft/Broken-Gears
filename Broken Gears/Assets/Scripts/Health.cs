@@ -10,13 +10,12 @@ public class Health : MonoBehaviour {
 
     public int scrapAdd;
 
-    public GameObject healthPrefab;
     GameObject g;
 
     private void Start() {
-        currentHealth = maxHealth;
-        g = Instantiate(healthPrefab, Vector3.zero, Quaternion.identity);
-        g.transform.SetParent(Manager.mobileCanvas.transform);
+        currentHealth = maxHealth;    
+        g = Instantiate(Manager.helthTest, Vector3.zero, Quaternion.identity);
+        g.transform.SetParent(Manager.mobileCanvas);
     }
 
     private void Update() {
@@ -41,7 +40,7 @@ public class Health : MonoBehaviour {
 
     public void Death() {
         //death animation
-        GameObject gA = Instantiate(Manager.scrapEconomy.scrapFab, transform.position + new Vector3(0, 2f, 0), Quaternion.identity);
+        GameObject gA = Instantiate(Manager.scrapEconomy.scrapFab, transform.position + new Vector3(0, 0, 0), Quaternion.identity);
         gA.transform.SetParent(Manager.mobileCanvas);
         gA.transform.position = Camera.main.WorldToScreenPoint(transform.position);
         gA.GetComponentInChildren<Text>().text = "+" + scrapAdd;

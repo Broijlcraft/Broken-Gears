@@ -89,8 +89,7 @@ MonoBehaviour:
   turnSpeed: 5
   attackSpeed: 0.75
   dmg: 6
-  tempBullet: {fileID: 8487345798333726346, guid: 6e10699f8c74eae4ab500c42517a68f4,
-    type: 3}
+  tempBullet: {fileID: 0}
   range: 3.5
   rangetest: 5
   weaponBase: {fileID: 4718985234367383639}
@@ -172,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weap: {fileID: 1732957496754283871}
+  useWeaponRotation: 1
   x: 0
 --- !u!1 &3682447437672535561
 GameObject:
