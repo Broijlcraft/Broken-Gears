@@ -15,24 +15,28 @@ public class Weapon : MonoBehaviour {
     public GameObject AttackSound;
     public GameObject pointOfAttack;
     public float turnSpeed;
+    public float turnSpeedSave;
     public float attackSpeed;
     public int dmg;
     public GameObject tempBullet;
     float attackDelay;
     public float range;
+    float rangeSave;
     public float rangetest;
 
     public Transform weaponBase;
 
     public Animator animator;
     public string animationName;
-    public float animationDelay;
+    public float rotationDelay;
+    public int rangeDividerRotation;
 
     public Transform enemyCheck;
 
     public List<GameObject> targetsInRange = new List<GameObject>();
 
     private void Start() {
+        turnSpeedSave = turnSpeed;
         animator = GetComponentInChildren<Animator>();
         InvokeRepeating("UpdateTarget", 0f, 0.1f);
     }
@@ -49,26 +53,38 @@ public class Weapon : MonoBehaviour {
     }
 
     void Attack() {
+        rangeSave = range;
         if (animator == null) {
             DoAttack();
         } else {
+            range += range/rangeDividerRotation;
+            print(range);
             InvokeRepeating("AnimAsian", 1f, 0f);
             InvokeRepeating("DoAttack", 1.2f, 0f);
+            InvokeRepeating("ResetRotationSpeed", rotationDelay, 0);
         }
+    }
+
+    void ResetRotationSpeed() {
+        turnSpeed = turnSpeedSave;
     }
 
     void DoAttack() {
-        armTarget.GetComponentInParent<Health>().Damage(dmg);
-        if (AttackSound != null && pointOfAttack != null && tempBullet != null) {
-            Instantiate(AttackSound, pointOfAttack.transform.position, Quaternion.identity);
-            RaycastHit hit;
-            if (Physics.Raycast(pointOfAttack.transform.position, pointOfAttack.transform.forward, out hit, range/2)) {
-                Instantiate(tempBullet, hit.point, Quaternion.identity);
+        if (armTarget != null && armTarget != defaultArmTarget) {
+            armTarget.GetComponentInParent<Health>().Damage(dmg);
+            if (AttackSound != null && pointOfAttack != null && tempBullet != null) {
+                Instantiate(AttackSound, pointOfAttack.transform.position, Quaternion.identity);
+                RaycastHit hit;
+                if (Physics.Raycast(pointOfAttack.transform.position, pointOfAttack.transform.forward, out hit, range/2)) {
+                    Instantiate(tempBullet, hit.point, Quaternion.identity);
+                }
             }
         }
+        range = rangeSave;
     }
 
     void AnimAsian() {
+        turnSpeed = 0;
         animator.SetTrigger(animationName);
     }
 
