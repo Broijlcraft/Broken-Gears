@@ -7,7 +7,7 @@ public class Tile : MonoBehaviour {
     public bool buildable;
     public Transform buildableParent;
 
-    public void PlaceTower() {
-
+    public void PlaceTower(GameObject tower) {
+        print(tower.name);
     }
 }

@@ -58,7 +58,6 @@ public class Weapon : MonoBehaviour {
             DoAttack();
         } else {
             range += range/rangeDividerRotation;
-            print(range);
             InvokeRepeating("AnimAsian", 1f, 0f);
             InvokeRepeating("DoAttack", 1.2f, 0f);
             InvokeRepeating("ResetRotationSpeed", rotationDelay, 0);

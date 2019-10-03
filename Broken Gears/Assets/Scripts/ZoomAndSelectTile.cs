@@ -11,7 +11,7 @@ public class ZoomAndSelectTile : MonoBehaviour {
     public LayerMask layerMask;
     public RaycastHit hit;
     public GameObject g;
-
+    
     Camera cam;
 
     Camera monitorCam;
@@ -32,7 +32,7 @@ public class ZoomAndSelectTile : MonoBehaviour {
     }
 
     private void Update() {
-        if (Time.timeScale == 1) {
+        if (Time.timeScale != 0) {
             if (Input.GetAxis("Mouse ScrollWheel") > 0) {
                 if (zoom > maxZoomIn) {
                     zoom -= zoomIncrease;
@@ -50,16 +50,20 @@ public class ZoomAndSelectTile : MonoBehaviour {
                     Zoom();
                 }
             }
-        }
 
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        if (Input.GetMouseButtonDown(0) && Time.timeScale == 1) {
-            if (Physics.Raycast(ray, out hit, 1000)) {
-                if (hit.transform.tag == "Tile") {
-                    if (hit.transform.GetComponent<Tile>().buildable == true) {
-                        Instantiate(g, new Vector3(hit.transform.position.x, hit.transform.position.y + 0.5f, hit.transform.position.z), Quaternion.identity);
-                        hit.transform.GetComponent<Tile>().PlaceTower();
-                        print("hit");
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            if (Input.GetMouseButtonDown(0) && TowerManager.selectedTower != null) {
+                if (Physics.Raycast(ray, out hit, 1000)) {
+                    if (hit.transform.tag == "Tile") {
+                        Tile tile = hit.transform.GetComponent<Tile>();
+                        if (tile.buildable == true) {
+                            if (tile.buildableParent == null) {
+                                tile.PlaceTower(TowerManager.selectedTower);
+                            } else {
+                                tile.buildableParent.GetComponent<Tile>().PlaceTower(TowerManager.selectedTower);
+                            }
+                            TowerManager.selectedTower = null;
+                        }
                     }
                 }
             }

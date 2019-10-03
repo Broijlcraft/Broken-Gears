@@ -2829,6 +2829,21 @@ PrefabInstance:
       propertyPath: layerMask.m_Bits
       value: 2048
       objectReference: {fileID: 0}
+    - target: {fileID: 4137365280618394812, guid: 0abea651cb45e9d468b00b274fac4ba2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 42da89997c32de24b9bd5009fe381894, type: 2}
+    - target: {fileID: 1735945952660117308, guid: 0abea651cb45e9d468b00b274fac4ba2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 42da89997c32de24b9bd5009fe381894, type: 2}
+    - target: {fileID: 4576530111283951430, guid: 0abea651cb45e9d468b00b274fac4ba2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 42da89997c32de24b9bd5009fe381894, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0abea651cb45e9d468b00b274fac4ba2, type: 3}
 --- !u!1001 &87180207
@@ -4823,6 +4838,7 @@ GameObject:
   - component: {fileID: 129329286}
   - component: {fileID: 129329288}
   - component: {fileID: 129329287}
+  - component: {fileID: 129329289}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4922,6 +4938,23 @@ MonoBehaviour:
   currentScrapValue: 0
   scrapText: 'Scrap:'
   uiScrap: {fileID: 0}
+--- !u!114 &129329289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129329283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b92ca25e178a5d347af69605d8a0fe02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerss:
+  - {fileID: 3259383529904023205, guid: 0abea651cb45e9d468b00b274fac4ba2, type: 3}
+  - {fileID: 1823145441805337677, guid: 56e22d39d50151a49a65d0cf0b5f2768, type: 3}
+  - {fileID: 7502146747934808301, guid: 6856ec53647f96244b6c292de5801410, type: 3}
+  test: {fileID: 1269595960}
 --- !u!1 &132620621
 GameObject:
   m_ObjectHideFlags: 0
@@ -26475,7 +26508,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 9b0ac71fcfd997b4e8577be65a60d0ea,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 9b0ac71fcfd997b4e8577be65a60d0ea,
         type: 3}
@@ -35735,6 +35768,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1268818751}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1269595960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1269595961}
+  m_Layer: 0
+  m_Name: aaa
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1269595961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269595960}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.3144064, y: 7.179529, z: 12.501303}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1274354316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 2eb90252603fc764d9a8fc0ac94cfb05,
@@ -61124,6 +61187,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1759d78b502c25440baf21bbd6d1db6f, type: 2}
+    - target: {fileID: 1823145441805337679, guid: 56e22d39d50151a49a65d0cf0b5f2768,
+        type: 3}
+      propertyPath: turnSpeed
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56e22d39d50151a49a65d0cf0b5f2768, type: 3}
 --- !u!1001 &3477141806205964823
@@ -61677,6 +61745,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401622721965392374, guid: 402dbacd4b6d1774a9089c5531e1a522,
+        type: 3}
+      propertyPath: m_Name
+      value: SawButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8232196327676786079, guid: 402dbacd4b6d1774a9089c5531e1a522,
+        type: 3}
+      propertyPath: m_Name
+      value: StompButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222881406806210543, guid: 402dbacd4b6d1774a9089c5531e1a522,
+        type: 3}
+      propertyPath: m_Name
+      value: RivitButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 402dbacd4b6d1774a9089c5531e1a522, type: 3}
