@@ -40,10 +40,10 @@ public class Health : MonoBehaviour {
 
     public void Death() {
         //death animation
-        GameObject gA = Instantiate(Manager.scrapEconomy.scrapFab, transform.position + new Vector3(0, 0, 0), Quaternion.identity);
-        gA.transform.SetParent(Manager.mobileCanvas);
-        gA.transform.position = Camera.main.WorldToScreenPoint(transform.position);
-        gA.GetComponentInChildren<Text>().text = "+" + scrapAdd;
+        //GameObject gA = Instantiate(Manager.scrapEconomy.scrapFab, transform.position + new Vector3(0, 0, 0), Quaternion.identity);
+        //gA.transform.SetParent(Manager.mobileCanvas);
+        //gA.transform.position = Camera.main.WorldToScreenPoint(transform.position);
+        //gA.GetComponentInChildren<Text>().text = "+" + scrapAdd;
         Manager.scrapEconomy.AddScrap(scrapAdd);
         Destroy(g);
         Destroy(gameObject);
