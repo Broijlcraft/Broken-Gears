@@ -7,14 +7,14 @@ public class BladeRotation : MonoBehaviour {
     public float divider;
     public float speed;
     float actualSpeed;
-    Weapon weapon;
+    Turret turret;
 
     private void Start() {
-        weapon = GetComponentInParent<Weapon>();
+        turret = GetComponentInParent<Turret>();
     }
 
     private void Update() {
-        if (weapon.armTarget != weapon.defaultArmTarget) {
+        if (turret.armTarget != turret.defaultArmTarget) {
             if (actualSpeed < speed) {
                 actualSpeed += speed / divider;
             }

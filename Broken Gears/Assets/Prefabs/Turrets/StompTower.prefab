@@ -212,7 +212,7 @@ MonoBehaviour:
   mat: {fileID: 2100000, guid: 92201e87ef6f5da408e93990d5d9085b, type: 2}
   AttackSound: {fileID: 0}
   pointOfAttack: {fileID: 0}
-  turnSpeed: 4
+  turnSpeed: 3
   turnSpeedSave: 0
   attackSpeed: 3
   dmg: 20
@@ -221,9 +221,10 @@ MonoBehaviour:
   rangetest: 4.3
   weaponBase: {fileID: 2447646123401652126}
   animator: {fileID: 0}
+  extraDelay: 0.6
   animationName: StomperDown
-  rotationDelay: 2.8
-  rangeDividerRotation: 0
+  rotationDelay: 3
+  rangeDividerRotation: 37
   enemyCheck: {fileID: 7502146749502917742}
   targetsInRange: []
 --- !u!1 &7502146748187315204

@@ -11,20 +11,21 @@ public class ZoomAndSelectTile : MonoBehaviour {
     public LayerMask layerMask;
     public RaycastHit hit;
     public GameObject g;
-    
-    Camera cam;
+
+    TowerManager towerManager;
 
     Camera monitorCam;
 
     private void Start() {
-        cam = GetComponent<Camera>();
+        towerManager = GameObject.Find("GameManager").GetComponent<TowerManager>();
+        Manager.cam = GetComponent<Camera>();
         if (Manager.staticMonitor == true) {
             monitorCam = transform.GetChild(0).GetComponent<Camera>();
         }
         if (zoom == 0) {
-            zoom = cam.fieldOfView;
+            zoom = Manager.cam.fieldOfView;
         } else {
-            cam.fieldOfView = zoom;
+            Manager.cam.fieldOfView = zoom;
             if (Manager.staticMonitor == true) {
                 monitorCam.fieldOfView = zoom;
             }
@@ -51,18 +52,18 @@ public class ZoomAndSelectTile : MonoBehaviour {
                 }
             }
 
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            if (Input.GetMouseButtonDown(0) && TowerManager.selectedTower != null) {
+            Ray ray = Manager.cam.ScreenPointToRay(Input.mousePosition);
+            if (Input.GetMouseButtonDown(0) && towerManager.selectedTower != null) {
                 if (Physics.Raycast(ray, out hit, 1000)) {
                     if (hit.transform.tag == "Tile") {
                         Tile tile = hit.transform.GetComponent<Tile>();
                         if (tile.buildable == true) {
                             if (tile.buildableParent == null) {
-                                tile.PlaceTower(TowerManager.selectedTower);
+                                tile.PlaceTower(towerManager.selectedTower);
                             } else {
-                                tile.buildableParent.GetComponent<Tile>().PlaceTower(TowerManager.selectedTower);
+                                tile.buildableParent.GetComponent<Tile>().PlaceTower(towerManager.selectedTower);
                             }
-                            TowerManager.selectedTower = null;
+                            towerManager.selectedTower = null;
                         }
                     }
                 }
@@ -74,6 +75,6 @@ public class ZoomAndSelectTile : MonoBehaviour {
         if (Manager.staticMonitor == true) {
         monitorCam.fieldOfView = zoom;
         }
-        cam.fieldOfView = zoom;
+        Manager.cam.fieldOfView = zoom;
     }
 }

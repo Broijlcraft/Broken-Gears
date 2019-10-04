@@ -2,16 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour {
+public class Turret : MonoBehaviour {
 
-    public Transform armTarget;
-    public Transform weaponTarget;
-    public Transform defaultArmTarget;
-    public Transform defaultWeaponTarget;
-    
-    public Mesh mesh;
-    public Material mat;
+    [Header("Weapon Specifics")]
 
+    public GameObject turretImg;
     public GameObject AttackSound;
     public GameObject pointOfAttack;
     public float turnSpeed;
@@ -26,14 +21,28 @@ public class Weapon : MonoBehaviour {
 
     public Transform weaponBase;
 
+    [Header("Targeting")]
+
+    public Transform armTarget;
+    public Transform weaponTarget;
+    public Transform defaultArmTarget;
+    public Transform defaultWeaponTarget;
+    public Transform enemyCheck;
+    [HideInInspector]public List<GameObject> targetsInRange = new List<GameObject>();
+
+    [Header("Gizmos")]
+
+    public Mesh mesh;
+    public Material mat;
+
+    [Header("SpecialAttack")]
+
     public Animator animator;
+    public float extraDelay;
     public string animationName;
     public float rotationDelay;
     public int rangeDividerRotation;
 
-    public Transform enemyCheck;
-
-    public List<GameObject> targetsInRange = new List<GameObject>();
 
     private void Start() {
         turnSpeedSave = turnSpeed;
@@ -58,8 +67,8 @@ public class Weapon : MonoBehaviour {
             DoAttack();
         } else {
             range += range/rangeDividerRotation;
-            InvokeRepeating("AnimAsian", 1f, 0f);
-            InvokeRepeating("DoAttack", 1.2f, 0f);
+            InvokeRepeating("AnimAsian", extraDelay, 0f);
+            InvokeRepeating("DoAttack", extraDelay + 0.2f, 0f);
             InvokeRepeating("ResetRotationSpeed", rotationDelay, 0);
         }
     }

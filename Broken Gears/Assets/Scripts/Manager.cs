@@ -11,8 +11,10 @@ public class Manager : MonoBehaviour {
     public static bool staticMonitor;
     public GameObject healthTest;
     public static GameObject helthTest;
+    public static Camera cam;
 
     private void Awake() {
+        cam = Camera.main;
         canvas = GameObject.Find("Canvas").transform;
         mobileCanvas = GameObject.Find("MobileCanvas").transform;
         scrapEconomy = GetComponent<ScrapEconomy>();

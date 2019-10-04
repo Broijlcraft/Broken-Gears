@@ -196,7 +196,7 @@ MonoBehaviour:
   mat: {fileID: 2100000, guid: c03f4de9202f7364aa3ceeec2a3477e3, type: 2}
   AttackSound: {fileID: 0}
   pointOfAttack: {fileID: 0}
-  turnSpeed: 5
+  turnSpeed: 3
   turnSpeedSave: 0
   attackSpeed: 0.25
   dmg: 2
