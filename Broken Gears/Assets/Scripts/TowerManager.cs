@@ -6,7 +6,7 @@ public class TowerManager : MonoBehaviour {
 
     public List<GameObject> towerList = new List<GameObject>();
     public static List<GameObject> towers = new List<GameObject>();
-    public GameObject selectedTower;
+    public static GameObject selectedTower;
 
 
     private void Awake() {
@@ -14,10 +14,13 @@ public class TowerManager : MonoBehaviour {
     }
 
     public void SelectTower(GameObject tower) {
-        selectedTower = tower;
+        if (selectedTower != null) {
+            Destroy(selectedTower);
+        }
+        selectedTower = Instantiate(tower);
         if (selectedTower.GetComponent<Turret>().turretImg != null) {
-            GameObject g = Instantiate(selectedTower.GetComponent<Turret>().turretImg, Vector3.zero, Quaternion.identity);
-            g.transform.SetParent(Manager.mobileCanvas);
+            GameObject turretImg = Instantiate(selectedTower.GetComponent<Turret>().turretImg, Vector3.zero, Quaternion.identity);
+            turretImg.transform.SetParent(Manager.mobileCanvas);
         }
     }
 }

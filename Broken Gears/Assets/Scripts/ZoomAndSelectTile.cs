@@ -11,13 +11,10 @@ public class ZoomAndSelectTile : MonoBehaviour {
     public LayerMask layerMask;
     public RaycastHit hit;
     public GameObject g;
-
-    TowerManager towerManager;
-
+    
     Camera monitorCam;
 
     private void Start() {
-        towerManager = GameObject.Find("GameManager").GetComponent<TowerManager>();
         Manager.cam = GetComponent<Camera>();
         if (Manager.staticMonitor == true) {
             monitorCam = transform.GetChild(0).GetComponent<Camera>();
@@ -33,7 +30,7 @@ public class ZoomAndSelectTile : MonoBehaviour {
     }
 
     private void Update() {
-        if (Time.timeScale != 0) {
+        if (Time.timeScale != 0 && TowerManager.selectedTower == null) {
             if (Input.GetAxis("Mouse ScrollWheel") > 0) {
                 if (zoom > maxZoomIn) {
                     zoom -= zoomIncrease;
@@ -52,22 +49,22 @@ public class ZoomAndSelectTile : MonoBehaviour {
                 }
             }
 
-            Ray ray = Manager.cam.ScreenPointToRay(Input.mousePosition);
-            if (Input.GetMouseButtonDown(0) && towerManager.selectedTower != null) {
-                if (Physics.Raycast(ray, out hit, 1000)) {
-                    if (hit.transform.tag == "Tile") {
-                        Tile tile = hit.transform.GetComponent<Tile>();
-                        if (tile.buildable == true) {
-                            if (tile.buildableParent == null) {
-                                tile.PlaceTower(towerManager.selectedTower);
-                            } else {
-                                tile.buildableParent.GetComponent<Tile>().PlaceTower(towerManager.selectedTower);
-                            }
-                            towerManager.selectedTower = null;
-                        }
-                    }
-                }
-            }
+            //Ray ray = Manager.cam.ScreenPointToRay(Input.mousePosition);
+            //if (Input.GetMouseButtonDown(0) && TowerManager.selectedTower != null) {
+            //    if (Physics.Raycast(ray, out hit, 1000)) {
+            //        if (hit.transform.tag == "Tile") {
+            //            Tile tile = hit.transform.GetComponent<Tile>();
+            //            if (tile.buildable == true) {
+            //                if (tile.buildableParent == null) {
+            //                    tile.PlaceTower(TowerManager.selectedTower);
+            //                } else {
+            //                    tile.buildableParent.GetComponent<Tile>().PlaceTower(TowerManager.selectedTower);
+            //                }
+            //                TowerManager.selectedTower = null;
+            //            }
+            //        }
+            //    }
+            //}
         }
     }
 

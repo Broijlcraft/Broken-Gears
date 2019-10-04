@@ -166,6 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7502146747934808291}
   - component: {fileID: 7502146747934808290}
+  - component: {fileID: 5077135834900084818}
   m_Layer: 0
   m_Name: StompTower
   m_TagString: Untagged
@@ -204,12 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e208dd9a8ade6cb448e50a6dc32ebb15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armTarget: {fileID: 0}
-  weaponTarget: {fileID: 0}
-  defaultArmTarget: {fileID: 7502146748928737016}
-  defaultWeaponTarget: {fileID: 0}
-  mesh: {fileID: 2534964839176971238, guid: 8349bef58366ca642ad45b670e6938d5, type: 3}
-  mat: {fileID: 2100000, guid: 92201e87ef6f5da408e93990d5d9085b, type: 2}
+  turretImg: {fileID: 0}
   AttackSound: {fileID: 0}
   pointOfAttack: {fileID: 0}
   turnSpeed: 3
@@ -220,13 +216,35 @@ MonoBehaviour:
   range: 2.9
   rangetest: 4.3
   weaponBase: {fileID: 2447646123401652126}
+  selected: 0
+  armTarget: {fileID: 0}
+  weaponTarget: {fileID: 0}
+  defaultArmTarget: {fileID: 7502146748928737016}
+  defaultWeaponTarget: {fileID: 0}
+  enemyCheck: {fileID: 7502146749502917742}
+  targetsInRange: []
+  mesh: {fileID: 2534964839176971238, guid: 8349bef58366ca642ad45b670e6938d5, type: 3}
+  mat: {fileID: 2100000, guid: 92201e87ef6f5da408e93990d5d9085b, type: 2}
   animator: {fileID: 0}
   extraDelay: 0.6
   animationName: StomperDown
   rotationDelay: 3
   rangeDividerRotation: 37
-  enemyCheck: {fileID: 7502146749502917742}
-  targetsInRange: []
+--- !u!114 &5077135834900084818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7502146747934808301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd406a3060c319448c220f98bc1b30c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &7502146748187315204
 GameObject:
   m_ObjectHideFlags: 0

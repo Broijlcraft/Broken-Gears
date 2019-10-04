@@ -23,6 +23,7 @@ public class Turret : MonoBehaviour {
 
     [Header("Targeting")]
 
+    public bool selected;
     public Transform armTarget;
     public Transform weaponTarget;
     public Transform defaultArmTarget;
@@ -43,7 +44,6 @@ public class Turret : MonoBehaviour {
     public float rotationDelay;
     public int rangeDividerRotation;
 
-
     private void Start() {
         turnSpeedSave = turnSpeed;
         animator = GetComponentInChildren<Animator>();
@@ -51,14 +51,19 @@ public class Turret : MonoBehaviour {
     }
 
     private void Update() {
-        enemyCheck.LookAt(armTarget);
-        Debug.DrawRay(enemyCheck.position, enemyCheck.forward, Color.red * 1000);
-        if (attackDelay > attackSpeed && armTarget != null && armTarget != defaultArmTarget) {
-            Attack();
-            attackDelay = 0;
-        } else if (attackDelay >= 0 ) {
-            attackDelay += Time.deltaTime;
-        }        
+        if (TowerManager.selectedTower != gameObject) {
+            selected = false;
+            enemyCheck.LookAt(armTarget);
+            Debug.DrawRay(enemyCheck.position, enemyCheck.forward, Color.red * 1000);
+            if (attackDelay > attackSpeed && armTarget != null && armTarget != defaultArmTarget) {
+                Attack();
+                attackDelay = 0;
+            } else if (attackDelay >= 0 ) {
+                attackDelay += Time.deltaTime;
+            }        
+        } else {
+            selected = true;
+        }
     }
 
     void Attack() {
