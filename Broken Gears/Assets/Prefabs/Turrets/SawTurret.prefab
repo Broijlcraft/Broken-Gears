@@ -164,8 +164,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823145441805337677}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0, z: 0.5}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3028408142553827636}
@@ -176,7 +176,7 @@ Transform:
   - {fileID: 8851471967899846863}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1823145441805337679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretImg: {fileID: 0}
   AttackSound: {fileID: 0}
-  pointOfAttack: {fileID: 0}
+  pointOfImpact: {fileID: 0}
   turnSpeed: 3
   turnSpeedSave: 0
   attackSpeed: 0.25
@@ -534,11 +534,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1498642242026064881, guid: 38394f29150c25449b28a317cafcfd17,
-        type: 3}
-      propertyPath: divider
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8234689975562424952, guid: 38394f29150c25449b28a317cafcfd17,
         type: 3}

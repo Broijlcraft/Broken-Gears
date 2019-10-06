@@ -15,12 +15,12 @@ public class XmlManager : MonoBehaviour {
     GameObject camControl;
 
     MenuScript menuScript;
-    ZoomAndSelectTile zoomAndSelectTile;
+    ZoomScript zoomAndSelectTile;
 
     private void Start() {
         gameManager = GameObject.Find("GameManager");
         camControl = GameObject.Find("CamControl");
-        zoomAndSelectTile = camControl.GetComponentInChildren<ZoomAndSelectTile>();
+        zoomAndSelectTile = camControl.GetComponentInChildren<ZoomScript>();
         menuScript = gameManager.GetComponent<MenuScript>();
         path = Application.persistentDataPath;
         print(path);

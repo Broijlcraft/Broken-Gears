@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZoomAndSelectTile : MonoBehaviour {
+public class ZoomScript : MonoBehaviour {
 
     public float zoom;
     public float zoomIncrease;

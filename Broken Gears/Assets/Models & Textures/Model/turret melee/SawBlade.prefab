@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8655849861054310580}
   - component: {fileID: 8234689975562424952}
   - component: {fileID: 1498642242026064881}
+  - component: {fileID: 4229197146548868773}
   m_Layer: 0
   m_Name: SawBlade
   m_TagString: Untagged
@@ -92,5 +93,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rot: {x: 0, y: 0, z: -1}
-  divider: 0
-  speed: 8
+  divider: 0.1
+  speed: 50
+--- !u!65 &4229197146548868773
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7498196528095552121}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 0.6, z: 0.05}
+  m_Center: {x: 0, y: 0, z: 0}
