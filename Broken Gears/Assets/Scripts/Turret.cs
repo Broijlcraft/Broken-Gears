@@ -8,7 +8,7 @@ public class Turret : MonoBehaviour {
 
     public GameObject turretImg;
     public GameObject AttackSound;
-    public GameObject pointOfAttack;
+    public GameObject pointOfImpact;
     public float turnSpeed;
     public float turnSpeedSave;
     public float attackSpeed;
@@ -85,10 +85,10 @@ public class Turret : MonoBehaviour {
     void DoAttack() {
         if (armTarget != null && armTarget != defaultArmTarget) {
             armTarget.GetComponentInParent<Health>().Damage(dmg);
-            if (AttackSound != null && pointOfAttack != null && tempBullet != null) {
-                Instantiate(AttackSound, pointOfAttack.transform.position, Quaternion.identity);
+            if (AttackSound != null && pointOfImpact != null && tempBullet != null) {
+                Instantiate(AttackSound, pointOfImpact.transform.position, Quaternion.identity);
                 RaycastHit hit;
-                if (Physics.Raycast(pointOfAttack.transform.position, pointOfAttack.transform.forward, out hit, range/2)) {
+                if (Physics.Raycast(pointOfImpact.transform.position, pointOfImpact.transform.forward, out hit, range/2)) {
                     Instantiate(tempBullet, hit.point, Quaternion.identity);
                 }
             }

@@ -48,23 +48,6 @@ public class ZoomAndSelectTile : MonoBehaviour {
                     Zoom();
                 }
             }
-
-            //Ray ray = Manager.cam.ScreenPointToRay(Input.mousePosition);
-            //if (Input.GetMouseButtonDown(0) && TowerManager.selectedTower != null) {
-            //    if (Physics.Raycast(ray, out hit, 1000)) {
-            //        if (hit.transform.tag == "Tile") {
-            //            Tile tile = hit.transform.GetComponent<Tile>();
-            //            if (tile.buildable == true) {
-            //                if (tile.buildableParent == null) {
-            //                    tile.PlaceTower(TowerManager.selectedTower);
-            //                } else {
-            //                    tile.buildableParent.GetComponent<Tile>().PlaceTower(TowerManager.selectedTower);
-            //                }
-            //                TowerManager.selectedTower = null;
-            //            }
-            //        }
-            //    }
-            //}
         }
     }
 

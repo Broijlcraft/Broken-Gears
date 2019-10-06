@@ -28,7 +28,7 @@ public class SelectTowerPlacement : MonoBehaviour {
             Vector3 newRot = transform.rotation.eulerAngles;
             float t = Mathf.Clamp(Input.GetAxis("Mouse ScrollWheel") * 10, -1, 1);
             if (t > 0 || t < 0) {
-            newRot.y += 90f * t;
+                newRot.y += 90f * t;
             }
             transform.eulerAngles = newRot;
             transform.position = pos;
