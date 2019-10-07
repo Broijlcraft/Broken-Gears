@@ -22,6 +22,7 @@ public class Turret : MonoBehaviour {
     public float rangetest;
 
     public Transform weaponBase;
+    [HideInInspector] public Collider coll;
 
     [Header("Targeting")]
 
@@ -49,6 +50,10 @@ public class Turret : MonoBehaviour {
     private void Start() {
         turnSpeedSave = turnSpeed;
         animator = GetComponentInChildren<Animator>();
+        coll = transform.Find("TurretCollider").GetComponent<Collider>();
+        if (TowerManager.selectedTower == gameObject) {
+            coll.enabled = false;
+        }
         InvokeRepeating("UpdateTarget", 0f, 0.1f);
     }
 

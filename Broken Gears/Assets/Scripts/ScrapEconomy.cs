@@ -6,7 +6,8 @@ using UnityEngine;
 public class ScrapEconomy : MonoBehaviour {
 
     public GameObject scrapFab;
-    public int currentScrapValue;
+    public int startScrap;
+    public static int currentScrapValue;
     public string scrapText;
 
     //public int scrapAddOnSalvage;
@@ -15,6 +16,7 @@ public class ScrapEconomy : MonoBehaviour {
 
     private void Start() {
         uiScrap = Manager.canvas.Find("HUD").Find("Scrap").GetComponentInChildren<Text>();
+        currentScrapValue = startScrap;
         ScrapUpdate();
     }
 

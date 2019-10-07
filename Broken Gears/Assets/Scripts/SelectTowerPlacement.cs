@@ -4,36 +4,45 @@ using UnityEngine;
 
 public class SelectTowerPlacement : MonoBehaviour {
 
-    public RaycastHit hit;
+    public int scrapValue;
     public LayerMask layerMask;
+    RaycastHit hit;
     Vector3 pos;
     int i;
-    public Tile tile;
+    Tile tile;
+    Vector3 newRot;
 
     private void Update() {
         if (TowerManager.selectedTower == gameObject && Time.timeScale != 0) {
             Ray ray = Manager.cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, layerMask, 1000)) {
                 tile = hit.transform.GetComponent<Tile>();
-
-                if (hit.transform.GetComponent<Tile>().buildableParent == null) {
-                    SetPos();
-                    //if (tile.buildable == )
+                if (tile.buildable == true) {
+                    if (tile.buildableParent != null) {
+                        setPos(tile.buildableParent.GetComponent<Tile>().setPosition);
+                        newRot = tile.buildableParent.GetComponent<Tile>().setRotation;
+                        print("comp");
+                    } else {
+                        setPos(tile.setPosition);
+                        newRot = tile.setRotation;
+                        print("else");
+                    }
+                    if (Input.GetMouseButtonDown(0)) {
+                        if (tile.buildable == true) {
+                            transform.GetComponent<Turret>().coll.enabled = true;
+                            TowerManager.selectedTower = null;
+                            tile.buildable = false;
+                            if (tile.buildableParent != null) {
+                                tile.buildableParent.GetComponent<Tile>().buildable = false;
+                            }
+                        }
+                    }
                 } else {
-                    pos = hit.transform.GetComponent<Tile>().buildableParent.position;
+                    setPos(tile.setPosition);
                 }
-
-                //float x = Mathf.Round(hit.point.x);
-                //float y = Mathf.Round(hit.point.y);
-                //float z = Mathf.Round(hit.point.z);
-                //pos = new Vector3 (x, y, z);
-                //if (Input.GetMouseButtonDown(0)) {
-                //    if (tile.buildable == true) {
-                //        TowerManager.selectedTower = null;
-                //        tile.buildable = false;
-                //    }
-                //}
             }
+
+            transform.eulerAngles = newRot;
             transform.position = pos;
 
             //Vector3 newRot = transform.rotation.eulerAngles;
@@ -49,11 +58,11 @@ public class SelectTowerPlacement : MonoBehaviour {
             }
         }
     }
-
-    void SetPos() {
-        float x = Mathf.Round(hit.point.x);
-        float y = Mathf.Round(hit.point.y);
-        float z = Mathf.Round(hit.point.z);
-        pos = new Vector3(x, y, z);
+    
+    Vector3 setPos(Vector3 v) {
+        float x = Mathf.Round(v.x);
+        float y = Mathf.Round(v.y);
+        float z = Mathf.Round(v.z);
+        return pos = new Vector3(x, y, z);
     }
 }
