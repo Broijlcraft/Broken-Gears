@@ -6,8 +6,12 @@ public class Tile : MonoBehaviour {
 
     public bool buildable;
     public Transform buildableParent;
+    [HideInInspector] public Transform child;
+    public Vector3 setRotation;
 
-    public void PlaceTower(GameObject tower) {
-        print(tower.name);
+    private void Start() {
+        if (buildableParent != null) {
+            buildableParent.GetComponent<Tile>().child = transform;
+        }
     }
 }

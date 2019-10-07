@@ -7,6 +7,8 @@ public class Turret : MonoBehaviour {
     [Header("Weapon Specifics")]
 
     public GameObject turretImg;
+    public ParticleSystem weaponParticle;
+    public ParticleSystem impactParticle;
     public GameObject AttackSound;
     public GameObject pointOfImpact;
     public float turnSpeed;

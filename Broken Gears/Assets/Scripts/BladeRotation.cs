@@ -17,23 +17,24 @@ public class BladeRotation : MonoBehaviour {
         if (turret.armTarget != turret.defaultArmTarget) {
             if (actualSpeed < speed) {
                 actualSpeed += speed / divider;
-            } else {
-                print("MaxSpeed");
             }
         } else {
             if (actualSpeed > 0) {
                 actualSpeed -= speed / divider;
             } else {
                 actualSpeed = 0;
-                print(0);
             }
         }
         transform.Rotate(rot * actualSpeed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        if (collision.transform.tag == "Enemy") {
-            print("Collision");
-        }
-    }
+    //private void OnTriggerEnter(Collider other) {
+    //    if (other.transform.tag == "Enemy") {
+    //        print("Collision");
+    //    }
+    //}
+
+    //private void OnTriggerExit(Collider other) {
+        
+    //}
 }
