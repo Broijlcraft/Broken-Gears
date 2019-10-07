@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class TowerManager : MonoBehaviour {
 
-    public List<GameObject> towerss = new List<GameObject>();
+    public List<GameObject> towerList = new List<GameObject>();
     public static List<GameObject> towers = new List<GameObject>();
     public static GameObject selectedTower;
-    public GameObject test;
-    public static GameObject staticTest;
 
 
     private void Awake() {
-        towers = towerss;
+        towers = towerList;
     }
 
     public void SelectTower(GameObject tower) {
-        selectedTower = tower;
+        if (selectedTower != null) {
+            Destroy(selectedTower);
+        }
+        selectedTower = Instantiate(tower);
+        if (selectedTower.GetComponent<Turret>().turretImg != null) {
+            GameObject turretImg = Instantiate(selectedTower.GetComponent<Turret>().turretImg, Vector3.zero, Quaternion.identity);
+            turretImg.transform.SetParent(Manager.mobileCanvas);
+        }
     }
 }

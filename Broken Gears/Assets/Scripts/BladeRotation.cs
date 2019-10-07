@@ -7,24 +7,33 @@ public class BladeRotation : MonoBehaviour {
     public float divider;
     public float speed;
     float actualSpeed;
-    Weapon weapon;
+    Turret turret;
 
     private void Start() {
-        weapon = GetComponentInParent<Weapon>();
+        turret = GetComponentInParent<Turret>();
     }
 
     private void Update() {
-        if (weapon.armTarget != weapon.defaultArmTarget) {
+        if (turret.armTarget != turret.defaultArmTarget) {
             if (actualSpeed < speed) {
                 actualSpeed += speed / divider;
+            } else {
+                print("MaxSpeed");
             }
         } else {
             if (actualSpeed > 0) {
                 actualSpeed -= speed / divider;
             } else {
                 actualSpeed = 0;
+                print(0);
             }
         }
         transform.Rotate(rot * actualSpeed * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.transform.tag == "Enemy") {
+            print("Collision");
+        }
     }
 }

@@ -149,6 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1823145441805337678}
   - component: {fileID: 1823145441805337679}
+  - component: {fileID: 8026352474430810253}
   m_Layer: 0
   m_Name: SawTurret
   m_TagString: Untagged
@@ -163,8 +164,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823145441805337677}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0, z: 0.5}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3028408142553827636}
@@ -175,7 +176,7 @@ Transform:
   - {fileID: 8851471967899846863}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1823145441805337679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,15 +189,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e208dd9a8ade6cb448e50a6dc32ebb15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armTarget: {fileID: 0}
-  weaponTarget: {fileID: 0}
-  defaultArmTarget: {fileID: 1823145442551970553}
-  defaultWeaponTarget: {fileID: 1823145441069527054}
-  mesh: {fileID: 2534964839176971238, guid: 17b0bc1e6619214459655402b527732b, type: 3}
-  mat: {fileID: 2100000, guid: c03f4de9202f7364aa3ceeec2a3477e3, type: 2}
+  turretImg: {fileID: 0}
   AttackSound: {fileID: 0}
-  pointOfAttack: {fileID: 0}
-  turnSpeed: 5
+  pointOfImpact: {fileID: 0}
+  turnSpeed: 3
   turnSpeedSave: 0
   attackSpeed: 0.25
   dmg: 2
@@ -204,12 +200,35 @@ MonoBehaviour:
   range: 3
   rangetest: 3.7
   weaponBase: {fileID: 3028408142553827636}
+  selected: 0
+  armTarget: {fileID: 0}
+  weaponTarget: {fileID: 0}
+  defaultArmTarget: {fileID: 1823145442551970553}
+  defaultWeaponTarget: {fileID: 1823145441069527054}
+  enemyCheck: {fileID: 6320094125784578498}
+  targetsInRange: []
+  mesh: {fileID: 2534964839176971238, guid: 17b0bc1e6619214459655402b527732b, type: 3}
+  mat: {fileID: 2100000, guid: c03f4de9202f7364aa3ceeec2a3477e3, type: 2}
   animator: {fileID: 0}
+  extraDelay: 0
   animationName: 
   rotationDelay: 0
   rangeDividerRotation: 0
-  enemyCheck: {fileID: 6320094125784578498}
-  targetsInRange: []
+--- !u!114 &8026352474430810253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823145441805337677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd406a3060c319448c220f98bc1b30c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &1823145442551970552
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,11 +534,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1498642242026064881, guid: 38394f29150c25449b28a317cafcfd17,
-        type: 3}
-      propertyPath: divider
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8234689975562424952, guid: 38394f29150c25449b28a317cafcfd17,
         type: 3}

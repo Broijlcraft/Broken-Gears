@@ -40,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3259383529904023206}
   - component: {fileID: 3259383529904023207}
+  - component: {fileID: 3287796907709722649}
   m_Layer: 0
   m_Name: RivetGunTurret
   m_TagString: Untagged
@@ -79,15 +80,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e208dd9a8ade6cb448e50a6dc32ebb15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armTarget: {fileID: 0}
-  weaponTarget: {fileID: 0}
-  defaultArmTarget: {fileID: 3259383529154732778}
-  defaultWeaponTarget: {fileID: 129691608171309772}
-  mesh: {fileID: 2534964839176971238, guid: 17b0bc1e6619214459655402b527732b, type: 3}
-  mat: {fileID: 2100000, guid: 68685fe7c0887e94086888a82a20e5bd, type: 2}
+  turretImg: {fileID: 0}
   AttackSound: {fileID: 0}
   pointOfAttack: {fileID: 3259383530758022766}
-  turnSpeed: 5
+  turnSpeed: 3.5
   turnSpeedSave: 0
   attackSpeed: 0.75
   dmg: 6
@@ -95,12 +91,35 @@ MonoBehaviour:
   range: 3.5
   rangetest: 5
   weaponBase: {fileID: 4718985234367383639}
+  selected: 0
+  armTarget: {fileID: 0}
+  weaponTarget: {fileID: 0}
+  defaultArmTarget: {fileID: 3259383529154732778}
+  defaultWeaponTarget: {fileID: 129691608171309772}
+  enemyCheck: {fileID: 6015186196337731471}
+  targetsInRange: []
+  mesh: {fileID: 2534964839176971238, guid: 17b0bc1e6619214459655402b527732b, type: 3}
+  mat: {fileID: 2100000, guid: 68685fe7c0887e94086888a82a20e5bd, type: 2}
   animator: {fileID: 0}
+  extraDelay: 0
   animationName: 
   rotationDelay: 0
   rangeDividerRotation: 0
-  enemyCheck: {fileID: 6015186196337731471}
-  targetsInRange: []
+--- !u!114 &3287796907709722649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3259383529904023205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd406a3060c319448c220f98bc1b30c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &3259383530758022766
 GameObject:
   m_ObjectHideFlags: 0

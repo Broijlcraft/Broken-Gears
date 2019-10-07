@@ -30,7 +30,7 @@ public class MenuScript : MonoBehaviour {
     UiManager uiManager;
 
     Movement movement;
-    ZoomAndSelectTile zoomAndSelectTile;
+    ZoomScript zoomAndSelectTile;
     PlayerLook playerLook;
     XmlManager xmlManager;
 
@@ -43,7 +43,7 @@ public class MenuScript : MonoBehaviour {
         
         gameManager = GameObject.Find("GameManager");
         cameraControl = GameObject.Find("CamControl");
-        zoomAndSelectTile = cameraControl.GetComponentInChildren<ZoomAndSelectTile>();
+        zoomAndSelectTile = cameraControl.GetComponentInChildren<ZoomScript>();
         playerLook = cameraControl.GetComponentInChildren<PlayerLook>();
         movement = cameraControl.GetComponent<Movement>();
         xmlManager = gameManager.GetComponent<XmlManager>();
