@@ -20,7 +20,7 @@ public class Turret : MonoBehaviour {
     public float range;
     float rangeSave;
     public float rangetest;
-
+    public Transform arm;
     public Transform weaponBase;
     [HideInInspector] public Collider coll;
 
@@ -58,6 +58,9 @@ public class Turret : MonoBehaviour {
     }
 
     private void Update() {
+        if (arm != null) {
+            Debug.DrawRay(arm.position, arm.forward, Color.green * 1000);
+        }
         if (TowerManager.selectedTower != gameObject) {
             selected = false;
             enemyCheck.LookAt(armTarget);

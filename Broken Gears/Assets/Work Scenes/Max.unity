@@ -1412,6 +1412,7 @@ MonoBehaviour:
   monitor: 0
   healthTest: {fileID: 127101210190714883, guid: 15ec6d577b45cde46b589375d0cbabec,
     type: 3}
+  devText: {fileID: 0}
 --- !u!4 &129329285
 Transform:
   m_ObjectHideFlags: 0
@@ -1486,7 +1487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrapFab: {fileID: 4936635517947201077, guid: 54fca3bca80a21a4bb42e85de542b438,
     type: 3}
-  currentScrapValue: 0
+  startScrap: 0
   scrapText: 'Scrap:'
   uiScrap: {fileID: 0}
 --- !u!114 &129329289
@@ -2412,6 +2413,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1823145441805337679, guid: 56e22d39d50151a49a65d0cf0b5f2768,
+        type: 3}
+      propertyPath: tempBullet
+      value: 
+      objectReference: {fileID: 542509445}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56e22d39d50151a49a65d0cf0b5f2768, type: 3}
 --- !u!4 &275593814 stripped
@@ -4134,6 +4140,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540434744}
   m_CullTransparentMesh: 0
+--- !u!1 &542509445 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1823145441125587984, guid: 56e22d39d50151a49a65d0cf0b5f2768,
+    type: 3}
+  m_PrefabInstance: {fileID: 275589363}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &543806571
 GameObject:
   m_ObjectHideFlags: 0
@@ -74427,6 +74439,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6775496754881684332, guid: 402dbacd4b6d1774a9089c5531e1a522,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 402dbacd4b6d1774a9089c5531e1a522, type: 3}

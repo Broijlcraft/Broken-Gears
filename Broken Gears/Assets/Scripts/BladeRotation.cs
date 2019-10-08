@@ -28,13 +28,13 @@ public class BladeRotation : MonoBehaviour {
         transform.Rotate(rot * actualSpeed * Time.deltaTime);
     }
 
-    //private void OnTriggerEnter(Collider other) {
-    //    if (other.transform.tag == "Enemy") {
-    //        print("Collision");
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other) {
+        if (other.transform.tag == "Enemy") {
+            print("Collision");
+        }
+    }
 
     //private void OnTriggerExit(Collider other) {
-        
+
     //}
 }
