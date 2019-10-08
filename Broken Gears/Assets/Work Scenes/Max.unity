@@ -2418,6 +2418,11 @@ PrefabInstance:
       propertyPath: tempBullet
       value: 
       objectReference: {fileID: 542509445}
+    - target: {fileID: 7713087236379005709, guid: 56e22d39d50151a49a65d0cf0b5f2768,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56e22d39d50151a49a65d0cf0b5f2768, type: 3}
 --- !u!4 &275593814 stripped
