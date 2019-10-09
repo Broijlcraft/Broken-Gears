@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 647048157587186227}
   - component: {fileID: 7906468804277906175}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TurretCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994692012292900467}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.607, z: 0}
+  m_LocalScale: {x: 1, y: 1.1872, z: 1}
   m_Children: []
   m_Father: {fileID: 7502146747934808291}
   m_RootOrder: 1

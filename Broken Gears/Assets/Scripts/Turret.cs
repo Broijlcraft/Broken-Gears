@@ -6,7 +6,7 @@ public class Turret : MonoBehaviour {
 
     [Header("Weapon Specifics")]
 
-    public string turretShortName;
+    public string turretNameCheck;
     public GameObject turretImg;
     public ParticleSystem weaponParticle;
     public GameObject impactParticle;
@@ -94,7 +94,8 @@ public class Turret : MonoBehaviour {
     void DoAttack() {
         if (armTarget != null && armTarget != defaultArmTarget) {
             armTarget.GetComponentInParent<Health>().Damage(dmg);
-            if (turretShortName == "Saw") {
+            if (transform.name == turretNameCheck+"(clone)") {
+                print("uea");
                 if (attackSound != null) {
                     Instantiate(attackSound, pointOfAttack.transform.position, Quaternion.identity);
                 }

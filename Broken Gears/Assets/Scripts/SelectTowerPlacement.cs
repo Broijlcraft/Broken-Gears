@@ -21,11 +21,9 @@ public class SelectTowerPlacement : MonoBehaviour {
                     if (tile.buildableParent != null) {
                         setPos(tile.buildableParent.GetComponent<Tile>().setPosition);
                         newRot = tile.buildableParent.GetComponent<Tile>().setRotation;
-                        print("comp");
                     } else {
                         setPos(tile.setPosition);
                         newRot = tile.setRotation;
-                        print("else");
                     }
                     if (Input.GetMouseButtonDown(0)) {
                         if (tile.buildable == true) {
