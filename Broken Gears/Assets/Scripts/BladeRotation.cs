@@ -37,8 +37,8 @@ public class BladeRotation : MonoBehaviour {
                     actualSpeed = 0;
                 }
             }
-            transform.Rotate(rot * actualSpeed * Time.deltaTime);
         }
+        transform.Rotate(rot * actualSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other) {

@@ -35,6 +35,7 @@ public class Turret : MonoBehaviour {
     public Transform defaultWeaponTarget;
     public Transform enemyCheck;
     [HideInInspector] public List<GameObject> targetsInRange = new List<GameObject>();
+    public List<GameObject> ignoreTarget = new List<GameObject>();
 
     [Header("Gizmos")]
 
@@ -120,7 +121,7 @@ public class Turret : MonoBehaviour {
         animator.SetTrigger(animationName);
     }
 
-    void UpdateTarget() {
+    public void UpdateTarget() {
         RaycastHit hit = new RaycastHit();
         if (Physics.Raycast(enemyCheck.position, enemyCheck.forward, out hit, range)) {
             //print(hit.transform.name);
@@ -129,9 +130,9 @@ public class Turret : MonoBehaviour {
         GameObject[] targets = GameObject.FindGameObjectsWithTag("EnemyTarget");
 
         for (int i = 0; i < targets.Length; i++) {
-            if (distance(transform.position, targets[i].transform.position) < range && !targetsInRange.Contains(targets[i])) {
+            if (distance(transform.position, targets[i].transform.position) < range && !targetsInRange.Contains(targets[i]) && !ignoreTarget.Contains(targets[i])) {
                 targetsInRange.Add(targets[i]);
-            } else if (targetsInRange.Contains(targets[i]) && distance(transform.position, targets[i].transform.position) > range) {
+            } else if (distance(transform.position, targets[i].transform.position) > range && targetsInRange.Contains(targets[i]) && ignoreTarget.Contains(targets[i])) {
                 targetsInRange.Remove(targets[i]);
             }
         }

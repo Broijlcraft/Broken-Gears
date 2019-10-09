@@ -30,7 +30,7 @@ public class ZoomScript : MonoBehaviour {
     }
 
     private void Update() {
-        if (Time.timeScale != 0 && TowerManager.selectedTower == null) {
+        if (Time.timeScale != 0) {
             if (Input.GetAxis("Mouse ScrollWheel") > 0) {
                 if (zoom > maxZoomIn) {
                     zoom -= zoomIncrease;
