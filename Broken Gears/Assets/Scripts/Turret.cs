@@ -50,7 +50,6 @@ public class Turret : MonoBehaviour {
     public int rangeDividerRotation;
 
     private void Start() {
-        Part();
         turnSpeedSave = turnSpeed;
         animator = GetComponentInChildren<Animator>();
         coll = transform.Find("TurretCollider").gameObject;
@@ -90,17 +89,6 @@ public class Turret : MonoBehaviour {
 
     void ResetRotationSpeed() {
         turnSpeed = turnSpeedSave;
-    }
-
-    void Part() {
-        print("Part");
-        RaycastHit hit;
-        if (pointOfAttack != null && impactParticle != null) {
-            if (Physics.Raycast(pointOfAttack.transform.position, pointOfAttack.transform.forward, out hit, range / 2)) {
-                GameObject g = Instantiate(impactParticle, hit.point, pointOfAttack.transform.rotation);
-                g.transform.SetParent(pointOfAttack.transform);
-            }
-        }
     }
 
     void DoAttack() {

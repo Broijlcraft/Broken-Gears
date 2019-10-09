@@ -3,18 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ParticleScript : MonoBehaviour {
+
     Turret turret;
-    Transform target;
-    private void Start() {
+    ParticleSystem particle;
+    public float delay;
+
+    private void Awake() {
         turret = GetComponentInParent<Turret>();
-        target = turret.armTarget;
+        particle = transform.GetComponentInChildren<ParticleSystem>();
+        particle.Stop();
     }
 
-    private void Update() {
+    public void Particular() {
         if (turret.sawCollision == false) {
-            transform.GetComponentInChildren<ParticleSystem>().Stop();
+            particle.Stop();
+            InvokeRepeating("U", delay, 0);
         } else {
-            transform.GetComponentInChildren<ParticleSystem>().Play();
+            particle.Play();
         }
+    }
+    void U() {
+        particle.Clear();
     }
 }

@@ -45,6 +45,7 @@ public class BladeRotation : MonoBehaviour {
         if (other.transform.tag == "Enemy" && TowerManager.selectedTower != turret.gameObject) {
             turret.sawCollision = true;
             isColliding = true;
+            turret.transform.GetComponentInChildren<ParticleScript>().Particular();
         }
     }
 
@@ -58,6 +59,7 @@ public class BladeRotation : MonoBehaviour {
     void StopColliding() {
         if (isColliding == false) {
             turret.sawCollision = false;
+            turret.transform.GetComponentInChildren<ParticleScript>().Particular();
         }
     }
 }

@@ -119,7 +119,7 @@ MonoBehaviour:
   impactParticle: {fileID: 0}
   attackSound: {fileID: 0}
   pointOfAttack: {fileID: 0}
-  turnSpeed: 3.5
+  turnSpeed: 3
   turnSpeedSave: 0
   attackSpeed: 0.75
   dmg: 6
@@ -136,8 +136,6 @@ MonoBehaviour:
   defaultWeaponTarget: {fileID: 129691608171309772}
   enemyCheck: {fileID: 6015186196337731471}
   targetsInRange: []
-  ignoreTarget:
-  - {fileID: 7109430116899506953}
   mesh: {fileID: 2534964839176971238, guid: 17b0bc1e6619214459655402b527732b, type: 3}
   mat: {fileID: 2100000, guid: 68685fe7c0887e94086888a82a20e5bd, type: 2}
   animator: {fileID: 0}

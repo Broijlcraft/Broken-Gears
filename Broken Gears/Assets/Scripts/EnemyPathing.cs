@@ -17,11 +17,12 @@ public class EnemyPathing : MonoBehaviour {
     public Text text;
 
     public Waypoints waypoints;
-
+    Rigidbody rigid;
     public GameObject enemyChild;
     bool b;
 
     private void Start() {
+        rigid = transform.GetComponent<Rigidbody>();
         waypoints = GameObject.Find("Waypoints").GetComponent<Waypoints>();
         SetTarget();
     }
@@ -33,7 +34,8 @@ public class EnemyPathing : MonoBehaviour {
         transform.Translate(test.normalized * speed * Time.deltaTime);
         if (direction.z < maxDistance && direction.x < maxDistance) {
             SetTarget();
-        }  
+        }
+        rigid.velocity = Vector3.zero;
     }
 
     Vector3 abs(Vector3 v, Vector3 vA) {
