@@ -29,7 +29,7 @@ public class SelectTowerPlacement : MonoBehaviour {
                     }
                     if (Input.GetMouseButtonDown(0)) {
                         if (tile.buildable == true) {
-                            transform.GetComponent<Turret>().coll.enabled = true;
+                            transform.GetComponent<Turret>().coll.SetActive(true);
                             TowerManager.selectedTower = null;
                             tile.buildable = false;
                             if (tile.buildableParent != null) {
@@ -44,13 +44,6 @@ public class SelectTowerPlacement : MonoBehaviour {
 
             transform.eulerAngles = newRot;
             transform.position = pos;
-
-            //Vector3 newRot = transform.rotation.eulerAngles;
-            //float rot = Mathf.Clamp(Input.GetAxis("Mouse ScrollWheel") * 10, -1, 1);
-            //if (t > 0 || t < 0) {
-            //    newRot.y += 90f * rot;
-            //}
-            //transform.eulerAngles = newRot;
 
             if (Input.GetMouseButtonDown(1)) {
                 TowerManager.selectedTower = null;

@@ -6,11 +6,13 @@ public class Turret : MonoBehaviour {
 
     [Header("Weapon Specifics")]
 
+    public string turretShortName;
     public GameObject turretImg;
     public ParticleSystem weaponParticle;
-    public ParticleSystem impactParticle;
-    public GameObject AttackSound;
-    public GameObject pointOfImpact;
+    public GameObject impactParticle;
+    public GameObject attackSound;
+    public GameObject pointOfAttack;
+    GameObject pointOfImpact;
     public float turnSpeed;
     public float turnSpeedSave;
     public float attackSpeed;
@@ -20,9 +22,9 @@ public class Turret : MonoBehaviour {
     public float range;
     float rangeSave;
     public float rangetest;
-
     public Transform weaponBase;
-    [HideInInspector] public Collider coll;
+    public GameObject coll;
+    [HideInInspector] public bool sawCollision;
 
     [Header("Targeting")]
 
@@ -48,11 +50,12 @@ public class Turret : MonoBehaviour {
     public int rangeDividerRotation;
 
     private void Start() {
+        Part();
         turnSpeedSave = turnSpeed;
         animator = GetComponentInChildren<Animator>();
-        coll = transform.Find("TurretCollider").GetComponent<Collider>();
+        coll = transform.Find("TurretCollider").gameObject;
         if (TowerManager.selectedTower == gameObject) {
-            coll.enabled = false;
+            coll.SetActive(false);
         }
         InvokeRepeating("UpdateTarget", 0f, 0.1f);
     }
@@ -89,14 +92,23 @@ public class Turret : MonoBehaviour {
         turnSpeed = turnSpeedSave;
     }
 
+    void Part() {
+        print("Part");
+        RaycastHit hit;
+        if (pointOfAttack != null && impactParticle != null) {
+            if (Physics.Raycast(pointOfAttack.transform.position, pointOfAttack.transform.forward, out hit, range / 2)) {
+                GameObject g = Instantiate(impactParticle, hit.point, pointOfAttack.transform.rotation);
+                g.transform.SetParent(pointOfAttack.transform);
+            }
+        }
+    }
+
     void DoAttack() {
         if (armTarget != null && armTarget != defaultArmTarget) {
             armTarget.GetComponentInParent<Health>().Damage(dmg);
-            if (AttackSound != null && pointOfImpact != null && tempBullet != null) {
-                Instantiate(AttackSound, pointOfImpact.transform.position, Quaternion.identity);
-                RaycastHit hit;
-                if (Physics.Raycast(pointOfImpact.transform.position, pointOfImpact.transform.forward, out hit, range/2)) {
-                    Instantiate(tempBullet, hit.point, Quaternion.identity);
+            if (turretShortName == "Saw") {
+                if (attackSound != null) {
+                    Instantiate(attackSound, pointOfAttack.transform.position, Quaternion.identity);
                 }
             }
         }

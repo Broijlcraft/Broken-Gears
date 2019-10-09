@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5494328872819855262}
   - component: {fileID: 8655849861054310580}
   - component: {fileID: 8234689975562424952}
+  - component: {fileID: 2411520879805463862}
   - component: {fileID: 1498642242026064881}
-  - component: {fileID: 4229197146548868773}
   m_Layer: 0
   m_Name: SawBlade
   m_TagString: Untagged
@@ -80,6 +80,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &2411520879805463862
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7498196528095552121}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: -1564805823028292468, guid: 993f342470429b94aa6c08d01faffd6d, type: 3}
 --- !u!114 &1498642242026064881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,16 +109,3 @@ MonoBehaviour:
   rot: {x: 0, y: 0, z: -1}
   divider: 0.1
   speed: 50
---- !u!65 &4229197146548868773
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7498196528095552121}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.6, z: 0.05}
-  m_Center: {x: 0, y: 0, z: 0}

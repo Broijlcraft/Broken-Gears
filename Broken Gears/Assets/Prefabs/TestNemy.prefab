@@ -179,7 +179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4491197668438376955}
   - component: {fileID: 5732863395538323916}
-  - component: {fileID: 3681817006135074888}
+  - component: {fileID: 5485075990699229231}
   m_Layer: 11
   m_Name: HitboxBody
   m_TagString: Enemy
@@ -195,8 +195,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6696591139571001949}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.37710527, z: 0}
-  m_LocalScale: {x: 0.2631579, y: 0.20722106, z: 0.2631579}
+  m_LocalPosition: {x: 0, y: 0.37710527, z: 0.000000029802}
+  m_LocalScale: {x: 0.40262476, y: 0.31704283, z: 0.40262476}
   m_Children: []
   m_Father: {fileID: 8625735252421240224}
   m_RootOrder: 3
@@ -209,8 +209,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6696591139571001949}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &3681817006135074888
-BoxCollider:
+--- !u!64 &5485075990699229231
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -219,9 +219,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.3663738, y: 1, z: 1.3909159}
-  m_Center: {x: -0.012212634, y: 0, z: 0}
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &7219523586018506619
 GameObject:
   m_ObjectHideFlags: 0
