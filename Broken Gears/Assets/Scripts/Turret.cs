@@ -22,9 +22,13 @@ public class Turret : MonoBehaviour {
     public float range;
     float rangeSave;
     public float rangetest;
-    public Transform weaponBase;
     public GameObject coll;
+    public Transform weaponBase;
     [HideInInspector] public bool sawCollision;
+
+    [Header("Parts For Emission")]
+
+    public List<Renderer> weaponParts = new List<Renderer>();
 
     [Header("Targeting")]
 

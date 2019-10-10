@@ -1219,6 +1219,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerList: []
+  canPlaceColor: {x: 0, y: 0.5, z: 0, w: 1}
+  canNotPlaceColor: {x: 0.5, y: 0, z: 0, w: 1}
 --- !u!1 &132620621
 GameObject:
   m_ObjectHideFlags: 0
@@ -7751,7 +7753,7 @@ PrefabInstance:
     - target: {fileID: 322662359228849779, guid: 41a81e4f008925e49aab855df66c08e6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 322662359228849779, guid: 41a81e4f008925e49aab855df66c08e6,
         type: 3}
@@ -7806,17 +7808,17 @@ PrefabInstance:
     - target: {fileID: 322662360019839797, guid: 41a81e4f008925e49aab855df66c08e6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 50
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 322662360019839797, guid: 41a81e4f008925e49aab855df66c08e6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.42261827
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 322662360019839797, guid: 41a81e4f008925e49aab855df66c08e6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9063079
+      value: 0.8660254
       objectReference: {fileID: 0}
     - target: {fileID: 322662360019839797, guid: 41a81e4f008925e49aab855df66c08e6,
         type: 3}
@@ -12193,7 +12195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildable: 1
   buildableParent: {fileID: 0}
-  child: {fileID: 0}
+  child: {fileID: 3103818796210731469}
   setPosition: {x: 10, y: 0, z: 4}
   setRotation: {x: 0, y: 90, z: 0}
 --- !u!114 &77561584101422900

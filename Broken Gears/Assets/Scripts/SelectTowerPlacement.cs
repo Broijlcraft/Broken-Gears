@@ -11,6 +11,7 @@ public class SelectTowerPlacement : MonoBehaviour {
     int i;
     Tile tile;
     Vector3 newRot;
+    public Turret turret;
 
     private void Update() {
         if (TowerManager.selectedTower == gameObject && Time.timeScale != 0) {
@@ -18,25 +19,30 @@ public class SelectTowerPlacement : MonoBehaviour {
             if (Physics.Raycast(ray, out hit, layerMask, 1000)) {
                 tile = hit.transform.GetComponent<Tile>();
                 if (tile.buildable == true) {
+                    ChangeColor(TowerManager.canPlace);
+                    print("can");
                     if (tile.buildableParent != null) {
                         setPos(tile.buildableParent.GetComponent<Tile>().setPosition);
                         newRot = tile.buildableParent.GetComponent<Tile>().setRotation;
                     } else {
                         setPos(tile.setPosition);
-                        newRot = tile.setRotation;
+                        newRot = tile.setRotation;  
                     }
                     if (Input.GetMouseButtonDown(0)) {
-                        if (tile.buildable == true) {
-                            transform.GetComponent<Turret>().coll.SetActive(true);
-                            TowerManager.selectedTower = null;
-                            tile.buildable = false;
-                            if (tile.buildableParent != null) {
-                                tile.buildableParent.GetComponent<Tile>().buildable = false;
-                            }
+                        transform.GetComponent<Turret>().coll.SetActive(true);
+                        TowerManager.selectedTower = null;
+                        tile.buildable = false;
+                        if (tile.buildableParent != null) {
+                            tile.buildableParent.GetComponent<Tile>().buildable = false;
+                        } else {
+                            tile.child.GetComponent<Tile>().buildable = false;
                         }
+                        ChangeColor(Vector4.zero);
                     }
                 } else {
                     setPos(tile.setPosition);
+                    ChangeColor(TowerManager.canNotPlace);
+                    print("cannot");
                 }
             }
 
@@ -50,6 +56,13 @@ public class SelectTowerPlacement : MonoBehaviour {
         }
     }
     
+    void ChangeColor(Vector4 v) {
+        for (int i = 0; i < turret.weaponParts.Count; i++) {
+            turret.weaponParts[i].material.EnableKeyword("_EmissionColor");
+            turret.weaponParts[i].material.SetColor("_EmissionColor", new Color(v.x, v.y, v.z, v.w));
+        }
+    }
+
     Vector3 setPos(Vector3 v) {
         float x = Mathf.Round(v.x);
         float y = Mathf.Round(v.y);

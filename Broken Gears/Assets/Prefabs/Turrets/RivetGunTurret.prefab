@@ -126,9 +126,13 @@ MonoBehaviour:
   tempBullet: {fileID: 0}
   range: 3.5
   rangetest: 5
-  weaponBase: {fileID: 4718985234367383639}
   coll: {fileID: 0}
+  weaponBase: {fileID: 4718985234367383639}
   sawCollision: 0
+  weaponParts:
+  - {fileID: 4137365280618394812}
+  - {fileID: 1735945952660117308}
+  - {fileID: 4576530111283951430}
   selected: 0
   armTarget: {fileID: 0}
   weaponTarget: {fileID: 0}
@@ -159,6 +163,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
+  turret: {fileID: 3259383529904023207}
 --- !u!1 &3259383530758022766
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,6 +471,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: rivit.turret.
       objectReference: {fileID: 0}
+    - target: {fileID: 1349023726648851104, guid: 7c8d1bc472775b54da4095b93be74890,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 42da89997c32de24b9bd5009fe381894, type: 2}
     - target: {fileID: 7037264551834890477, guid: 7c8d1bc472775b54da4095b93be74890,
         type: 3}
       propertyPath: m_RootOrder
@@ -506,16 +516,17 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 0.8660254
       objectReference: {fileID: 0}
-    - target: {fileID: 1349023726648851104, guid: 7c8d1bc472775b54da4095b93be74890,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 34e12acc7e7016e42bb13299ab085f2b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c8d1bc472775b54da4095b93be74890, type: 3}
 --- !u!4 &5517695549322444043 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7037264551834890477, guid: 7c8d1bc472775b54da4095b93be74890,
+    type: 3}
+  m_PrefabInstance: {fileID: 3259383529499200998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4576530111283951430 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1349023726648851104, guid: 7c8d1bc472775b54da4095b93be74890,
     type: 3}
   m_PrefabInstance: {fileID: 3259383529499200998}
   m_PrefabAsset: {fileID: 0}
@@ -531,6 +542,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: rivit.turret.arm
       objectReference: {fileID: 0}
+    - target: {fileID: 3831711885456921447, guid: 2d05f48bbff45734bbfa412fdd8e6e8b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 42da89997c32de24b9bd5009fe381894, type: 2}
     - target: {fileID: 7027927207232110397, guid: 2d05f48bbff45734bbfa412fdd8e6e8b,
         type: 3}
       propertyPath: m_RootOrder
@@ -571,16 +587,17 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 3831711885456921447, guid: 2d05f48bbff45734bbfa412fdd8e6e8b,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 34e12acc7e7016e42bb13299ab085f2b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d05f48bbff45734bbfa412fdd8e6e8b, type: 3}
 --- !u!4 &5526935449459194726 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7027927207232110397, guid: 2d05f48bbff45734bbfa412fdd8e6e8b,
+    type: 3}
+  m_PrefabInstance: {fileID: 3259383529520759899}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1735945952660117308 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3831711885456921447, guid: 2d05f48bbff45734bbfa412fdd8e6e8b,
     type: 3}
   m_PrefabInstance: {fileID: 3259383529520759899}
   m_PrefabAsset: {fileID: 0}
@@ -596,6 +613,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: rivit.turret.body
       objectReference: {fileID: 0}
+    - target: {fileID: 1464083022201033919, guid: b62af125fd967a74cb4e271c6b74a587,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 42da89997c32de24b9bd5009fe381894, type: 2}
     - target: {fileID: 7802095051633993812, guid: b62af125fd967a74cb4e271c6b74a587,
         type: 3}
       propertyPath: m_RootOrder
@@ -616,13 +638,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1464083022201033919, guid: b62af125fd967a74cb4e271c6b74a587,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 34e12acc7e7016e42bb13299ab085f2b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b62af125fd967a74cb4e271c6b74a587, type: 3}
+--- !u!23 &4137365280618394812 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1464083022201033919, guid: b62af125fd967a74cb4e271c6b74a587,
+    type: 3}
+  m_PrefabInstance: {fileID: 3259383530105479171}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4718985234367383639 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7802095051633993812, guid: b62af125fd967a74cb4e271c6b74a587,

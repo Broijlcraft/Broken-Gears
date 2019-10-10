@@ -197,9 +197,13 @@ MonoBehaviour:
   tempBullet: {fileID: 0}
   range: 4
   rangetest: 0
-  weaponBase: {fileID: 4746910703199816231}
   coll: {fileID: 0}
+  weaponBase: {fileID: 4746910703199816231}
   sawCollision: 0
+  weaponParts:
+  - {fileID: 8291472509188365795}
+  - {fileID: 6975108399405316423}
+  - {fileID: 467400546594821865}
   selected: 0
   armTarget: {fileID: 0}
   weaponTarget: {fileID: 0}
@@ -230,6 +234,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
+  turret: {fileID: 3375208666778781727}
 --- !u!1 &3375208667067849287
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +391,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3375208666462408993}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &8291472509188365795 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6757119315081235650, guid: fd4ec5089db817e478e8dace26778019,
+    type: 3}
+  m_PrefabInstance: {fileID: 3375208666462408993}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3375208666648817317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -398,6 +409,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CryoGun
       objectReference: {fileID: 0}
+    - target: {fileID: 2930625323113887820, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: caad3deefe5eba54391f221befaf87db, type: 2}
     - target: {fileID: 978540688050972895, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -453,16 +469,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -20
       objectReference: {fileID: 0}
-    - target: {fileID: 2930625323113887820, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: caad3deefe5eba54391f221befaf87db, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b7b1c4038d7d7849a7c10f20ff76030, type: 3}
 --- !u!4 &2540980118221178490 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 978540688050972895, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+    type: 3}
+  m_PrefabInstance: {fileID: 3375208666648817317}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &467400546594821865 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2930625323113887820, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
     type: 3}
   m_PrefabInstance: {fileID: 3375208666648817317}
   m_PrefabAsset: {fileID: 0}
@@ -478,6 +495,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CryoGunArm
       objectReference: {fileID: 0}
+    - target: {fileID: 5628292564031452634, guid: 75ed7ca6697e8554280a4a037db4242e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: caad3deefe5eba54391f221befaf87db, type: 2}
     - target: {fileID: 1272156840030374814, guid: 75ed7ca6697e8554280a4a037db4242e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -533,16 +555,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5628292564031452634, guid: 75ed7ca6697e8554280a4a037db4242e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: caad3deefe5eba54391f221befaf87db, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75ed7ca6697e8554280a4a037db4242e, type: 3}
 --- !u!4 &4571361985944127235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1272156840030374814, guid: 75ed7ca6697e8554280a4a037db4242e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3375208667068796061}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6975108399405316423 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5628292564031452634, guid: 75ed7ca6697e8554280a4a037db4242e,
     type: 3}
   m_PrefabInstance: {fileID: 3375208667068796061}
   m_PrefabAsset: {fileID: 0}

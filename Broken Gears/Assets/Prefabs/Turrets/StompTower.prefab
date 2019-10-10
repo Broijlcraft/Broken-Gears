@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e208dd9a8ade6cb448e50a6dc32ebb15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretShortName: 
+  turretNameCheck: 
   turretImg: {fileID: 0}
   weaponParticle: {fileID: 0}
   impactParticle: {fileID: 0}
@@ -294,9 +294,13 @@ MonoBehaviour:
   tempBullet: {fileID: 0}
   range: 2.9
   rangetest: 4.3
-  weaponBase: {fileID: 2447646123401652126}
   coll: {fileID: 0}
+  weaponBase: {fileID: 2447646123401652126}
   sawCollision: 0
+  weaponParts:
+  - {fileID: 2243617027159198363}
+  - {fileID: 5125789958662327215}
+  - {fileID: 216667162527937622}
   selected: 0
   armTarget: {fileID: 0}
   weaponTarget: {fileID: 0}
@@ -327,6 +331,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
+  turret: {fileID: 7502146747934808290}
 --- !u!1 &7502146748187315204
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,6 +626,16 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8592330930009936755, guid: 730dbd29bb267d4419fbe519339f8fcf,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592330930009936755, guid: 730dbd29bb267d4419fbe519339f8fcf,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6125169946492643207, guid: 730dbd29bb267d4419fbe519339f8fcf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -691,21 +706,17 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8592330930009936755, guid: 730dbd29bb267d4419fbe519339f8fcf,
-        type: 3}
-      propertyPath: m_ReceiveShadows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8592330930009936755, guid: 730dbd29bb267d4419fbe519339f8fcf,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 730dbd29bb267d4419fbe519339f8fcf, type: 3}
 --- !u!4 &4403397994210672239 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6125169946492643207, guid: 730dbd29bb267d4419fbe519339f8fcf,
+    type: 3}
+  m_PrefabInstance: {fileID: 7502146749084965352}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2243617027159198363 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8592330930009936755, guid: 730dbd29bb267d4419fbe519339f8fcf,
     type: 3}
   m_PrefabInstance: {fileID: 7502146749084965352}
   m_PrefabAsset: {fileID: 0}

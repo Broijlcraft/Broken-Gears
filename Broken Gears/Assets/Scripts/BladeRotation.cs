@@ -19,8 +19,6 @@ public class BladeRotation : MonoBehaviour {
         if (turret.armTarget == turret.defaultArmTarget) {
             isColliding = false;
             StopColliding();
-            //InvokeRepeating("StopColliding", 0.3f, 0f);
-            print("stop");
         }
     }
 
