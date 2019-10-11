@@ -44,7 +44,7 @@ public class Health : MonoBehaviour {
         //gA.transform.SetParent(Manager.mobileCanvas);
         //gA.transform.position = Camera.main.WorldToScreenPoint(transform.position);
         //gA.GetComponentInChildren<Text>().text = "+" + scrapAdd;
-        Manager.scrapEconomy.AddScrap(scrapAdd);
+        ScrapEconomy.AddScrap(scrapAdd);
         Destroy(g);
         Destroy(gameObject);
     }

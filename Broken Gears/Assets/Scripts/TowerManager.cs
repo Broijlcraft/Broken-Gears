@@ -19,7 +19,7 @@ public class TowerManager : MonoBehaviour {
     }
 
     public void SelectTower(GameObject tower) {
-        if (tower.GetComponent<SelectTowerPlacement>().scrapCost < ScrapEconomy.currentScrap || Manager.devMode == false) {
+        if (tower.GetComponent<SelectTowerPlacement>().scrapCost <= ScrapEconomy.currentScrap || Manager.devMode == false) {
             if (selectedTower != null) {
                 Destroy(selectedTower);
             }

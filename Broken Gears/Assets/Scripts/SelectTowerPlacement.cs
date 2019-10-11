@@ -28,6 +28,7 @@ public class SelectTowerPlacement : MonoBehaviour {
                         newRot = tile.setRotation;  
                     }
                     if (Input.GetMouseButtonDown(0)) {
+                        ScrapEconomy.RemoveScrap(scrapCost);
                         transform.GetComponent<Turret>().coll.SetActive(true);
                         TowerManager.selectedTower = null;
                         tile.buildable = false;

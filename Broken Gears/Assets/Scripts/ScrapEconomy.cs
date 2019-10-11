@@ -9,28 +9,28 @@ public class ScrapEconomy : MonoBehaviour {
     public int startScrap;
     public static int currentScrap;
     public string scrapText;
+    public static string staticScrapText;
 
-    //public int scrapAddOnSalvage;
-
-    public Text uiScrap;
+    public static Text uiScrap;
 
     private void Start() {
         uiScrap = Manager.canvas.Find("HUD").Find("Scrap").GetComponentInChildren<Text>();
         currentScrap = startScrap;
+        staticScrapText = scrapText;
         ScrapUpdate();
     }
 
-    public void AddScrap(int i) {
+    public static void AddScrap(int i) {
         currentScrap += i;
         ScrapUpdate();
     }
 
-    public void RemoveScrap(int i) {
+    public static void RemoveScrap(int i) {
         currentScrap -= i;
         ScrapUpdate();
     }
 
-    void ScrapUpdate() {
-        uiScrap.text = (scrapText + " " + currentScrap);
+    public static void ScrapUpdate() {
+        uiScrap.text = (staticScrapText + " " + currentScrap);
     }
 }
