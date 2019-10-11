@@ -230,7 +230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd406a3060c319448c220f98bc1b30c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrapValue: 30
+  scrapCost: 30
+  salvageValue: 15
   layerMask:
     serializedVersion: 2
     m_Bits: 512

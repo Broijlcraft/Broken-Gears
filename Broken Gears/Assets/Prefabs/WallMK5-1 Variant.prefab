@@ -142,12 +142,32 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 62cb09e2da680884c8c5b596791aad84,
         type: 3}
       propertyPath: m_Name
-      value: WallMK5-1
+      value: WallMK5-1 Variant
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 62cb09e2da680884c8c5b596791aad84,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 62cb09e2da680884c8c5b596791aad84,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 62cb09e2da680884c8c5b596791aad84,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a78374fd4860a67439fe904fde9ff8e9, type: 2}
+    - target: {fileID: -1504981713932161579, guid: 62cb09e2da680884c8c5b596791aad84,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 62cb09e2da680884c8c5b596791aad84,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 62cb09e2da680884c8c5b596791aad84,
         type: 3}
@@ -202,21 +222,6 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 62cb09e2da680884c8c5b596791aad84,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -1504981713932161579, guid: 62cb09e2da680884c8c5b596791aad84,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a78374fd4860a67439fe904fde9ff8e9, type: 2}
-    - target: {fileID: -1504981713932161579, guid: 62cb09e2da680884c8c5b596791aad84,
-        type: 3}
-      propertyPath: m_ReceiveShadows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -1504981713932161579, guid: 62cb09e2da680884c8c5b596791aad84,
-        type: 3}
-      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

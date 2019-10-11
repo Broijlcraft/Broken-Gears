@@ -240,7 +240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd406a3060c319448c220f98bc1b30c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrapValue: 25
+  scrapCost: 25
+  salvageValue: 12
   layerMask:
     serializedVersion: 2
     m_Bits: 512
@@ -675,27 +676,27 @@ PrefabInstance:
     - target: {fileID: 5494328872819855262, guid: 38394f29150c25449b28a317cafcfd17,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.08200002
+      value: -0.09
       objectReference: {fileID: 0}
     - target: {fileID: 5494328872819855262, guid: 38394f29150c25449b28a317cafcfd17,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5494328872819855262, guid: 38394f29150c25449b28a317cafcfd17,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5494328872819855262, guid: 38394f29150c25449b28a317cafcfd17,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5494328872819855262, guid: 38394f29150c25449b28a317cafcfd17,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5494328872819855262, guid: 38394f29150c25449b28a317cafcfd17,
         type: 3}
@@ -715,7 +716,7 @@ PrefabInstance:
     - target: {fileID: 5494328872819855262, guid: 38394f29150c25449b28a317cafcfd17,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38394f29150c25449b28a317cafcfd17, type: 3}

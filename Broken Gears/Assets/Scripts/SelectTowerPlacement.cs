@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SelectTowerPlacement : MonoBehaviour {
 
-    public int scrapValue;
+    public int scrapCost;
+    public int salvageValue;
     public LayerMask layerMask;
     RaycastHit hit;
     Vector3 pos;
-    int i;
     Tile tile;
     Vector3 newRot;
     public Turret turret;
@@ -20,7 +20,6 @@ public class SelectTowerPlacement : MonoBehaviour {
                 tile = hit.transform.GetComponent<Tile>();
                 if (tile.buildable == true) {
                     ChangeColor(TowerManager.canPlace);
-                    print("can");
                     if (tile.buildableParent != null) {
                         setPos(tile.buildableParent.GetComponent<Tile>().setPosition);
                         newRot = tile.buildableParent.GetComponent<Tile>().setRotation;
@@ -42,7 +41,6 @@ public class SelectTowerPlacement : MonoBehaviour {
                 } else {
                     setPos(tile.setPosition);
                     ChangeColor(TowerManager.canNotPlace);
-                    print("cannot");
                 }
             }
 
