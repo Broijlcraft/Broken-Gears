@@ -10,8 +10,8 @@ public class Manager : MonoBehaviour {
     public static ScrapEconomy scrapEconomy;
     public bool monitor;
     public static bool staticMonitor;
-    public GameObject healthTest;
-    public static GameObject helthTest;
+    public GameObject healthFab;
+    public static GameObject healthSlider;
     public static Camera cam;
     public static bool devMode;
     public Text devText;
@@ -25,7 +25,7 @@ public class Manager : MonoBehaviour {
         mobileCanvas = GameObject.Find("MobileCanvas").transform;
         scrapEconomy = GetComponent<ScrapEconomy>();
         staticMonitor = monitor;
-        helthTest = healthTest;
+        healthSlider = healthFab;
         devText = canvas.Find("DevText").GetComponentInChildren<Text>();
         ChangeMode();
     }
