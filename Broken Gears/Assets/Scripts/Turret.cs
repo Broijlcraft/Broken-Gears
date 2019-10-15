@@ -6,13 +6,12 @@ public class Turret : MonoBehaviour {
 
     [Header("Weapon Specifics")]
 
-    public string turretNameCheck;
+    public string turretName;
     public GameObject turretImg;
     public ParticleSystem weaponParticle;
     public GameObject impactParticle;
     public GameObject attackSound;
     public GameObject pointOfAttack;
-    GameObject pointOfImpact;
     public float turnSpeed;
     public float turnSpeedSave;
     public float attackSpeed;
@@ -52,6 +51,9 @@ public class Turret : MonoBehaviour {
     public string animationName;
     public float rotationDelay;
     public int rangeDividerRotation;
+    public bool isSaw;
+    public bool isCryo;
+    public float cryoSlow;
 
     private void Start() {
         turnSpeedSave = turnSpeed;
@@ -98,8 +100,10 @@ public class Turret : MonoBehaviour {
     void DoAttack() {
         if (armTarget != null && armTarget != defaultArmTarget) {
             armTarget.GetComponentInParent<Health>().Damage(dmg);
-            if (transform.name == turretNameCheck+"(clone)") {
-                print("uea");
+            if (isCryo == true) {
+                armTarget.GetComponentInParent<EnemyPathing>().speed = armTarget.GetComponentInParent<EnemyPathing>().speedSave / cryoSlow;
+            }
+            if (isSaw == true) {
                 if (attackSound != null) {
                     Instantiate(attackSound, pointOfAttack.transform.position, Quaternion.identity);
                 }

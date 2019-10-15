@@ -7,6 +7,7 @@ public class EnemyPathing : MonoBehaviour {
 
     public Transform targetPoint;
     public float speed;
+    [HideInInspector] public float speedSave;
     public float rotationSpeed;
     int targetValue = 0;
     public float maxDistance;
@@ -21,20 +22,21 @@ public class EnemyPathing : MonoBehaviour {
 
     private void Start() {
         rigid = transform.GetComponent<Rigidbody>();
+        speedSave = speed;
         SetTarget();
     }
 
     private void Update() {
         Vector3 direction = abs(targetPoint.position, transform.position);
-        Vector3 test = targetPoint.position - transform.position;
-        transform.Translate(test.normalized * speed * Time.deltaTime);
+        Vector3 directionToGo = targetPoint.position - transform.position;
+        transform.Translate(directionToGo.normalized * speed * Time.deltaTime);
         if (direction.z < maxDistance && direction.x < maxDistance) {
             SetTarget();
         }
-        Vector3 armDir = targetPoint.position - enemyChild.transform.position;
-        Quaternion armLookRotation = Quaternion.LookRotation(armDir);
-        Vector3 armRotation = Quaternion.Lerp(enemyChild.transform.rotation, armLookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
-        enemyChild.transform.rotation = Quaternion.Euler(0f, armRotation.y, 0f);
+        Vector3 lookDir = targetPoint.position - enemyChild.transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(lookDir);
+        Vector3 rotationToLook = Quaternion.Lerp(enemyChild.transform.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
+        enemyChild.transform.rotation = Quaternion.Euler(0f, rotationToLook.y, 0f);
         rigid.velocity = Vector3.zero;
     }
 

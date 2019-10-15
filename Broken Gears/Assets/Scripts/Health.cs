@@ -20,7 +20,6 @@ public class Health : MonoBehaviour {
 
     private void Update() {
         if (Input.GetButtonDown("Jump")) {
-            //Damage(Mathf.RoundToInt(maxHealth * 0.25f));
             Death();
         }
     }
