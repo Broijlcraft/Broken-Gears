@@ -38,6 +38,7 @@ public class Health : MonoBehaviour {
         //death animation
         gA = Instantiate(Manager.scrapEconomy.scrapFab, transform.position + Manager.scrapEconomy.scrapFab.GetComponent<MobileUiParts>().offSet, Quaternion.identity);
         gA.transform.GetComponent<MobileUiParts>().parent = transform;
+        gA.transform.GetComponentInChildren<Text>().text = "+ " + scrapAdd;
         gA.transform.SetParent(Manager.mobileCanvas);
         ScrapEconomy.AddScrap(scrapAdd);
         Destroy(g);
