@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e208dd9a8ade6cb448e50a6dc32ebb15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretNameCheck: 
+  turretName: 
   turretImg: {fileID: 0}
   weaponParticle: {fileID: 0}
   impactParticle: {fileID: 8647166734594227896}
@@ -229,6 +229,8 @@ MonoBehaviour:
   rotationDelay: 0
   rangeDividerRotation: 0
   isSaw: 1
+  isCryo: 0
+  cryoSlow: 0
 --- !u!114 &8026352474430810253
 MonoBehaviour:
   m_ObjectHideFlags: 0

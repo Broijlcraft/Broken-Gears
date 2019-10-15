@@ -7,14 +7,15 @@ public class Health : MonoBehaviour {
 
     public float maxHealth;
     [HideInInspector] public float currentHealth;
-
     public int scrapAdd;
 
     GameObject g;
+    GameObject gA;
 
     private void Start() {
-        currentHealth = maxHealth;    
-        g = Instantiate(Manager.helthTest, Vector3.zero, Quaternion.identity);
+        currentHealth = maxHealth;
+        g = Instantiate(Manager.healthSlider, transform.position + Manager.healthSlider.GetComponent<MobileUiParts>().offSet, Quaternion.identity);
+        g.transform.GetComponent<MobileUiParts>().parent = transform;
         g.transform.SetParent(Manager.mobileCanvas);
     }
 
@@ -24,13 +25,9 @@ public class Health : MonoBehaviour {
         }
     }
 
-    private void LateUpdate() {
-        g.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1.5f, 0));
-    }
-
     public void Damage(int dmg) {
         currentHealth -= dmg;
-        g.transform.Find("Fill").GetComponent<Image>().fillAmount = currentHealth/maxHealth;
+        g.transform.Find("Fill").GetComponent<Image>().fillAmount = currentHealth / maxHealth;
         if (currentHealth <= 0) {
             currentHealth = 0;
             Death();
@@ -39,10 +36,9 @@ public class Health : MonoBehaviour {
 
     public void Death() {
         //death animation
-        //GameObject gA = Instantiate(Manager.scrapEconomy.scrapFab, transform.position + new Vector3(0, 0, 0), Quaternion.identity);
-        //gA.transform.SetParent(Manager.mobileCanvas);
-        //gA.transform.position = Camera.main.WorldToScreenPoint(transform.position);
-        //gA.GetComponentInChildren<Text>().text = "+" + scrapAdd;
+        gA = Instantiate(Manager.scrapEconomy.scrapFab, transform.position + Manager.scrapEconomy.scrapFab.GetComponent<MobileUiParts>().offSet, Quaternion.identity);
+        gA.transform.GetComponent<MobileUiParts>().parent = transform;
+        gA.transform.SetParent(Manager.mobileCanvas);
         ScrapEconomy.AddScrap(scrapAdd);
         Destroy(g);
         Destroy(gameObject);

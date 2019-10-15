@@ -11,17 +11,9 @@ public class EnemyPathing : MonoBehaviour {
     public float rotationSpeed;
     int targetValue = 0;
     public float maxDistance;
-
-    public Text text;
-
-    Rigidbody rigid;
     public GameObject enemyChild;
-    public Vector3 test;
-    public int b;
-    public int bb;
 
     private void Start() {
-        rigid = transform.GetComponent<Rigidbody>();
         speedSave = speed;
         SetTarget();
     }
@@ -37,7 +29,6 @@ public class EnemyPathing : MonoBehaviour {
         Quaternion lookRotation = Quaternion.LookRotation(lookDir);
         Vector3 rotationToLook = Quaternion.Lerp(enemyChild.transform.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
         enemyChild.transform.rotation = Quaternion.Euler(0f, rotationToLook.y, 0f);
-        rigid.velocity = Vector3.zero;
     }
 
     void Test() {

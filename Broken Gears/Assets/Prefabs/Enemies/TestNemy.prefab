@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1428923852968949197}
   - component: {fileID: 1428923852968949198}
   - component: {fileID: 1428923852968949199}
-  - component: {fileID: -7411945994864805310}
+  - component: {fileID: -3279428330571388621}
   m_Layer: 0
   m_Name: TestNemy
   m_TagString: Enemy
@@ -136,11 +136,7 @@ MonoBehaviour:
   speedSave: 0
   rotationSpeed: 8
   maxDistance: 0.1
-  text: {fileID: 0}
   enemyChild: {fileID: 4751189142320650163}
-  test: {x: 0, y: 0, z: 0}
-  b: 0
-  bb: 0
 --- !u!114 &1428923852968949199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +152,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   scrapAdd: 5
---- !u!54 &-7411945994864805310
+--- !u!54 &-3279428330571388621
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,7 +166,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &6696591139571001949
 GameObject:
