@@ -6,7 +6,7 @@ using UnityEngine;
 public class Health : MonoBehaviour {
 
     public float maxHealth;
-    public float currentHealth;
+    [HideInInspector] public float currentHealth;
 
     public int scrapAdd;
 

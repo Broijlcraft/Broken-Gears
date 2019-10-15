@@ -15,8 +15,11 @@ public class Manager : MonoBehaviour {
     public static Camera cam;
     public static bool devMode;
     public Text devText;
+    public Transform t;
+    public static Transform target;
 
     private void Awake() {
+        target = t;
         cam = Camera.main;
         canvas = GameObject.Find("Canvas").transform;
         mobileCanvas = GameObject.Find("MobileCanvas").transform;
