@@ -5,13 +5,11 @@ using UnityEngine;
 public class TowerManager : MonoBehaviour {
 
     public List<GameObject> towerList = new List<GameObject>();
-    public static List<GameObject> towers = new List<GameObject>();
     public static GameObject selectedTower;
     public Vector4 canPlaceColor;
     public Vector4 canNotPlaceColor;
     public static Vector4 canPlace; 
     public static Vector4 canNotPlace;
-    public int i;
     public static int activeScrapTower;
 
     [Header("Tower Placement Rotation")]
@@ -26,14 +24,16 @@ public class TowerManager : MonoBehaviour {
     public static Vector3 plusZRotation;
 
     private void Awake() {
-        activeScrapTower = i;
-        towers = towerList;
         canPlace = canPlaceColor;
         canNotPlace = canNotPlaceColor;
         minXRotation = staticMinXRotation;
         plusXRotation = staticPlusXRotation;
         minZRotation = staticMinZRotation;
         plusZRotation = staticPlusZRotation;
+    }
+
+    public void Test() {
+
     }
 
     public void SelectTower(GameObject tower) {
