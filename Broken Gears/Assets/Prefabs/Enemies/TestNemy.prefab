@@ -234,6 +234,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: robot 1 BG
       objectReference: {fileID: 0}
+    - target: {fileID: 2680288814168925549, guid: 3cd790b9f6caef24197496cf3fdcd9a7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 1398672941187274622, guid: 3cd790b9f6caef24197496cf3fdcd9a7,
         type: 3}
       propertyPath: m_LocalPosition.x

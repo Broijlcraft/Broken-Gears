@@ -11,6 +11,8 @@ public class TowerManager : MonoBehaviour {
     public Vector4 canNotPlaceColor;
     public static Vector4 canPlace; 
     public static Vector4 canNotPlace;
+    public int i;
+    public static int activeScrapTower;
 
     [Header("Tower Placement Rotation")]
 
@@ -24,6 +26,7 @@ public class TowerManager : MonoBehaviour {
     public static Vector3 plusZRotation;
 
     private void Awake() {
+        activeScrapTower = i;
         towers = towerList;
         canPlace = canPlaceColor;
         canNotPlace = canNotPlaceColor;
@@ -41,7 +44,7 @@ public class TowerManager : MonoBehaviour {
             selectedTower = Instantiate(tower);
             if (selectedTower.GetComponent<Turret>().turretImg != null) {
                 GameObject turretImg = Instantiate(selectedTower.GetComponent<Turret>().turretImg, Vector3.zero, Quaternion.identity);
-                turretImg.transform.SetParent(Manager.mobileCanvas);
+                turretImg.transform.SetParent(Manager.healthCanvas);
             }
         }
     }

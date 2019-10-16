@@ -29,7 +29,7 @@ RectTransform:
   m_GameObject: {fileID: 4936635517947201077}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.012880373, y: 0.012880375, z: 0.012880375}
+  m_LocalScale: {x: -0.011592335, y: 0.011592337, z: 0.011592337}
   m_Children:
   - {fileID: 4936635518153634790}
   m_Father: {fileID: 0}
@@ -47,7 +47,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4936635517947201077}
-  m_CullTransparentMesh: 0
+  m_CullTransparentMesh: 1
 --- !u!114 &4936635517947201079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,7 +84,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4936635517947201077}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5a83ffe200e6c3a4188a744fa81d49e3, type: 2}
   m_CullingMode: 0

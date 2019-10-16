@@ -16,7 +16,7 @@ public class Health : MonoBehaviour {
         currentHealth = maxHealth;
         g = Instantiate(Manager.healthSlider, transform.position + Manager.healthSlider.GetComponent<MobileUiParts>().offSet, Quaternion.identity);
         g.transform.GetComponent<MobileUiParts>().parent = transform;
-        g.transform.SetParent(Manager.mobileCanvas);
+        g.transform.SetParent(Manager.healthCanvas);
     }
 
     private void Update() {
@@ -38,9 +38,15 @@ public class Health : MonoBehaviour {
         //death animation
         gA = Instantiate(Manager.scrapEconomy.scrapFab, transform.position + Manager.scrapEconomy.scrapFab.GetComponent<MobileUiParts>().offSet, Quaternion.identity);
         gA.transform.GetComponent<MobileUiParts>().parent = transform;
-        gA.transform.GetComponentInChildren<Text>().text = "+ " + scrapAdd;
-        gA.transform.SetParent(Manager.mobileCanvas);
-        ScrapEconomy.AddScrap(scrapAdd);
+        gA.transform.SetParent(Manager.scrapCanvas);
+        int value;
+        if (TowerManager.activeScrapTower == 0) {
+            value = scrapAdd;
+            value += TowerManager.activeScrapTower;
+            gA.transform.GetComponentInChildren<Text>().text = "+ " + value;
+            ScrapEconomy.AddScrap(value);
+            print(value);
+        }
         Destroy(g);
         Destroy(gameObject);
     }
