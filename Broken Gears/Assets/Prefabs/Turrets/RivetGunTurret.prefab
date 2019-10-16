@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1028958134454821413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 2601876752787752804}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2752950140038271005}
+  m_Layer: 0
+  m_Name: smoke (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2752950140038271005
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 2601876752787752804}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028958134454821413}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7429545445900119531}
+  m_Father: {fileID: 3259383529904023206}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1251813918741727708
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +124,7 @@ Transform:
   m_Children:
   - {fileID: 5183934347074581643}
   - {fileID: 6497989235195830072}
-  - {fileID: 7429545445900119531}
+  - {fileID: 2752950140038271005}
   - {fileID: 4718985234367383639}
   - {fileID: 6015186196337731471}
   - {fileID: 3259383530848847121}
@@ -113,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e208dd9a8ade6cb448e50a6dc32ebb15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretNameCheck: 
+  turretName: 
   turretImg: {fileID: 0}
   weaponParticle: {fileID: 0}
   impactParticle: {fileID: 0}
@@ -147,6 +178,9 @@ MonoBehaviour:
   animationName: 
   rotationDelay: 0
   rangeDividerRotation: 0
+  isSaw: 0
+  isCryo: 0
+  cryoSlow: 0
 --- !u!114 &3287796907709722649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +305,37 @@ Transform:
   m_Father: {fileID: 4434398395665439092}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4547929842107031380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 2601876752787752804}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7429545445900119531}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7429545445900119531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4828057980559534735, guid: 258cce2959e8e134eaab1a587d673ae8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2601876752787752804}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4547929842107031380}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2752950140038271005}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7109430116899506953
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,8 +391,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7996115792522792957}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.596, z: 0}
-  m_LocalScale: {x: 1, y: 1.1872, z: 1}
+  m_LocalPosition: {x: 0, y: 1.293, z: 0}
+  m_LocalScale: {x: 1, y: 2.577046, z: 1}
   m_Children: []
   m_Father: {fileID: 3259383529904023206}
   m_RootOrder: 1
@@ -382,11 +447,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3259383529904023206}
     m_Modifications:
-    - target: {fileID: 4828057980559534730, guid: 258cce2959e8e134eaab1a587d673ae8,
-        type: 3}
-      propertyPath: m_Name
-      value: smoke
-      objectReference: {fileID: 0}
     - target: {fileID: 4828057980559534735, guid: 258cce2959e8e134eaab1a587d673ae8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -452,14 +512,13 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.033817165
       objectReference: {fileID: 0}
+    - target: {fileID: 4828057980559534730, guid: 258cce2959e8e134eaab1a587d673ae8,
+        type: 3}
+      propertyPath: m_Name
+      value: smoke
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 258cce2959e8e134eaab1a587d673ae8, type: 3}
---- !u!4 &7429545445900119531 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4828057980559534735, guid: 258cce2959e8e134eaab1a587d673ae8,
-    type: 3}
-  m_PrefabInstance: {fileID: 2601876752787752804}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3259383529499200998
 PrefabInstance:
   m_ObjectHideFlags: 0

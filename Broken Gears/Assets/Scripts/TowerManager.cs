@@ -10,12 +10,27 @@ public class TowerManager : MonoBehaviour {
     public Vector4 canPlaceColor;
     public Vector4 canNotPlaceColor;
     public static Vector4 canPlace; 
-    public static Vector4 canNotPlace; 
+    public static Vector4 canNotPlace;
+
+    [Header("Tower Placement Rotation")]
+
+    public Vector3 staticMinXRotation;
+    public static Vector3 minXRotation;
+    public Vector3 staticPlusXRotation;
+    public static Vector3 plusXRotation;
+    public Vector3 staticMinZRotation;
+    public static Vector3 minZRotation;
+    public Vector3 staticPlusZRotation;
+    public static Vector3 plusZRotation;
 
     private void Awake() {
         towers = towerList;
         canPlace = canPlaceColor;
         canNotPlace = canNotPlaceColor;
+        minXRotation = staticMinXRotation;
+        plusXRotation = staticPlusXRotation;
+        minZRotation = staticMinZRotation;
+        plusZRotation = staticPlusZRotation;
     }
 
     public void SelectTower(GameObject tower) {

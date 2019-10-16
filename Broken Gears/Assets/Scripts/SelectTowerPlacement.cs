@@ -16,42 +16,46 @@ public class SelectTowerPlacement : MonoBehaviour {
     private void Update() {
         if (TowerManager.selectedTower == gameObject && Time.timeScale != 0) {
             Ray ray = Manager.cam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, layerMask, 1000)) {
-                tile = hit.transform.GetComponent<Tile>();
-                if (tile.buildable == true) {
-                    ChangeColor(TowerManager.canPlace);
-                    if (tile.buildableParent != null) {
-                        setPos(tile.buildableParent.GetComponent<Tile>().setPosition);
-                        newRot = tile.buildableParent.GetComponent<Tile>().setRotation;
-                    } else {
-                        setPos(tile.setPosition);
-                        newRot = tile.setRotation;  
-                    }
-                    if (Input.GetMouseButtonDown(0)) {
-                        ScrapEconomy.RemoveScrap(scrapCost);
-                        transform.GetComponent<Turret>().coll.SetActive(true);
-                        TowerManager.selectedTower = null;
-                        tile.buildable = false;
-                        if (tile.buildableParent != null) {
-                            tile.buildableParent.GetComponent<Tile>().buildable = false;
+            if (Input.GetMouseButtonDown(1)) {
+                TowerManager.selectedTower = null;
+                Destroy(gameObject);
+            }
+            if (TowerManager.selectedTower == gameObject) {
+                if (Physics.Raycast(ray, out hit, layerMask, 1000)) {
+                    tile = hit.transform.GetComponent<Tile>();
+                    if (tile) {
+                        if (tile.buildable == true) {
+                            ChangeColor(TowerManager.canPlace);
+                            if (tile.buildableParent != null) {
+                                setPos(tile.buildableParent.GetComponent<Tile>().setPosition);
+                                newRot = tile.buildableParent.GetComponent<Tile>().setRotation;
+                            } else {
+                                setPos(tile.setPosition);
+                                newRot = tile.setRotation;  
+                            }
+                            if (Input.GetMouseButtonDown(0)) {
+                                ScrapEconomy.RemoveScrap(scrapCost);
+                                transform.GetComponent<Turret>().coll.SetActive(true);
+                                TowerManager.selectedTower = null;
+                                tile.buildable = false;
+                                if (tile.buildableParent != null) {
+                                    tile.buildableParent.GetComponent<Tile>().buildable = false;
+                                } else {
+                                    tile.child.GetComponent<Tile>().buildable = false;
+                                }
+                                ChangeColor(Vector4.zero);
+                            }
                         } else {
-                            tile.child.GetComponent<Tile>().buildable = false;
+                            setPos(tile.setPosition);
+                            ChangeColor(TowerManager.canNotPlace);
                         }
-                        ChangeColor(Vector4.zero);
                     }
-                } else {
-                    setPos(tile.setPosition);
-                    ChangeColor(TowerManager.canNotPlace);
                 }
             }
 
             transform.eulerAngles = newRot;
             transform.position = pos;
 
-            if (Input.GetMouseButtonDown(1)) {
-                TowerManager.selectedTower = null;
-                Destroy(gameObject);
-            }
         }
     }
     
