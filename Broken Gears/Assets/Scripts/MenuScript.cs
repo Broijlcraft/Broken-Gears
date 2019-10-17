@@ -24,7 +24,6 @@ public class MenuScript : MonoBehaviour {
     //public GameObject menu;
     //public GameObject optionsMenu;
 
-    GameObject gameManager;
     GameObject cameraControl;
 
     UiManager uiManager;
@@ -33,50 +32,56 @@ public class MenuScript : MonoBehaviour {
     ZoomScript zoomAndSelectTile;
     PlayerLook playerLook;
     XmlManager xmlManager;
+    public enum MenuState {
+        main,
+        options,
+        video,
+        audio
+    }
 
-    GameObject[] slid;
+    public MenuState menuState;
 
     private void Awake() {
         uiManager = GameObject.Find("Canvas").GetComponent<UiManager>();
         uiManager.menusHolder.SetActive(true);
         uiManager.optionsMenu.SetActive(true);
-        
-        gameManager = GameObject.Find("GameManager");
+
         cameraControl = GameObject.Find("CamControl");
         zoomAndSelectTile = cameraControl.GetComponentInChildren<ZoomScript>();
         playerLook = cameraControl.GetComponentInChildren<PlayerLook>();
         movement = cameraControl.GetComponent<Movement>();
-        xmlManager = gameManager.GetComponent<XmlManager>();
+        xmlManager = GameObject.Find("GameManager").GetComponent<XmlManager>();
 
-        slid = GameObject.FindGameObjectsWithTag("Slider");
-
-        for (int i = 0; i < slid.Length; i++) {
-            if (slid[i].name == "CamSense") {
-                camSensitivity = slid[i].GetComponentInChildren<Slider>();
+        for (int i = 0; i < uiManager.sliders.Count; i++) {
+            if (uiManager.sliders[i].name == "CamSense") {
+                camSensitivity = uiManager.sliders[i].GetComponentInChildren<Slider>();
             }
-            if (slid[i].name == "ZoomSense") {
-                zoomSensitivity = slid[i].GetComponentInChildren<Slider>();
+            if (uiManager.sliders[i].name == "ZoomSense") {
+                zoomSensitivity = uiManager.sliders[i].GetComponentInChildren<Slider>();
             }
-            if (slid[i].name == "Volume") {
-                volume = slid[i].GetComponentInChildren<Slider>();
+            if (uiManager.sliders[i].name == "MasterVolume") {
+                volume = uiManager.sliders[i].GetComponentInChildren<Slider>();
+                print("name = " + uiManager.sliders[i].name);
             }
-            if (slid[i].name == "SFX") {
-                sfx = slid[i].GetComponentInChildren<Slider>();
+            if (uiManager.sliders[i].name == "SFX") {
+                sfx = uiManager.sliders[i].GetComponentInChildren<Slider>();
+                print("name = " + uiManager.sliders[i].name);
             }
-            if (slid[i].name == "Music") {
-                music = slid[i].GetComponentInChildren<Slider>();
+            if (uiManager.sliders[i].name == "Music") {
+                music = uiManager.sliders[i].GetComponentInChildren<Slider>();
+                print("name = " + uiManager.sliders[i].name);
             }
         }
 
-        camSensitivity.wholeNumbers = true;
-        camSensitivity.onValueChanged.AddListener(CamSenseChanged);
-        zoomSensitivity.onValueChanged.AddListener(ZoomSenseChanged);
+        ////camSensitivity.wholeNumbers = true;
+        ////camSensitivity.onValueChanged.AddListener(CamSenseChanged);
+        ////zoomSensitivity.onValueChanged.AddListener(ZoomSenseChanged);
         volume.onValueChanged.AddListener(VolumeChanged);
         sfx.onValueChanged.AddListener(SFXSenseChanged);
         music.onValueChanged.AddListener(MusicSenseChanged);
-        
-        SetSliderRange(camSensitivity, maxCamSense, minCamSense);
-        SetSliderRange(zoomSensitivity, maxZoomSense, minZoomSense);
+
+        //SetSliderRange(camSensitivity, maxCamSense, minCamSense);
+        //SetSliderRange(zoomSensitivity, maxZoomSense, minZoomSense);
         SetSliderRange(volume, maxVolume, minVolume);
         SetSliderRange(sfx, maxSFX, minSFX);
         SetSliderRange(music, maxMusic, minMusic);
@@ -99,13 +104,13 @@ public class MenuScript : MonoBehaviour {
     }
 
     public void MenuSwitch() {
+        //xmlManager.Save();
         if (uiManager.menusHolder.activeSelf == false) {
             uiManager.menusHolder.SetActive(true);
             uiManager.menu.SetActive(true);
             uiManager.optionsMenu.SetActive(false);
             Time.timeScale = 0;
         } else {
-            xmlManager.Save();
             if (uiManager.menu.activeSelf == false) {
                 uiManager.optionsMenu.SetActive(false);
                 uiManager.menu.SetActive(true);
@@ -117,13 +122,13 @@ public class MenuScript : MonoBehaviour {
     }
 
     public void QuitGame() {
-        xmlManager.Save();
+        //xmlManager.Save();
         Application.Quit();
     }
 
     public void ResetToDefault() {
-        for (int i = 0; i < slid.Length; i++) {
-            ResetSlider(slid[i].GetComponentInChildren<Slider>());
+        for (int i = 0; i < uiManager.sliders.Count; i++) {
+            ResetSlider(uiManager.sliders[i].GetComponentInChildren<Slider>());
         }
         xmlManager.Save();
     }

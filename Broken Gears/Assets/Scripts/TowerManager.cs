@@ -12,8 +12,6 @@ public class TowerManager : MonoBehaviour {
     public static Vector4 canNotPlace;
     public static int activeScrapTower;
 
-    [Header("Tower Placement Rotation")]
-
     public Vector3 staticMinXRotation;
     public static Vector3 minXRotation;
     public Vector3 staticPlusXRotation;
@@ -30,10 +28,6 @@ public class TowerManager : MonoBehaviour {
         plusXRotation = staticPlusXRotation;
         minZRotation = staticMinZRotation;
         plusZRotation = staticPlusZRotation;
-    }
-
-    public void Test() {
-
     }
 
     public void SelectTower(GameObject tower) {
