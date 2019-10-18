@@ -4,16 +4,10 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class UiManager : MonoBehaviour {
-    public GameObject menusHolder;
-    public GameObject menu;
-    public GameObject optionsMenu;
-    public GameObject videoMenu;
-    public GameObject audioMenu;
+    public List<GameObject> menus = new List<GameObject>();
     public List<Button> towerButtons = new List<Button>();
     public List<GameObject> sliders = new List<GameObject>();
     TowerManager towerManager;
-    public Button b;
-    public GameObject g;
 
     int i;
 

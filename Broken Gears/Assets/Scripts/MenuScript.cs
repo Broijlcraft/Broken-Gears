@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
+﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour {
     public Slider camSensitivity;
@@ -20,20 +19,17 @@ public class MenuScript : MonoBehaviour {
     public float maxMusic = 1f;
     public float minMusic;
 
-    //public GameObject menusHolder;
-    //public GameObject menu;
-    //public GameObject optionsMenu;
-
     GameObject cameraControl;
 
     UiManager uiManager;
-
     Movement movement;
     ZoomScript zoomAndSelectTile;
     PlayerLook playerLook;
     XmlManager xmlManager;
-    public enum MenuState {
-        main,
+
+    public enum MenuState { 
+        none,
+        mainMenu,
         options,
         video,
         audio
@@ -43,8 +39,7 @@ public class MenuScript : MonoBehaviour {
 
     private void Awake() {
         uiManager = GameObject.Find("Canvas").GetComponent<UiManager>();
-        uiManager.menusHolder.SetActive(true);
-        uiManager.optionsMenu.SetActive(true);
+        SetItActive(uiManager.menus[1], uiManager.menus[2]);
 
         cameraControl = GameObject.Find("CamControl");
         zoomAndSelectTile = cameraControl.GetComponentInChildren<ZoomScript>();
@@ -61,15 +56,12 @@ public class MenuScript : MonoBehaviour {
             }
             if (uiManager.sliders[i].name == "MasterVolume") {
                 volume = uiManager.sliders[i].GetComponentInChildren<Slider>();
-                print("name = " + uiManager.sliders[i].name);
             }
             if (uiManager.sliders[i].name == "SFX") {
                 sfx = uiManager.sliders[i].GetComponentInChildren<Slider>();
-                print("name = " + uiManager.sliders[i].name);
             }
             if (uiManager.sliders[i].name == "Music") {
                 music = uiManager.sliders[i].GetComponentInChildren<Slider>();
-                print("name = " + uiManager.sliders[i].name);
             }
         }
 
@@ -86,13 +78,63 @@ public class MenuScript : MonoBehaviour {
         SetSliderRange(sfx, maxSFX, minSFX);
         SetSliderRange(music, maxMusic, minMusic);
 
-        uiManager.menusHolder.SetActive(false);
-        uiManager.optionsMenu.SetActive(false);
+        SetItActive(null, null);
+    }
+
+    public void MenuSwitch(string s) {
+        try {
+            menuState = (MenuState)Enum.Parse(typeof(MenuState), s);
+            print("In here");
+        } catch (Exception ex) {
+            print("not in here");
+            print(ex);
+        }
+        //menuState = (MenuState)i;
+        switch (menuState) {
+            case MenuState.none:
+            //menuState = MenuState.none;
+            SetItActive(null, null);
+            break;
+            case MenuState.mainMenu: case MenuState.options:
+            //menuState = MenuState.mainMenu;
+            SetItActive(uiManager.menus[0], uiManager.menus[(int)menuState]);
+            break;
+            case MenuState.audio: case MenuState.video:
+            //menuState = MenuState.options;
+            SetItActive(uiManager.menus[0], uiManager.menus[(int)menuState]);
+            break;
+        }
+    }
+
+    void SetItActive(GameObject a, GameObject b) {
+        for (int i = 0; i < uiManager.menus.Count; i++) {
+            if (uiManager.menus[i] != null) {
+                uiManager.menus[i].SetActive(false);
+            }      
+        }
+
+        if (a != null) {
+            a.SetActive(true);
+            print(a.activeSelf);
+        }
+
+        if (b != null) {
+            b.SetActive(true);
+        }
     }
 
     private void Update() {
         if (Input.GetButtonDown("Cancel")) {
-            MenuSwitch();
+            int ib = (int)menuState;
+            switch (ib) {
+                case 0: case 2:
+                menuState = MenuState.mainMenu;
+                break;
+                case 3: case 4:
+                menuState = MenuState.options;
+                break;
+            }
+            //MenuSwitch();
         }
     }
 
@@ -103,26 +145,25 @@ public class MenuScript : MonoBehaviour {
         }
     }
 
-    public void MenuSwitch() {
-        //xmlManager.Save();
-        if (uiManager.menusHolder.activeSelf == false) {
-            uiManager.menusHolder.SetActive(true);
-            uiManager.menu.SetActive(true);
-            uiManager.optionsMenu.SetActive(false);
-            Time.timeScale = 0;
-        } else {
-            if (uiManager.menu.activeSelf == false) {
-                uiManager.optionsMenu.SetActive(false);
-                uiManager.menu.SetActive(true);
-            } else {
-                uiManager.menusHolder.SetActive(false);
-                Time.timeScale = 1;
-            }
-        }
+    public void OldMenuSwitch() {
+        //if (uiManager.menusHolder.activeSelf == false) {
+        //    uiManager.menusHolder.SetActive(true);
+        //    uiManager.mainMenu.SetActive(true);
+        //    uiManager.optionsMenu.SetActive(false);
+        //    Time.timeScale = 0;
+        //} else {
+        //    if (uiManager.mainMenu.activeSelf == false) {
+        //        uiManager.optionsMenu.SetActive(false);
+        //        uiManager.mainMenu.SetActive(true);
+        //    } else {
+        //        uiManager.menusHolder.SetActive(false);
+        //        Time.timeScale = 1;
+        //    }
+        //}
     }
 
     public void QuitGame() {
-        //xmlManager.Save();
+        xmlManager.Save();
         Application.Quit();
     }
 

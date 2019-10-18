@@ -29,8 +29,8 @@ public class XmlManager : MonoBehaviour {
 
     public void SetSliderValues() {
         dataBase = Load();
-        menuScript.camSensitivity.value = dataBase.cameraSensitivity;
-        zoomAndSelectTile.zoomIncrease = dataBase.zoomSensitivity;
+        //menuScript.camSensitivity.value = dataBase.cameraSensitivity;
+        //zoomAndSelectTile.zoomIncrease = dataBase.zoomSensitivity;
         menuScript.volume.value = dataBase.masterVolume;
         menuScript.sfx.value = dataBase.sfx;
         menuScript.music.value = dataBase.music;
@@ -40,8 +40,8 @@ public class XmlManager : MonoBehaviour {
         dataBase = new DataBase();
 
         //controls
-        dataBase.cameraSensitivity = menuScript.camSensitivity.value;
-        dataBase.zoomSensitivity = zoomAndSelectTile.zoomIncrease;
+        //dataBase.cameraSensitivity = menuScript.camSensitivity.value;
+        //dataBase.zoomSensitivity = zoomAndSelectTile.zoomIncrease;
         
         //volume
         dataBase.masterVolume = menuScript.volume.value;
