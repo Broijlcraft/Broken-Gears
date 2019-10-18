@@ -418,7 +418,8 @@ GameObject:
   - component: {fileID: 49485760}
   - component: {fileID: 49485759}
   - component: {fileID: 49485758}
-  m_Layer: 0
+  - component: {fileID: 49485761}
+  m_Layer: 15
   m_Name: tower (furnace tower)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,6 +486,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -89.994, z: 0}
+--- !u!114 &49485761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49485757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a5bf648db84054e9836c2f4203db4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeEffects: []
+  enabledColor: {x: 0, y: 0, z: 255, w: 255}
 --- !u!1 &70054752
 GameObject:
   m_ObjectHideFlags: 0
