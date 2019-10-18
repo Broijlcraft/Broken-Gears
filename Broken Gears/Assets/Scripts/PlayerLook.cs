@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerLook : MonoBehaviour {
-    float mouseSensitivity;
+    public float mouseSensitivity;
 
     public float topLock;
     public float bottomLock;

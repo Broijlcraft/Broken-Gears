@@ -31,7 +31,7 @@ public class MenuScript : MonoBehaviour {
         none,
         mainMenu,
         options,
-        video,
+        controls,
         audio
     }
 
@@ -65,15 +65,15 @@ public class MenuScript : MonoBehaviour {
             }
         }
 
-        ////camSensitivity.wholeNumbers = true;
-        ////camSensitivity.onValueChanged.AddListener(CamSenseChanged);
-        ////zoomSensitivity.onValueChanged.AddListener(ZoomSenseChanged);
+        camSensitivity.wholeNumbers = true;
+        camSensitivity.onValueChanged.AddListener(CamSenseChanged);
+        zoomSensitivity.onValueChanged.AddListener(ZoomSenseChanged);
         volume.onValueChanged.AddListener(VolumeChanged);
         sfx.onValueChanged.AddListener(SFXSenseChanged);
         music.onValueChanged.AddListener(MusicSenseChanged);
 
-        //SetSliderRange(camSensitivity, maxCamSense, minCamSense);
-        //SetSliderRange(zoomSensitivity, maxZoomSense, minZoomSense);
+        SetSliderRange(camSensitivity, maxCamSense, minCamSense);
+        SetSliderRange(zoomSensitivity, maxZoomSense, minZoomSense);
         SetSliderRange(volume, maxVolume, minVolume);
         SetSliderRange(sfx, maxSFX, minSFX);
         SetSliderRange(music, maxMusic, minMusic);
@@ -84,23 +84,18 @@ public class MenuScript : MonoBehaviour {
     public void MenuSwitch(string s) {
         try {
             menuState = (MenuState)Enum.Parse(typeof(MenuState), s);
-            print("In here");
         } catch (Exception ex) {
             print("not in here");
             print(ex);
         }
-        //menuState = (MenuState)i;
         switch (menuState) {
             case MenuState.none:
-            //menuState = MenuState.none;
             SetItActive(null, null);
             break;
             case MenuState.mainMenu: case MenuState.options:
-            //menuState = MenuState.mainMenu;
             SetItActive(uiManager.menus[0], uiManager.menus[(int)menuState]);
             break;
-            case MenuState.audio: case MenuState.video:
-            //menuState = MenuState.options;
+            case MenuState.audio: case MenuState.controls:
             SetItActive(uiManager.menus[0], uiManager.menus[(int)menuState]);
             break;
         }
@@ -115,7 +110,6 @@ public class MenuScript : MonoBehaviour {
 
         if (a != null) {
             a.SetActive(true);
-            print(a.activeSelf);
         }
 
         if (b != null) {
@@ -127,14 +121,20 @@ public class MenuScript : MonoBehaviour {
         if (Input.GetButtonDown("Cancel")) {
             int ib = (int)menuState;
             switch (ib) {
+                case 1:
+                menuState = MenuState.none;
+                SetItActive(null, null);
+                break;
                 case 0: case 2:
                 menuState = MenuState.mainMenu;
+                SetItActive(uiManager.menus[0], uiManager.menus[(int)menuState]);
                 break;
                 case 3: case 4:
                 menuState = MenuState.options;
+                SetItActive(uiManager.menus[0], uiManager.menus[(int)menuState]);
+                xmlManager.Save();
                 break;
             }
-            //MenuSwitch();
         }
     }
 
@@ -145,33 +145,9 @@ public class MenuScript : MonoBehaviour {
         }
     }
 
-    public void OldMenuSwitch() {
-        //if (uiManager.menusHolder.activeSelf == false) {
-        //    uiManager.menusHolder.SetActive(true);
-        //    uiManager.mainMenu.SetActive(true);
-        //    uiManager.optionsMenu.SetActive(false);
-        //    Time.timeScale = 0;
-        //} else {
-        //    if (uiManager.mainMenu.activeSelf == false) {
-        //        uiManager.optionsMenu.SetActive(false);
-        //        uiManager.mainMenu.SetActive(true);
-        //    } else {
-        //        uiManager.menusHolder.SetActive(false);
-        //        Time.timeScale = 1;
-        //    }
-        //}
-    }
-
     public void QuitGame() {
         xmlManager.Save();
         Application.Quit();
-    }
-
-    public void ResetToDefault() {
-        for (int i = 0; i < uiManager.sliders.Count; i++) {
-            ResetSlider(uiManager.sliders[i].GetComponentInChildren<Slider>());
-        }
-        xmlManager.Save();
     }
 
     void ResetSlider(Slider slider) {
@@ -185,6 +161,7 @@ public class MenuScript : MonoBehaviour {
 
     void ZoomSenseChanged(float value) {
         zoomAndSelectTile.zoomIncrease = value + minZoomSense;
+        print(value);
     }
 
     void VolumeChanged(float value) {

@@ -9,8 +9,6 @@ public class ZoomScript : MonoBehaviour {
     public float maxZoomIn;
     public float maxZoomOut;
     public LayerMask layerMask;
-    public RaycastHit hit;
-    public GameObject g;
     
     Camera monitorCam;
 
@@ -37,7 +35,6 @@ public class ZoomScript : MonoBehaviour {
                     if (zoom < maxZoomIn) {
                         zoom = maxZoomIn;
                     }
-                    Zoom();
                 }
             } else if (Input.GetAxis("Mouse ScrollWheel") < 0) {
                 if (zoom < maxZoomOut) {
@@ -45,9 +42,9 @@ public class ZoomScript : MonoBehaviour {
                     if (zoom > maxZoomOut) {
                         zoom = maxZoomOut;
                     }
-                    Zoom();
                 }
             }
+            Zoom();
         }
     }
 

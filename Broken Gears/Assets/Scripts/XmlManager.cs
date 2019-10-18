@@ -15,22 +15,22 @@ public class XmlManager : MonoBehaviour {
     GameObject camControl;
 
     MenuScript menuScript;
-    ZoomScript zoomAndSelectTile;
+    ZoomScript zoomScript;
 
     private void Start() {
         gameManager = GameObject.Find("GameManager");
         camControl = GameObject.Find("CamControl");
-        zoomAndSelectTile = camControl.GetComponentInChildren<ZoomScript>();
+        zoomScript = camControl.GetComponentInChildren<ZoomScript>();
         menuScript = gameManager.GetComponent<MenuScript>();
         path = Application.persistentDataPath;
         print(path);
-        //SetSliderValues();
+        SetSliderValues();
     }
 
     public void SetSliderValues() {
         dataBase = Load();
-        //menuScript.camSensitivity.value = dataBase.cameraSensitivity;
-        //zoomAndSelectTile.zoomIncrease = dataBase.zoomSensitivity;
+        menuScript.camSensitivity.value = dataBase.cameraSensitivity;
+        zoomScript.zoomIncrease = dataBase.zoomSensitivity;
         menuScript.volume.value = dataBase.masterVolume;
         menuScript.sfx.value = dataBase.sfx;
         menuScript.music.value = dataBase.music;
@@ -40,9 +40,9 @@ public class XmlManager : MonoBehaviour {
         dataBase = new DataBase();
 
         //controls
-        //dataBase.cameraSensitivity = menuScript.camSensitivity.value;
-        //dataBase.zoomSensitivity = zoomAndSelectTile.zoomIncrease;
-        
+        dataBase.cameraSensitivity = menuScript.camSensitivity.value;
+        dataBase.zoomSensitivity = zoomScript.zoomIncrease;
+
         //volume
         dataBase.masterVolume = menuScript.volume.value;
         dataBase.sfx = menuScript.sfx.value;
