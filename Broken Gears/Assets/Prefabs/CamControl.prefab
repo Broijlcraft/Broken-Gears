@@ -250,10 +250,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678dc1a8e001a3341981963606ff162d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseSensitivity: 0
   topLock: 0
   bottomLock: 90
   multiplier: 13
   movement: {fileID: 322662359228849783}
+  activeEffects: []
+  disabledColor: {x: 0, y: 0, z: 0, w: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 32768
+  turret: {fileID: 0}
 --- !u!114 &322662360019839798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,7 +280,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
-  g: {fileID: 2714946686686765082, guid: 5df31703f8fb32441810069969e24ece, type: 3}
 --- !u!114 &3694298743301395196
 MonoBehaviour:
   m_ObjectHideFlags: 0

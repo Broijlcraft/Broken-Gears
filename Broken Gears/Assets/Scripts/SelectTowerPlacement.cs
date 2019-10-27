@@ -21,7 +21,7 @@ public class SelectTowerPlacement : MonoBehaviour {
                 Destroy(gameObject);
             }
             if (TowerManager.selectedTower == gameObject) {
-                if (Physics.Raycast(ray, out hit, layerMask, 1000)) {
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)) {
                     tile = hit.transform.GetComponent<Tile>();
                     if (tile) {
                         if (tile.buildable == true) {

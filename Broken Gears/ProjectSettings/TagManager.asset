@@ -11,6 +11,8 @@ TagManager:
   - EnemyTarget
   - Enemy
   - Tile
+  - Turret
+  - Scrap
   layers:
   - Default
   - TransparentFX
