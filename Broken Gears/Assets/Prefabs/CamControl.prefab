@@ -254,12 +254,12 @@ MonoBehaviour:
   topLock: 0
   bottomLock: 90
   multiplier: 13
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4096
   movement: {fileID: 322662359228849783}
   activeEffects: []
   disabledColor: {x: 0, y: 0, z: 0, w: 0}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 32768
   turret: {fileID: 0}
 --- !u!114 &322662360019839798
 MonoBehaviour:

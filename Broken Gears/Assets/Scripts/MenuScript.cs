@@ -90,7 +90,6 @@ public class MenuScript : MonoBehaviour {
     }
 
     public void MenuSwitch(string s) {
-        print("Switch");
         try {
             menuState = (MenuState)Enum.Parse(typeof(MenuState), s);
         } catch (Exception ex) {
@@ -98,7 +97,7 @@ public class MenuScript : MonoBehaviour {
             print(ex);
         }
         switch (menuState) {
-            case MenuState.none: case MenuState.towerInteraction:
+            case MenuState.none:
             SetItActive(null, null);
             break;
             case MenuState.mainMenu: case MenuState.options:
@@ -106,6 +105,9 @@ public class MenuScript : MonoBehaviour {
             break;
             case MenuState.audio: case MenuState.controls:
             SetItActive(uiManager.menus[0], uiManager.menus[(int)menuState]);
+            break;
+            case MenuState.towerInteraction:
+            SetItActive(uiManager.menus[(int)menuState], null);
             break;
         }
     }
@@ -124,6 +126,7 @@ public class MenuScript : MonoBehaviour {
         if (b != null) {
             b.SetActive(true);
         }
+        PauseCheck();
     }
 
     private void Update() {
@@ -144,6 +147,14 @@ public class MenuScript : MonoBehaviour {
                 xmlManager.Save();
                 break;
             }
+        }
+    }
+
+    void PauseCheck() {
+        if (menuState != MenuState.none && menuState != MenuState.towerInteraction) {
+            Time.timeScale = 0;
+        } else {
+            Time.timeScale = 1;
         }
     }
 

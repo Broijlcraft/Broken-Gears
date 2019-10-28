@@ -11,21 +11,22 @@ public class PlayerLook : MonoBehaviour {
     public float multiplier;
     private float xAxisClamp;
 
+    public LayerMask layerMask;
+
     public Movement movement;
 
-    [Header("Scraptower")]
-
-    public List<GameObject> activeEffects = new List<GameObject>();
-    public Vector4 disabledColor;
-    public GameObject turret;
-
     MenuScript menuScript;
+
+    Text buySellText;
+    Button buySellButton;
 
     private void Awake() {
         UpdateLookValue();
         xAxisClamp = 0f;
         VerticalCameraRotation();
         menuScript = GameObject.Find("Canvas").GetComponentInChildren<MenuScript>();
+        buySellText = menuScript.buySellText.GetComponentInChildren<Text>();
+        buySellButton = menuScript.buySellText.GetComponent<Button>();
     }
 
     private void Update() {
@@ -33,18 +34,17 @@ public class PlayerLook : MonoBehaviour {
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward, Color.red * 1000);
         if (Input.GetMouseButtonDown(0)) {
             Ray ray = Manager.cam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)) {
+                menuScript.MenuSwitch("towerInteraction");
                 if (hit.transform.tag == "Scrap") {
                     if(hit.transform.GetComponent<SalvageTower>().bought == true) {
-                        menuScript.buySellText.GetComponentInChildren<Text>().text = "Bought";
-                        menuScript.buySellText.GetComponent<Button>().interactable = false;
+                        buySellText.text = "Bought";
+                        buySellButton.interactable = false;
                     } else {
-                        menuScript.buySellText.GetComponentInChildren<Text>().text = "Buy for " + hit.transform.GetComponent<SalvageTower>().price;
-                        menuScript.buySellText.GetComponent<Button>().interactable = true;
+                        buySellText.text = "Buy for " + hit.transform.GetComponent<SalvageTower>().price;
+                        buySellButton.interactable = true;
                     }
-                    //menuScript.MenuSwitch("towerInteraction");
                 } else if (hit.transform.tag == "Turret") {
-                    print("Turret");
                     if (TowerManager.activeScrapTower > 0) {
 
                     } else {
