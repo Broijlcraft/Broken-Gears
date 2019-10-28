@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour {
+
+    [Header("Settings")]
+
     public Slider camSensitivity;
     public float maxCamSense;
     public float minCamSense;
@@ -19,6 +22,10 @@ public class MenuScript : MonoBehaviour {
     public float maxMusic = 1f;
     public float minMusic;
 
+    [Header("Tower Interaction")]
+
+    public Button buySellText;
+
     GameObject cameraControl;
 
     UiManager uiManager;
@@ -32,7 +39,8 @@ public class MenuScript : MonoBehaviour {
         mainMenu,
         options,
         controls,
-        audio
+        audio,
+        towerInteraction
     }
 
     public MenuState menuState;
@@ -82,6 +90,7 @@ public class MenuScript : MonoBehaviour {
     }
 
     public void MenuSwitch(string s) {
+        print("Switch");
         try {
             menuState = (MenuState)Enum.Parse(typeof(MenuState), s);
         } catch (Exception ex) {
@@ -89,7 +98,7 @@ public class MenuScript : MonoBehaviour {
             print(ex);
         }
         switch (menuState) {
-            case MenuState.none:
+            case MenuState.none: case MenuState.towerInteraction:
             SetItActive(null, null);
             break;
             case MenuState.mainMenu: case MenuState.options:
@@ -121,7 +130,7 @@ public class MenuScript : MonoBehaviour {
         if (Input.GetButtonDown("Cancel")) {
             int ib = (int)menuState;
             switch (ib) {
-                case 1:
+                case 1: case 5:
                 menuState = MenuState.none;
                 SetItActive(null, null);
                 break;
@@ -161,7 +170,6 @@ public class MenuScript : MonoBehaviour {
 
     void ZoomSenseChanged(float value) {
         zoomAndSelectTile.zoomIncrease = value + minZoomSense;
-        print(value);
     }
 
     void VolumeChanged(float value) {

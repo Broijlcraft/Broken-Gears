@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerLook : MonoBehaviour {
@@ -18,20 +19,32 @@ public class PlayerLook : MonoBehaviour {
     public Vector4 disabledColor;
     public GameObject turret;
 
+    MenuScript menuScript;
+
     private void Awake() {
         UpdateLookValue();
         xAxisClamp = 0f;
         VerticalCameraRotation();
+        menuScript = GameObject.Find("Canvas").GetComponentInChildren<MenuScript>();
     }
 
     private void Update() {
         RaycastHit hit;
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward, Color.red * 1000);
         if (Input.GetMouseButtonDown(0)) {
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity)) {
+            Ray ray = Manager.cam.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
                 if (hit.transform.tag == "Scrap") {
-
+                    if(hit.transform.GetComponent<SalvageTower>().bought == true) {
+                        menuScript.buySellText.GetComponentInChildren<Text>().text = "Bought";
+                        menuScript.buySellText.GetComponent<Button>().interactable = false;
+                    } else {
+                        menuScript.buySellText.GetComponentInChildren<Text>().text = "Buy for " + hit.transform.GetComponent<SalvageTower>().price;
+                        menuScript.buySellText.GetComponent<Button>().interactable = true;
+                    }
+                    //menuScript.MenuSwitch("towerInteraction");
                 } else if (hit.transform.tag == "Turret") {
+                    print("Turret");
                     if (TowerManager.activeScrapTower > 0) {
 
                     } else {

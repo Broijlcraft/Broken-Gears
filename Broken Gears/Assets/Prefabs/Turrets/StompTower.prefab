@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 5077135834900084818}
   m_Layer: 0
   m_Name: StompTower
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -349,6 +349,7 @@ MonoBehaviour:
   isSaw: 0
   isCryo: 0
   cryoSlow: 0
+  enemyChecker: {fileID: 0}
 --- !u!114 &5077135834900084818
 MonoBehaviour:
   m_ObjectHideFlags: 0

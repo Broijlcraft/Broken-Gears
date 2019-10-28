@@ -45,7 +45,6 @@ public class Health : MonoBehaviour {
             value += TowerManager.activeScrapTower;
             gA.transform.GetComponentInChildren<Text>().text = "+ " + value;
             ScrapEconomy.AddScrap(value);
-            print(value);
         }
         Destroy(g);
         Destroy(gameObject);

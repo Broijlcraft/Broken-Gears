@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 3242132115797220750}
   m_Layer: 0
   m_Name: CryoGunTurret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -222,6 +222,7 @@ MonoBehaviour:
   isSaw: 0
   isCryo: 1
   cryoSlow: 1.5
+  enemyChecker: {fileID: 0}
 --- !u!114 &3242132115797220750
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3822,6 +3822,7 @@ MonoBehaviour:
   - {fileID: 6785763914672938985}
   - {fileID: 5901547426241478323}
   - {fileID: 4476139549091660968}
+  - {fileID: 0}
   towerButtons:
   - {fileID: 5415185376815658008}
   - {fileID: 4793868724475414625}
@@ -5974,6 +5975,7 @@ MonoBehaviour:
   music: {fileID: 0}
   maxMusic: 1
   minMusic: 0
+  staticBuySellText: {fileID: 0}
   menuState: 0
 --- !u!114 &5901547426883502955
 MonoBehaviour:
