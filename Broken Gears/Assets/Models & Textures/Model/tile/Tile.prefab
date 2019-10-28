@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 3401877478585417876}
   - component: {fileID: 5939934779325774498}
   - component: {fileID: 95255496813479515}
+  - component: {fileID: 4461337310735047430}
   - component: {fileID: 6342003739945509440}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ef2ecdb83b1b3c6469100255325ebb46, type: 2}
+  - {fileID: 2100000, guid: 9357e1eaccd7d7b42af1190b9f300a2f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,6 +80,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4461337310735047430
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832609159160967815}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 0, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6342003739945509440
 MonoBehaviour:
   m_ObjectHideFlags: 0

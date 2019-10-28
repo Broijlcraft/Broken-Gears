@@ -41,7 +41,7 @@ public class PlayerLook : MonoBehaviour {
                         buySellText.text = "Bought";
                         buySellButton.interactable = false;
                     } else {
-                        buySellText.text = "Buy for " + hit.transform.GetComponent<SalvageTower>().price;
+                        buySellText.text = "Unlock for " + hit.transform.GetComponent<SalvageTower>().price;
                         buySellButton.interactable = true;
                     }
                 } else if (hit.transform.tag == "Turret") {
