@@ -55,6 +55,10 @@ public class Turret : MonoBehaviour {
     public bool isCryo;
     public float cryoSlow;
 
+    [Header("StompAttack")]
+
+    public Transform enemyChecker;
+
     private void Start() {
         turnSpeedSave = turnSpeed;
         animator = GetComponentInChildren<Animator>();
