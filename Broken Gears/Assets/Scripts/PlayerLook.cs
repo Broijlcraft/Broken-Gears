@@ -20,6 +20,8 @@ public class PlayerLook : MonoBehaviour {
     Text buySellText;
     Button buySellButton;
 
+    delegate void TowerFunctionOverload();
+
     private void Awake() {
         UpdateLookValue();
         xAxisClamp = 0f;
@@ -37,35 +39,30 @@ public class PlayerLook : MonoBehaviour {
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)) {
                 menuScript.MenuSwitch("towerInteraction");
                 if (hit.transform.tag == "Scrap") {
-                    if(hit.transform.GetComponent<SalvageTower>().bought == true) {
-                        SetBuySellButton("Bought", false);
+                    if (hit.transform.GetComponent<SalvageTower>().bought == true) {
+                        SetBuySellButton("Bought", false, null);
                     } else {
-                        SetBuySellButton("Unlock for " + hit.transform.GetComponent<SalvageTower>().price, true);
-                        buySellButton.onClick.AddListener(BuyTower);
+                        SetBuySellButton("Unlock for " + hit.transform.GetComponent<SalvageTower>().price, true, () => hit.transform.GetComponent<SalvageTower>().ActivateTower());
                     }
                 } else if (hit.transform.tag == "Turret") {
                     if (TowerManager.activeScrapTower > 0) {
-                        SetBuySellButton("Salvage for " + hit.transform.GetComponent<SelectTowerPlacement>().salvageValue, true);
-                        buySellButton.onClick.AddListener(SellTower);
+                        SetBuySellButton("Salvage for " + hit.transform.GetComponent<SelectTowerPlacement>().salvageValue, true, SellTower);
                     } else {
-                        SetBuySellButton("Salvagefurnace Required", false);
+                        SetBuySellButton("Salvagefurnace Required", false, null);
                     }
                 }
             }
         }
     }
 
-    public void BuyTower() {
-
-    }
-
     public void SellTower() {
 
     }
-
-    void SetBuySellButton(string s, bool b) {
+    
+    void SetBuySellButton(string s, bool b, TowerFunctionOverload tfo) {
         buySellText.text = s;
         buySellButton.interactable = b;
+        buySellButton.onClick.AddListener(() => tfo());
     }
 
     private void LateUpdate() {

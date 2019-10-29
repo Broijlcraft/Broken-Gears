@@ -7,4 +7,8 @@ public class SalvageTower : MonoBehaviour {
     public bool bought;
     public int price;
 
+    public void ActivateTower() {
+        print("Activate");
+    }
+
 }

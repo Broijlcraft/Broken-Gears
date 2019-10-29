@@ -36,7 +36,6 @@ public class WaveSpawner : MonoBehaviour {
                 if (enemyToGet < waves[waveToGet].enemies.Count) {
                     Instantiate(waves[waveToGet].enemies[enemyToGet], transform.position, Quaternion.identity);
                     enemyToGet++;
-                    print("Enemy");
                 } else {
                     NextWave();
                 }
@@ -55,6 +54,5 @@ public class WaveSpawner : MonoBehaviour {
         changingWave = true;
         canSpawn = false;
         waveToGet++;
-        print("NextWave");
     }
 }
