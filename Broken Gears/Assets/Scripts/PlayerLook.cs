@@ -39,12 +39,15 @@ public class PlayerLook : MonoBehaviour {
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)) {
                 menuScript.MenuSwitch("towerInteraction");
                 if (hit.transform.tag == "Scrap") {
+                    print("scrap");
                     if (hit.transform.GetComponent<SalvageTower>().bought == true) {
                         SetBuySellButton("Bought", false, null);
                     } else {
                         SetBuySellButton("Unlock for " + hit.transform.GetComponent<SalvageTower>().price, true, () => hit.transform.GetComponent<SalvageTower>().ActivateTower());
                     }
-                } else if (hit.transform.tag == "Turret") {
+                }
+                if (hit.transform.tag == "Turret") {
+                    print("salvage");
                     if (TowerManager.activeScrapTower > 0) {
                         SetBuySellButton("Salvage for " + hit.transform.GetComponent<SelectTowerPlacement>().salvageValue, true, SellTower);
                     } else {
@@ -63,6 +66,7 @@ public class PlayerLook : MonoBehaviour {
         buySellText.text = s;
         buySellButton.interactable = b;
         buySellButton.onClick.AddListener(() => tfo());
+        //menuScript.MenuSwitch("none");
     }
 
     private void LateUpdate() {

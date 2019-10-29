@@ -10,7 +10,7 @@ public class TowerManager : MonoBehaviour {
     public Vector4 canNotPlaceColor;
     public static Vector4 canPlace; 
     public static Vector4 canNotPlace;
-    public static int activeScrapTower;
+    public static int activeScrapTower = 0;
 
     public Vector3 staticMinXRotation;
     public static Vector3 minXRotation;
