@@ -662,6 +662,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CRYO STRAAL
       objectReference: {fileID: 0}
+    - target: {fileID: 259832082767651215, guid: 4e14cc6cfe4b3ea489c16bb07cbc3908,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 259832082767651212, guid: 4e14cc6cfe4b3ea489c16bb07cbc3908,
         type: 3}
       propertyPath: m_LocalPosition.x
