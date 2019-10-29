@@ -38,21 +38,34 @@ public class PlayerLook : MonoBehaviour {
                 menuScript.MenuSwitch("towerInteraction");
                 if (hit.transform.tag == "Scrap") {
                     if(hit.transform.GetComponent<SalvageTower>().bought == true) {
-                        buySellText.text = "Bought";
-                        buySellButton.interactable = false;
+                        SetBuySellButton("Bought", false);
                     } else {
-                        buySellText.text = "Unlock for " + hit.transform.GetComponent<SalvageTower>().price;
-                        buySellButton.interactable = true;
+                        SetBuySellButton("Unlock for " + hit.transform.GetComponent<SalvageTower>().price, true);
+                        buySellButton.onClick.AddListener(BuyTower);
                     }
                 } else if (hit.transform.tag == "Turret") {
                     if (TowerManager.activeScrapTower > 0) {
-
+                        SetBuySellButton("Salvage for " + hit.transform.GetComponent<SelectTowerPlacement>().salvageValue, true);
+                        buySellButton.onClick.AddListener(SellTower);
                     } else {
-
+                        SetBuySellButton("Salvagefurnace Required", false);
                     }
                 }
             }
         }
+    }
+
+    public void BuyTower() {
+
+    }
+
+    public void SellTower() {
+
+    }
+
+    void SetBuySellButton(string s, bool b) {
+        buySellText.text = s;
+        buySellButton.interactable = b;
     }
 
     private void LateUpdate() {
