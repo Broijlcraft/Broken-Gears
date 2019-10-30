@@ -31,14 +31,12 @@ public class TowerManager : MonoBehaviour {
     }
 
     public void SelectTower(GameObject tower) {
-        if (tower.GetComponent<SelectTowerPlacement>().scrapCost <= ScrapEconomy.currentScrap || Manager.devMode == false) {
-            if (selectedTower != null) {
-                Destroy(selectedTower);
-            }
-            selectedTower = Instantiate(tower);
-            if (selectedTower.GetComponent<Turret>().turretImg != null) {
-                GameObject turretImg = Instantiate(selectedTower.GetComponent<Turret>().turretImg, Vector3.zero, Quaternion.identity);
-                turretImg.transform.SetParent(Manager.healthCanvas);
+        if (UiManager.staticMenuScript.menuState == MenuScript.MenuState.none) {
+            if (tower.GetComponent<SelectTowerPlacement>().scrapCost <= ScrapEconomy.currentScrap || Manager.devMode == false) {
+                if (selectedTower != null) {
+                    Destroy(selectedTower);
+                }
+                selectedTower = Instantiate(tower);
             }
         }
     }

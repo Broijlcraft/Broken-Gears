@@ -258,6 +258,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   movement: {fileID: 322662359228849783}
+  defaultTextColor: {r: 0.18823531, g: 0.36862746, b: 0.4039216, a: 1}
+  goodButtonColor: {r: 0, g: 0, b: 0, a: 0}
+  badButtonColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &322662360019839798
 MonoBehaviour:
   m_ObjectHideFlags: 0

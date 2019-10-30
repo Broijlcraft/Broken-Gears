@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -14,8 +15,9 @@ public class PlayerLook : MonoBehaviour {
     public LayerMask layerMask;
 
     public Movement movement;
-
-    MenuScript menuScript;
+    public Color defaultTextColor;
+    public Color goodButtonColor;
+    public Color badButtonColor;
 
     Text buySellText;
     Button buySellButton;
@@ -26,51 +28,58 @@ public class PlayerLook : MonoBehaviour {
         UpdateLookValue();
         xAxisClamp = 0f;
         VerticalCameraRotation();
-        menuScript = GameObject.Find("Canvas").GetComponentInChildren<MenuScript>();
-        buySellText = menuScript.buySellText.GetComponentInChildren<Text>();
-        buySellButton = menuScript.buySellText.GetComponent<Button>();
+        buySellText = UiManager.staticMenuScript.buySellText.GetComponentInChildren<Text>();
+        buySellButton = UiManager.staticMenuScript.buySellText.GetComponent<Button>();
     }
-
+    
     private void Update() {
         RaycastHit hit;
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward, Color.red * 1000);
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(1) && UiManager.staticMenuScript.menuState == MenuScript.MenuState.none) {
             Ray ray = Manager.cam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)) {
-                menuScript.MenuSwitch("towerInteraction");
-                if (hit.transform.tag == "Scrap") {
-                    print("scrap");
-                    if (hit.transform.GetComponent<SalvageTower>().bought == true) {
-                        SetBuySellButton("Bought", false, null);
-                    } else {
-                        SetBuySellButton("Unlock for " + hit.transform.GetComponent<SalvageTower>().price, true, () => hit.transform.GetComponent<SalvageTower>().ActivateTower());
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
+                if (hit.transform.gameObject.tag == "Turret" || hit.transform.gameObject.tag == "Scrap") {
+                    UiManager.staticMenuScript.MenuSwitch("towerInteraction");
+                    if (hit.transform.tag == "Scrap") {
+                        if (hit.transform.GetComponent<SalvageTower>().bought == true) {
+                            SetBuySellButton("Unlocked", false, Dummy, defaultTextColor, goodButtonColor);
+                        } else {
+                            SetBuySellButton("Unlock for " + hit.transform.GetComponent<SalvageTower>().price, true, () => hit.transform.GetComponent<SalvageTower>().ActivateTower(), defaultTextColor, Color.white);
+                        }
                     }
-                }
-                if (hit.transform.tag == "Turret") {
-                    print("salvage");
-                    if (TowerManager.activeScrapTower > 0) {
-                        SetBuySellButton("Salvage for " + hit.transform.GetComponent<SelectTowerPlacement>().salvageValue, true, SellTower);
-                    } else {
-                        SetBuySellButton("Salvagefurnace Required", false, null);
+                    if (hit.transform.tag == "Turret") {
+                        if (TowerManager.activeScrapTower > 0) {
+                            SetBuySellButton("Salvage for " + hit.transform.GetComponentInParent<SelectTowerPlacement>().salvageValue, true, () => hit.transform.GetComponentInParent<SelectTowerPlacement>().SellTower(), defaultTextColor, Color.white);
+                        } else {
+                            SetBuySellButton("Salvage Furnace Required", false, Dummy, defaultTextColor, badButtonColor);
+                        }
                     }
                 }
             }
         }
     }
 
-    public void SellTower() {
+    void Dummy() {
 
     }
+
+    public void SellTower() {
+        print("sell");
+    }
     
-    void SetBuySellButton(string s, bool b, TowerFunctionOverload tfo) {
+    void SetBuySellButton(string s, bool b, TowerFunctionOverload tfo, Color textColor, Color disabledButtonColor) {
         buySellText.text = s;
+        buySellText.color = textColor;
+        ColorBlock block = buySellButton.colors;
+        block.disabledColor = disabledButtonColor;
+        buySellButton.colors = block;
         buySellButton.interactable = b;
+        buySellButton.onClick.RemoveAllListeners();
         buySellButton.onClick.AddListener(() => tfo());
-        //menuScript.MenuSwitch("none");
     }
 
     private void LateUpdate() {
-        if (Input.GetMouseButton(2)) {
+        if (Input.GetMouseButton(2) && UiManager.staticMenuScript.menuState == MenuScript.MenuState.none) {
             VerticalCameraRotation();
             movement.HorizontalCameraRotation();
         }

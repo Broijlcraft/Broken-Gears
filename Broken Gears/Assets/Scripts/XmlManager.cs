@@ -11,17 +11,13 @@ public class XmlManager : MonoBehaviour {
     public string fileName;
     public DataBase dataBase;
 
-    GameObject gameManager;
     GameObject camControl;
 
-    MenuScript menuScript;
     ZoomScript zoomScript;
 
     private void Start() {
-        gameManager = GameObject.Find("GameManager");
         camControl = GameObject.Find("CamControl");
         zoomScript = camControl.GetComponentInChildren<ZoomScript>();
-        menuScript = gameManager.GetComponent<MenuScript>();
         path = Application.persistentDataPath;
         print(path);
         SetSliderValues();
@@ -29,24 +25,24 @@ public class XmlManager : MonoBehaviour {
 
     public void SetSliderValues() {
         dataBase = Load();
-        menuScript.camSensitivity.value = dataBase.cameraSensitivity;
+        UiManager.staticMenuScript.camSensitivity.value = dataBase.cameraSensitivity;
         zoomScript.zoomIncrease = dataBase.zoomSensitivity;
-        menuScript.volume.value = dataBase.masterVolume;
-        menuScript.sfx.value = dataBase.sfx;
-        menuScript.music.value = dataBase.music;
+        UiManager.staticMenuScript.volume.value = dataBase.masterVolume;
+        UiManager.staticMenuScript.sfx.value = dataBase.sfx;
+        UiManager.staticMenuScript.music.value = dataBase.music;
     }
 
     public void Save() {
         dataBase = new DataBase();
 
         //controls
-        dataBase.cameraSensitivity = menuScript.camSensitivity.value;
+        dataBase.cameraSensitivity = UiManager.staticMenuScript.camSensitivity.value;
         dataBase.zoomSensitivity = zoomScript.zoomIncrease;
 
         //volume
-        dataBase.masterVolume = menuScript.volume.value;
-        dataBase.sfx = menuScript.sfx.value;
-        dataBase.music = menuScript.music.value;
+        dataBase.masterVolume = UiManager.staticMenuScript.volume.value;
+        dataBase.sfx = UiManager.staticMenuScript.sfx.value;
+        dataBase.music = UiManager.staticMenuScript.music.value;
 
         var serializer = new XmlSerializer(typeof(DataBase));
         var stream = new FileStream(path + "/" + fileName, FileMode.Create);

@@ -8,8 +8,13 @@ public class UiManager : MonoBehaviour {
     public List<Button> towerButtons = new List<Button>();
     public List<GameObject> sliders = new List<GameObject>();
     TowerManager towerManager;
+    public static MenuScript staticMenuScript;
 
     int i;
+
+    private void Awake() {
+        staticMenuScript = GameObject.Find("Canvas").GetComponentInChildren<MenuScript>();
+    }
 
     private void Start() {
         towerManager = GameObject.Find("GameManager").GetComponent<TowerManager>();

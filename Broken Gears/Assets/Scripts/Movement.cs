@@ -9,14 +9,16 @@ public class Movement : MonoBehaviour {
     Vector3 hor;
 
     private void FixedUpdate() {
-        v.x = Input.GetAxis("Horizontal");
-        v.z = Input.GetAxis("Vertical");
-        if (Input.GetButton("Slow")) {
-            transform.Translate(v * speed / 2 * Time.deltaTime);
-        } else {
-            transform.Translate(v * speed * Time.deltaTime);
+        if (UiManager.staticMenuScript.menuState == MenuScript.MenuState.none) {
+            v.x = Input.GetAxis("Horizontal");
+            v.z = Input.GetAxis("Vertical");
+            if (Input.GetButton("Slow")) {
+                transform.Translate(v * speed / 2 * Time.deltaTime);
+            } else {
+                transform.Translate(v * speed * Time.deltaTime);
+            }
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
     public void HorizontalCameraRotation() {

@@ -12,6 +12,8 @@ public class SelectTowerPlacement : MonoBehaviour {
     Tile tile;
     Vector3 newRot;
     public Turret turret;
+    Tile childTile;
+    Tile parentTile;
 
     private void Update() {
         if (TowerManager.selectedTower == gameObject && Time.timeScale != 0) {
@@ -42,8 +44,10 @@ public class SelectTowerPlacement : MonoBehaviour {
                                 tile.buildable = false;
                                 if (tile.buildableParent != null) {
                                     tile.buildableParent.GetComponent<Tile>().buildable = false;
+                                    parentTile = tile.buildableParent.GetComponent<Tile>();
                                 } else {
                                     tile.child.GetComponent<Tile>().buildable = false;
+                                    childTile = tile.child.GetComponent<Tile>();
                                 }
                                 ChangeColor(Vector4.zero);
                             }
@@ -61,6 +65,21 @@ public class SelectTowerPlacement : MonoBehaviour {
         }
     }
     
+    public void SellTower() {
+        if (tile != null) {
+            tile.buildable = true;
+        }
+        if (childTile != null) {
+            childTile.buildable = true;
+        }
+        if (parentTile != null) {
+            parentTile.buildable = true;
+        }
+        ScrapEconomy.AddScrap(salvageValue);
+        UiManager.staticMenuScript.MenuSwitch("none");
+        Destroy(gameObject);
+    }
+
     void ChangeColor(Vector4 v) {
         for (int i = 0; i < turret.weaponParts.Count; i++) {
             turret.weaponParts[i].material.EnableKeyword("_EmissionColor");
