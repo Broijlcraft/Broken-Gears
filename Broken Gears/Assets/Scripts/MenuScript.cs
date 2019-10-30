@@ -33,7 +33,9 @@ public class MenuScript : MonoBehaviour {
     Movement movement;
     ZoomScript zoomAndSelectTile;
     PlayerLook playerLook;
-    XmlManager xmlManager;
+    //XmlManager xmlManager;
+
+    string sceny;
 
     public enum MenuState { 
         none,
@@ -115,23 +117,6 @@ public class MenuScript : MonoBehaviour {
         }
     }
 
-    void SetItActive(GameObject a, GameObject b) {
-        for (int i = 0; i < uiManager.menus.Count; i++) {
-            if (uiManager.menus[i] != null) {
-                uiManager.menus[i].SetActive(false);
-            }      
-        }
-
-        if (a != null) {
-            a.SetActive(true);
-        }
-
-        if (b != null) {
-            b.SetActive(true);
-        }
-        PauseCheck();
-    }
-
     private void Update() {
         if (Input.GetButtonDown("Cancel")) {
             int ib = (int)menuState;
@@ -152,6 +137,23 @@ public class MenuScript : MonoBehaviour {
             }
         }
     }
+    
+    void SetItActive(GameObject a, GameObject b) {
+        for (int i = 0; i < uiManager.menus.Count; i++) {
+            if (uiManager.menus[i] != null) {
+                uiManager.menus[i].SetActive(false);
+            }      
+        }
+
+        if (a != null) {
+            a.SetActive(true);
+        }
+
+        if (b != null) {
+            b.SetActive(true);
+        }
+        PauseCheck();
+    }
 
     void PauseCheck() {
         if (menuState != MenuState.none && menuState != MenuState.towerInteraction) {
@@ -166,6 +168,20 @@ public class MenuScript : MonoBehaviour {
             slider.maxValue = max - min;
             slider.value = slider.maxValue / 2;
         }
+    }
+
+    public void ChangeScene(string sceneName) {
+        //start animation
+        sceny = sceneName;
+        InvokeRepeating("StartScene", 0.1f, 0);
+    }
+
+    void StartScene() {
+        SceneManager.LoadScene(sceny);
+    }
+
+    public void BackToMenu() {
+
     }
 
     public void QuitGame() {

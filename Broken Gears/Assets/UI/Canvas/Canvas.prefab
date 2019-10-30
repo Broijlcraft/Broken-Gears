@@ -2820,7 +2820,7 @@ GameObject:
   - component: {fileID: 4771210121731316280}
   - component: {fileID: 4771210121731316281}
   m_Layer: 5
-  m_Name: QuitGame
+  m_Name: BackToMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2926,7 +2926,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5901547426883502949}
-        m_MethodName: QuitGame
+        m_MethodName: MenuSwitch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3138,7 +3138,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quit Game
+  m_Text: Main Menu
 --- !u!1 &4771210122228743536
 GameObject:
   m_ObjectHideFlags: 0
