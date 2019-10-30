@@ -15,13 +15,13 @@ public class XmlManager : MonoBehaviour {
 
     ZoomScript zoomScript;
 
-    private void Start() {
-        camControl = GameObject.Find("CamControl");
-        zoomScript = camControl.GetComponentInChildren<ZoomScript>();
-        path = Application.persistentDataPath;
-        print(path);
-        SetSliderValues();
-    }
+    //private void Start() {
+    //    camControl = GameObject.Find("CamControl");
+    //    zoomScript = camControl.GetComponentInChildren<ZoomScript>();
+    //    path = Application.persistentDataPath;
+    //    print(path);
+    //    SetSliderValues();
+    //}
 
     public void SetSliderValues() {
         dataBase = Load();

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -20,16 +21,18 @@ public class Manager : MonoBehaviour {
     private void Awake() {
         cam = Camera.main;
         canvas = GameObject.Find("Canvas").transform;
-        healthCanvas = GameObject.Find("HealthCanvas").transform;
-        scrapCanvas = GameObject.Find("ScrapCanvas").transform;
-        scrapEconomy = GetComponent<ScrapEconomy>();
-        staticMonitor = monitor;
-        healthSlider = healthFab;
-        devText = canvas.Find("DevText").GetComponentInChildren<Text>();
+        if (SceneManager.GetActiveScene().name != "MainMenu") {
+            healthCanvas = GameObject.Find("HealthCanvas").transform;
+            scrapCanvas = GameObject.Find("ScrapCanvas").transform;
+            scrapEconomy = GetComponent<ScrapEconomy>();
+            staticMonitor = monitor;
+            healthSlider = healthFab;
+            devText = canvas.Find("DevText").GetComponentInChildren<Text>();
+        }
     }
 
     private void Update() {
-        if (Input.GetButtonDown("DevMode")) {
+        if (Input.GetButtonDown("DevMode") && SceneManager.GetActiveScene().name != "MainMenu") {
             ChangeMode();
         }
     }
