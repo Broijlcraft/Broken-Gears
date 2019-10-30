@@ -15,6 +15,10 @@ public class SelectTowerPlacement : MonoBehaviour {
     Tile childTile;
     Tile parentTile;
 
+    private void Start() {
+        UiManager.staticTurretText.text = "";
+    }
+
     private void Update() {
         if (TowerManager.selectedTower == gameObject && Time.timeScale != 0) {
             Ray ray = Manager.cam.ScreenPointToRay(Input.mousePosition);

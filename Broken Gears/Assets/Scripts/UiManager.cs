@@ -8,12 +8,16 @@ public class UiManager : MonoBehaviour {
     public List<Button> towerButtons = new List<Button>();
     public List<GameObject> sliders = new List<GameObject>();
     TowerManager towerManager;
+    Button b;
     public static MenuScript staticMenuScript;
+    public Text turretText;
+    public static Text staticTurretText;
 
     int i;
 
     private void Awake() {
         staticMenuScript = GameObject.Find("Canvas").GetComponentInChildren<MenuScript>();
+        staticTurretText = turretText;
     }
 
     private void Start() {
