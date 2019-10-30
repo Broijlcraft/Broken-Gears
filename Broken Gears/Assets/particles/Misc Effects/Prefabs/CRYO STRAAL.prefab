@@ -81,7 +81,7 @@ ParticleSystem:
   looping: 1
   prewarm: 1
   playOnAwake: 1
-  useUnscaledTime: 0
+  useUnscaledTime: 1
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
   startDelay:
@@ -147,7 +147,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.79
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -3967,8 +3967,8 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 2.73
     textureMode: 1
-    ribbonCount: 456
-    shadowBias: 11.03
+    ribbonCount: 908
+    shadowBias: 0
     worldSpace: 0
     dieWithParticles: 1
     sizeAffectsWidth: 1
@@ -3976,7 +3976,7 @@ ParticleSystem:
     inheritParticleColor: 1
     generateLightingData: 0
     splitSubEmitterRibbons: 0
-    attachRibbonsToTransform: 0
+    attachRibbonsToTransform: 1
     colorOverLifetime:
       serializedVersion: 2
       minMaxState: 0
@@ -4043,7 +4043,7 @@ ParticleSystem:
     widthOverTrail:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.82
+      scalar: 0.72
       minScalar: 1
       maxCurve:
         serializedVersion: 2
