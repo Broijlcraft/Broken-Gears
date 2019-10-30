@@ -32316,17 +32316,17 @@ PrefabInstance:
     - target: {fileID: 2583395184198733033, guid: 84fb3b6e476692d49883dd48cde123eb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.94
+      value: 9.64
       objectReference: {fileID: 0}
     - target: {fileID: 2583395184198733033, guid: 84fb3b6e476692d49883dd48cde123eb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.000049978495
+      value: 0.49
       objectReference: {fileID: 0}
     - target: {fileID: 2583395184198733033, guid: 84fb3b6e476692d49883dd48cde123eb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.9806004
+      value: 4.658
       objectReference: {fileID: 0}
     - target: {fileID: 2583395184198733033, guid: 84fb3b6e476692d49883dd48cde123eb,
         type: 3}
@@ -38375,11 +38375,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7153052268464775474, guid: 631912f7ccc58fa489c56b5d65a25dac,
-        type: 3}
-      propertyPath: m_Name
-      value: robot.001 1
-      objectReference: {fileID: 0}
     - target: {fileID: 791185493605547760, guid: 631912f7ccc58fa489c56b5d65a25dac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38434,6 +38429,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.000015258789
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153052268464775474, guid: 631912f7ccc58fa489c56b5d65a25dac,
+        type: 3}
+      propertyPath: m_Name
+      value: robot.001 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 631912f7ccc58fa489c56b5d65a25dac, type: 3}
@@ -55368,16 +55368,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7279949206752214792, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8955167097920004239, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
         type: 3}
       propertyPath: LightsModule.light
       value: 
       objectReference: {fileID: 6200974890584925038}
+    - target: {fileID: 7279949206752214792, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dbaaaf9b5ac81b478c447b819a62c15, type: 3}
 --- !u!1001 &4415258801833827115
@@ -56217,11 +56217,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6206856130452283805, guid: 96fc516ade1b3cf4fb84fbfd5ee37640,
-        type: 3}
-      propertyPath: m_Name
-      value: FIRE EFFect (HIGH)
-      objectReference: {fileID: 0}
     - target: {fileID: 6206856130452283804, guid: 96fc516ade1b3cf4fb84fbfd5ee37640,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -56276,6 +56271,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206856130452283805, guid: 96fc516ade1b3cf4fb84fbfd5ee37640,
+        type: 3}
+      propertyPath: m_Name
+      value: FIRE EFFect (HIGH)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96fc516ade1b3cf4fb84fbfd5ee37640, type: 3}

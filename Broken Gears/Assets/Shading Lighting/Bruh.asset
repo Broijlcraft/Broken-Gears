@@ -55,20 +55,20 @@ MonoBehaviour:
     m_Settings:
       reflection:
         blendType: 0
-        reflectionQuality: 2
-        maxDistance: 100
-        iterationCount: 256
-        stepSize: 3
-        widthModifier: 0.5
-        reflectionBlur: 1
+        reflectionQuality: 0
+        maxDistance: 300
+        iterationCount: 751
+        stepSize: 6
+        widthModifier: 3.2
+        reflectionBlur: 0.1
         reflectBackfaces: 0
       intensity:
-        reflectionMultiplier: 1
-        fadeDistance: 100
+        reflectionMultiplier: 1.71
+        fadeDistance: 525
         fresnelFade: 1
-        fresnelFadePower: 1
+        fresnelFadePower: 7.8
       screenEdgeMask:
-        intensity: 0.03
+        intensity: 1
   depthOfField:
     m_Enabled: 0
     m_Settings:
@@ -101,7 +101,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 0.05
+        intensity: 0.27
         threshold: 1
         softKnee: 0.5
         radius: 4
@@ -315,8 +315,8 @@ MonoBehaviour:
     m_Settings:
       colored: 1
       intensity: 0.15
-      size: 1
-      luminanceContribution: 0.8
+      size: 0.71
+      luminanceContribution: 0.65
   vignette:
     m_Enabled: 1
     m_Settings:
