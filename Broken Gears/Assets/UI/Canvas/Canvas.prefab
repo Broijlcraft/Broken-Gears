@@ -2155,7 +2155,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5901547426883502949}
         m_MethodName: MenuSwitch
         m_Mode: 5
         m_Arguments:
@@ -7574,7 +7574,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3495373, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.07753754, y: 0.0006713867}
+  m_AnchoredPosition: {x: -0.07757568, y: 0.0006713867}
   m_SizeDelta: {x: 0.15, y: -0.037000656}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4842183039974828380

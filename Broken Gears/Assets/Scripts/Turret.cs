@@ -16,7 +16,6 @@ public class Turret : MonoBehaviour {
     public float turnSpeedSave;
     public float attackSpeed;
     public int dmg;
-    public GameObject tempBullet;
     float attackDelay;
     public float range;
     float rangeSave;

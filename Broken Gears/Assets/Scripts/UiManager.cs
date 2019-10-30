@@ -14,7 +14,7 @@ public class UiManager : MonoBehaviour {
     public static Text staticTurretText;
 
     int i;
-
+    
     private void Awake() {
         staticMenuScript = GameObject.Find("Canvas").GetComponentInChildren<MenuScript>();
         staticTurretText = turretText;

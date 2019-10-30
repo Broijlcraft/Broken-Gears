@@ -417,7 +417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7703737054888434142}
   m_Layer: 0
-  m_Name: CamSLideFollow 1
+  m_Name: CamSLideFollow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

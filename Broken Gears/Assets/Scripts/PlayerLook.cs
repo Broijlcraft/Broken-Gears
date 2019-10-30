@@ -99,7 +99,6 @@ public class PlayerLook : MonoBehaviour {
             mouseY = 0f;
             ClampXAxisRotationToValue(bottomLock);
         }
-
         transform.Rotate(Vector3.left * mouseY);
     }
 

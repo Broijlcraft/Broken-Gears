@@ -322,7 +322,6 @@ MonoBehaviour:
   turnSpeedSave: 0
   attackSpeed: 3
   dmg: 30
-  tempBullet: {fileID: 0}
   range: 2.9
   rangetest: 4.3
   coll: {fileID: 0}
@@ -502,7 +501,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7502146749502917742}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: EnemyCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
