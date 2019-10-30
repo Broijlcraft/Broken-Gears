@@ -24,13 +24,13 @@ public class PlayerLook : MonoBehaviour {
 
     delegate void TowerFunctionOverload();
 
-    private void Awake() {
-        UpdateLookValue();
-        xAxisClamp = 0f;
-        VerticalCameraRotation();
-        buySellText = UiManager.staticMenuScript.buySellText.GetComponentInChildren<Text>();
-        buySellButton = UiManager.staticMenuScript.buySellText.GetComponent<Button>();
-    }
+    //private void Awake() {
+    //    UpdateLookValue();
+    //    xAxisClamp = 0f;
+    //    VerticalCameraRotation();
+    //    buySellText = UiManager.staticMenuScript.buySellText.GetComponentInChildren<Text>();
+    //    buySellButton = UiManager.staticMenuScript.buySellText.GetComponent<Button>();
+    //}
     
     private void Update() {
         RaycastHit hit;
