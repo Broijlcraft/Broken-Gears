@@ -19,6 +19,8 @@ public class PlayerLook : MonoBehaviour {
     public Color goodButtonColor;
     public Color badButtonColor;
 
+    public Vector3 testRot;
+
     Text buySellText;
     Button buySellButton;
 
@@ -27,9 +29,9 @@ public class PlayerLook : MonoBehaviour {
     private void Awake() {
         UpdateLookValue();
         xAxisClamp = 0f;
-        VerticalCameraRotation();
         buySellText = UiManager.staticMenuScript.buySellText.GetComponentInChildren<Text>();
         buySellButton = UiManager.staticMenuScript.buySellText.GetComponent<Button>();
+        transform.localRotation = Quaternion.Euler(testRot);
     }
 
     private void Update() {
@@ -58,6 +60,12 @@ public class PlayerLook : MonoBehaviour {
             }
         }
     }
+    private void LateUpdate() {
+        if (Input.GetMouseButton(2) && UiManager.staticMenuScript.menuState == MenuScript.MenuState.none) {
+            VerticalCameraRotation();
+            movement.HorizontalCameraRotation();
+        }
+    }
 
     void Dummy() {
 
@@ -78,16 +86,9 @@ public class PlayerLook : MonoBehaviour {
         buySellButton.onClick.AddListener(() => tfo());
     }
 
-    private void LateUpdate() {
-        if (Input.GetMouseButton(2) && UiManager.staticMenuScript.menuState == MenuScript.MenuState.none) {
-            VerticalCameraRotation();
-            movement.HorizontalCameraRotation();
-        }
-    }
-
     private void VerticalCameraRotation() {
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-
+        print(mouseY);
         xAxisClamp += mouseY;
 
         if (xAxisClamp > -topLock) {

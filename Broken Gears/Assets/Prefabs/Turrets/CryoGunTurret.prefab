@@ -193,9 +193,8 @@ MonoBehaviour:
   pointOfAttack: {fileID: 0}
   turnSpeed: 3
   turnSpeedSave: 0
-  attackSpeed: 0.1
+  attackSpeed: 0.2
   dmg: 1
-  tempBullet: {fileID: 0}
   range: 4
   rangetest: 0
   coll: {fileID: 0}
