@@ -186,7 +186,8 @@ MonoBehaviour:
   movement: {fileID: 322662359228849783}
   defaultTextColor: {r: 0.18823531, g: 0.36862746, b: 0.4039216, a: 1}
   goodButtonColor: {r: 0, g: 0, b: 0, a: 0}
-  badButtonColor: {r: 0, g: 0, b: 0, a: 0}
+  badButtonTextColor: {r: 0.2509804, g: 1, b: 0.2509804, a: 1}
+  badButtonColor: {r: 1, g: 0.2509804, b: 0.2509804, a: 1}
   speed: 0
   moving: 0
   updates: 150

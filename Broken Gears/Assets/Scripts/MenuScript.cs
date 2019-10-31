@@ -51,7 +51,6 @@ public class MenuScript : MonoBehaviour {
     private void Awake() {
         uiManager = GameObject.Find("Canvas").GetComponent<UiManager>();
         SetItActive(uiManager.menus[1], uiManager.menus[2]);
-        //xmlManager = GameObject.Find("GameManager").GetComponent<XmlManager>();
         if (SceneManager.GetActiveScene().name != "MainMenu") {
             cameraControl = GameObject.Find("CamControl");
             zoomAndSelectTile = cameraControl.GetComponentInChildren<ZoomScript>();
@@ -89,8 +88,6 @@ public class MenuScript : MonoBehaviour {
             SetSliderRange(sfx, maxSFX, minSFX);
             SetSliderRange(music, maxMusic, minMusic);
         }
-
-
         SetItActive(null, null);
     }
 
@@ -132,27 +129,28 @@ public class MenuScript : MonoBehaviour {
                 case 3: case 4:
                 menuState = MenuState.options;
                 SetItActive(uiManager.menus[0], uiManager.menus[(int)menuState]);
-                //xmlManager.Save();
                 break;
             }
         }
     }
     
     void SetItActive(GameObject a, GameObject b) {
-        for (int i = 0; i < uiManager.menus.Count; i++) {
-            if (uiManager.menus[i] != null) {
-                uiManager.menus[i].SetActive(false);
-            }      
-        }
+        if (uiManager.menus.Count > 0) {
+            for (int i = 0; i < uiManager.menus.Count; i++) {
+                if (uiManager.menus[i] != null) {
+                    uiManager.menus[i].SetActive(false);
+                }      
+            }
 
-        if (a != null) {
-            a.SetActive(true);
-        }
+            if (a != null) {
+                a.SetActive(true);
+            }
 
-        if (b != null) {
-            b.SetActive(true);
+            if (b != null) {
+                b.SetActive(true);
+            }
+            PauseCheck();
         }
-        PauseCheck();
     }
 
     void PauseCheck() {

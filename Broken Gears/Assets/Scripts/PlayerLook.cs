@@ -17,6 +17,7 @@ public class PlayerLook : MonoBehaviour {
     public Movement movement;
     public Color defaultTextColor;
     public Color goodButtonColor;
+    public Color badButtonTextColor;
     public Color badButtonColor;
 
     Text buySellText;
@@ -61,7 +62,7 @@ public class PlayerLook : MonoBehaviour {
                         if (TowerManager.activeScrapTower > 0) {
                             SetBuySellButton("Salvage for " + hit.transform.GetComponentInParent<SelectTowerPlacement>().salvageValue, true, () => hit.transform.GetComponentInParent<SelectTowerPlacement>().SellTower(), defaultTextColor, Color.white);
                         } else {
-                            SetBuySellButton("Salvage Furnace Required", false, Dummy, defaultTextColor, badButtonColor);
+                            SetBuySellButton("Salvage Furnace Required", false, Dummy, badButtonTextColor, badButtonColor);
                         }
                     }
                 }
@@ -93,18 +94,20 @@ public class PlayerLook : MonoBehaviour {
     }
 
     private void LateUpdate() {
-        if (Input.GetMouseButton(2) && UiManager.staticMenuScript.menuState == MenuScript.MenuState.none && moving == false && canMove == true) {
-            VerticalCameraRotation();
-            movement.HorizontalCameraRotation();
-        } else if (moving == true) {
-            if (i < updates) {
-                v = transform.localEulerAngles;
-                v.x -= amount;
-                i++;
-                transform.localRotation = Quaternion.Euler(v);
-            } else {
-                moving = false;
-                canMove = true;
+        if (UiManager.staticMenuScript.menuState == MenuScript.MenuState.none) {
+            if (Input.GetMouseButton(2) && moving == false && canMove == true) {
+                VerticalCameraRotation();
+                movement.HorizontalCameraRotation();
+            } else if (moving == true) {
+                if (i < updates) {
+                    v = transform.localEulerAngles;
+                    v.x -= amount;
+                    i++;
+                    transform.localRotation = Quaternion.Euler(v);
+                } else {
+                    moving = false;
+                    canMove = true;
+                }
             }
         }
     }
