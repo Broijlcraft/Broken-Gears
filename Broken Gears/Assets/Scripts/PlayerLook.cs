@@ -21,9 +21,18 @@ public class PlayerLook : MonoBehaviour {
 
     Text buySellText;
     Button buySellButton;
-    public Animator animator;
+
+    [Header("Animating")]
+
+    public float speed;
+    public bool moving;
+    public int updates;
+    public float amount;
+    bool canMove;
+    int i;
+    Vector3 v;
+
     delegate void TowerFunctionOverload();
-    bool animating;
 
     private void Awake() {
         UpdateLookValue();
@@ -31,14 +40,12 @@ public class PlayerLook : MonoBehaviour {
         VerticalCameraRotation();
         buySellText = UiManager.staticMenuScript.buySellText.GetComponentInChildren<Text>();
         buySellButton = UiManager.staticMenuScript.buySellText.GetComponent<Button>();
-        animator = GetComponent<Animator>();
     }
 
     private void Update() {
         RaycastHit hit;
-        //animator.
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward, Color.red * 1000);
-        if (Input.GetMouseButtonDown(1) && UiManager.staticMenuScript.menuState == MenuScript.MenuState.none && animating == false) {
+        if (Input.GetMouseButtonDown(1) && UiManager.staticMenuScript.menuState == MenuScript.MenuState.none) {
             Ray ray = Manager.cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
                 if (hit.transform.gameObject.tag == "Turret" || hit.transform.gameObject.tag == "Scrap") {
@@ -70,6 +77,10 @@ public class PlayerLook : MonoBehaviour {
         print("sell");
     }
     
+    public void StartGame() {
+
+    }
+
     void SetBuySellButton(string s, bool b, TowerFunctionOverload tfo, Color textColor, Color disabledButtonColor) {
         buySellText.text = s;
         buySellText.color = textColor;
@@ -82,9 +93,19 @@ public class PlayerLook : MonoBehaviour {
     }
 
     private void LateUpdate() {
-        if (Input.GetMouseButton(2) && UiManager.staticMenuScript.menuState == MenuScript.MenuState.none) {
+        if (Input.GetMouseButton(2) && UiManager.staticMenuScript.menuState == MenuScript.MenuState.none && moving == false && canMove == true) {
             VerticalCameraRotation();
             movement.HorizontalCameraRotation();
+        } else if (moving == true) {
+            if (i < updates) {
+                v = transform.localEulerAngles;
+                v.x -= amount;
+                i++;
+                transform.localRotation = Quaternion.Euler(v);
+            } else {
+                moving = false;
+                canMove = true;
+            }
         }
     }
 

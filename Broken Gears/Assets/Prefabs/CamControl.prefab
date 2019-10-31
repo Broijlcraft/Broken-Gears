@@ -27,10 +27,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322662359228849778}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 3, y: 15, z: 18}
+  m_LocalPosition: {x: 3.5, y: 15.67, z: 17.03}
   m_LocalScale: {x: 1.848453, y: 1.848453, z: 3.0037363}
   m_Children:
   - {fileID: 322662360019839797}
+  - {fileID: 7559740381271068269}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
@@ -91,7 +92,6 @@ GameObject:
   - component: {fileID: 322662360019839799}
   - component: {fileID: 322662360019839798}
   - component: {fileID: 3694298743301395196}
-  - component: {fileID: 97948140346081505}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -187,7 +187,10 @@ MonoBehaviour:
   defaultTextColor: {r: 0.18823531, g: 0.36862746, b: 0.4039216, a: 1}
   goodButtonColor: {r: 0, g: 0, b: 0, a: 0}
   badButtonColor: {r: 0, g: 0, b: 0, a: 0}
-  animator: {fileID: 97948140346081505}
+  speed: 0
+  moving: 0
+  updates: 150
+  amount: 0.3
 --- !u!114 &322662360019839798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,22 +223,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: ee1f5596e9f26494fb53ded82a0fae25, type: 2}
---- !u!95 &97948140346081505
-Animator:
-  serializedVersion: 3
+--- !u!1 &7301699356562957031
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 322662360019839794}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7559740381271068269}
+  m_Layer: 0
+  m_Name: Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7559740381271068269
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7301699356562957031}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 322662359228849779}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

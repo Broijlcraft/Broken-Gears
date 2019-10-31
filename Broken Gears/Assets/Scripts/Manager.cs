@@ -28,6 +28,8 @@ public class Manager : MonoBehaviour {
             staticMonitor = monitor;
             healthSlider = healthFab;
             devText = canvas.Find("DevText").GetComponentInChildren<Text>();
+            devMode = true;
+            ChangeMode();
         }
     }
 

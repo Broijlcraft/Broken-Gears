@@ -13,10 +13,12 @@ public class UiManager : MonoBehaviour {
     public static MenuScript staticMenuScript;
     public Text turretText;
     public static Text staticTurretText;
+    public GameObject fadePic;
 
     int i;
     
     private void Awake() {
+        fadePic.SetActive(true);
         staticMenuScript = GameObject.Find("Canvas").GetComponentInChildren<MenuScript>();
         staticTurretText = turretText;
     }
