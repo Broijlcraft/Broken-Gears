@@ -19,25 +19,26 @@ public class PlayerLook : MonoBehaviour {
     public Color goodButtonColor;
     public Color badButtonColor;
 
-    public Vector3 testRot;
-
     Text buySellText;
     Button buySellButton;
-
+    public Animator animator;
     delegate void TowerFunctionOverload();
+    bool animating;
 
     private void Awake() {
         UpdateLookValue();
         xAxisClamp = 0f;
+        VerticalCameraRotation();
         buySellText = UiManager.staticMenuScript.buySellText.GetComponentInChildren<Text>();
         buySellButton = UiManager.staticMenuScript.buySellText.GetComponent<Button>();
-        transform.localRotation = Quaternion.Euler(testRot);
+        animator = GetComponent<Animator>();
     }
 
     private void Update() {
         RaycastHit hit;
+        //animator.
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward, Color.red * 1000);
-        if (Input.GetMouseButtonDown(1) && UiManager.staticMenuScript.menuState == MenuScript.MenuState.none) {
+        if (Input.GetMouseButtonDown(1) && UiManager.staticMenuScript.menuState == MenuScript.MenuState.none && animating == false) {
             Ray ray = Manager.cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
                 if (hit.transform.gameObject.tag == "Turret" || hit.transform.gameObject.tag == "Scrap") {
@@ -60,12 +61,6 @@ public class PlayerLook : MonoBehaviour {
             }
         }
     }
-    private void LateUpdate() {
-        if (Input.GetMouseButton(2) && UiManager.staticMenuScript.menuState == MenuScript.MenuState.none) {
-            VerticalCameraRotation();
-            movement.HorizontalCameraRotation();
-        }
-    }
 
     void Dummy() {
 
@@ -86,9 +81,16 @@ public class PlayerLook : MonoBehaviour {
         buySellButton.onClick.AddListener(() => tfo());
     }
 
+    private void LateUpdate() {
+        if (Input.GetMouseButton(2) && UiManager.staticMenuScript.menuState == MenuScript.MenuState.none) {
+            VerticalCameraRotation();
+            movement.HorizontalCameraRotation();
+        }
+    }
+
     private void VerticalCameraRotation() {
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-        print(mouseY);
+
         xAxisClamp += mouseY;
 
         if (xAxisClamp > -topLock) {
