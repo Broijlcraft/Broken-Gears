@@ -9,7 +9,7 @@ public class WaveSpawner : MonoBehaviour {
     public float waveDelay;
     public float bwaveDelay;
     public bool canSpawn;
-    bool changingWave;
+    public bool changingWave;
     public List<Wave> waves = new List<Wave>();
     public int enemyToGet;
     public int waveToGet;

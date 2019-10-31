@@ -28,7 +28,7 @@ public class ZoomScript : MonoBehaviour {
     }
 
     private void Update() {
-        if (Time.timeScale != 0 && UiManager.staticMenuScript.menuState == MenuScript.MenuState.none) {
+        if (Time.timeScale != 0 && UiManager.staticMenuScript.menuState == MenuScript.MenuState.none && PlayerLook.canMove == true) {
             if (Input.GetAxis("Mouse ScrollWheel") > 0) {
                 if (zoom > maxZoomIn) {
                     zoom -= zoomIncrease;

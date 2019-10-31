@@ -91,6 +91,10 @@ public class MenuScript : MonoBehaviour {
         }
     }
 
+    private void Start() {
+        StartCam();
+    }
+
     private void Update() {
         if (Input.GetButtonDown("Cancel") && SceneManager.GetActiveScene().name != "MainMenu") {
             int ib = (int)menuState;
@@ -109,6 +113,15 @@ public class MenuScript : MonoBehaviour {
                 break;
             }
         }
+    }
+
+    public void StartCam() {
+        InvokeRepeating("Move", playerLook.initialMoveDelay, 0);
+    }
+
+    void Move() {
+        playerLook.moving = true;
+        print("Move");
     }
 
     public void MenuSwitch(string s) {

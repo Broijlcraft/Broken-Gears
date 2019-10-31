@@ -30,6 +30,7 @@ public class PlayerLook : MonoBehaviour {
     public int updates;
     public float amount;
     public static bool canMove;
+    public float initialMoveDelay;
     int i;
     Vector3 v;
 
