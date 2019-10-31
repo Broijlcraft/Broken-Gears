@@ -11,10 +11,8 @@ public class MobileUiParts : MonoBehaviour {
 
     private void Update() {
         transform.LookAt(Camera.main.transform);
-        if (stay == true) {
-            if (parent != null) {
+        if (parent != null) {
                 transform.position = parent.position + offSet;
-            }
         } else {
             Destroy(gameObject, destroyDelay);
         }

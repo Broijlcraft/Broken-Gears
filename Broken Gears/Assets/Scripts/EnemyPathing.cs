@@ -48,8 +48,7 @@ public class EnemyPathing : MonoBehaviour {
             targetPoint = Waypoints.waypoint[targetValue];
             targetValue++;
         } else {
-            speed = 0;
-            rotationSpeed = 0;
+            Destroy(gameObject);
         }
     }
 }

@@ -32,7 +32,7 @@ public class TowerManager : MonoBehaviour {
 
     public void SelectTower(GameObject tower) {
         if (UiManager.staticMenuScript.menuState == MenuScript.MenuState.none) {
-            if (tower.GetComponent<SelectTowerPlacement>().scrapCost <= ScrapEconomy.currentScrap || Manager.devMode == false) {
+            if (tower.GetComponent<SelectTowerPlacement>().scrapCost <= ScrapEconomy.currentScrap || Manager.devMode == true) {
                 if (selectedTower != null) {
                     Destroy(selectedTower);
                 }

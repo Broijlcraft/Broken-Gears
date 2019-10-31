@@ -40,10 +40,10 @@ public class Manager : MonoBehaviour {
     public void ChangeMode() {
         if (devMode == true) {
             devMode = false;
-            devText.text = ("DevMode");
+            devText.text = ("");
         } else {
             devMode = true;
-            devText.text = ("");
+            devText.text = ("DevMode");
         }
     }
 }
