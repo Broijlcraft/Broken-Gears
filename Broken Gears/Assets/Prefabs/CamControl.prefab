@@ -31,7 +31,6 @@ Transform:
   m_LocalScale: {x: 1.848453, y: 1.848453, z: 3.0037363}
   m_Children:
   - {fileID: 322662360019839797}
-  - {fileID: 7559740381271068269}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
@@ -185,8 +184,8 @@ MonoBehaviour:
     m_Bits: 4096
   movement: {fileID: 322662359228849783}
   defaultTextColor: {r: 0.18823531, g: 0.36862746, b: 0.4039216, a: 1}
-  goodButtonColor: {r: 0, g: 0, b: 0, a: 0}
-  badButtonTextColor: {r: 0.2509804, g: 1, b: 0.2509804, a: 1}
+  goodButtonColor: {r: 0.2509804, g: 1, b: 0.2509804, a: 1}
+  badButtonTextColor: {r: 0.3177287, g: 0.588527, b: 0.6415094, a: 1}
   badButtonColor: {r: 1, g: 0.2509804, b: 0.2509804, a: 1}
   speed: 0
   moving: 0
@@ -224,33 +223,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: ee1f5596e9f26494fb53ded82a0fae25, type: 2}
---- !u!1 &7301699356562957031
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7559740381271068269}
-  m_Layer: 0
-  m_Name: Target
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7559740381271068269
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7301699356562957031}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 322662359228849779}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

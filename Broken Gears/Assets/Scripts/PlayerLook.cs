@@ -29,7 +29,7 @@ public class PlayerLook : MonoBehaviour {
     public bool moving;
     public int updates;
     public float amount;
-    bool canMove;
+    public static bool canMove;
     int i;
     Vector3 v;
 
@@ -39,6 +39,9 @@ public class PlayerLook : MonoBehaviour {
         UpdateLookValue();
         xAxisClamp = 0f;
         VerticalCameraRotation();
+    }
+
+    private void Start() {
         buySellText = UiManager.staticMenuScript.buySellText.GetComponentInChildren<Text>();
         buySellButton = UiManager.staticMenuScript.buySellText.GetComponent<Button>();
     }

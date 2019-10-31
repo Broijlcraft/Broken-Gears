@@ -50,8 +50,8 @@ public class MenuScript : MonoBehaviour {
 
     private void Awake() {
         uiManager = GameObject.Find("Canvas").GetComponent<UiManager>();
-        SetItActive(uiManager.menus[1], uiManager.menus[2]);
         if (SceneManager.GetActiveScene().name != "MainMenu") {
+            SetItActive(uiManager.menus[1], uiManager.menus[2]);
             cameraControl = GameObject.Find("CamControl");
             zoomAndSelectTile = cameraControl.GetComponentInChildren<ZoomScript>();
             playerLook = cameraControl.GetComponentInChildren<PlayerLook>();
@@ -87,8 +87,28 @@ public class MenuScript : MonoBehaviour {
             SetSliderRange(volume, maxVolume, minVolume);
             SetSliderRange(sfx, maxSFX, minSFX);
             SetSliderRange(music, maxMusic, minMusic);
+            SetItActive(null, null);
         }
-        SetItActive(null, null);
+    }
+
+    private void Update() {
+        if (Input.GetButtonDown("Cancel") && SceneManager.GetActiveScene().name != "MainMenu") {
+            int ib = (int)menuState;
+            switch (ib) {
+                case 1: case 5:
+                menuState = MenuState.none;
+                SetItActive(null, null);
+                break;
+                case 0: case 2:
+                menuState = MenuState.mainMenu;
+                SetItActive(uiManager.menus[0], uiManager.menus[(int)menuState]);
+                break;
+                case 3: case 4:
+                menuState = MenuState.options;
+                SetItActive(uiManager.menus[0], uiManager.menus[(int)menuState]);
+                break;
+            }
+        }
     }
 
     public void MenuSwitch(string s) {
@@ -111,26 +131,6 @@ public class MenuScript : MonoBehaviour {
             case MenuState.towerInteraction:
             SetItActive(uiManager.menus[(int)menuState], null);
             break;
-        }
-    }
-
-    private void Update() {
-        if (Input.GetButtonDown("Cancel")) {
-            int ib = (int)menuState;
-            switch (ib) {
-                case 1: case 5:
-                menuState = MenuState.none;
-                SetItActive(null, null);
-                break;
-                case 0: case 2:
-                menuState = MenuState.mainMenu;
-                SetItActive(uiManager.menus[0], uiManager.menus[(int)menuState]);
-                break;
-                case 3: case 4:
-                menuState = MenuState.options;
-                SetItActive(uiManager.menus[0], uiManager.menus[(int)menuState]);
-                break;
-            }
         }
     }
     
@@ -171,15 +171,14 @@ public class MenuScript : MonoBehaviour {
     public void ChangeScene(string sceneName) {
         //start animation
         sceny = sceneName;
-        InvokeRepeating("StartScene", 0.1f, 0);
+        Time.timeScale = 1;
+        uiManager.fadePic.GetComponent<Animator>().SetTrigger("FadeOut");
+        InvokeRepeating("StartScene", 1, 0);
     }
 
     void StartScene() {
         SceneManager.LoadScene(sceny);
-    }
-
-    public void BackToMenu() {
-
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceny));
     }
 
     public void QuitGame() {

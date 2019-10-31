@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour {
     Vector3 hor;
 
     private void FixedUpdate() {
-        if (UiManager.staticMenuScript.menuState == MenuScript.MenuState.none) {
+        if (UiManager.staticMenuScript.menuState == MenuScript.MenuState.none && PlayerLook.canMove == true) {
             v.x = Input.GetAxis("Horizontal");
             v.z = Input.GetAxis("Vertical");
             if (Input.GetButton("Slow")) {

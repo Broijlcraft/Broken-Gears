@@ -12,7 +12,9 @@ public class UiManager : MonoBehaviour {
     Button b;
     public static MenuScript staticMenuScript;
     public Text turretText;
+    public Text turretValueText;
     public static Text staticTurretText;
+    public static Text staticTurretValueText;
     public GameObject fadePic;
 
     int i;
@@ -21,6 +23,7 @@ public class UiManager : MonoBehaviour {
         fadePic.SetActive(true);
         staticMenuScript = GameObject.Find("Canvas").GetComponentInChildren<MenuScript>();
         staticTurretText = turretText;
+        staticTurretValueText = turretValueText;
     }
 
     private void Start() {
