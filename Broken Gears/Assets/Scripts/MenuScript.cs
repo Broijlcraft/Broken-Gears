@@ -29,6 +29,8 @@ public class MenuScript : MonoBehaviour {
 
     GameObject cameraControl;
 
+    AudioSource audio;
+
     UiManager uiManager;
     Movement movement;
     ZoomScript zoomAndSelectTile;
@@ -61,6 +63,8 @@ public class MenuScript : MonoBehaviour {
             zoomAndSelectTile = cameraControl.GetComponentInChildren<ZoomScript>();
             playerLook = cameraControl.GetComponentInChildren<PlayerLook>();
             movement = cameraControl.GetComponent<Movement>();
+            industrialLight = GameObject.Find("FactoryLight");
+            audio = industrialLight.GetComponent<AudioSource>();
 
             for (int i = 0; i < uiManager.sliders.Count; i++) {
                 if (uiManager.sliders[i].name == "CamSense") {
@@ -94,18 +98,17 @@ public class MenuScript : MonoBehaviour {
             SetSliderRange(music, maxMusic, minMusic);
             SetItActive(null, null);
         }
-        industrialLight = GameObject.Find("FactoryLight");
     }
 
     private void Update() {
         if (alarm == true) {
-            if (alarmTime < industrialLight.GetComponent<AudioSource>().clip.length) {
+            if (alarmTime < audio.clip.length) {
                 alarmTime += Time.deltaTime;
             } else {
                 alarmTime = 0;
                 alarmAmount++;
                 if (alarmAmount == maxAlarmAmount) {
-                    industrialLight.GetComponent<AudioSource>().Stop();
+                    audio.Stop();
                     alarm = false;
                 }
             }
@@ -131,7 +134,7 @@ public class MenuScript : MonoBehaviour {
 
     public void StartCam() {
         industrialLight.GetComponentInChildren<Animator>().SetBool("Flashing", true);
-        industrialLight.GetComponent<AudioSource>().Play();
+        audio.Play();
         alarm = true;
         InvokeRepeating("Move", playerLook.initialMoveDelay, 0);
     }

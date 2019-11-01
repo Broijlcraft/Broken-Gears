@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bought: 0
   price: 30
-  v: {x: 0.096, y: 0.096, z: 0.096, w: 255}
+  v: {x: 0.255, y: 0.255, z: 0.255, w: 0.255}
   matRenderer: {fileID: 225825682741846493}
   vfx: {fileID: 225825683488143687}
 --- !u!1001 &225825683102306639
