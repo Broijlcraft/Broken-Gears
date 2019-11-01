@@ -34,6 +34,7 @@ public class MenuScript : MonoBehaviour {
     ZoomScript zoomAndSelectTile;
     PlayerLook playerLook;
     //XmlManager xmlManager;
+    GameObject industrialLight;
 
     string sceny;
 
@@ -89,6 +90,7 @@ public class MenuScript : MonoBehaviour {
             SetSliderRange(music, maxMusic, minMusic);
             SetItActive(null, null);
         }
+        industrialLight = GameObject.Find("FactoryLight");
     }
 
     private void Update() {
@@ -112,6 +114,7 @@ public class MenuScript : MonoBehaviour {
     }
 
     public void StartCam() {
+        industrialLight.GetComponentInChildren<Animator>().SetBool("Flashing", true);
         InvokeRepeating("Move", playerLook.initialMoveDelay, 0);
     }
 

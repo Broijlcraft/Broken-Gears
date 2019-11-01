@@ -14,7 +14,7 @@ public class WaveSpawner : MonoBehaviour {
     public int enemyToGet;
     public int waveToGet;
     private void Update() {
-        if (canSpawn == true && changingWave == false) {
+        if (PlayerLook.canMove == true && canSpawn == true && changingWave == false) {
             if (bspawnDelay < spawnDelay) {
                 bspawnDelay += Time.deltaTime;
             } else {
@@ -39,16 +39,6 @@ public class WaveSpawner : MonoBehaviour {
                 NextWave();
             }
         }
-        //if (waveToGet < waves.Count && waves.Count > 0) {
-        //    if (waves[waveToGet].enemies.Count > 0) {
-        //        if (enemyToGet < waves[waveToGet].enemies.Count) {
-        //            Instantiate(waves[waveToGet].enemies[enemyToGet], transform.position, Quaternion.identity);
-        //            enemyToGet++;
-        //        } else {
-        //            NextWave();
-        //        }
-        //    }
-        //}
     }
 
     void StartWave() {

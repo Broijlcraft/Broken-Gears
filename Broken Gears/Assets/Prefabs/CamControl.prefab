@@ -191,6 +191,7 @@ MonoBehaviour:
   moving: 0
   updates: 150
   amount: 0.3
+  initialMoveDelay: 5
 --- !u!114 &322662360019839798
 MonoBehaviour:
   m_ObjectHideFlags: 0
