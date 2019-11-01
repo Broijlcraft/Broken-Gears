@@ -52,6 +52,7 @@ public class Turret : MonoBehaviour {
     public int rangeDividerRotation;
     public bool isSaw;
     public bool isCryo;
+    public bool isRivet;
     public float cryoSlow;
 
     [Header("StompAttack")]
@@ -69,9 +70,11 @@ public class Turret : MonoBehaviour {
     }
 
     private void Update() { 
-        if (armTarget == null || armTarget == defaultArmTarget) {
-            for (int i = 0; i < weaponParticle.Length; i++) {
-                weaponParticle[i].Stop();
+        if (isCryo == true) {
+            if (armTarget == null || armTarget == defaultArmTarget) {
+                for (int i = 0; i < weaponParticle.Length; i++) {
+                    weaponParticle[i].Stop();
+                }
             }
         }
         if (TowerManager.selectedTower != gameObject) {
@@ -121,6 +124,9 @@ public class Turret : MonoBehaviour {
                     Instantiate(attackSound, pointOfAttack.transform.position, Quaternion.identity);
                 }
             }
+            if (isRivet == true) {
+                Instantiate(weaponParticle[0].transform.gameObject, pointOfAttack.transform.position, pointOfAttack.transform.rotation);
+            }
         }
         range = rangeSave;
     }
@@ -131,11 +137,6 @@ public class Turret : MonoBehaviour {
     }
 
     void UpdateTarget() {
-        RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(enemyCheck.position, enemyCheck.forward, out hit, range)) {
-            //print(hit.transform.name);
-        }
-
         GameObject[] targets = GameObject.FindGameObjectsWithTag("EnemyTarget");
 
         for (int i = 0; i < targets.Length; i++) {

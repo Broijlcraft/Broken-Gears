@@ -8,6 +8,7 @@ public class Health : MonoBehaviour {
     public float maxHealth;
     [HideInInspector] public float currentHealth;
     public int scrapAdd;
+    public GameObject targetInemy;
 
     GameObject g;
     GameObject gA;
@@ -27,11 +28,17 @@ public class Health : MonoBehaviour {
 
     public void Damage(int dmg) {
         currentHealth -= dmg;
-        g.transform.Find("Fill").GetComponent<Image>().fillAmount = currentHealth / maxHealth;
+        if (g != null) {
+            g.transform.Find("Fill").GetComponent<Image>().fillAmount = currentHealth / maxHealth;
+        }
         if (currentHealth <= 0) {
             currentHealth = 0;
             Death();
         }
+    }
+
+    void ValueChange() {
+
     }
 
     public void Death() {
@@ -40,13 +47,16 @@ public class Health : MonoBehaviour {
         gA.transform.GetComponent<MobileUiParts>().parent = transform;
         gA.transform.SetParent(Manager.scrapCanvas);
         int value;
-        if (TowerManager.activeScrapTower == 0) {
-            value = scrapAdd;
-            value += TowerManager.activeScrapTower;
-            gA.transform.GetComponentInChildren<Text>().text = "+ " + value;
-            ScrapEconomy.AddScrap(value);
-        }
+        value = scrapAdd;
+        value += TowerManager.activeScrapTower;
+        gA.transform.GetComponentInChildren<Text>().text = "+ " + value;
+        ScrapEconomy.AddScrap(value);
+        GetComponent<EnemyPathing>().speed = 0;
+        GetComponentInChildren<Animator>().SetBool("Death", true);
+        GetComponent<EnemyPathing>().enemyChild.transform.SetParent(null);
         Destroy(g);
+        Destroy(targetInemy);
+        Destroy(GetComponent<EnemyPathing>().enemyChild, 3f);
         Destroy(gameObject);
     }
 }

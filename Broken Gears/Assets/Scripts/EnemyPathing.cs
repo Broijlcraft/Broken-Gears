@@ -10,7 +10,7 @@ public class EnemyPathing : MonoBehaviour {
     [HideInInspector] public float speedSave;
     public float rotationSpeed;
     int targetValue = 0;
-    public float maxDistance;
+    public float maxDistance = 0.1f;
     public GameObject enemyChild;
 
     private void Start() {
