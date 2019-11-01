@@ -13,7 +13,15 @@ public class WaveSpawner : MonoBehaviour {
     public List<Wave> waves = new List<Wave>();
     public int enemyToGet;
     public int waveToGet;
-    
+    public bool staticTutorial;
+    public static bool tutorial;
+
+    public static List<GameObject> onTheField = new List<GameObject>();
+
+    private void Start() {
+        tutorial = staticTutorial;
+    }
+
     private void Update() {
         if (PlayerLook.canMove == true && canSpawn == true && changingWave == false) {
             if (bspawnDelay < spawnDelay) {
@@ -34,13 +42,14 @@ public class WaveSpawner : MonoBehaviour {
     public void SpawnEnemy() {
         if (waveToGet < waves.Count && waves.Count > 0 && waves[waveToGet].enemies.Count > 0 && PlayerLook.canMove == true) {
             if (enemyToGet < waves[waveToGet].enemies.Count) {
-                Instantiate(waves[waveToGet].enemies[enemyToGet], transform.position, Quaternion.identity);
+                GameObject g = Instantiate(waves[waveToGet].enemies[enemyToGet], transform.position, Quaternion.identity);
+                onTheField.Add(g);
                 enemyToGet++;
             } else {
                 NextWave();
             }
-        } else if (waveToGet >= waves.Count) {
-            if (Waves.tutorial == true) {
+        } else if (waveToGet >= waves.Count && onTheField.Count == 0) {
+            if (tutorial == true) {
                 Manager.uiManager.winTutScreen.SetActive(true);
             } else {
                 Manager.uiManager.winGameScreen.SetActive(true);

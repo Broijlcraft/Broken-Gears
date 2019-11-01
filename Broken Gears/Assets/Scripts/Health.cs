@@ -37,12 +37,10 @@ public class Health : MonoBehaviour {
         }
     }
 
-    void ValueChange() {
-
-    }
-
     public void Death() {
-        //death animation
+        if (WaveSpawner.onTheField.Contains(gameObject)) {
+            WaveSpawner.onTheField.Remove(gameObject);
+        }
         gA = Instantiate(Manager.scrapEconomy.scrapFab, transform.position + Manager.scrapEconomy.scrapFab.GetComponent<MobileUiParts>().offSet, Quaternion.identity);
         gA.transform.GetComponent<MobileUiParts>().parent = transform;
         gA.transform.SetParent(Manager.scrapCanvas);
