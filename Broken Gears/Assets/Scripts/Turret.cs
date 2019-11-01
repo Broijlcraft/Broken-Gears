@@ -8,7 +8,7 @@ public class Turret : MonoBehaviour {
 
     public string turretName;
     public GameObject turretImg;
-    public ParticleSystem weaponParticle;
+    public ParticleSystem[] weaponParticle;
     public GameObject impactParticle;
     public GameObject attackSound;
     public GameObject pointOfAttack;
@@ -68,7 +68,12 @@ public class Turret : MonoBehaviour {
         InvokeRepeating("UpdateTarget", 0f, 0.1f);
     }
 
-    private void Update() {
+    private void Update() { 
+        if (armTarget == null || armTarget == defaultArmTarget) {
+            for (int i = 0; i < weaponParticle.Length; i++) {
+                weaponParticle[i].Stop();
+            }
+        }
         if (TowerManager.selectedTower != gameObject) {
             selected = false;
             enemyCheck.LookAt(armTarget);
@@ -105,6 +110,11 @@ public class Turret : MonoBehaviour {
             armTarget.GetComponentInParent<Health>().Damage(dmg);
             if (isCryo == true) {
                 armTarget.GetComponentInParent<EnemyPathing>().speed = armTarget.GetComponentInParent<EnemyPathing>().speedSave / cryoSlow;
+                for (int i = 0; i < weaponParticle.Length; i++) {
+                    if (weaponParticle[i].isPaused || weaponParticle[i].isStopped) {
+                        weaponParticle[i].Play();
+                    }
+                }
             }
             if (isSaw == true) {
                 if (attackSound != null) {
