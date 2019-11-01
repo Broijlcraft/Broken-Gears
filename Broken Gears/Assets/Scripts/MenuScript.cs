@@ -35,7 +35,6 @@ public class MenuScript : MonoBehaviour {
     Movement movement;
     ZoomScript zoomAndSelectTile;
     PlayerLook playerLook;
-    //XmlManager xmlManager;
     GameObject industrialLight;
     bool alarm;
     float alarmTime;

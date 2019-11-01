@@ -25,6 +25,8 @@ public class UiManager : MonoBehaviour {
     public static int currentEscaped;
     public List<Image> workerPic = new List<Image>();
     public GameObject gameOverScreen;
+    public GameObject winGameScreen;
+    public GameObject winTutScreen;
     public static bool gameOver;
 
     int i;

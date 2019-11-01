@@ -7828,6 +7828,8 @@ MonoBehaviour:
   - {fileID: 8360796052778529425}
   - {fileID: 5554043128177863376}
   gameOverScreen: {fileID: 1001940351887097745}
+  winGameScreen: {fileID: 6773812674014813003}
+  winTutScreen: {fileID: 1471143507708278826}
 --- !u!1 &5901547425308110424
 GameObject:
   m_ObjectHideFlags: 0
@@ -9961,6 +9963,7 @@ MonoBehaviour:
   maxMusic: 1
   minMusic: 0
   buySellText: {fileID: 6056396001905014525}
+  audio: {fileID: 0}
   maxAlarmAmount: 4
   menuState: 0
 --- !u!114 &5901547426883502955

@@ -19,10 +19,12 @@ public class Waves : MonoBehaviour {
     public bool startCountDown;
 
     public bool endless;
-    public bool tutorial;
+    public bool staticTutorial;
+    public static bool tutorial;
 
     private void Start() {
         SpawnEnemy();
+        tutorial = staticTutorial;
     }
 
     private void Update() {

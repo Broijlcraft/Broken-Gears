@@ -13,6 +13,7 @@ public class WaveSpawner : MonoBehaviour {
     public List<Wave> waves = new List<Wave>();
     public int enemyToGet;
     public int waveToGet;
+    
     private void Update() {
         if (PlayerLook.canMove == true && canSpawn == true && changingWave == false) {
             if (bspawnDelay < spawnDelay) {
@@ -37,6 +38,12 @@ public class WaveSpawner : MonoBehaviour {
                 enemyToGet++;
             } else {
                 NextWave();
+            }
+        } else if (waveToGet >= waves.Count) {
+            if (Waves.tutorial == true) {
+                Manager.uiManager.winTutScreen.SetActive(true);
+            } else {
+                Manager.uiManager.winGameScreen.SetActive(true);
             }
         }
     }
