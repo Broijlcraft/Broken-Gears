@@ -31,16 +31,24 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     public void SpawnEnemy() {
-        if (waveToGet < waves.Count && waves.Count > 0) {
-            if (waves[waveToGet].enemies.Count > 0) {
-                if (enemyToGet < waves[waveToGet].enemies.Count) {
-                    Instantiate(waves[waveToGet].enemies[enemyToGet], transform.position, Quaternion.identity);
-                    enemyToGet++;
-                } else {
-                    NextWave();
-                }
+        if (waveToGet < waves.Count && waves.Count > 0 && waves[waveToGet].enemies.Count > 0 && PlayerLook.canMove == true) {
+            if (enemyToGet < waves[waveToGet].enemies.Count) {
+                Instantiate(waves[waveToGet].enemies[enemyToGet], transform.position, Quaternion.identity);
+                enemyToGet++;
+            } else {
+                NextWave();
             }
         }
+        //if (waveToGet < waves.Count && waves.Count > 0) {
+        //    if (waves[waveToGet].enemies.Count > 0) {
+        //        if (enemyToGet < waves[waveToGet].enemies.Count) {
+        //            Instantiate(waves[waveToGet].enemies[enemyToGet], transform.position, Quaternion.identity);
+        //            enemyToGet++;
+        //        } else {
+        //            NextWave();
+        //        }
+        //    }
+        //}
     }
 
     void StartWave() {

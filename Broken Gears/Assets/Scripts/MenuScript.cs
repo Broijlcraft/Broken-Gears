@@ -91,10 +91,6 @@ public class MenuScript : MonoBehaviour {
         }
     }
 
-    private void Start() {
-        StartCam();
-    }
-
     private void Update() {
         if (Input.GetButtonDown("Cancel") && SceneManager.GetActiveScene().name != "MainMenu") {
             int ib = (int)menuState;

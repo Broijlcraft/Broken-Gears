@@ -16,6 +16,8 @@ public class UiManager : MonoBehaviour {
     public static Text staticTurretText;
     public static Text staticTurretValueText;
     public GameObject fadePic;
+    public List<GameObject> disableButtons = new List<GameObject>();
+    public static List<GameObject> staticdisableButtonsHolder = new List<GameObject>();
 
     int i;
     
@@ -24,6 +26,7 @@ public class UiManager : MonoBehaviour {
         staticMenuScript = GameObject.Find("Canvas").GetComponentInChildren<MenuScript>();
         staticTurretText = turretText;
         staticTurretValueText = turretValueText;
+        staticdisableButtonsHolder = disableButtons;
     }
 
     private void Start() {
@@ -34,5 +37,13 @@ public class UiManager : MonoBehaviour {
                 towerButtons[ib].onClick.AddListener(() => towerManager.SelectTower(towerManager.towerList[ib]));
             }
         }
+        TurnOnOff(false);
     }
+
+    public void TurnOnOff(bool b) {
+        for (int i = 0; i < staticdisableButtonsHolder.Count; i++) {
+            staticdisableButtonsHolder[i].SetActive(b);
+        }
+    }
+
 }

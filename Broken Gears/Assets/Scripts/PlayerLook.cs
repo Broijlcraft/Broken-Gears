@@ -20,6 +20,7 @@ public class PlayerLook : MonoBehaviour {
     public Color badButtonTextColor;
     public Color badButtonColor;
 
+    UiManager uiManager;
     Text buySellText;
     Button buySellButton;
 
@@ -45,6 +46,7 @@ public class PlayerLook : MonoBehaviour {
     private void Start() {
         buySellText = UiManager.staticMenuScript.buySellText.GetComponentInChildren<Text>();
         buySellButton = UiManager.staticMenuScript.buySellText.GetComponent<Button>();
+        uiManager = GameObject.Find("Canvas").GetComponentInChildren<UiManager>();
     }
 
     private void Update() {
@@ -111,6 +113,7 @@ public class PlayerLook : MonoBehaviour {
                 } else {
                     moving = false;
                     canMove = true;
+                    uiManager.TurnOnOff(true);
                 }
             }
         }
