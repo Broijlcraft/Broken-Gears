@@ -20,7 +20,7 @@ public class SelectTowerPlacement : MonoBehaviour {
     }
 
     private void Update() {
-        if (TowerManager.selectedTower == gameObject && Time.timeScale != 0) {
+        if (TowerManager.selectedTower == gameObject && Time.timeScale != 0 && UiManager.gameOver == false) {
             Ray ray = Manager.cam.ScreenPointToRay(Input.mousePosition);
             if (Input.GetMouseButtonDown(1)) {
                 TowerManager.selectedTower = null;

@@ -16,12 +16,14 @@ public class Manager : MonoBehaviour {
     public static GameObject healthSlider;
     public static Camera cam;
     public static bool devMode;
+    public static UiManager uiManager;
     public Text devText;
 
     private void Awake() {
         cam = Camera.main;
         canvas = GameObject.Find("Canvas").transform;
         if (SceneManager.GetActiveScene().name != "MainMenu") {
+            uiManager = GetComponentInParent<UiManager>();
             healthCanvas = GameObject.Find("HealthCanvas").transform;
             scrapCanvas = GameObject.Find("ScrapCanvas").transform;
             scrapEconomy = GetComponent<ScrapEconomy>();

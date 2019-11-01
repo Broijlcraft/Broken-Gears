@@ -35,6 +35,10 @@ public class MenuScript : MonoBehaviour {
     PlayerLook playerLook;
     //XmlManager xmlManager;
     GameObject industrialLight;
+    bool alarm;
+    float alarmTime;
+    int alarmAmount;
+    public int maxAlarmAmount;
 
     string sceny;
 
@@ -94,7 +98,19 @@ public class MenuScript : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetButtonDown("Cancel") && SceneManager.GetActiveScene().name != "MainMenu") {
+        if (alarm == true) {
+            if (alarmTime < industrialLight.GetComponent<AudioSource>().clip.length) {
+                alarmTime += Time.deltaTime;
+            } else {
+                alarmTime = 0;
+                alarmAmount++;
+                if (alarmAmount == maxAlarmAmount) {
+                    industrialLight.GetComponent<AudioSource>().Stop();
+                    alarm = false;
+                }
+            }
+        }
+        if (Input.GetButtonDown("Cancel") && SceneManager.GetActiveScene().name != "MainMenu" && UiManager.gameOver == false) {
             int ib = (int)menuState;
             switch (ib) {
                 case 1: case 5:
@@ -115,6 +131,8 @@ public class MenuScript : MonoBehaviour {
 
     public void StartCam() {
         industrialLight.GetComponentInChildren<Animator>().SetBool("Flashing", true);
+        industrialLight.GetComponent<AudioSource>().Play();
+        alarm = true;
         InvokeRepeating("Move", playerLook.initialMoveDelay, 0);
     }
 
@@ -181,7 +199,6 @@ public class MenuScript : MonoBehaviour {
     }
 
     public void ChangeScene(string sceneName) {
-        //start animation
         sceny = sceneName;
         Time.timeScale = 1;
         uiManager.fadePic.GetComponent<Animator>().SetTrigger("FadeOut");
@@ -194,7 +211,6 @@ public class MenuScript : MonoBehaviour {
     }
 
     public void QuitGame() {
-        //xmlManager.Save();
         Application.Quit();
     }
 

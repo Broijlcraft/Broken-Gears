@@ -48,6 +48,7 @@ public class EnemyPathing : MonoBehaviour {
             targetPoint = Waypoints.waypoint[targetValue];
             targetValue++;
         } else {
+            Manager.uiManager.IncreaseEscaped(1);
             Destroy(gameObject);
         }
     }

@@ -19,6 +19,14 @@ public class UiManager : MonoBehaviour {
     public List<GameObject> disableButtons = new List<GameObject>();
     public static List<GameObject> staticdisableButtonsHolder = new List<GameObject>();
 
+    [Header("Escaped")]
+
+    public int maxEscaped;
+    public static int currentEscaped;
+    public List<Image> workerPic = new List<Image>();
+    public GameObject gameOverScreen;
+    public static bool gameOver;
+
     int i;
     
     private void Awake() {
@@ -40,10 +48,24 @@ public class UiManager : MonoBehaviour {
         TurnOnOff(false);
     }
 
+    public void IncreaseEscaped(int i) {
+        currentEscaped += i;
+        if (currentEscaped < 6) {
+            workerPic[workerPic.Count - currentEscaped].color = Color.red;
+            if (currentEscaped == 5) {
+                GameOver();
+            }
+        }
+    }
+
+    public void GameOver() {
+        Time.timeScale = 0;
+        gameOver = true;
+    }
+
     public void TurnOnOff(bool b) {
         for (int i = 0; i < staticdisableButtonsHolder.Count; i++) {
             staticdisableButtonsHolder[i].SetActive(b);
         }
     }
-
 }
