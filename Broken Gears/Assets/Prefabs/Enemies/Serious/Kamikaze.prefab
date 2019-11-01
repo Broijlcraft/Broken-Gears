@@ -163,9 +163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080efe5895c97174d93cf90d21095a2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 30
   currentHealth: 0
-  scrapAdd: 2
+  scrapAdd: 15
   targetInemy: {fileID: 1341296679760933485}
 --- !u!114 &1341296680530579550
 MonoBehaviour:
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPoint: {fileID: 2024343679384068197}
-  speed: 1.2
+  speed: 1.3
   speedSave: 0
   rotationSpeed: 8
   maxDistance: 0.1

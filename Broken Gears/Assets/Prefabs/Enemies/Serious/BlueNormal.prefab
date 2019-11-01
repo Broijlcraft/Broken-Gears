@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080efe5895c97174d93cf90d21095a2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 60
   currentHealth: 0
   scrapAdd: 5
   targetInemy: {fileID: 4450742182135134105}
@@ -177,11 +177,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4450742183085500125}
     m_Modifications:
-    - target: {fileID: 713003767783189189, guid: 1879d3b971ffa404e876350985f7abd0,
-        type: 3}
-      propertyPath: m_Name
-      value: robot 1 BG (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 4593180132879734998, guid: 1879d3b971ffa404e876350985f7abd0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -251,6 +246,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 713003767783189189, guid: 1879d3b971ffa404e876350985f7abd0,
+        type: 3}
+      propertyPath: m_Name
+      value: robot 1 BG (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1879d3b971ffa404e876350985f7abd0, type: 3}

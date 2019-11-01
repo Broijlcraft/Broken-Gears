@@ -123,7 +123,7 @@ MonoBehaviour:
   turnSpeed: 3
   turnSpeedSave: 0
   attackSpeed: 0.75
-  dmg: 6
+  dmg: 8
   range: 3.5
   rangetest: 5
   coll: {fileID: 0}
@@ -149,6 +149,7 @@ MonoBehaviour:
   rangeDividerRotation: 0
   isSaw: 0
   isCryo: 0
+  isRivet: 0
   cryoSlow: 0
   enemyChecker: {fileID: 0}
 --- !u!114 &3287796907709722649
