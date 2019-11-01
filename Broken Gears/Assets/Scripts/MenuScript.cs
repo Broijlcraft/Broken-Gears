@@ -29,7 +29,7 @@ public class MenuScript : MonoBehaviour {
 
     GameObject cameraControl;
 
-    AudioSource audio;
+    public AudioSource audio;
 
     UiManager uiManager;
     Movement movement;

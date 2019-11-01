@@ -52,15 +52,22 @@ public class UiManager : MonoBehaviour {
         currentEscaped += i;
         if (currentEscaped < 6) {
             workerPic[workerPic.Count - currentEscaped].color = Color.red;
+            GameObject.Find("FactoryLight").GetComponent<AudioSource>().Play();
+            InvokeRepeating("StopMusic", GameObject.Find("FactoryLight").GetComponent<AudioSource>().clip.length, 0);
             if (currentEscaped == 5) {
                 GameOver();
             }
         }
     }
 
+    void StopMusic() {
+        GameObject.Find("FactoryLight").GetComponent<AudioSource>().Stop();
+    }
+
     public void GameOver() {
         Time.timeScale = 0;
         gameOver = true;
+        gameOverScreen.SetActive(true);
     }
 
     public void TurnOnOff(bool b) {
