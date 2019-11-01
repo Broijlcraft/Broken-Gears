@@ -7692,7 +7692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrapFab: {fileID: 4728185626065344074, guid: 12ec49d22647dd646912920f17724a85,
     type: 3}
-  startScrap: 50
+  startScrap: 60
   scrapText: 'Scrap:'
 --- !u!114 &5901547426883502948
 MonoBehaviour:

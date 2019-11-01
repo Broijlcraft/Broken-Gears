@@ -20,16 +20,18 @@ public class EnemyPathing : MonoBehaviour {
     }
 
     private void Update() {
-        Vector3 direction = abs(targetPoint.position, transform.position);
-        Vector3 directionToGo = targetPoint.position - transform.position;
-        transform.Translate(directionToGo.normalized * speed * Time.deltaTime);
-        if (direction.z < maxDistance && direction.x < maxDistance) {
-            SetTarget();
+        if (targetPoint != null) {
+            Vector3 direction = abs(targetPoint.position, transform.position);
+            Vector3 directionToGo = targetPoint.position - transform.position;
+            transform.Translate(directionToGo.normalized * speed * Time.deltaTime);
+            if (direction.z < maxDistance && direction.x < maxDistance) {
+                SetTarget();
+            }
+            Vector3 lookDir = targetPoint.position - enemyChild.transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(lookDir);
+            Vector3 rotationToLook = Quaternion.Lerp(enemyChild.transform.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
+            enemyChild.transform.rotation = Quaternion.Euler(0f, rotationToLook.y, 0f);
         }
-        Vector3 lookDir = targetPoint.position - enemyChild.transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(lookDir);
-        Vector3 rotationToLook = Quaternion.Lerp(enemyChild.transform.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
-        enemyChild.transform.rotation = Quaternion.Euler(0f, rotationToLook.y, 0f);
     }
 
     Vector3 abs(Vector3 v, Vector3 vA) {
@@ -45,9 +47,9 @@ public class EnemyPathing : MonoBehaviour {
             targetPoint = Waypoints.waypoint[targetValue];
             targetValue++;
         } else {
-            Manager.uiManager.IncreaseEscaped(1);
-            Destroy(gameObject);
-            print("Yes");
+            //Manager.uiManager.IncreaseEscaped(1);
+            //Destroy(gameObject);
+            //print("Yes");
         }
     }
 }
