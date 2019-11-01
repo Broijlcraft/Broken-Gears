@@ -16,6 +16,7 @@ public class EnemyPathing : MonoBehaviour {
     private void Start() {
         speedSave = speed;
         SetTarget();
+        print(transform.position);
     }
 
     private void Update() {
@@ -29,10 +30,6 @@ public class EnemyPathing : MonoBehaviour {
         Quaternion lookRotation = Quaternion.LookRotation(lookDir);
         Vector3 rotationToLook = Quaternion.Lerp(enemyChild.transform.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
         enemyChild.transform.rotation = Quaternion.Euler(0f, rotationToLook.y, 0f);
-    }
-
-    void Test() {
-        print("Test");
     }
 
     Vector3 abs(Vector3 v, Vector3 vA) {
@@ -50,6 +47,7 @@ public class EnemyPathing : MonoBehaviour {
         } else {
             Manager.uiManager.IncreaseEscaped(1);
             Destroy(gameObject);
+            print("Yes");
         }
     }
 }
