@@ -80,7 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 60
   currentHealth: 0
-  scrapAdd: 5
+  scrapAdd: 10
   targetInemy: {fileID: 4450742182135134105}
 --- !u!114 &4450742183085500123
 MonoBehaviour:

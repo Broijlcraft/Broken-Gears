@@ -222,6 +222,7 @@ MonoBehaviour:
   rangeDividerRotation: 0
   isSaw: 0
   isCryo: 1
+  isRivet: 0
   cryoSlow: 1.5
   enemyChecker: {fileID: 0}
 --- !u!114 &3242132115797220750
@@ -318,6 +319,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weap: {fileID: 3375208665505304983}
   x: 0
+--- !u!1 &5754543800780323329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4551433909860731853}
+  m_Layer: 0
+  m_Name: Plane Transform 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4551433909860731853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5754543800780323329}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 12}
+  m_LocalScale: {x: 11.791343, y: 11.79134, z: 11.791338}
+  m_Children: []
+  m_Father: {fileID: 3189382665170095889}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3375208666462408993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -411,6 +442,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3375208665505304983}
     m_Modifications:
+    - target: {fileID: 9193643502118363974, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+        type: 3}
+      propertyPath: m_Name
+      value: CryoGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 2930625323113887820, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: caad3deefe5eba54391f221befaf87db, type: 2}
     - target: {fileID: 186284502390972855, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
         type: 3}
       propertyPath: prewarm
@@ -425,6 +466,72 @@ PrefabInstance:
         type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 186284502390972855, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+        type: 3}
+      propertyPath: CollisionModule.m_Bounce.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 186284502390972855, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+        type: 3}
+      propertyPath: CollisionModule.m_Bounce.minScalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 186284502390972855, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+        type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 186284502390972855, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+        type: 3}
+      propertyPath: CollisionModule.plane2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 186284502390972855, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+        type: 3}
+      propertyPath: CollisionModule.plane0
+      value: 
+      objectReference: {fileID: 1604040956675304231, guid: 5bfbe2c614f8b97469fee1a95ba953c8,
+        type: 3}
+    - target: {fileID: 186284502390972855, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+        type: 3}
+      propertyPath: CollisionModule.plane1
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 186284502390972855, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+        type: 3}
+      propertyPath: CollisionModule.plane3
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 186284502390972855, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+        type: 3}
+      propertyPath: CollisionModule.plane4
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 186284502390972855, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+        type: 3}
+      propertyPath: CollisionModule.plane5
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 186284502390972855, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+        type: 3}
+      propertyPath: CollisionModule.collisionMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 186284502390972855, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+        type: 3}
+      propertyPath: CollisionModule.m_Dampen.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 186284502390972855, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+        type: 3}
+      propertyPath: CollisionModule.m_Bounce.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 186284502390972855, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+        type: 3}
+      propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 186284502388414689, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
         type: 3}
@@ -441,21 +548,6 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 186284502305584207, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9193643502118363974, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
-        type: 3}
-      propertyPath: m_Name
-      value: CryoGun
-      objectReference: {fileID: 0}
-    - target: {fileID: 2930625323113887820, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: caad3deefe5eba54391f221befaf87db, type: 2}
     - target: {fileID: 978540688050972895, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -511,6 +603,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -20
       objectReference: {fileID: 0}
+    - target: {fileID: 186284502305584207, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b7b1c4038d7d7849a7c10f20ff76030, type: 3}
 --- !u!4 &2540980118221178490 stripped
@@ -528,6 +625,12 @@ MeshRenderer:
 --- !u!198 &3189382665172792900 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 186284502388414689, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+    type: 3}
+  m_PrefabInstance: {fileID: 3375208666648817317}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3189382665170095889 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 186284502390972852, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
     type: 3}
   m_PrefabInstance: {fileID: 3375208666648817317}
   m_PrefabAsset: {fileID: 0}
@@ -611,15 +714,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75ed7ca6697e8554280a4a037db4242e, type: 3}
---- !u!4 &4571361985944127235 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1272156840030374814, guid: 75ed7ca6697e8554280a4a037db4242e,
-    type: 3}
-  m_PrefabInstance: {fileID: 3375208667068796061}
-  m_PrefabAsset: {fileID: 0}
 --- !u!23 &6975108399405316423 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5628292564031452634, guid: 75ed7ca6697e8554280a4a037db4242e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3375208667068796061}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4571361985944127235 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1272156840030374814, guid: 75ed7ca6697e8554280a4a037db4242e,
     type: 3}
   m_PrefabInstance: {fileID: 3375208667068796061}
   m_PrefabAsset: {fileID: 0}

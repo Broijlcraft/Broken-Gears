@@ -102,9 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080efe5895c97174d93cf90d21095a2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 60
   currentHealth: 0
-  scrapAdd: 5
+  scrapAdd: 10
   targetInemy: {fileID: 2853205515434452616}
 --- !u!114 &2853205515312047000
 MonoBehaviour:
