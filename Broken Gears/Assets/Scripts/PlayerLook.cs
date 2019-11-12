@@ -41,6 +41,8 @@ public class PlayerLook : MonoBehaviour {
         UpdateLookValue();
         xAxisClamp = 0f;
         VerticalCameraRotation();
+        canMove = true;
+        moving = false;
     }
 
     private void Start() {

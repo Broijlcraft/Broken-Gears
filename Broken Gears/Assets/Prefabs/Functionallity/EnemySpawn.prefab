@@ -54,7 +54,7 @@ MonoBehaviour:
   missionIntroTime: 0
   startCountDown: 0
   endless: 0
-  tutorial: 0
+  staticTutorial: 0
 --- !u!114 &5269885821199387297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,9 +71,11 @@ MonoBehaviour:
   bspawnDelay: 0
   waveDelay: 5
   bwaveDelay: 0
-  canSpawn: 1
+  canSpawn: 0
+  changingWave: 0
   waves:
   - {fileID: 0}
   - {fileID: 0}
   enemyToGet: 0
   waveToGet: 0
+  staticTutorial: 0

@@ -63,7 +63,9 @@ public class MenuScript : MonoBehaviour {
             playerLook = cameraControl.GetComponentInChildren<PlayerLook>();
             movement = cameraControl.GetComponent<Movement>();
             industrialLight = GameObject.Find("FactoryLight");
-            audio = industrialLight.GetComponent<AudioSource>();
+            if (industrialLight != null) {
+                audio = industrialLight.GetComponent<AudioSource>();
+            }
 
             for (int i = 0; i < uiManager.sliders.Count; i++) {
                 if (uiManager.sliders[i].name == "CamSense") {
