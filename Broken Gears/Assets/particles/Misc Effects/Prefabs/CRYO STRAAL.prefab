@@ -1335,24 +1335,24 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 0}
-        key2: {r: 1, g: 1, b: 1, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 1, g: 1, b: 1, a: 0.46666667}
+        key1: {r: 1, g: 1, b: 1, a: 0.4862745}
+        key2: {r: 0.91546625, g: 0.9993464, b: 1, a: 0}
+        key3: {r: 0.9820358, g: 0.9998611, b: 1, a: 0}
+        key4: {r: 1, g: 1, b: 1, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 17155
-        ctime1: 65535
-        ctime2: 65535
-        ctime3: 0
-        ctime4: 0
+        ctime1: 34695
+        ctime2: 37779
+        ctime3: 44525
+        ctime4: 50886
         ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 578
-        atime1: 65535
+        atime1: 51464
         atime2: 65535
         atime3: 0
         atime4: 0
@@ -1361,7 +1361,7 @@ ParticleSystem:
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -3965,14 +3965,14 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minVertexDistance: 2.73
-    textureMode: 1
+    minVertexDistance: 9.34
+    textureMode: 0
     ribbonCount: 908
     shadowBias: 0
-    worldSpace: 0
+    worldSpace: 1
     dieWithParticles: 1
     sizeAffectsWidth: 1
-    sizeAffectsLifetime: 0
+    sizeAffectsLifetime: 1
     inheritParticleColor: 1
     generateLightingData: 0
     splitSubEmitterRibbons: 0
@@ -4043,7 +4043,7 @@ ParticleSystem:
     widthOverTrail:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.72
+      scalar: 0.99
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4811,7 +4811,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259832082885555313}
   m_LocalRotation: {x: -0.059784085, y: -0.704575, z: -0.059784085, w: 0.704575}
-  m_LocalPosition: {x: 0.446, y: 0, z: 0}
+  m_LocalPosition: {x: 1.049, y: -0.103, z: -0.14}
   m_LocalScale: {x: 0.08480803, y: 0.084808, z: 0.08480803}
   m_Children: []
   m_Father: {fileID: 259832082767651212}
