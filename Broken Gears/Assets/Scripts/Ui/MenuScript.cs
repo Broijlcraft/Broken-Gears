@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour {
-
+    public bool dev;
     [Header("Settings")]
 
     public Slider camSensitivity;
@@ -114,7 +114,7 @@ public class MenuScript : MonoBehaviour {
                 }
             }
         }
-        if (Input.GetButtonDown("Cancel") && SceneManager.GetActiveScene().name != "MainMenu" && UiManager.gameOver == false) {
+        if (Input.GetButtonDown("Cancel") && SceneManager.GetActiveScene().name != "MainMenu" && UiManager.gameOver == false && !dev) {
             int ib = (int)menuState;
             switch (ib) {
                 case 1: case 5:
@@ -169,7 +169,7 @@ public class MenuScript : MonoBehaviour {
     }
     
     void SetItActive(GameObject a, GameObject b) {
-        if (uiManager.menus.Count > 0) {
+        if (uiManager.menus.Count > 0 && !dev) {
             for (int i = 0; i < uiManager.menus.Count; i++) {
                 if (uiManager.menus[i] != null) {
                     uiManager.menus[i].SetActive(false);

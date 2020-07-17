@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour {
 
-    public static Transform canvas;
-    public static Transform healthCanvas;
-    public static Transform scrapCanvas;
+    public Transform canvasTest;
+
+    public static Transform canvas, healthCanvas, scrapCanvas;
     public static ScrapEconomy scrapEconomy;
     public bool monitor;
     public static bool staticMonitor;
@@ -21,7 +21,8 @@ public class Manager : MonoBehaviour {
 
     private void Awake() {
         cam = Camera.main;
-        canvas = GameObject.Find("Canvas").transform;
+        canvas = canvasTest;
+        //canvas = GameObject.Find("Canvas").transform;
         if (SceneManager.GetActiveScene().name != "MainMenu") {
             uiManager = GetComponentInParent<UiManager>();
             healthCanvas = GameObject.Find("HealthCanvas").transform;
