@@ -4,10 +4,9 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class MenuButton : MonoBehaviour {
-    public Menu nextMenu;
 
-    [Space]
-    public Menu menu;
+    public Menu nextMenu;
+    Menu menu;
 
     private void Awake() {
         GetComponent<Button>().onClick.AddListener(OpenSpecificMenu);

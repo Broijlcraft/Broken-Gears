@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour {
+
     public bool dev;
     [Header("Settings")]
 
