@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//17-7-2020
 using UnityEngine.UI;
 using UnityEngine;
 

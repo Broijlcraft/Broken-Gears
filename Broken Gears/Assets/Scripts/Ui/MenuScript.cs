@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour {
 
-    public bool dev;
+    public bool dev, newDev;
     [Header("Settings")]
 
     public Slider camSensitivity;
@@ -56,49 +56,51 @@ public class MenuScript : MonoBehaviour {
     public MenuState menuState;
 
     private void Awake() {
-        uiManager = GameObject.Find("Canvas").GetComponent<UiManager>();
-        if (SceneManager.GetActiveScene().name != "MainMenu") {
-            SetItActive(uiManager.menus[1], uiManager.menus[2]);
-            cameraControl = GameObject.Find("CamControl");
-            zoomAndSelectTile = cameraControl.GetComponentInChildren<ZoomScript>();
-            playerLook = cameraControl.GetComponentInChildren<PlayerLook>();
-            movement = cameraControl.GetComponent<Movement>();
-            industrialLight = GameObject.Find("FactoryLight");
-            if (industrialLight != null) {
-                audio = industrialLight.GetComponent<AudioSource>();
+        if (newDev) {
+            uiManager = GameObject.Find("Canvas").GetComponent<UiManager>();
+            if (SceneManager.GetActiveScene().name != "MainMenu") {
+                SetItActive(uiManager.menus[1], uiManager.menus[2]);
+                cameraControl = GameObject.Find("CamControl");
+                zoomAndSelectTile = cameraControl.GetComponentInChildren<ZoomScript>();
+                playerLook = cameraControl.GetComponentInChildren<PlayerLook>();
+                movement = cameraControl.GetComponent<Movement>();
+                industrialLight = GameObject.Find("FactoryLight");
+                if (industrialLight != null) {
+                    audio = industrialLight.GetComponent<AudioSource>();
+                }
+
+                for (int i = 0; i < uiManager.sliders.Count; i++) {
+                    if (uiManager.sliders[i].name == "CamSense") {
+                        camSensitivity = uiManager.sliders[i].GetComponentInChildren<Slider>();
+                    }
+                    if (uiManager.sliders[i].name == "ZoomSense") {
+                        zoomSensitivity = uiManager.sliders[i].GetComponentInChildren<Slider>();
+                    }
+                    if (uiManager.sliders[i].name == "MasterVolume") {
+                        volume = uiManager.sliders[i].GetComponentInChildren<Slider>();
+                    }
+                    if (uiManager.sliders[i].name == "SFX") {
+                        sfx = uiManager.sliders[i].GetComponentInChildren<Slider>();
+                    }
+                    if (uiManager.sliders[i].name == "Music") {
+                        music = uiManager.sliders[i].GetComponentInChildren<Slider>();
+                    }
+                }
+
+                camSensitivity.wholeNumbers = true;
+                camSensitivity.onValueChanged.AddListener(CamSenseChanged);
+                zoomSensitivity.onValueChanged.AddListener(ZoomSenseChanged);
+                volume.onValueChanged.AddListener(VolumeChanged);
+                sfx.onValueChanged.AddListener(SFXSenseChanged);
+                music.onValueChanged.AddListener(MusicSenseChanged);
+
+                SetSliderRange(camSensitivity, maxCamSense, minCamSense);
+                SetSliderRange(zoomSensitivity, maxZoomSense, minZoomSense);
+                SetSliderRange(volume, maxVolume, minVolume);
+                SetSliderRange(sfx, maxSFX, minSFX);
+                SetSliderRange(music, maxMusic, minMusic);
+                SetItActive(null, null);
             }
-
-            for (int i = 0; i < uiManager.sliders.Count; i++) {
-                if (uiManager.sliders[i].name == "CamSense") {
-                    camSensitivity = uiManager.sliders[i].GetComponentInChildren<Slider>();
-                }
-                if (uiManager.sliders[i].name == "ZoomSense") {
-                    zoomSensitivity = uiManager.sliders[i].GetComponentInChildren<Slider>();
-                }
-                if (uiManager.sliders[i].name == "MasterVolume") {
-                    volume = uiManager.sliders[i].GetComponentInChildren<Slider>();
-                }
-                if (uiManager.sliders[i].name == "SFX") {
-                    sfx = uiManager.sliders[i].GetComponentInChildren<Slider>();
-                }
-                if (uiManager.sliders[i].name == "Music") {
-                    music = uiManager.sliders[i].GetComponentInChildren<Slider>();
-                }
-            }
-
-            camSensitivity.wholeNumbers = true;
-            camSensitivity.onValueChanged.AddListener(CamSenseChanged);
-            zoomSensitivity.onValueChanged.AddListener(ZoomSenseChanged);
-            volume.onValueChanged.AddListener(VolumeChanged);
-            sfx.onValueChanged.AddListener(SFXSenseChanged);
-            music.onValueChanged.AddListener(MusicSenseChanged);
-
-            SetSliderRange(camSensitivity, maxCamSense, minCamSense);
-            SetSliderRange(zoomSensitivity, maxZoomSense, minZoomSense);
-            SetSliderRange(volume, maxVolume, minVolume);
-            SetSliderRange(sfx, maxSFX, minSFX);
-            SetSliderRange(music, maxMusic, minMusic);
-            SetItActive(null, null);
         }
     }
 

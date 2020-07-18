@@ -1,4 +1,5 @@
-﻿using UnityEngine.Audio;
+﻿//17-7-2020
+using UnityEngine.Audio;
 using UnityEngine;
 
 public static class AudioManager {
@@ -20,4 +21,3 @@ public static class AudioManager {
         GameObject.Destroy(soundObject, audioClipToPlay.length);
     }
 }
-

@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour {
     Vector3 v;
-    public float speed;
-    public float rotationSpeed;
+    public float speed, rotationSpeed;
     Vector3 hor;
 
     private void FixedUpdate() {
-        if (UiManager.staticMenuScript.menuState == MenuScript.MenuState.none && PlayerLook.canMove == true) {
+        if (PlayerLook.canMove == true) {
             v.x = Input.GetAxis("Horizontal");
             v.z = Input.GetAxis("Vertical");
             if (Input.GetButton("Slow")) {
-                transform.Translate(v * speed / 2 * Time.deltaTime);
+                transform.Translate(v * speed / 2);
             } else {
-                transform.Translate(v * speed * Time.deltaTime);
+                transform.Translate(v * speed);
             }
             GetComponent<Rigidbody>().velocity = Vector3.zero;
         }

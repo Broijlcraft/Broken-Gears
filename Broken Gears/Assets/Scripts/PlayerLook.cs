@@ -46,9 +46,11 @@ public class PlayerLook : MonoBehaviour {
     }
 
     private void Start() {
-        buySellText = UiManager.staticMenuScript.buySellText.GetComponentInChildren<Text>();
-        buySellButton = UiManager.staticMenuScript.buySellText.GetComponent<Button>();
-        uiManager = GameObject.Find("Canvas").GetComponentInChildren<UiManager>();
+        if (UiManager.staticMenuScript && UiManager.staticMenuScript.buySellText) {
+            buySellText = UiManager.staticMenuScript.buySellText.GetComponentInChildren<Text>();
+            buySellButton = UiManager.staticMenuScript.buySellText.GetComponent<Button>();
+            uiManager = GameObject.Find("Canvas").GetComponentInChildren<UiManager>();
+        }
     }
 
     private void Update() {
@@ -102,7 +104,7 @@ public class PlayerLook : MonoBehaviour {
     }
 
     private void LateUpdate() {
-        if (UiManager.staticMenuScript.menuState == MenuScript.MenuState.none) {
+        if (MenuManager.mm_Single.currentMenuState == MenuManager.MenuState.Closed) {
             if (Input.GetMouseButton(2) && moving == false && canMove == true) {
                 VerticalCameraRotation();
                 movement.HorizontalCameraRotation();

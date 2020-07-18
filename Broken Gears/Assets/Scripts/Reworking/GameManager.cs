@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
+﻿//17-7-2020
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
