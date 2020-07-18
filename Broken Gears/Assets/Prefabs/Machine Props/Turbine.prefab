@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1919226358950557166, guid: 13c0919e260d1b14098ee4fe2f29a412,
         type: 3}
       propertyPath: m_Name
-      value: M7
+      value: Turbine
       objectReference: {fileID: 0}
     - target: {fileID: 3240674100066551805, guid: 13c0919e260d1b14098ee4fe2f29a412,
         type: 3}
@@ -62,11 +62,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 6809691952266928824, guid: 13c0919e260d1b14098ee4fe2f29a412,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 1663420630679741336, guid: 13c0919e260d1b14098ee4fe2f29a412,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -86,6 +81,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809691952266928824, guid: 13c0919e260d1b14098ee4fe2f29a412,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809691952266928824, guid: 13c0919e260d1b14098ee4fe2f29a412,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6492250928145034976, guid: 13c0919e260d1b14098ee4fe2f29a412,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13c0919e260d1b14098ee4fe2f29a412, type: 3}

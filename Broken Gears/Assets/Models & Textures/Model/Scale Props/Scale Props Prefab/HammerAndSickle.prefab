@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6173163600643155848}
   m_Layer: 0
-  m_Name: Soviet
+  m_Name: HammerAndSickle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ PrefabInstance:
     - target: {fileID: 8766218967190155892, guid: c9fabf049707af643b0e814be32fe38d,
         type: 3}
       propertyPath: m_Name
-      value: PropTool1
+      value: Sickle
       objectReference: {fileID: 0}
     - target: {fileID: 5763627224217403495, guid: c9fabf049707af643b0e814be32fe38d,
         type: 3}
