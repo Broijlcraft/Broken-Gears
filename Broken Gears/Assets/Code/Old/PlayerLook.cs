@@ -56,7 +56,7 @@ public class PlayerLook : MonoBehaviour {
     private void Update() {
         RaycastHit hit;
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward, Color.red * 1000);
-        if (Input.GetMouseButtonDown(1) && UiManager.staticMenuScript.menuState == MenuScript.MenuState.none && canMove == true) {
+        if (!GameManager.gm_Single.rework && Input.GetMouseButtonDown(1) && UiManager.staticMenuScript.menuState == MenuScript.MenuState.none && canMove == true) {
             Ray ray = Manager.cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
                 if (hit.transform.gameObject.tag == "Turret" || hit.transform.gameObject.tag == "Scrap") {

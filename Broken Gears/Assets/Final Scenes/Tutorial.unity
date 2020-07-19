@@ -7092,7 +7092,7 @@ Transform:
   - {fileID: 1281627982}
   - {fileID: 147770894}
   m_Father: {fileID: 770683880}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &622930866 stripped
 Transform:
@@ -8769,13 +8769,13 @@ Transform:
   - {fileID: 631283406}
   - {fileID: 279030127}
   - {fileID: 977172267}
-  - {fileID: 1791606726}
-  - {fileID: 1104081634}
   - {fileID: 1075035073}
   - {fileID: 8975476891201044442}
   - {fileID: 1699257091}
   - {fileID: 946375755}
   - {fileID: 622356357}
+  - {fileID: 1791606726}
+  - {fileID: 1104081634}
   - {fileID: 1042501440}
   - {fileID: 1265773919}
   - {fileID: 2036273466}
@@ -10818,7 +10818,7 @@ Transform:
   - {fileID: 864441980}
   - {fileID: 1559030348}
   m_Father: {fileID: 770683880}
-  m_RootOrder: 13
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &946816297 stripped
 Transform:
@@ -12404,7 +12404,7 @@ Transform:
   - {fileID: 370414929}
   - {fileID: 937675317}
   m_Father: {fileID: 770683880}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1078791645
 PrefabInstance:
@@ -20130,7 +20130,7 @@ Transform:
   - {fileID: 1960507450}
   - {fileID: 710800957}
   m_Father: {fileID: 770683880}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1702020115 stripped
 Transform:
@@ -34356,14 +34356,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5901547426641100192}
-  - component: {fileID: 5901547426641100193}
+  - component: {fileID: 5901547426641100200}
+  - component: {fileID: 5901547426641100199}
   - component: {fileID: 5901547426641100195}
+  - component: {fileID: 5901547426641100193}
   - component: {fileID: 5901547426641100205}
   - component: {fileID: 5901547426641100204}
   - component: {fileID: 3969578409002758561}
   - component: {fileID: 6261267296410197446}
-  - component: {fileID: 5901547426641100199}
-  - component: {fileID: 5901547426641100200}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -34395,6 +34395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430034a8417528f4eb76d02742967769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rework: 1
 --- !u!114 &5901547426641100204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55083,7 +55084,7 @@ Transform:
   - {fileID: 308529867}
   - {fileID: 911821281}
   m_Father: {fileID: 770683880}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8975476891202749331
 PrefabInstance:

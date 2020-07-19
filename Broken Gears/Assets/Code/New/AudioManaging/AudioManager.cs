@@ -7,9 +7,10 @@ public static class AudioManager {
     public static AudioMixer audioMixer;
 
     public enum AudioGroups {
-        None,
+        Master,
         Music,
         SFX,
+        None
     }
 
     public static void PlaySound(AudioClip audioClipToPlay, AudioGroups audioGroups, Vector3 position) {

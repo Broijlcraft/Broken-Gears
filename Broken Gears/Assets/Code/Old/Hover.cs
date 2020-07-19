@@ -9,11 +9,15 @@ public class Hover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
     public int turretValue;
 
     public void OnPointerEnter(PointerEventData eventData) {
-        UiManager.staticTurretText.text = turretName;
-        UiManager.staticTurretValueText.text = "Cost: " + turretValue;
+        if (!GameManager.gm_Single.rework) {
+            UiManager.staticTurretText.text = turretName;
+            UiManager.staticTurretValueText.text = "Cost: " + turretValue;
+        }
     }
     public void OnPointerExit(PointerEventData eventData) {
-        UiManager.staticTurretText.text = "";
-        UiManager.staticTurretValueText.text = "";
+        if (!GameManager.gm_Single.rework) {
+            UiManager.staticTurretText.text = "";
+            UiManager.staticTurretValueText.text = "";
+        }
     }
 }

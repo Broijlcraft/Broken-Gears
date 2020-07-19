@@ -17,7 +17,7 @@ public class Manager : MonoBehaviour {
     public static UiManager uiManager;
     public Text devText;
 
-    private void Awake() {
+    private void Start() {
         cam = Camera.main;
         canvas = canvasTest;
         //canvas = GameObject.Find("Canvas").transform;
