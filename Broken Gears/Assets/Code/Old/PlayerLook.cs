@@ -5,20 +5,12 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerLook : MonoBehaviour {
-    public float mouseSensitivity;
-
-    public float topLock;
-    public float bottomLock;
-    public float multiplier;
-    private float xAxisClamp;
+    public float mouseSensitivity, topLock, bottomLock, multiplier, xAxisClamp;
 
     public LayerMask layerMask;
 
     public Movement movement;
-    public Color defaultTextColor;
-    public Color goodButtonColor;
-    public Color badButtonTextColor;
-    public Color badButtonColor;
+    public Color defaultTextColor, goodButtonColor, badButtonTextColor, badButtonColor;
 
     UiManager uiManager;
     Text buySellText;
@@ -107,7 +99,7 @@ public class PlayerLook : MonoBehaviour {
         if (MenuManager.mm_Single.currentMenuState == MenuManager.MenuState.Closed) {
             if (Input.GetMouseButton(2) && moving == false && canMove == true) {
                 VerticalCameraRotation();
-                movement.HorizontalCameraRotation();
+                //movement.HorizontalCameraRotation();
             } else if (moving == true) {
                 if (i < updates) {
                     v = transform.localEulerAngles;
@@ -141,7 +133,7 @@ public class PlayerLook : MonoBehaviour {
     }
 
     public void UpdateLookValue() {
-        mouseSensitivity = movement.rotationSpeed * multiplier;
+        mouseSensitivity = movement.mouseSensitivity * multiplier;
     }
 
     private void ClampXAxisRotationToValue(float value) {

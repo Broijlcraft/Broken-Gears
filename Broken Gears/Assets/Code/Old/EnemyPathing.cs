@@ -43,8 +43,8 @@ public class EnemyPathing : MonoBehaviour {
     }
 
     public void SetTarget() {
-        if (Waypoints.waypoint.Length > targetValue) {
-            targetPoint = Waypoints.waypoint[targetValue];
+        if (Waypoints.wp_Single.waypoints.Length > targetValue) {
+            targetPoint = Waypoints.wp_Single.waypoints[targetValue];
             targetValue++;
         } else {
             Manager.uiManager.IncreaseEscaped(1);

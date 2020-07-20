@@ -7,11 +7,11 @@ public class CamSlideFollow : MonoBehaviour {
     public bool slide;
     public bool beam;
 
-    GameObject camControl;
+    public GameObject camControl;
     Vector3 v;
 
     private void Start() {
-        camControl = GameObject.Find("CamControl");
+        //camControl = GameObject.Find("CamControl");
     }
 
     private void Update() {

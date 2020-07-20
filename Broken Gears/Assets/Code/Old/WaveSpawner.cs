@@ -4,22 +4,18 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour {
 
-    public float spawnDelay;
-    public float bspawnDelay;
-    public float waveDelay;
-    public float bwaveDelay;
-    public bool canSpawn;
-    public bool changingWave;
+    public static WaveSpawner wv_Single;
+
+    public float spawnDelay, bspawnDelay, waveDelay, bwaveDelay;
+    public bool canSpawn, changingWave;
     public List<Wave> waves = new List<Wave>();
-    public int enemyToGet;
-    public int waveToGet;
-    public bool staticTutorial;
-    public static bool tutorial;
+    public int enemyToGet, waveToGet;
+    public bool isTutorial;
 
     public static List<GameObject> onTheField = new List<GameObject>();
 
-    private void Start() {
-        tutorial = staticTutorial;
+    private void Awake() {
+        wv_Single = this;
     }
 
     private void Update() {
@@ -49,7 +45,7 @@ public class WaveSpawner : MonoBehaviour {
                 NextWave();
             }
         } else if (waveToGet >= waves.Count && onTheField.Count == 0) {
-            if (tutorial == true) {
+            if (isTutorial == true) {
                 Manager.uiManager.winTutScreen.SetActive(true);
             } else {
                 Manager.uiManager.winGameScreen.SetActive(true);

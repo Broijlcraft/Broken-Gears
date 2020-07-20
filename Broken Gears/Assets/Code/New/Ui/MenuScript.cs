@@ -226,7 +226,7 @@ public class MenuScript : MonoBehaviour {
     }
 
     void CamSenseChanged(float value) {
-        movement.rotationSpeed = value + minCamSense;
+        movement.mouseSensitivity = value + minCamSense;
         playerLook.UpdateLookValue();
     }
 
