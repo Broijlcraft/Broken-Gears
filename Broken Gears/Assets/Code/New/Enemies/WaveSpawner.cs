@@ -8,7 +8,7 @@ public class WaveSpawner : MonoBehaviour {
     public bool endlessWave;
     public float spawnDelay, waveDelay;
 
-    [HideInInspector] public bool waveFunctionality;
+    [Header("HideInInspector")] public bool waveFunctionality;
     int currentWave, currentEnemy;
     float spawnDelayTimer, waveDelayTimer;
 

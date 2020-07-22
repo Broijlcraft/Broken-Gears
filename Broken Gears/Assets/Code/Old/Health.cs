@@ -43,14 +43,16 @@ public class Health : MonoBehaviour {
         if (OldWaveSpawn.onTheField.Contains(gameObject)) {
             OldWaveSpawn.onTheField.Remove(gameObject);
         }
-        gA = Instantiate(Manager.scrapEconomy.scrapFab, transform.position + Manager.scrapEconomy.scrapFab.GetComponent<MobileUiParts>().offSet, Quaternion.identity);
-        gA.transform.GetComponent<MobileUiParts>().parent = transform;
-        gA.transform.SetParent(Manager.scrapCanvas);
-        int value;
-        value = scrapAdd;
-        value += TowerManager.activeScrapTower;
-        gA.transform.GetComponentInChildren<Text>().text = "+ " + value;
-        ScrapEconomy.AddScrap(value);
+        if (!GameManager.gm_Single.rework) {
+            gA = Instantiate(Manager.scrapEconomy.scrapFab, transform.position + Manager.scrapEconomy.scrapFab.GetComponent<MobileUiParts>().offSet, Quaternion.identity);
+            gA.transform.GetComponent<MobileUiParts>().parent = transform;
+            gA.transform.SetParent(Manager.scrapCanvas);
+            int value;
+            value = scrapAdd;
+            value += TowerManager.activeScrapTower;
+            ScrapEconomy.AddScrap(value);
+            gA.transform.GetComponentInChildren<Text>().text = "+ " + value;
+        }
         GetComponent<EnemyPathing>().speed = 0;
         GetComponentInChildren<Animator>().SetBool("Death", true);
         GetComponent<EnemyPathing>().enemyChild.transform.SetParent(null);

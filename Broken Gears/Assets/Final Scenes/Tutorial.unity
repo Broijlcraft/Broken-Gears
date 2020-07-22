@@ -6537,7 +6537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &590274169
 Transform:
   m_ObjectHideFlags: 0
@@ -9832,6 +9832,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7703737056126100388, guid: 49abeca2b05081640b57f38f7bbc8e1b,
+        type: 3}
+      propertyPath: camControl
+      value: 
+      objectReference: {fileID: 1456570190}
+    - target: {fileID: 7703737055921966372, guid: 49abeca2b05081640b57f38f7bbc8e1b,
+        type: 3}
+      propertyPath: camControl
+      value: 
+      objectReference: {fileID: 1456570190}
     - target: {fileID: 7703737056218315082, guid: 49abeca2b05081640b57f38f7bbc8e1b,
         type: 3}
       propertyPath: m_RenderMode
@@ -15736,22 +15746,32 @@ MonoBehaviour:
     range:
       min: 20
       max: 3
+    audioGroup: 0
+    sensitivityType: 0
   - slider: {fileID: 5901547425340794844}
     range:
       min: 20
       max: 3
+    audioGroup: 0
+    sensitivityType: 0
   - slider: {fileID: 5901547425340794844}
     range:
       min: 20
       max: 3
+    audioGroup: 0
+    sensitivityType: 0
   - slider: {fileID: 5901547425340794844}
     range:
       min: 20
       max: 3
+    audioGroup: 0
+    sensitivityType: 0
   - slider: {fileID: 5901547425340794844}
     range:
       min: 20
       max: 3
+    audioGroup: 0
+    sensitivityType: 0
 --- !u!4 &1308619351
 Transform:
   m_ObjectHideFlags: 0
@@ -16512,11 +16532,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 322662360019839796, guid: 41a81e4f008925e49aab855df66c08e6,
-        type: 3}
-      propertyPath: field of view
-      value: 57
-      objectReference: {fileID: 0}
     - target: {fileID: 322662359228849779, guid: 41a81e4f008925e49aab855df66c08e6,
         type: 3}
       propertyPath: m_RootOrder
@@ -16551,6 +16566,16 @@ PrefabInstance:
         type: 3}
       propertyPath: canMove
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 322662359228849783, guid: 41a81e4f008925e49aab855df66c08e6,
+        type: 3}
+      propertyPath: canMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 322662360019839796, guid: 41a81e4f008925e49aab855df66c08e6,
+        type: 3}
+      propertyPath: field of view
+      value: 57
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41a81e4f008925e49aab855df66c08e6, type: 3}
@@ -17526,6 +17551,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3401877478585417876, guid: 6bcae9cec4fc8114cbca461d7527f740,
     type: 3}
   m_PrefabInstance: {fileID: 8975476890456785049}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1456570190 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 322662359228849778, guid: 41a81e4f008925e49aab855df66c08e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1370927104}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1456863008
 PrefabInstance:
@@ -24269,6 +24300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuPosition: 2
   canNotGoBackWithEsc: 0
+  saveSettingsOnClose: 0
   previousMenu: {fileID: 6785763914898317616}
 --- !u!4 &2035193050 stripped
 Transform:
@@ -30025,6 +30057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuPosition: 2
   canNotGoBackWithEsc: 0
+  saveSettingsOnClose: 0
   previousMenu: {fileID: 6785763914898317616}
 --- !u!1 &4544410517978032357
 GameObject:
@@ -31752,11 +31785,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5269885821691907415}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5db4830583d39d498293a94ceaf3b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endless: 0
   spawnDelay: 3
   bspawnDelay: 0
   waveDelay: 5
@@ -31769,7 +31803,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 380601fae46d9a74a96ac513e96ac977, type: 2}
   enemyToGet: 0
   waveToGet: 0
-  staticTutorial: 1
+  isTutorial: 0
 --- !u!4 &5269885821691907412
 Transform:
   m_ObjectHideFlags: 0
@@ -31794,6 +31828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5269885821691907412}
   - component: {fileID: 5269885821691907410}
+  - component: {fileID: 5269885821691907416}
   m_Layer: 0
   m_Name: EnemySpawn
   m_TagString: Untagged
@@ -31801,6 +31836,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5269885821691907416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5269885821691907415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d22c7e893a092646886fc082cd5f971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - {fileID: 11400000, guid: 480fea6021e5fa742826716d727505e8, type: 2}
+  endlessWave: 1
+  spawnDelay: 3
+  waveDelay: 5
+  waveFunctionality: 1
+  currentWave: 0
+  currentEnemy: 0
+  spawnDelayTimer: 0
+  waveDelayTimer: 0
 --- !u!224 &5317639326215242911
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32927,6 +32984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuPosition: 1
   canNotGoBackWithEsc: 0
+  saveSettingsOnClose: 0
   previousMenu: {fileID: 0}
 --- !u!224 &5901547425348696125
 RectTransform:
@@ -34153,6 +34211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuPosition: 2
   canNotGoBackWithEsc: 0
+  saveSettingsOnClose: 0
   previousMenu: {fileID: 6785763914898317616}
 --- !u!224 &5901547426576302016
 RectTransform:
@@ -36000,6 +36059,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuPosition: 2
   canNotGoBackWithEsc: 0
+  saveSettingsOnClose: 0
   previousMenu: {fileID: 5901547425348696115}
 --- !u!222 &6886763025265631966
 CanvasRenderer:
