@@ -1,5 +1,4 @@
-﻿//17-7-2020
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MenuManager : MonoBehaviour {
 
@@ -33,29 +32,34 @@ public class MenuManager : MonoBehaviour {
             Time.timeScale = 0;
             if (menuHolder && firstMenu) {
                 menuHolder.SetActive(true);
-                OpenMenu(firstMenu);
+                OpenMenu(firstMenu, false);
             }
         } else {
             if (currentMenu && !currentMenu.canNotGoBackWithEsc) {
-                if (currentMenu.menuPosition == MenuState.FirstPanel) {
-                    menuHolder.SetActive(false);
-                    firstMenu.gameObject.SetActive(false);
-                    currentMenu = null;
-                    currentMenuState = MenuState.Closed;
-                    Time.timeScale = 1;
-                } else {
-                    currentMenu.gameObject.SetActive(false);
-                    OpenMenu(currentMenu.previousMenu);
-                }
+                CloseMenu();
             }
         }
     }
 
-    public void OpenMenu(Menu menu) {
+    public void CloseMenu() {
+        currentMenu.gameObject.SetActive(false);
+        if (currentMenu.menuPosition == MenuState.FirstPanel) {
+            menuHolder.SetActive(false);
+            currentMenu = null;
+            currentMenuState = MenuState.Closed;
+            Movement.m_Single.canMove = true;
+            Time.timeScale = 1;
+        } else {
+            OpenMenu(currentMenu.previousMenu, Movement.m_Single.canMove);
+        }
+    }
+
+    public void OpenMenu(Menu menu, bool canPlayerMove) {
         if (menu) {
             currentMenu = menu;
             currentMenu.gameObject.SetActive(true);
             currentMenuState = menu.menuPosition;
+            Movement.m_Single.canMove = false;
         }
     }
 

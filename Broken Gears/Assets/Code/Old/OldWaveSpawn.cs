@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveSpawner : MonoBehaviour {
+public class OldWaveSpawn : MonoBehaviour {
 
-    public static WaveSpawner wv_Single;
+    public static OldWaveSpawn wv_Single;
+    public bool endless;
+
 
     public float spawnDelay, bspawnDelay, waveDelay, bwaveDelay;
     public bool canSpawn, changingWave;
@@ -19,7 +21,7 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     private void Update() {
-        if (PlayerLook.canMove == true && canSpawn == true && changingWave == false) {
+        if (canSpawn == true && changingWave == false) {
             if (bspawnDelay < spawnDelay) {
                 bspawnDelay += Time.deltaTime;
             } else {
@@ -35,14 +37,23 @@ public class WaveSpawner : MonoBehaviour {
         }
     }
 
+    public delegate void TestDel(float maxV);
+
+    TestDel Spawn;
+    TestDel Start;
+
     public void SpawnEnemy() {
-        if (waveToGet < waves.Count && waves.Count > 0 && waves[waveToGet].enemies.Count > 0 && PlayerLook.canMove == true) {
+        if (waveToGet < waves.Count && waves.Count > 0 && waves[waveToGet].enemies.Count > 0) {
             if (enemyToGet < waves[waveToGet].enemies.Count) {
                 GameObject g = Instantiate(waves[waveToGet].enemies[enemyToGet], transform.position, Quaternion.identity);
                 onTheField.Add(g);
                 enemyToGet++;
             } else {
-                NextWave();
+                if (endless) {
+                    enemyToGet = 0;
+                } else {
+                    NextWave();
+                }
             }
         } else if (waveToGet >= waves.Count && onTheField.Count == 0) {
             if (isTutorial == true) {

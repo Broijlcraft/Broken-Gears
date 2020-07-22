@@ -1,5 +1,4 @@
-﻿//17-7-2020
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 using UnityEngine;
 
 public class MenuButton : MonoBehaviour {
@@ -13,7 +12,7 @@ public class MenuButton : MonoBehaviour {
     }
 
     public void OpenSpecificMenu() {
-        MenuManager.mm_Single.OpenMenu(nextMenu);
+        MenuManager.mm_Single.OpenMenu(nextMenu, false);
         if (menu) {
             menu.gameObject.SetActive(false);
         }

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class TowerManager : MonoBehaviour {
 
+    public static TowerManager tm_Single;
+
     public List<GameObject> towerList = new List<GameObject>();
     public static GameObject selectedTower;
-    public Vector4 canPlaceColor;
-    public Vector4 canNotPlaceColor;
+    public Vector4 canPlaceColor, canNotPlaceColor;
     public static Vector4 canPlace; 
     public static Vector4 canNotPlace;
     public static int activeScrapTower = 0;

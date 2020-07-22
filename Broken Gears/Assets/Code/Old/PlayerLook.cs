@@ -29,14 +29,6 @@ public class PlayerLook : MonoBehaviour {
 
     delegate void TowerFunctionOverload();
 
-    private void Awake() {
-        UpdateLookValue();
-        xAxisClamp = 0f;
-        VerticalCameraRotation();
-        canMove = true;
-        moving = false;
-    }
-
     private void Start() {
         if (UiManager.staticMenuScript && UiManager.staticMenuScript.buySellText) {
             buySellText = UiManager.staticMenuScript.buySellText.GetComponentInChildren<Text>();

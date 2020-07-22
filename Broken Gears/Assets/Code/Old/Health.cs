@@ -15,9 +15,11 @@ public class Health : MonoBehaviour {
 
     private void Start() {
         currentHealth = maxHealth;
-        g = Instantiate(Manager.healthSlider, transform.position + Manager.healthSlider.GetComponent<MobileUiParts>().offSet, Quaternion.identity);
-        g.transform.GetComponent<MobileUiParts>().parent = transform;
-        g.transform.SetParent(Manager.healthCanvas);
+        if (!GameManager.gm_Single.rework) {
+            g = Instantiate(Manager.healthSlider, transform.position + Manager.healthSlider.GetComponent<MobileUiParts>().offSet, Quaternion.identity);
+            g.transform.GetComponent<MobileUiParts>().parent = transform;
+            g.transform.SetParent(Manager.healthCanvas);
+        }
     }
 
     private void Update() {
@@ -38,8 +40,8 @@ public class Health : MonoBehaviour {
     }
 
     public void Death() {
-        if (WaveSpawner.onTheField.Contains(gameObject)) {
-            WaveSpawner.onTheField.Remove(gameObject);
+        if (OldWaveSpawn.onTheField.Contains(gameObject)) {
+            OldWaveSpawn.onTheField.Remove(gameObject);
         }
         gA = Instantiate(Manager.scrapEconomy.scrapFab, transform.position + Manager.scrapEconomy.scrapFab.GetComponent<MobileUiParts>().offSet, Quaternion.identity);
         gA.transform.GetComponent<MobileUiParts>().parent = transform;

@@ -1,5 +1,4 @@
-﻿//17-7-2020
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour {
     public bool rework = true;

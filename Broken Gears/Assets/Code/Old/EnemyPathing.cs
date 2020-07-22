@@ -1,22 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyPathing : MonoBehaviour {
 
     public Transform targetPoint;
     public float speed;
-    [HideInInspector] public float speedSave;
+    [HideInInspector] public float defaultSpeed;
     public float rotationSpeed;
     int targetValue = 0;
     public float maxDistance = 0.1f;
     public GameObject enemyChild;
 
     private void Start() {
-        speedSave = speed;
+        defaultSpeed = speed;
         SetTarget();
-        print(transform.position);
     }
 
     private void Update() {
@@ -47,9 +43,10 @@ public class EnemyPathing : MonoBehaviour {
             targetPoint = Waypoints.wp_Single.waypoints[targetValue];
             targetValue++;
         } else {
-            Manager.uiManager.IncreaseEscaped(1);
+            if (!GameManager.gm_Single.rework) {
+                Manager.uiManager.IncreaseEscaped(1);
+            }
             Destroy(gameObject);
-            print("Yes");
         }
     }
 }

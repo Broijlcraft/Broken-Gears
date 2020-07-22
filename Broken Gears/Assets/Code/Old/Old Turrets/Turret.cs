@@ -7,19 +7,12 @@ public class Turret : MonoBehaviour {
     [Header("Weapon Specifics")]
 
     public string turretName;
-    public GameObject turretImg;
     public ParticleSystem[] weaponParticle;
-    public GameObject impactParticle;
-    public GameObject attackSound;
-    public GameObject pointOfAttack;
-    public float turnSpeed;
-    public float turnSpeedSave;
-    public float attackSpeed;
+    public GameObject turretImg, impactParticle, attackSound, pointOfAttack;
+    public float turnSpeed, turnSpeedSave, attackSpeed;
     public int dmg;
-    float attackDelay;
-    public float range;
-    float rangeSave;
-    public float rangetest;
+    float attackDelay, rangeSave;
+    public float range, rangetest;
     public GameObject coll;
     public Transform weaponBase;
     [HideInInspector] public bool sawCollision;
@@ -31,11 +24,7 @@ public class Turret : MonoBehaviour {
     [Header("Targeting")]
 
     public bool selected;
-    public Transform armTarget;
-    public Transform weaponTarget;
-    public Transform defaultArmTarget;
-    public Transform defaultWeaponTarget;
-    public Transform enemyCheck;
+    public Transform armTarget, weaponTarget, defaultArmTarget, defaultWeaponTarget, enemyCheck;
     [HideInInspector] public List<GameObject> targetsInRange = new List<GameObject>();
 
     [Header("Gizmos")]
@@ -50,9 +39,7 @@ public class Turret : MonoBehaviour {
     public string animationName;
     public float rotationDelay;
     public int rangeDividerRotation;
-    public bool isSaw;
-    public bool isCryo;
-    public bool isRivet;
+    public bool isSaw, isCryo, isRivet;
     public float cryoSlow;
 
     [Header("StompAttack")]
@@ -112,7 +99,7 @@ public class Turret : MonoBehaviour {
         if (armTarget != null && armTarget != defaultArmTarget) {
             armTarget.GetComponentInParent<Health>().Damage(dmg);
             if (isCryo == true) {
-                armTarget.GetComponentInParent<EnemyPathing>().speed = armTarget.GetComponentInParent<EnemyPathing>().speedSave / cryoSlow;
+                armTarget.GetComponentInParent<EnemyPathing>().speed = armTarget.GetComponentInParent<EnemyPathing>().defaultSpeed / cryoSlow;
                 for (int i = 0; i < weaponParticle.Length; i++) {
                     if (weaponParticle[i].isPaused || weaponParticle[i].isStopped) {
                         weaponParticle[i].Play();

@@ -1,9 +1,10 @@
-﻿//17-7-2020
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Menu : MonoBehaviour {
 
     public MenuManager.MenuState menuPosition;
-    public bool canNotGoBackWithEsc;
+    public bool canNotGoBackWithEsc, saveSettingsOnClose;
     public Menu previousMenu;
+
+    public virtual void ExtraFunctionality() {}
 }

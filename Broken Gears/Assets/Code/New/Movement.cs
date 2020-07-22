@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 public class Movement : MonoBehaviour {
+    public static Movement m_Single;
     public Transform pov;
     public float speed, mouseSensitivity;
     [Range(0, 90)]
@@ -10,6 +11,7 @@ public class Movement : MonoBehaviour {
     public bool canMove;
 
     private void Awake() {
+        m_Single = this;
         xRotationAxisAngle = pov.rotation.eulerAngles.x * -1;
     }
 
