@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine;
 
-public class Manager : MonoBehaviour {
+public class OldManager : MonoBehaviour {
 
     public Transform canvasTest;
 
@@ -14,7 +14,7 @@ public class Manager : MonoBehaviour {
     public static GameObject healthSlider;
     public static Camera cam;
     public static bool devMode;
-    public static UiManager uiManager;
+    public static OldUiManager uiManager;
     public Text devText;
 
     private void Start() {
@@ -22,7 +22,7 @@ public class Manager : MonoBehaviour {
         canvas = canvasTest;
         //canvas = GameObject.Find("Canvas").transform;
         if (SceneManager.GetActiveScene().name != "MainMenu") {
-            uiManager = GetComponentInParent<UiManager>();
+            uiManager = GetComponentInParent<OldUiManager>();
             healthCanvas = GameObject.Find("HealthCanvas").transform;
             scrapCanvas = GameObject.Find("ScrapCanvas").transform;
             scrapEconomy = GetComponent<ScrapEconomy>();

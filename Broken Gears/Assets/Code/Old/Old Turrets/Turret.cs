@@ -50,7 +50,7 @@ public class Turret : MonoBehaviour {
         turnSpeedSave = turnSpeed;
         animator = GetComponentInChildren<Animator>();
         coll = transform.Find("TurretCollider").gameObject;
-        if (TowerManager.selectedTower == gameObject) {
+        if (OldTowerManager.selectedTower == gameObject) {
             coll.SetActive(false);
         }
         InvokeRepeating("UpdateTarget", 0f, 0.1f);
@@ -64,7 +64,7 @@ public class Turret : MonoBehaviour {
                 }
             }
         }
-        if (TowerManager.selectedTower != gameObject) {
+        if (OldTowerManager.selectedTower != gameObject) {
             selected = false;
             enemyCheck.LookAt(armTarget);
             Debug.DrawRay(enemyCheck.position, enemyCheck.forward, Color.red * 1000);

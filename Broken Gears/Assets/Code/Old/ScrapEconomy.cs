@@ -14,7 +14,7 @@ public class ScrapEconomy : MonoBehaviour {
     public static Text uiScrap;
 
     private void Start() {
-        uiScrap = Manager.canvas.Find("HUD").Find("Img_Scrap").GetComponentInChildren<Text>();
+        uiScrap = OldManager.canvas.Find("HUD").Find("Img_Scrap").GetComponentInChildren<Text>();
         currentScrap = startScrap;
         staticScrapText = scrapText;
         ScrapUpdate();

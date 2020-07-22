@@ -23,7 +23,7 @@ public class BladeRotation : MonoBehaviour {
     }
 
     private void Update() {
-        if (TowerManager.selectedTower != turret.gameObject) {
+        if (OldTowerManager.selectedTower != turret.gameObject) {
             if (turret.armTarget != turret.defaultArmTarget) {
                 if (actualSpeed < speed) {
                     actualSpeed += speed / divider;
@@ -40,7 +40,7 @@ public class BladeRotation : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.transform.tag == "Enemy" && TowerManager.selectedTower != turret.gameObject) {
+        if (other.transform.tag == "Enemy" && OldTowerManager.selectedTower != turret.gameObject) {
             turret.sawCollision = true;
             isColliding = true;
             turret.transform.GetComponentInChildren<ParticleScript>().Particular();

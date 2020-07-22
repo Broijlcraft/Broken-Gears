@@ -12,7 +12,7 @@ public class PlayerLook : MonoBehaviour {
     public Movement movement;
     public Color defaultTextColor, goodButtonColor, badButtonTextColor, badButtonColor;
 
-    UiManager uiManager;
+    OldUiManager uiManager;
     Text buySellText;
     Button buySellButton;
 
@@ -30,21 +30,21 @@ public class PlayerLook : MonoBehaviour {
     delegate void TowerFunctionOverload();
 
     private void Start() {
-        if (UiManager.staticMenuScript && UiManager.staticMenuScript.buySellText) {
-            buySellText = UiManager.staticMenuScript.buySellText.GetComponentInChildren<Text>();
-            buySellButton = UiManager.staticMenuScript.buySellText.GetComponent<Button>();
-            uiManager = GameObject.Find("Canvas").GetComponentInChildren<UiManager>();
+        if (OldUiManager.staticMenuScript && OldUiManager.staticMenuScript.buySellText) {
+            buySellText = OldUiManager.staticMenuScript.buySellText.GetComponentInChildren<Text>();
+            buySellButton = OldUiManager.staticMenuScript.buySellText.GetComponent<Button>();
+            uiManager = GameObject.Find("Canvas").GetComponentInChildren<OldUiManager>();
         }
     }
 
     private void Update() {
         RaycastHit hit;
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward, Color.red * 1000);
-        if (!GameManager.gm_Single.rework && Input.GetMouseButtonDown(1) && UiManager.staticMenuScript.menuState == MenuScript.MenuState.none && canMove == true) {
-            Ray ray = Manager.cam.ScreenPointToRay(Input.mousePosition);
+        if (!GameManager.gm_Single.rework && Input.GetMouseButtonDown(1) && OldUiManager.staticMenuScript.menuState == MenuScript.MenuState.none && canMove == true) {
+            Ray ray = OldManager.cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
                 if (hit.transform.gameObject.tag == "Turret" || hit.transform.gameObject.tag == "Scrap") {
-                    UiManager.staticMenuScript.MenuSwitch("towerInteraction");
+                    OldUiManager.staticMenuScript.MenuSwitch("towerInteraction");
                     if (hit.transform.tag == "Scrap") {
                         if (hit.transform.GetComponent<SalvageTower>().bought == true) {
                             SetBuySellButton("Unlocked", false, Dummy, defaultTextColor, goodButtonColor);
@@ -53,8 +53,8 @@ public class PlayerLook : MonoBehaviour {
                         }
                     }
                     if (hit.transform.tag == "Turret") {
-                        if (TowerManager.activeScrapTower > 0) {
-                            SetBuySellButton("Salvage for " + hit.transform.GetComponentInParent<SelectTowerPlacement>().salvageValue, true, () => hit.transform.GetComponentInParent<SelectTowerPlacement>().SellTower(), defaultTextColor, Color.white);
+                        if (OldTowerManager.activeScrapTower > 0) {
+                            SetBuySellButton("Salvage for " + hit.transform.GetComponentInParent<OldSelectTowerPlacement>().salvageValue, true, () => hit.transform.GetComponentInParent<OldSelectTowerPlacement>().SellTower(), defaultTextColor, Color.white);
                         } else {
                             SetBuySellButton("Salvage Furnace Required", false, Dummy, badButtonTextColor, badButtonColor);
                         }

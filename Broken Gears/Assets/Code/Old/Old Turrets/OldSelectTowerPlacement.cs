@@ -2,62 +2,62 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectTowerPlacement : MonoBehaviour {
+public class OldSelectTowerPlacement : MonoBehaviour {
 
     public int scrapCost;
     public int salvageValue;
     public LayerMask layerMask;
     RaycastHit hit;
     Vector3 pos;
-    Tile tile;
+    OldTile tile;
     Vector3 newRot;
     public Turret turret;
-    Tile childTile;
-    Tile parentTile;
+    OldTile childTile;
+    OldTile parentTile;
 
     private void Start() {
-        UiManager.staticTurretText.text = "";
+        OldUiManager.staticTurretText.text = "";
     }
 
     private void Update() {
-        if (TowerManager.selectedTower == gameObject && Time.timeScale != 0 && UiManager.gameOver == false) {
-            Ray ray = Manager.cam.ScreenPointToRay(Input.mousePosition);
+        if (OldTowerManager.selectedTower == gameObject && Time.timeScale != 0 && OldUiManager.gameOver == false) {
+            Ray ray = OldManager.cam.ScreenPointToRay(Input.mousePosition);
             if (Input.GetMouseButtonDown(1)) {
-                TowerManager.selectedTower = null;
+                OldTowerManager.selectedTower = null;
                 Destroy(gameObject);
             }
-            if (TowerManager.selectedTower == gameObject) {
+            if (OldTowerManager.selectedTower == gameObject) {
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)) {
-                    tile = hit.transform.GetComponent<Tile>();
+                    tile = hit.transform.GetComponent<OldTile>();
                     if (tile) {
                         if (tile.buildable == true) {
-                            ChangeColor(TowerManager.canPlace);
+                            ChangeColor(OldTowerManager.old_tm_Single.canPlaceColor);
                             if (tile.buildableParent != null) {
-                                setPos(tile.buildableParent.GetComponent<Tile>().setPosition);
-                                newRot = tile.buildableParent.GetComponent<Tile>().setRotation;
+                                setPos(tile.buildableParent.GetComponent<OldTile>().setPosition);
+                                newRot = tile.buildableParent.GetComponent<OldTile>().setRotation;
                             } else {
                                 setPos(tile.setPosition);
                                 newRot = tile.setRotation;  
                             }
                             if (Input.GetMouseButtonDown(0)) {
-                                if (Manager.devMode == false) {
+                                if (OldManager.devMode == false) {
                                     ScrapEconomy.RemoveScrap(scrapCost);
                                 }
                                 transform.GetComponent<Turret>().coll.SetActive(true);
-                                TowerManager.selectedTower = null;
+                                OldTowerManager.selectedTower = null;
                                 tile.buildable = false;
                                 if (tile.buildableParent != null) {
-                                    tile.buildableParent.GetComponent<Tile>().buildable = false;
-                                    parentTile = tile.buildableParent.GetComponent<Tile>();
+                                    tile.buildableParent.GetComponent<OldTile>().buildable = false;
+                                    parentTile = tile.buildableParent.GetComponent<OldTile>();
                                 } else {
-                                    tile.child.GetComponent<Tile>().buildable = false;
-                                    childTile = tile.child.GetComponent<Tile>();
+                                    tile.child.GetComponent<OldTile>().buildable = false;
+                                    childTile = tile.child.GetComponent<OldTile>();
                                 }
                                 ChangeColor(Vector4.zero);
                             }
                         } else {
                             setPos(tile.setPosition);
-                            ChangeColor(TowerManager.canNotPlace);
+                            ChangeColor(OldTowerManager.old_tm_Single.canNotPlaceColor);
                         }
                     }
                 }
@@ -80,7 +80,7 @@ public class SelectTowerPlacement : MonoBehaviour {
             parentTile.buildable = true;
         }
         ScrapEconomy.AddScrap(salvageValue);
-        UiManager.staticMenuScript.MenuSwitch("none");
+        OldUiManager.staticMenuScript.MenuSwitch("none");
         Destroy(gameObject);
     }
 

@@ -11,9 +11,9 @@ public class SalvageTower : MonoBehaviour {
     
     public void ActivateTower() {
         bought = true;
-        TowerManager.activeScrapTower++;
+        OldTowerManager.activeScrapTower++;
         vfx.SetActive(true);
-        UiManager.staticMenuScript.MenuSwitch("none");
+        OldUiManager.staticMenuScript.MenuSwitch("none");
         ScrapEconomy.RemoveScrap(price);
     }
 }

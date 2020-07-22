@@ -57,9 +57,9 @@ public class OldWaveSpawn : MonoBehaviour {
             }
         } else if (waveToGet >= waves.Count && onTheField.Count == 0) {
             if (isTutorial == true) {
-                Manager.uiManager.winTutScreen.SetActive(true);
+                OldManager.uiManager.winTutScreen.SetActive(true);
             } else {
-                Manager.uiManager.winGameScreen.SetActive(true);
+                OldManager.uiManager.winGameScreen.SetActive(true);
             }
         }
     }

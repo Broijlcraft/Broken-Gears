@@ -44,7 +44,7 @@ public class EnemyPathing : MonoBehaviour {
             targetValue++;
         } else {
             if (!GameManager.gm_Single.rework) {
-                Manager.uiManager.IncreaseEscaped(1);
+                OldManager.uiManager.IncreaseEscaped(1);
             }
             Destroy(gameObject);
         }

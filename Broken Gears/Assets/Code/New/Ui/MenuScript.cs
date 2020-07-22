@@ -32,7 +32,7 @@ public class MenuScript : MonoBehaviour {
 
     public AudioSource audio;
 
-    UiManager uiManager;
+    OldUiManager uiManager;
     Movement movement;
     ZoomScript zoomAndSelectTile;
     PlayerLook playerLook;
@@ -57,7 +57,7 @@ public class MenuScript : MonoBehaviour {
 
     private void Awake() {
         if (newDev) {
-            uiManager = GameObject.Find("Canvas").GetComponent<UiManager>();
+            uiManager = GameObject.Find("Canvas").GetComponent<OldUiManager>();
             if (SceneManager.GetActiveScene().name != "MainMenu") {
                 SetItActive(uiManager.menus[1], uiManager.menus[2]);
                 cameraControl = GameObject.Find("CamControl");
@@ -117,7 +117,7 @@ public class MenuScript : MonoBehaviour {
                 }
             }
         }
-        if (Input.GetButtonDown("Cancel") && SceneManager.GetActiveScene().name != "MainMenu" && UiManager.gameOver == false && !dev) {
+        if (Input.GetButtonDown("Cancel") && SceneManager.GetActiveScene().name != "MainMenu" && OldUiManager.gameOver == false && !dev) {
             int ib = (int)menuState;
             switch (ib) {
                 case 1: case 5:

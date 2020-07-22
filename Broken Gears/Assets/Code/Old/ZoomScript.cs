@@ -13,15 +13,15 @@ public class ZoomScript : MonoBehaviour {
     Camera monitorCam;
 
     private void Start() {
-        Manager.cam = GetComponent<Camera>();
-        if (Manager.staticMonitor == true) {
+        OldManager.cam = GetComponent<Camera>();
+        if (OldManager.staticMonitor == true) {
             monitorCam = transform.GetChild(0).GetComponent<Camera>();
         }
         if (zoom == 0) {
-            zoom = Manager.cam.fieldOfView;
+            zoom = OldManager.cam.fieldOfView;
         } else {
-            Manager.cam.fieldOfView = zoom;
-            if (Manager.staticMonitor == true) {
+            OldManager.cam.fieldOfView = zoom;
+            if (OldManager.staticMonitor == true) {
                 monitorCam.fieldOfView = zoom;
             }
         }
@@ -49,9 +49,9 @@ public class ZoomScript : MonoBehaviour {
     }
 
     void Zoom() {
-        if (Manager.staticMonitor == true) {
+        if (OldManager.staticMonitor == true) {
         monitorCam.fieldOfView = zoom;
         }
-        Manager.cam.fieldOfView = zoom;
+        OldManager.cam.fieldOfView = zoom;
     }
 }

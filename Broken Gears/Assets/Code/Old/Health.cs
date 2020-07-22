@@ -16,9 +16,9 @@ public class Health : MonoBehaviour {
     private void Start() {
         currentHealth = maxHealth;
         if (!GameManager.gm_Single.rework) {
-            g = Instantiate(Manager.healthSlider, transform.position + Manager.healthSlider.GetComponent<MobileUiParts>().offSet, Quaternion.identity);
+            g = Instantiate(OldManager.healthSlider, transform.position + OldManager.healthSlider.GetComponent<MobileUiParts>().offSet, Quaternion.identity);
             g.transform.GetComponent<MobileUiParts>().parent = transform;
-            g.transform.SetParent(Manager.healthCanvas);
+            g.transform.SetParent(OldManager.healthCanvas);
         }
     }
 
@@ -44,12 +44,12 @@ public class Health : MonoBehaviour {
             OldWaveSpawn.onTheField.Remove(gameObject);
         }
         if (!GameManager.gm_Single.rework) {
-            gA = Instantiate(Manager.scrapEconomy.scrapFab, transform.position + Manager.scrapEconomy.scrapFab.GetComponent<MobileUiParts>().offSet, Quaternion.identity);
+            gA = Instantiate(OldManager.scrapEconomy.scrapFab, transform.position + OldManager.scrapEconomy.scrapFab.GetComponent<MobileUiParts>().offSet, Quaternion.identity);
             gA.transform.GetComponent<MobileUiParts>().parent = transform;
-            gA.transform.SetParent(Manager.scrapCanvas);
+            gA.transform.SetParent(OldManager.scrapCanvas);
             int value;
             value = scrapAdd;
-            value += TowerManager.activeScrapTower;
+            value += OldTowerManager.activeScrapTower;
             ScrapEconomy.AddScrap(value);
             gA.transform.GetComponentInChildren<Text>().text = "+ " + value;
         }

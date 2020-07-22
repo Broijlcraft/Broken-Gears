@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tile : MonoBehaviour {
+public class OldTile : MonoBehaviour {
 
     [HideInInspector] public bool buildable;
     public Transform buildableParent;
     [HideInInspector] public Transform child;
     [HideInInspector] public Vector3 setPosition;
     [HideInInspector] public Vector3 setRotation;
-    Tile parentTile;
+    OldTile parentTile;
 
     private void Awake() {
         if (buildableParent != null) {
-            parentTile = buildableParent.GetComponent<Tile>();
+            parentTile = buildableParent.GetComponent<OldTile>();
             setPosition = buildableParent.transform.position;
             buildable = true;
             parentTile.child = transform;
@@ -24,18 +24,18 @@ public class Tile : MonoBehaviour {
     }
 
     private void Start() {
-        if (buildableParent != null) { 
+        if (buildableParent != null && !GameManager.gm_Single.rework) { 
             if (buildableParent.position.x == transform.position.x) {
                 if (buildableParent.position.z > transform.position.z) {
-                    SetParentRotation(TowerManager.minZRotation);
+                    SetParentRotation(OldTowerManager.old_tm_Single.minZRotation);
                 } else {
-                    SetParentRotation(TowerManager.plusZRotation);
+                    SetParentRotation(OldTowerManager.old_tm_Single.plusZRotation);
                 }
             } else if (buildableParent.position.z == transform.position.z) {
                 if (buildableParent.position.x > transform.position.x) {
-                    SetParentRotation(TowerManager.plusXRotation);
+                    SetParentRotation(OldTowerManager.old_tm_Single.plusXRotation);
                 } else {
-                    SetParentRotation(TowerManager.minXRotation);
+                    SetParentRotation(OldTowerManager.old_tm_Single.minXRotation);
                 }
             }
         }    

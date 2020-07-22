@@ -4,12 +4,10 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class UiManager : MonoBehaviour {
-    public List<GameObject> menus = new List<GameObject>();
+public class OldUiManager : MonoBehaviour {
+    public List<GameObject> menus = new List<GameObject>(), sliders = new List<GameObject>();
     public List<Button> towerButtons = new List<Button>();
-    public List<GameObject> sliders = new List<GameObject>();
-    TowerManager towerManager;
-    Button b;
+    OldTowerManager towerManager;
     public static MenuScript staticMenuScript;
     public Text turretText;
     public Text turretValueText;
@@ -24,9 +22,7 @@ public class UiManager : MonoBehaviour {
     public int maxEscaped;
     public static int currentEscaped;
     public List<Image> workerPic = new List<Image>();
-    public GameObject gameOverScreen;
-    public GameObject winGameScreen;
-    public GameObject winTutScreen;
+    public GameObject gameOverScreen, winGameScreen, winTutScreen;
     public static bool gameOver;
 
     int i;
@@ -41,7 +37,7 @@ public class UiManager : MonoBehaviour {
 
     private void Start() {
         if (SceneManager.GetActiveScene().name != "MainMenu") {
-            towerManager = GameObject.Find("GameManager").GetComponent<TowerManager>();
+            towerManager = GameObject.Find("GameManager").GetComponent<OldTowerManager>();
             for (i = 0; i < towerButtons.Count; i++) {
                 int ib = i;
                 towerButtons[ib].onClick.AddListener(() => towerManager.SelectTower(towerManager.towerList[ib]));
