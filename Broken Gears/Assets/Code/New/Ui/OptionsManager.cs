@@ -1,11 +1,14 @@
-﻿using UnityEngine.UI;
+﻿using UnityEngine.Audio;
+using UnityEngine.UI;
 using UnityEngine;
 using System;
 
 public class OptionsManager : MonoBehaviour {
+    public AudioMixer audioMixer;
     public SettingSlider[] settingSliders;
 
     private void Start() {
+        AudioManager.audioMixer = audioMixer;
         for (int i = 0; i < settingSliders.Length; i++) {
             SettingSlider ss = settingSliders[i];
             ss.slider.maxValue = ss.range.max;
@@ -14,12 +17,42 @@ public class OptionsManager : MonoBehaviour {
     
             //Cleanup after rework!!!
             if(ss.audioGroup != AudioManager.AudioGroups.None) {
+                switch (ss.audioGroup) {
+                    case AudioManager.AudioGroups.Master:
+                        ss.slider.onValueChanged.AddListener(OnMasterVolumeChanged);
+                    break;
+                    case AudioManager.AudioGroups.SFX:
+                        ss.slider.onValueChanged.AddListener(OnSFXVolumeChanged);
+                    break;
+                    case AudioManager.AudioGroups.Music:
+                        ss.slider.onValueChanged.AddListener(OnMusicVolumeChanged);
+                    break;
+                }
+
                 ss.slider.value = PlayerPrefs.GetFloat(ss.audioGroup.ToString(), (ss.range.max + ss.range.min) / 2);
             } else {
+                if (ss.sensitivityType == SettingSlider.SensitivitySliders.MouseSensitivity) {
+                    ss.slider.onValueChanged.AddListener(Movement.m_Single.OnMouseSensitivityChanged);
+                } else {
+                    ss.slider.onValueChanged.AddListener(Movement.m_Single.OnZoomSensitivityChanged);
+                }
+
                 ss.slider.value = PlayerPrefs.GetFloat(ss.sensitivityType.ToString(), (ss.range.max + ss.range.min) / 2);
             }
             ss.slider.onValueChanged.AddListener(ss.OnSliderValueChanged);
         }
+    }
+
+    public void OnMasterVolumeChanged(float value) {
+        AudioManager.audioMixer.SetFloat("MasterVolume", value);
+    }
+
+    public void OnSFXVolumeChanged(float value) {
+        AudioManager.audioMixer.SetFloat("SFXVolume", value);
+    }
+
+    public void OnMusicVolumeChanged(float value) {
+        AudioManager.audioMixer.SetFloat("MusicVolume", value);
     }
 }
 
@@ -49,5 +82,5 @@ public class SettingSlider {
 
 [Serializable]
 public class Range {
-    public float min, max;
+    public float max, min;
 }

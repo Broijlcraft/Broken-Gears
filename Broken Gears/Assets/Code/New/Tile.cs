@@ -1,23 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class OldTile : MonoBehaviour {
+public class Tile : MonoBehaviour {
+
+    public Tile buildableParent;
 
     [HideInInspector] public bool buildable;
-    public Transform buildableParent;
     [HideInInspector] public Transform child;
-    [HideInInspector] public Vector3 setPosition;
-    [HideInInspector] public Vector3 setRotation;
-    OldTile parentTile;
+    [HideInInspector] public Vector3 setPosition, setRotation;
 
     private void Awake() {
         if (buildableParent != null) {
-            parentTile = buildableParent.GetComponent<OldTile>();
             setPosition = buildableParent.transform.position;
             buildable = true;
-            parentTile.child = transform;
-            parentTile.buildable = true;
+            buildableParent.child = transform;
+            buildableParent.buildable = true;
         } else {
             setPosition = transform.position;
         }
@@ -25,14 +21,14 @@ public class OldTile : MonoBehaviour {
 
     private void Start() {
         if (buildableParent != null && !GameManager.gm_Single.rework) { 
-            if (buildableParent.position.x == transform.position.x) {
-                if (buildableParent.position.z > transform.position.z) {
+            if (buildableParent.transform.position.x == transform.position.x) {
+                if (buildableParent.transform.position.z > transform.position.z) {
                     SetParentRotation(OldTowerManager.old_tm_Single.minZRotation);
                 } else {
                     SetParentRotation(OldTowerManager.old_tm_Single.plusZRotation);
                 }
-            } else if (buildableParent.position.z == transform.position.z) {
-                if (buildableParent.position.x > transform.position.x) {
+            } else if (buildableParent.transform.position.z == transform.position.z) {
+                if (buildableParent.transform.position.x > transform.position.x) {
                     SetParentRotation(OldTowerManager.old_tm_Single.plusXRotation);
                 } else {
                     SetParentRotation(OldTowerManager.old_tm_Single.minXRotation);
@@ -41,8 +37,7 @@ public class OldTile : MonoBehaviour {
         }    
     }
 
-    void SetParentRotation(Vector3 v) {
-        setRotation = v;
-        parentTile.setRotation = setRotation;
+    void SetParentRotation(Vector3 rot) {
+        buildableParent.setRotation = rot;
     }
 }

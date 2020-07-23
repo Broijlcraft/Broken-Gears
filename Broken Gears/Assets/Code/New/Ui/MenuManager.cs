@@ -11,7 +11,7 @@ public class MenuManager : MonoBehaviour {
     }
 
     [HideInInspector] public Menu currentMenu;
-    [HideInInspector] public MenuState currentMenuState;
+    /*[HideInInspector]*/ public MenuState currentMenuState;
 
     [Space, Header("EscapeMenu")]
     public GameObject menuHolder;

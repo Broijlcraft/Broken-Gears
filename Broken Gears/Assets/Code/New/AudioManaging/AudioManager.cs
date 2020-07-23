@@ -12,11 +12,12 @@ public static class AudioManager {
         None
     }
 
-    public static void PlaySound(AudioClip audioClipToPlay, AudioGroups audioGroups, Vector3 position) {
+    public static void PlaySound(AudioClip audioClipToPlay, AudioGroups audioGroups, float pitch, Vector3 position) {
         GameObject soundObject = new GameObject("Sound");
         soundObject.transform.position = position;
         AudioSource audio = soundObject.AddComponent<AudioSource>();
         audio.PlayOneShot(audioClipToPlay);
+        audio.pitch = pitch;
         audio.outputAudioMixerGroup = audioMixer.FindMatchingGroups(audioGroups.ToString())[0];
         GameObject.Destroy(soundObject, audioClipToPlay.length);
     }

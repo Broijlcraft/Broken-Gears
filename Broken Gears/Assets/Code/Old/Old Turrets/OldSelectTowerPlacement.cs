@@ -9,11 +9,11 @@ public class OldSelectTowerPlacement : MonoBehaviour {
     public LayerMask layerMask;
     RaycastHit hit;
     Vector3 pos;
-    OldTile tile;
+    Tile tile;
     Vector3 newRot;
     public Turret turret;
-    OldTile childTile;
-    OldTile parentTile;
+    Tile childTile;
+    Tile parentTile;
 
     private void Start() {
         OldUiManager.staticTurretText.text = "";
@@ -28,13 +28,13 @@ public class OldSelectTowerPlacement : MonoBehaviour {
             }
             if (OldTowerManager.selectedTower == gameObject) {
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)) {
-                    tile = hit.transform.GetComponent<OldTile>();
+                    tile = hit.transform.GetComponent<Tile>();
                     if (tile) {
                         if (tile.buildable == true) {
                             ChangeColor(OldTowerManager.old_tm_Single.canPlaceColor);
                             if (tile.buildableParent != null) {
-                                setPos(tile.buildableParent.GetComponent<OldTile>().setPosition);
-                                newRot = tile.buildableParent.GetComponent<OldTile>().setRotation;
+                                setPos(tile.buildableParent.GetComponent<Tile>().setPosition);
+                                newRot = tile.buildableParent.GetComponent<Tile>().setRotation;
                             } else {
                                 setPos(tile.setPosition);
                                 newRot = tile.setRotation;  
@@ -47,11 +47,11 @@ public class OldSelectTowerPlacement : MonoBehaviour {
                                 OldTowerManager.selectedTower = null;
                                 tile.buildable = false;
                                 if (tile.buildableParent != null) {
-                                    tile.buildableParent.GetComponent<OldTile>().buildable = false;
-                                    parentTile = tile.buildableParent.GetComponent<OldTile>();
+                                    tile.buildableParent.GetComponent<Tile>().buildable = false;
+                                    parentTile = tile.buildableParent.GetComponent<Tile>();
                                 } else {
-                                    tile.child.GetComponent<OldTile>().buildable = false;
-                                    childTile = tile.child.GetComponent<OldTile>();
+                                    tile.child.GetComponent<Tile>().buildable = false;
+                                    childTile = tile.child.GetComponent<Tile>();
                                 }
                                 ChangeColor(Vector4.zero);
                             }
