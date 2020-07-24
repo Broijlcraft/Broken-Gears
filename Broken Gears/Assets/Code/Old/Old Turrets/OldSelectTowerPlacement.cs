@@ -4,29 +4,26 @@ using UnityEngine;
 
 public class OldSelectTowerPlacement : MonoBehaviour {
 
-    public int scrapCost;
-    public int salvageValue;
+    public int scrapCost, salvageValue;
     public LayerMask layerMask;
+    public OldTurret turret;
     RaycastHit hit;
     Vector3 pos;
-    Tile tile;
+    Tile tile, childTile, parentTile;
     Vector3 newRot;
-    public Turret turret;
-    Tile childTile;
-    Tile parentTile;
 
     private void Start() {
-        OldUiManager.staticTurretText.text = "";
+        //OldUiManager.old_um_Single.turretText.text = "";
     }
 
     private void Update() {
-        if (OldTowerManager.selectedTower == gameObject && Time.timeScale != 0 && OldUiManager.gameOver == false) {
-            Ray ray = OldManager.cam.ScreenPointToRay(Input.mousePosition);
+        if (OldTowerManager.old_tm_Single.selectedTower == gameObject && Time.timeScale != 0 /*&& OldUiManager.old_um_Single.gameOver == false*/) {
+            Ray ray = OldManager.old_m_Single.cam.ScreenPointToRay(Input.mousePosition);
             if (Input.GetMouseButtonDown(1)) {
-                OldTowerManager.selectedTower = null;
+                OldTowerManager.old_tm_Single.selectedTower = null;
                 Destroy(gameObject);
             }
-            if (OldTowerManager.selectedTower == gameObject) {
+            if (OldTowerManager.old_tm_Single.selectedTower == gameObject) {
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)) {
                     tile = hit.transform.GetComponent<Tile>();
                     if (tile) {
@@ -40,11 +37,11 @@ public class OldSelectTowerPlacement : MonoBehaviour {
                                 newRot = tile.setRotation;  
                             }
                             if (Input.GetMouseButtonDown(0)) {
-                                if (OldManager.devMode == false) {
-                                    ScrapEconomy.RemoveScrap(scrapCost);
+                                if (OldManager.old_m_Single.devMode == false) {
+                                    OldScrapEconomy.old_se_Single.RemoveScrap(scrapCost);
                                 }
-                                transform.GetComponent<Turret>().coll.SetActive(true);
-                                OldTowerManager.selectedTower = null;
+                                transform.GetComponent<OldTurret>().coll.SetActive(true);
+                                OldTowerManager.old_tm_Single.selectedTower = null;
                                 tile.buildable = false;
                                 if (tile.buildableParent != null) {
                                     tile.buildableParent.GetComponent<Tile>().buildable = false;
@@ -79,8 +76,8 @@ public class OldSelectTowerPlacement : MonoBehaviour {
         if (parentTile != null) {
             parentTile.buildable = true;
         }
-        ScrapEconomy.AddScrap(salvageValue);
-        OldUiManager.staticMenuScript.MenuSwitch("none");
+        OldScrapEconomy.old_se_Single.AddScrap(salvageValue);
+        OldMenuScript.old_ms_Single.MenuSwitch("none");
         Destroy(gameObject);
     }
 

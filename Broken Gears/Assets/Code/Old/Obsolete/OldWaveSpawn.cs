@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OldWaveSpawn : MonoBehaviour {
 
-    public static OldWaveSpawn wv_Single;
+    public static OldWaveSpawn old_wv_Single;
     public bool endless;
 
 
@@ -14,10 +14,10 @@ public class OldWaveSpawn : MonoBehaviour {
     public int enemyToGet, waveToGet;
     public bool isTutorial;
 
-    public static List<GameObject> onTheField = new List<GameObject>();
+    public List<GameObject> onTheField = new List<GameObject>();
 
     private void Awake() {
-        wv_Single = this;
+        old_wv_Single = this;
     }
 
     private void Update() {
@@ -57,9 +57,9 @@ public class OldWaveSpawn : MonoBehaviour {
             }
         } else if (waveToGet >= waves.Count && onTheField.Count == 0) {
             if (isTutorial == true) {
-                OldManager.uiManager.winTutScreen.SetActive(true);
+                //OldUiManager.old_um_Single.winTutScreen.SetActive(true);
             } else {
-                OldManager.uiManager.winGameScreen.SetActive(true);
+                //OldUiManager.old_um_Single.winGameScreen.SetActive(true);
             }
         }
     }

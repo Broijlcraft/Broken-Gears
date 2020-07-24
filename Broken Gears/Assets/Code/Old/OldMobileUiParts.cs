@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class MobileUiParts : MonoBehaviour {
+public class OldMobileUiParts : MonoBehaviour {
     [HideInInspector] public Transform parent;
     public Vector3 offSet;
     public bool stay;

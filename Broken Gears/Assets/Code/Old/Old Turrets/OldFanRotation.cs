@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FanRotation : MonoBehaviour {
+public class OldFanRotation : MonoBehaviour {
 
     public Vector3 rot;
     public float speed;

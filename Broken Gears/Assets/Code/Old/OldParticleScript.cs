@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticleScript : MonoBehaviour {
+public class OldParticleScript : MonoBehaviour {
 
-    Turret turret;
+    OldTurret turret;
     ParticleSystem particle;
     public float delay;
 
     private void Awake() {
-        turret = GetComponentInParent<Turret>();
+        turret = GetComponentInParent<OldTurret>();
         particle = transform.GetComponentInChildren<ParticleSystem>();
         particle.Stop();
     }

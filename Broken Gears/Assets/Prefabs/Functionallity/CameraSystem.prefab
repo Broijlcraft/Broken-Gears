@@ -105,8 +105,6 @@ GameObject:
   - component: {fileID: 6153059233060777136}
   - component: {fileID: 6153059233060777137}
   - component: {fileID: 6153059233060777142}
-  - component: {fileID: 6153059233060777138}
-  - component: {fileID: 6153059233060777139}
   - component: {fileID: 7087140048285439353}
   m_Layer: 0
   m_Name: Main Camera
@@ -180,55 +178,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6153059233060777143}
   m_Enabled: 1
---- !u!114 &6153059233060777138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6153059233060777143}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 678dc1a8e001a3341981963606ff162d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseSensitivity: 0
-  topLock: 0
-  bottomLock: 90
-  multiplier: 13
-  xAxisClamp: 0
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 4096
-  movement: {fileID: 0}
-  defaultTextColor: {r: 0.18823531, g: 0.36862746, b: 0.4039216, a: 1}
-  goodButtonColor: {r: 0.2509804, g: 1, b: 0.2509804, a: 1}
-  badButtonTextColor: {r: 0.3177287, g: 0.588527, b: 0.6415094, a: 1}
-  badButtonColor: {r: 1, g: 0.2509804, b: 0.2509804, a: 1}
-  speed: 0
-  moving: 0
-  updates: 150
-  amount: 0.3
-  initialMoveDelay: 5
---- !u!114 &6153059233060777139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6153059233060777143}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c9662702f584ca8e4336255905f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zoom: 50
-  zoomIncrease: 2.42
-  maxZoomIn: 25
-  maxZoomOut: 50
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!114 &7087140048285439353
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,22 +3,21 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class Health : MonoBehaviour {
+public class OldHealth : MonoBehaviour {
 
     public float maxHealth;
     [HideInInspector] public float currentHealth;
     public int scrapAdd;
     public GameObject targetInemy;
 
-    GameObject g;
-    GameObject gA;
+    GameObject g, gA;
 
     private void Start() {
         currentHealth = maxHealth;
         if (!GameManager.gm_Single.rework) {
-            g = Instantiate(OldManager.healthSlider, transform.position + OldManager.healthSlider.GetComponent<MobileUiParts>().offSet, Quaternion.identity);
-            g.transform.GetComponent<MobileUiParts>().parent = transform;
-            g.transform.SetParent(OldManager.healthCanvas);
+            g = Instantiate(OldManager.old_m_Single.healthFab, transform.position + OldManager.old_m_Single.healthFab.GetComponent<OldMobileUiParts>().offSet, Quaternion.identity);
+            g.transform.GetComponent<OldMobileUiParts>().parent = transform;
+            g.transform.SetParent(OldManager.old_m_Single.healthCanvas);
         }
     }
 
@@ -40,17 +39,17 @@ public class Health : MonoBehaviour {
     }
 
     public void Death() {
-        if (OldWaveSpawn.onTheField.Contains(gameObject)) {
-            OldWaveSpawn.onTheField.Remove(gameObject);
+        if (OldWaveSpawn.old_wv_Single.onTheField.Contains(gameObject)) {
+            OldWaveSpawn.old_wv_Single.onTheField.Remove(gameObject);
         }
         if (!GameManager.gm_Single.rework) {
-            gA = Instantiate(OldManager.scrapEconomy.scrapFab, transform.position + OldManager.scrapEconomy.scrapFab.GetComponent<MobileUiParts>().offSet, Quaternion.identity);
-            gA.transform.GetComponent<MobileUiParts>().parent = transform;
-            gA.transform.SetParent(OldManager.scrapCanvas);
+            gA = Instantiate(OldScrapEconomy.old_se_Single.scrapFab, transform.position + OldScrapEconomy.old_se_Single.scrapFab.GetComponent<OldMobileUiParts>().offSet, Quaternion.identity);
+            gA.transform.GetComponent<OldMobileUiParts>().parent = transform;
+            gA.transform.SetParent(OldManager.old_m_Single.scrapCanvas);
             int value;
             value = scrapAdd;
-            value += OldTowerManager.activeScrapTower;
-            ScrapEconomy.AddScrap(value);
+            value += OldTowerManager.old_tm_Single.activeScrapTower;
+            OldScrapEconomy.old_se_Single.AddScrap(value);
             gA.transform.GetComponentInChildren<Text>().text = "+ " + value;
         }
         GetComponent<EnemyPathing>().speed = 0;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour {
+public class OldTurret : MonoBehaviour {
 
     [Header("Weapon Specifics")]
 
@@ -50,7 +50,7 @@ public class Turret : MonoBehaviour {
         turnSpeedSave = turnSpeed;
         animator = GetComponentInChildren<Animator>();
         coll = transform.Find("TurretCollider").gameObject;
-        if (OldTowerManager.selectedTower == gameObject) {
+        if (OldTowerManager.old_tm_Single.selectedTower == gameObject) {
             coll.SetActive(false);
         }
         InvokeRepeating("UpdateTarget", 0f, 0.1f);
@@ -64,7 +64,7 @@ public class Turret : MonoBehaviour {
                 }
             }
         }
-        if (OldTowerManager.selectedTower != gameObject) {
+        if (OldTowerManager.old_tm_Single.selectedTower != gameObject) {
             selected = false;
             enemyCheck.LookAt(armTarget);
             Debug.DrawRay(enemyCheck.position, enemyCheck.forward, Color.red * 1000);
@@ -97,7 +97,7 @@ public class Turret : MonoBehaviour {
 
     void DoAttack() {
         if (armTarget != null && armTarget != defaultArmTarget) {
-            armTarget.GetComponentInParent<Health>().Damage(dmg);
+            armTarget.GetComponentInParent<OldHealth>().Damage(dmg);
             if (isCryo == true) {
                 armTarget.GetComponentInParent<EnemyPathing>().speed = armTarget.GetComponentInParent<EnemyPathing>().defaultSpeed / cryoSlow;
                 for (int i = 0; i < weaponParticle.Length; i++) {

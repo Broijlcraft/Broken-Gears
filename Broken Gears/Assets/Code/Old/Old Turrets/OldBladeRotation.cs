@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BladeRotation : MonoBehaviour {
+public class OldBladeRotation : MonoBehaviour {
     public Vector3 rot;
-    public float divider;
-    public float speed;
+    public float divider, speed;
     float actualSpeed;
-    Turret turret;
+    OldTurret turret;
     bool isColliding;
 
     private void Start() {
-        turret = GetComponentInParent<Turret>();
+        turret = GetComponentInParent<OldTurret>();
         InvokeRepeating("SepCollCheck", 0f, 0.07f);
     }
 
@@ -23,7 +22,7 @@ public class BladeRotation : MonoBehaviour {
     }
 
     private void Update() {
-        if (OldTowerManager.selectedTower != turret.gameObject) {
+        if (OldTowerManager.old_tm_Single.selectedTower != turret.gameObject) {
             if (turret.armTarget != turret.defaultArmTarget) {
                 if (actualSpeed < speed) {
                     actualSpeed += speed / divider;
@@ -40,10 +39,10 @@ public class BladeRotation : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.transform.tag == "Enemy" && OldTowerManager.selectedTower != turret.gameObject) {
+        if (other.transform.tag == "Enemy" && OldTowerManager.old_tm_Single.selectedTower != turret.gameObject) {
             turret.sawCollision = true;
             isColliding = true;
-            turret.transform.GetComponentInChildren<ParticleScript>().Particular();
+            turret.transform.GetComponentInChildren<OldParticleScript>().Particular();
         }
     }
 
@@ -57,7 +56,7 @@ public class BladeRotation : MonoBehaviour {
     void StopColliding() {
         if (isColliding == false) {
             turret.sawCollision = false;
-            turret.transform.GetComponentInChildren<ParticleScript>().Particular();
+            turret.transform.GetComponentInChildren<OldParticleScript>().Particular();
         }
     }
 }

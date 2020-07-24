@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponFollow : MonoBehaviour {
+public class OldWeaponFollow : MonoBehaviour {
     public Transform weap;
-    Turret turret;
-    Transform t;
-    Vector3 v;
+    OldTurret turret;
     public bool x;
 
     private void Start() {
-        turret = GetComponentInParent<Turret>();   
+        turret = GetComponentInParent<OldTurret>();   
     }
 
     void Update() {

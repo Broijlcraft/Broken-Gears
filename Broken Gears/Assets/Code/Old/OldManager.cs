@@ -4,31 +4,24 @@ using UnityEngine;
 
 public class OldManager : MonoBehaviour {
 
-    public Transform canvasTest;
+    public static OldManager old_m_Single;
 
-    public static Transform canvas, healthCanvas, scrapCanvas;
-    public static ScrapEconomy scrapEconomy;
-    public bool monitor;
-    public static bool staticMonitor;
+    public Transform canvasTest, healthCanvas, scrapCanvas;
+    public bool monitor, devMode;
     public GameObject healthFab;
-    public static GameObject healthSlider;
-    public static Camera cam;
-    public static bool devMode;
-    public static OldUiManager uiManager;
+    public Camera cam;
     public Text devText;
+
+    private void Awake() {
+        old_m_Single = this;
+    }
 
     private void Start() {
         cam = Camera.main;
-        canvas = canvasTest;
-        //canvas = GameObject.Find("Canvas").transform;
         if (SceneManager.GetActiveScene().name != "MainMenu") {
-            uiManager = GetComponentInParent<OldUiManager>();
             healthCanvas = GameObject.Find("HealthCanvas").transform;
             scrapCanvas = GameObject.Find("ScrapCanvas").transform;
-            scrapEconomy = GetComponent<ScrapEconomy>();
-            staticMonitor = monitor;
-            healthSlider = healthFab;
-            devText = canvas.Find("DevText").GetComponentInChildren<Text>();
+            devText = canvasTest.Find("DevText").GetComponentInChildren<Text>();
             devMode = true;
             ChangeMode();
         }

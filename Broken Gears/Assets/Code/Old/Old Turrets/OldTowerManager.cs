@@ -6,9 +6,9 @@ public class OldTowerManager : MonoBehaviour {
     public static OldTowerManager old_tm_Single;
 
     public List<GameObject> towerList = new List<GameObject>();
-    public static GameObject selectedTower;
+    public GameObject selectedTower;
     public Vector4 canPlaceColor, canNotPlaceColor;
-    public static int activeScrapTower = 0;
+    public int activeScrapTower = 0;
 
     public Vector3 minXRotation, plusXRotation, minZRotation, plusZRotation;
 
@@ -17,8 +17,8 @@ public class OldTowerManager : MonoBehaviour {
     }
 
     public void SelectTower(GameObject tower) {
-        if (OldUiManager.staticMenuScript.menuState == MenuScript.MenuState.none) {
-            if (tower.GetComponent<OldSelectTowerPlacement>().scrapCost <= ScrapEconomy.currentScrap || OldManager.devMode == true) {
+        if (OldMenuScript.old_ms_Single.menuState == OldMenuScript.MenuState.none) {
+            if (tower.GetComponent<OldSelectTowerPlacement>().scrapCost <= OldScrapEconomy.old_se_Single.currentScrap || OldManager.old_m_Single.devMode == true) {
                 if (selectedTower != null) {
                     Destroy(selectedTower);
                 }

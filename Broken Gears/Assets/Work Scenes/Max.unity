@@ -958,7 +958,6 @@ GameObject:
   - component: {fileID: 88784839}
   - component: {fileID: 88784838}
   - component: {fileID: 88784840}
-  - component: {fileID: 88784837}
   m_Layer: 5
   m_Name: Button_HammerTurret
   m_TagString: Untagged
@@ -986,20 +985,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &88784837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 88784835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b413197a74eb5b246a63d0ed1b58f41f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turretName: Hammer Tower
-  turretValue: 50
 --- !u!114 &88784838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1730,42 +1715,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180105939}
   m_CullTransparentMesh: 0
---- !u!1 &197547088
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 197547089}
-  m_Layer: 5
-  m_Name: DevText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &197547089
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197547088}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1211604455}
-  m_Father: {fileID: 1501428647}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 77.4}
-  m_Pivot: {x: 0, y: 0}
 --- !u!1 &234782994
 GameObject:
   m_ObjectHideFlags: 0
@@ -3224,7 +3173,7 @@ RectTransform:
   - {fileID: 1044213513}
   - {fileID: 1708099733}
   m_Father: {fileID: 1501428647}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5376,7 +5325,7 @@ RectTransform:
   - {fileID: 82522300}
   - {fileID: 11610754}
   m_Father: {fileID: 1501428647}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5973,7 +5922,7 @@ RectTransform:
   - {fileID: 1897072685}
   - {fileID: 547557650}
   m_Father: {fileID: 1501428647}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6228,7 +6177,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1501428647}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6304,7 +6253,7 @@ RectTransform:
   - {fileID: 307684487}
   - {fileID: 517524276}
   m_Father: {fileID: 1501428647}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7233,7 +7182,6 @@ GameObject:
   - component: {fileID: 960448111}
   - component: {fileID: 960448110}
   - component: {fileID: 960448112}
-  - component: {fileID: 960448109}
   m_Layer: 5
   m_Name: Button_CryoTurret
   m_TagString: Untagged
@@ -7261,20 +7209,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &960448109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 960448107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b413197a74eb5b246a63d0ed1b58f41f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turretName: Cryogun
-  turretValue: 30
 --- !u!114 &960448110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7515,7 +7449,6 @@ GameObject:
   - component: {fileID: 1004911869}
   - component: {fileID: 1004911868}
   - component: {fileID: 1004911870}
-  - component: {fileID: 1004911867}
   m_Layer: 5
   m_Name: Button_SawTurret
   m_TagString: Untagged
@@ -7543,20 +7476,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1004911867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1004911865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b413197a74eb5b246a63d0ed1b58f41f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turretName: Saw Tower
-  turretValue: 25
 --- !u!114 &1004911868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8034,7 +7953,7 @@ RectTransform:
   m_Children:
   - {fileID: 2125812827}
   m_Father: {fileID: 1501428647}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8582,83 +8501,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210425188}
-  m_CullTransparentMesh: 0
---- !u!1 &1211604454
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1211604455}
-  - component: {fileID: 1211604457}
-  - component: {fileID: 1211604456}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1211604455
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211604454}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 197547089}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1211604456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211604454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 0
-    m_FontStyle: 0
-    m_BestFit: 1
-    m_MinSize: 0
-    m_MaxSize: 300
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: DevMode
---- !u!222 &1211604457
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211604454}
   m_CullTransparentMesh: 0
 --- !u!1 &1212951445
 GameObject:
@@ -9999,7 +9841,6 @@ GameObject:
   - component: {fileID: 1475009443}
   - component: {fileID: 1475009442}
   - component: {fileID: 1475009444}
-  - component: {fileID: 1475009441}
   m_Layer: 5
   m_Name: Button_RivetTurret
   m_TagString: Untagged
@@ -10027,20 +9868,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1475009441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1475009439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b413197a74eb5b246a63d0ed1b58f41f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turretName: Rivetgun
-  turretValue: 30
 --- !u!114 &1475009442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10562,7 +10389,6 @@ GameObject:
   - component: {fileID: 1501428646}
   - component: {fileID: 1501428645}
   - component: {fileID: 1501428644}
-  - component: {fileID: 1501428643}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -10570,53 +10396,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1501428643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1501428642}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54938478c6662e847b490b5c5598ea50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menus:
-  - {fileID: 330453400}
-  - {fileID: 668199578}
-  - {fileID: 2086392487}
-  - {fileID: 888164943}
-  - {fileID: 1783349747}
-  - {fileID: 1101902950}
-  sliders:
-  - {fileID: 1465378695}
-  - {fileID: 1508950750}
-  - {fileID: 1288725718}
-  - {fileID: 795374457}
-  - {fileID: 425234916}
-  towerButtons:
-  - {fileID: 1004911870}
-  - {fileID: 1475009444}
-  - {fileID: 960448112}
-  - {fileID: 88784840}
-  turretText: {fileID: 1490185339}
-  turretValueText: {fileID: 546462295}
-  fadePic: {fileID: 800309982}
-  disableButtons:
-  - {fileID: 123359528}
-  - {fileID: 1468706266}
-  - {fileID: 131666732}
-  maxEscaped: 5
-  workerPic:
-  - {fileID: 2037314428}
-  - {fileID: 108856982}
-  - {fileID: 1725226573}
-  - {fileID: 234807163}
-  - {fileID: 568601237}
-  gameOverScreen: {fileID: 777398338}
-  winGameScreen: {fileID: 805829487}
-  winTutScreen: {fileID: 690763964}
 --- !u!114 &1501428644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10689,7 +10468,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 782324671}
-  - {fileID: 197547089}
   - {fileID: 496907064}
   - {fileID: 1101902953}
   - {fileID: 800309986}
@@ -65623,7 +65401,14 @@ PrefabInstance:
       propertyPath: canMove
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1093045217057995043, guid: ec94bfebf1d7d2c4cbffc72f85d2db6c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6153059233060777139, guid: ec94bfebf1d7d2c4cbffc72f85d2db6c, type: 3}
+    - {fileID: 6153059233060777138, guid: ec94bfebf1d7d2c4cbffc72f85d2db6c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ec94bfebf1d7d2c4cbffc72f85d2db6c, type: 3}
 --- !u!33 &5939934777474696107
 MeshFilter:

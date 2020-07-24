@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SalvageTower : MonoBehaviour {
+public class OldSalvageTower : MonoBehaviour {
 
     public bool bought;
     public int price;
@@ -11,9 +11,9 @@ public class SalvageTower : MonoBehaviour {
     
     public void ActivateTower() {
         bought = true;
-        OldTowerManager.activeScrapTower++;
+        OldTowerManager.old_tm_Single.activeScrapTower++;
         vfx.SetActive(true);
-        OldUiManager.staticMenuScript.MenuSwitch("none");
-        ScrapEconomy.RemoveScrap(price);
+        OldMenuScript.old_ms_Single.MenuSwitch("none");
+        OldScrapEconomy.old_se_Single.RemoveScrap(price);
     }
 }
