@@ -2,15 +2,18 @@
 
 public class EnemyPathing : MonoBehaviour {
 
-    public Transform targetPoint;
     public float speed;
-    [HideInInspector] public float defaultSpeed;
     public float rotationSpeed;
     int targetValue = 0;
     public float maxDistance = 0.1f;
     public GameObject enemyChild;
 
+    [HideInInspector] public Enemy enemy;
+    [HideInInspector] public float defaultSpeed;
+    [HideInInspector] public Transform targetPoint;
+
     private void Start() {
+        enemy = GetComponent<Enemy>();
         defaultSpeed = speed;
         SetTarget();
     }
@@ -45,6 +48,9 @@ public class EnemyPathing : MonoBehaviour {
         } else {
             if (!GameManager.gm_Single.rework) {
                 //OldUiManager.old_um_Single.IncreaseEscaped(1);
+            }
+            if (enemy && WaveSpawner.ws_Single.enemiesOnTheField.Contains(enemy)) {
+                WaveSpawner.ws_Single.enemiesOnTheField.Remove(enemy);
             }
             Destroy(gameObject);
         }

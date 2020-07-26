@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour {
+    public static WaveSpawner ws_Single;
+
     public List<Wave> waves = new List<Wave>();
 
     public bool endlessWave;
@@ -11,6 +13,12 @@ public class WaveSpawner : MonoBehaviour {
     [Header("HideInInspector")] public bool waveFunctionality;
     int currentWave, currentEnemy;
     float spawnDelayTimer, waveDelayTimer;
+
+    public List<Enemy> enemiesOnTheField = new List<Enemy>();
+
+    private void Awake() {
+        ws_Single = this;
+    }
 
     private void Update() {
         if (waveFunctionality) {
@@ -39,7 +47,7 @@ public class WaveSpawner : MonoBehaviour {
 
     public void SpawnNextEnemy() {
         if (waves[currentWave] && waves[currentWave].enemies[currentEnemy]) {
-            Instantiate(waves[currentWave].enemies[currentEnemy], transform.position, Quaternion.identity);
+            enemiesOnTheField.Add(Instantiate(waves[currentWave].enemies[currentEnemy], transform.position, Quaternion.identity).GetComponent<Enemy>());
         }
         currentEnemy++;
     }

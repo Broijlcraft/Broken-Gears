@@ -44,8 +44,8 @@ public class Movement : MonoBehaviour {
     private void FixedUpdate() {
         if (canMove == true) {
             Vector3 translatePos = Vector3.zero;
-            translatePos.x = Input.GetAxis("Vertical");
-            translatePos.z = -Input.GetAxis("Horizontal"); 
+            translatePos.z = Input.GetAxis("Vertical");
+            translatePos.x = Input.GetAxis("Horizontal"); 
             if (Input.GetButton("Slow")) {
                 transform.Translate(translatePos * speed / 2);
             } else {

@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &6092183275287742531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2467885077686263477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3d91f1b99e833942a67bc0615ba7124, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseClickUnlock: 0
-  topdownCameraHolder: {fileID: 6153059232647272950}
-  topdownCamera: {fileID: 6153059233060777137}
-  speed: 0.17
-  mouseSensitivity: 1
-  maxZoomIn: 25
-  maxZoomOut: 50
-  cameraBlockMoverange:
-    max: 10
-    min: -5
-  beamMoverange:
-    max: 26
-    min: 1
-  maxVerticalTopViewAngle: 90
-  maxVerticalBottomViewAngle: 0
-  canMove: 0
-  currentZoom: 50
-  zoomSensitivity: 0
 --- !u!1 &5845212106308292601
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,6 +30,7 @@ Transform:
   - {fileID: 1469556388531776073}
   - {fileID: 1469556388889465215}
   - {fileID: 1469556389111983270}
+  - {fileID: 6153059232647272950}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -72,6 +43,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6153059232647272950}
+  - component: {fileID: 8873721041462745896}
   m_Layer: 0
   m_Name: CameraHolder
   m_TagString: Player
@@ -86,14 +58,44 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6153059232647272951}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1.0538468, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 3, y: 15.66, z: 11.522009}
+  m_LocalScale: {x: 1.3000042, y: 1.3, z: 1.3000042}
   m_Children:
   - {fileID: 6153059233060777136}
-  m_Father: {fileID: 1469556389111983270}
-  m_RootOrder: 0
+  m_Father: {fileID: 5845212106308292602}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &8873721041462745896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6153059232647272951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d91f1b99e833942a67bc0615ba7124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseClickUnlock: 0
+  topdownCameraHolder: {fileID: 6153059232647272950}
+  topdownCamera: {fileID: 6153059233060777137}
+  speed: 0.17
+  mouseSensitivity: 1
+  maxZoomIn: 25
+  maxZoomOut: 50
+  cameraBlockMoverange:
+    max: 10
+    min: -5
+  beamMoverange:
+    max: 26
+    min: 1
+  maxVerticalTopViewAngle: 90
+  maxVerticalBottomViewAngle: 0
+  canMove: 1
+  currentZoom: 50
+  zoomSensitivity: 0
 --- !u!1 &6153059233060777143
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,12 +337,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dabe1b4604f309d429f6cdd094856fb8, type: 3}
---- !u!1 &2467885077686263477 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6132412373321331069, guid: dabe1b4604f309d429f6cdd094856fb8,
-    type: 3}
-  m_PrefabInstance: {fileID: 8585273723856957384}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1469556389111983270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7152258580619576174, guid: dabe1b4604f309d429f6cdd094856fb8,

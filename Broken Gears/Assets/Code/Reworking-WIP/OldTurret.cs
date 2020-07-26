@@ -127,9 +127,9 @@ public class OldTurret : MonoBehaviour {
         GameObject[] targets = GameObject.FindGameObjectsWithTag("EnemyTarget");
 
         for (int i = 0; i < targets.Length; i++) {
-            if (distance(transform.position, targets[i].transform.position) < range && !targetsInRange.Contains(targets[i])) {
+            if (Vector3.Distance(transform.position, targets[i].transform.position) < range && !targetsInRange.Contains(targets[i])) {
                 targetsInRange.Add(targets[i]);
-            } else if (targetsInRange.Contains(targets[i]) && distance(transform.position, targets[i].transform.position) > range) {
+            } else if (targetsInRange.Contains(targets[i]) && Vector3.Distance(transform.position, targets[i].transform.position) > range) {
                 targetsInRange.Remove(targets[i]);
             }
         }
@@ -145,10 +145,6 @@ public class OldTurret : MonoBehaviour {
             armTarget = defaultArmTarget;
             weaponTarget = defaultWeaponTarget;
         }
-    }
-
-    float distance(Vector3 vA, Vector3 vB) {
-        return Vector3.Distance(vA, vB);
     }
 
     private void OnDrawGizmos() {

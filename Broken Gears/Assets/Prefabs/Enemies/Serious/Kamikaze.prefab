@@ -124,7 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1341296680530579548}
-  - component: {fileID: 1341296680530579549}
+  - component: {fileID: 269862918089639881}
   - component: {fileID: 1341296680530579550}
   - component: {fileID: 1341296680530579551}
   m_Layer: 0
@@ -151,7 +151,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1341296680530579549
+--- !u!114 &269862918089639881
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,13 +160,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1341296680530579544}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 080efe5895c97174d93cf90d21095a2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 985f82379cd28a7429f3bd971c273466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 30
-  currentHealth: 0
-  scrapAdd: 15
-  targetInemy: {fileID: 1341296679760933485}
+  targetingPoint: {fileID: 1341296679760933484}
 --- !u!114 &1341296680530579550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,12 +176,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9644d710005ae0545ab962b41e1243f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPoint: {fileID: 2024343679384068197}
   speed: 1.3
-  speedSave: 0
   rotationSpeed: 8
   maxDistance: 0.1
   enemyChild: {fileID: 1341296678690886658}
+  enemy: {fileID: 0}
+  defaultSpeed: 0
+  targetPoint: {fileID: 2024343679384068197}
 --- !u!54 &1341296680530579551
 Rigidbody:
   m_ObjectHideFlags: 0

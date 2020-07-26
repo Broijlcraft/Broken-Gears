@@ -45,13 +45,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7924538437968084563}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 080efe5895c97174d93cf90d21095a2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 985f82379cd28a7429f3bd971c273466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 60
-  currentHealth: 0
-  scrapAdd: 10
-  targetInemy: {fileID: 7924538438464677334}
+  targetingPoint: {fileID: 7924538438464677329}
 --- !u!114 &7924538437968084525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,12 +61,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9644d710005ae0545ab962b41e1243f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPoint: {fileID: 0}
   speed: 0.7
-  speedSave: 0
   rotationSpeed: 8
   maxDistance: 0.1
   enemyChild: {fileID: 344655220275173224}
+  enemy: {fileID: 0}
+  defaultSpeed: 0
+  targetPoint: {fileID: 0}
 --- !u!54 &7924538437968084562
 Rigidbody:
   m_ObjectHideFlags: 0
