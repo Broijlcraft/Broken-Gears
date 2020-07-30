@@ -14,7 +14,7 @@ public class WaveSpawner : MonoBehaviour {
     int currentWave, currentEnemy;
     float spawnDelayTimer, waveDelayTimer;
 
-    public List<Enemy> enemiesOnTheField = new List<Enemy>();
+    [HideInInspector] public List<Enemy> enemiesOnTheField = new List<Enemy>();
 
     private void Awake() {
         ws_Single = this;

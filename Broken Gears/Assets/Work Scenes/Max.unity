@@ -1932,7 +1932,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &288781362
 GameObject:
@@ -2517,12 +2517,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356694520}
   m_CullTransparentMesh: 0
---- !u!4 &382919480 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3259383529154732778, guid: 0abea651cb45e9d468b00b274fac4ba2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1837231328}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &384967164
 GameObject:
   m_ObjectHideFlags: 0
@@ -2655,6 +2649,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbfb5b8d4e8c864a928bd0ef43c4c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layersToIgnore:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &392968643
 GameObject:
   m_ObjectHideFlags: 0
@@ -5646,12 +5643,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!4 &752649816 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5517695549322444043, guid: 0abea651cb45e9d468b00b274fac4ba2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1837231328}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &752977063
 GameObject:
   m_ObjectHideFlags: 0
@@ -6117,12 +6108,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 795884339}
   m_CullTransparentMesh: 0
---- !u!4 &795964570 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 129691608171309772, guid: 0abea651cb45e9d468b00b274fac4ba2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1837231328}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &800309982
 GameObject:
   m_ObjectHideFlags: 0
@@ -6468,12 +6453,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 854703672}
   m_CullTransparentMesh: 0
---- !u!4 &874113519 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6015186196337731471, guid: 0abea651cb45e9d468b00b274fac4ba2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1837231328}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &874955693 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7247508971287858294, guid: fc47d1fd57b94124a9af3f1df9812e07,
@@ -11969,6 +11948,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1708099732}
   m_CullTransparentMesh: 0
+--- !u!1001 &1709700540
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3259383529904023205, guid: 0abea651cb45e9d468b00b274fac4ba2,
+        type: 3}
+      propertyPath: m_Name
+      value: Rivet Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 596967014962536723, guid: 0abea651cb45e9d468b00b274fac4ba2,
+        type: 3}
+      propertyPath: damagePerAttack
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000001385808
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0abea651cb45e9d468b00b274fac4ba2, type: 3}
 --- !u!1 &1714535173
 GameObject:
   m_ObjectHideFlags: 0
@@ -12600,140 +12653,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837185885}
   m_CullTransparentMesh: 0
---- !u!1001 &1837231328
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3259383529904023205, guid: 0abea651cb45e9d468b00b274fac4ba2,
-        type: 3}
-      propertyPath: m_Name
-      value: RivetGunTurret
-      objectReference: {fileID: 0}
-    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.0000014603136
-      objectReference: {fileID: 0}
-    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3259383529904023206, guid: 0abea651cb45e9d468b00b274fac4ba2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3259383529904023207, guid: 0abea651cb45e9d468b00b274fac4ba2,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3287796907709722649, guid: 0abea651cb45e9d468b00b274fac4ba2,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3827862329195905070, guid: 0abea651cb45e9d468b00b274fac4ba2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3259383530848847122, guid: 0abea651cb45e9d468b00b274fac4ba2,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0abea651cb45e9d468b00b274fac4ba2, type: 3}
---- !u!1 &1837231329 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3259383529904023205, guid: 0abea651cb45e9d468b00b274fac4ba2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1837231328}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1837231330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837231329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76e3de555d7551c45891e04039dc5ade, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerName: Rivet Gun
-  range: 3.5
-  damagePerAttack: 8
-  attackDelay: 0.75
-  enemyInRangeCheckPerSecond: 5
-  transform_checkEnemiesFromHere: {fileID: 874113519}
-  currentTarget: {fileID: 0}
-  weaponFollows:
-  - test: 1
-    axis: 1
-    turnSpeed: 3
-    towerPart: {fileID: 1837231331}
-    defaultTarget: {fileID: 382919480}
-    tower: {fileID: 0}
-  - test: 1
-    axis: 2
-    turnSpeed: 3
-    towerPart: {fileID: 752649816}
-    defaultTarget: {fileID: 795964570}
-    tower: {fileID: 0}
-  enemiesInRange: []
---- !u!4 &1837231331 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8367772593533593421, guid: 0abea651cb45e9d468b00b274fac4ba2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1837231328}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1854735405
 GameObject:
   m_ObjectHideFlags: 0

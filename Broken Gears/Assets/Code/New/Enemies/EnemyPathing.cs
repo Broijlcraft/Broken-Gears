@@ -19,7 +19,7 @@ public class EnemyPathing : MonoBehaviour {
     }
 
     private void Update() {
-        if (targetPoint != null) {
+        if (targetPoint != null && !enemy.isDead) {
             Vector3 direction = abs(targetPoint.position, transform.position);
             Vector3 directionToGo = targetPoint.position - transform.position;
             transform.Translate(directionToGo.normalized * speed * Time.deltaTime);
