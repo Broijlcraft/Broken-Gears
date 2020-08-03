@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 225825682741846435}
   - component: {fileID: 225825682741846492}
   - component: {fileID: 225825682741846493}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: tower (furnace tower)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 225825683488143686}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: Vfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,9 +121,9 @@ GameObject:
   m_Component:
   - component: {fileID: 225825684433897486}
   - component: {fileID: 225825684433897487}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: SalvageTower
-  m_TagString: Scrap
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,6 +168,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: smoke1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828057980559534730, guid: 8264a9e81cb49294da8b0857c55069b1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4828057980559534735, guid: 8264a9e81cb49294da8b0857c55069b1,
         type: 3}
@@ -264,6 +269,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6206856130452283805, guid: 96fc516ade1b3cf4fb84fbfd5ee37640,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6206856130452283804, guid: 96fc516ade1b3cf4fb84fbfd5ee37640,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -329,25 +339,49 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1900839586, guid: 96fc516ade1b3cf4fb84fbfd5ee37640, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6207584642099280112, guid: 96fc516ade1b3cf4fb84fbfd5ee37640,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6207584642099280112, guid: 96fc516ade1b3cf4fb84fbfd5ee37640,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6207584643087521585, guid: 96fc516ade1b3cf4fb84fbfd5ee37640,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6207584643087521585, guid: 96fc516ade1b3cf4fb84fbfd5ee37640,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6207584641154881816, guid: 96fc516ade1b3cf4fb84fbfd5ee37640,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6207584641154881816, guid: 96fc516ade1b3cf4fb84fbfd5ee37640,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6207584641067757599, guid: 96fc516ade1b3cf4fb84fbfd5ee37640,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6207584641067757599, guid: 96fc516ade1b3cf4fb84fbfd5ee37640,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96fc516ade1b3cf4fb84fbfd5ee37640, type: 3}
@@ -368,6 +402,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: smoke1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828057980559534730, guid: 8264a9e81cb49294da8b0857c55069b1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4828057980559534735, guid: 8264a9e81cb49294da8b0857c55069b1,
         type: 3}

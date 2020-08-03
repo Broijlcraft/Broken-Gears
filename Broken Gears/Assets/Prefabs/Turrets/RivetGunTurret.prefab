@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 596967014962536723}
   m_Layer: 9
   m_Name: RivetGunTurret
-  m_TagString: Turret
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 5136660454076507076}
   m_Layer: 9
   m_Name: TurretCollider
-  m_TagString: Turret
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -376,11 +376,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 1349023726648851104, guid: 7c8d1bc472775b54da4095b93be74890,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 42da89997c32de24b9bd5009fe381894, type: 2}
     - target: {fileID: 7037264551834890477, guid: 7c8d1bc472775b54da4095b93be74890,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -436,6 +431,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1349023726648851104, guid: 7c8d1bc472775b54da4095b93be74890,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 42da89997c32de24b9bd5009fe381894, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c8d1bc472775b54da4095b93be74890, type: 3}
 --- !u!1 &1732957496754283871 stripped
@@ -467,11 +467,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 3831711885456921447, guid: 2d05f48bbff45734bbfa412fdd8e6e8b,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 42da89997c32de24b9bd5009fe381894, type: 2}
     - target: {fileID: 7027927207232110397, guid: 2d05f48bbff45734bbfa412fdd8e6e8b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -527,6 +522,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3831711885456921447, guid: 2d05f48bbff45734bbfa412fdd8e6e8b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 42da89997c32de24b9bd5009fe381894, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d05f48bbff45734bbfa412fdd8e6e8b, type: 3}
 --- !u!1 &2402969932395453845 stripped
@@ -558,11 +558,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 1464083022201033919, guid: b62af125fd967a74cb4e271c6b74a587,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 42da89997c32de24b9bd5009fe381894, type: 2}
     - target: {fileID: 7802095051633993812, guid: b62af125fd967a74cb4e271c6b74a587,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -618,6 +613,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1464083022201033919, guid: b62af125fd967a74cb4e271c6b74a587,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 42da89997c32de24b9bd5009fe381894, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b62af125fd967a74cb4e271c6b74a587, type: 3}
 --- !u!4 &4718985234367383639 stripped

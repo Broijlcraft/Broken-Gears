@@ -4,15 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Tag
-  - Slider
-  - OptionsMenu
-  - Waypoint
-  - EnemyTarget
   - Enemy
-  - Tile
-  - Turret
-  - Scrap
   layers:
   - Default
   - TransparentFX
