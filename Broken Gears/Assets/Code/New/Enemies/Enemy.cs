@@ -6,17 +6,18 @@ public class Enemy : MonoBehaviour {
     public Transform targetingPoint;
     public float maxHealth, destroyAfter;
     public Range scrapDroppedOnDeathBetween;
-    [Header("HideInInspector")]
-    public float currentHealth;
 
-    [HideInInspector] public bool isDead;
     Animator anim;
     Collider[] colliders;
+    [Header("HideInInspector")] public float currentHealth;
+    [HideInInspector] public bool isDead;
+    [HideInInspector] public EnemyPathing pathfinding;
 
     private void Awake() {
         anim = GetComponentInChildren<Animator>();
         colliders = GetComponentsInChildren<Collider>();
         currentHealth = maxHealth;
+        pathfinding = GetComponent<EnemyPathing>();
     }
 
     public void DoDamage(float amount) {

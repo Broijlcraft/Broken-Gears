@@ -5,10 +5,12 @@ using UnityEngine;
 public class Tower : MonoBehaviour {
     public string towerName;
     public float range, damagePerAttack, attackDelay;
-    public int enemyInRangeCheckPerSecond;
+    public int enemyInRangeCheckPerSecond = 5;
     public Transform checkEnemiesFromHere;
 
     public WeaponFollow[] weaponFollows;
+    [Space]
+    public ParticleSystem[] attackParticles;
 
     [Header("test")]
     public bool testEmmision;
@@ -40,16 +42,6 @@ public class Tower : MonoBehaviour {
         AttackBehaviour();
     }
 
-    public virtual void AttackBehaviour() { }
-
-    public virtual void Attack() { }
-
-    public virtual void DoDamage(Enemy enemy) {
-        if (enemy) {
-            enemy.DoDamage(damagePerAttack);
-        }
-    }
-
     void CheckForEnemiesInRange() {
         for (int i = 0; i < WaveSpawner.ws_Single.enemiesOnTheField.Count; i++) {
             Enemy enemy = WaveSpawner.ws_Single.enemiesOnTheField[i];
@@ -69,12 +61,10 @@ public class Tower : MonoBehaviour {
                 }
             }
         }
-        if (!InRangeCheck(currentTarget)) {
-            SetNextTarget();
-        }
     }    
 
     void SetNextTarget() {
+        currentTarget = null;
         for (int i = 0; i < enemiesInRange.Count; i++) {
             Enemy enemy = enemiesInRange[i];
             if (InRangeCheck(enemy)) {
@@ -87,7 +77,7 @@ public class Tower : MonoBehaviour {
     public bool InRangeCheck(Enemy enemy) {
         bool inRange = false;
         if (enemy) {
-            Transform target = GetTarget(enemy);
+            Transform target = Tools.tools.GetTarget(enemy);
             if(Vector3.Distance(target.position, checkEnemiesFromHere.position) < range) {
                 inRange = true;
             }
@@ -95,21 +85,30 @@ public class Tower : MonoBehaviour {
         return inRange;
     }
 
-    public Transform GetTarget(Enemy enemy) {
-        Transform tp = enemy.transform;
-        if (enemy.targetingPoint) {
-            tp = enemy.targetingPoint;
-        }
-        return tp;
-    }
-
     void SetTarget(Enemy enemy) {
         currentTarget = enemy;
     }
 
+    public virtual void DoDamage(Enemy enemy) {
+        if (enemy) {
+            enemy.DoDamage(damagePerAttack);
+        }
+    }
+
+    public virtual void AttackBehaviour() { }
+
+    public virtual void Attack() { }
+
+    public virtual void OnAttackStart() { }
+
+    public virtual void OnAttackEnd() { }
+
     public virtual void OnDrawGizmos() {
         if(checkEnemiesFromHere) {
             Gizmos.DrawWireSphere(checkEnemiesFromHere.position, range);
+        }
+        for (int i = 0; i < weaponFollows.Length; i++) {
+            Debug.DrawRay(weaponFollows[i].towerPart.position, weaponFollows[i].towerPart.forward, Color.red);
         }
     }
 }
@@ -122,34 +121,37 @@ public class WeaponFollow {
         z
     }
     public Axis axis;
-    public float turnSpeed;
+    public float turnSpeed = 3f;
     public bool useLocal;
     public Transform towerPart, defaultTarget;
     [HideInInspector] public Tower tower;
 
     public void RotateParts () {
+        Transform tp;
         if (tower.currentTarget != null) {
-            Transform tp = tower.GetTarget(tower.currentTarget);
-            Vector3 dir = tp.position - towerPart.position;
-            Quaternion lookRotation = Quaternion.LookRotation(dir);
-            Vector3 newFullRot = Quaternion.Lerp(towerPart.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-            Quaternion newPartRotation = Quaternion.identity;
-            switch (axis) {
-                case Axis.x:
-                    newPartRotation = Quaternion.Euler(newFullRot.x, 0f, 0f);
-                break;
-                case Axis.y:
-                    newPartRotation = Quaternion.Euler(0f, newFullRot.y, 0f);
-                break;
-                case Axis.z:
-                    newPartRotation = Quaternion.Euler(0f, 0f, newFullRot.z);
-                break;
-            }
-            if (useLocal) {
-                towerPart.localRotation = newPartRotation;
-            } else {
-                towerPart.rotation = newPartRotation;
-            }
+            tp = Tools.tools.GetTarget(tower.currentTarget);
+        } else {
+            tp = defaultTarget;
+        }
+        Vector3 dir = tp.position - towerPart.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 newFullRot = Quaternion.Lerp(towerPart.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+        Quaternion newPartRotation = Quaternion.identity;
+        switch (axis) {
+            case Axis.x:
+            newPartRotation = Quaternion.Euler(newFullRot.x, 0f, 0f);
+            break;
+            case Axis.y:
+            newPartRotation = Quaternion.Euler(0f, newFullRot.y, 0f);
+            break;
+            case Axis.z:
+            newPartRotation = Quaternion.Euler(0f, 0f, newFullRot.z);
+            break;
+        }
+        if (useLocal) {
+            towerPart.localRotation = newPartRotation;
+        } else {
+            towerPart.rotation = newPartRotation;
         }
     }
 }

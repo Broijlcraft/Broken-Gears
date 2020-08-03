@@ -168,8 +168,11 @@ MonoBehaviour:
   scrapDroppedOnDeathBetween:
     max: 16
     min: 14
+  aoeMesh: {fileID: 2534964839176971238, guid: 17b0bc1e6619214459655402b527732b, type: 3}
   currentHealth: 0
   isDead: 0
+  pathfinding: {fileID: 0}
+  statusFX_AffectingMe: []
 --- !u!114 &1341296680530579550
 MonoBehaviour:
   m_ObjectHideFlags: 0

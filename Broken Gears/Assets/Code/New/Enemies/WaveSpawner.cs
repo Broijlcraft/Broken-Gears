@@ -7,7 +7,7 @@ public class WaveSpawner : MonoBehaviour {
 
     public List<Wave> waves = new List<Wave>();
 
-    public bool endlessWave;
+    public bool endlessWave, onlySpawnOne;
     public float spawnDelay, waveDelay;
 
     [Header("HideInInspector")] public bool waveFunctionality;
@@ -48,6 +48,9 @@ public class WaveSpawner : MonoBehaviour {
     public void SpawnNextEnemy() {
         if (waves[currentWave] && waves[currentWave].enemies[currentEnemy]) {
             enemiesOnTheField.Add(Instantiate(waves[currentWave].enemies[currentEnemy], transform.position, Quaternion.identity).GetComponent<Enemy>());
+        }
+        if (onlySpawnOne) {
+            waveFunctionality = false;
         }
         currentEnemy++;
     }

@@ -121,7 +121,6 @@ GameObject:
   m_Component:
   - component: {fileID: 225825684433897486}
   - component: {fileID: 225825684433897487}
-  - component: {fileID: 225825684433897480}
   m_Layer: 12
   m_Name: SalvageTower
   m_TagString: Scrap
@@ -158,23 +157,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5, y: 2.2, z: 2}
   m_Center: {x: -0.5, y: 1.1, z: 0}
---- !u!114 &225825684433897480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 225825684433897481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f34017910ef833448a5bbc1394b70455, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bought: 0
-  price: 30
-  v: {x: 0.255, y: 0.255, z: 0.255, w: 0.255}
-  matRenderer: {fileID: 225825682741846493}
-  vfx: {fileID: 225825683488143687}
 --- !u!1001 &225825683102306639
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class OldMenuScript : MonoBehaviour {
 
     public Button buySellText;
     
-    public AudioSource audio;
+    public new AudioSource audio;
 
     GameObject industrialLight;
     bool alarm;
