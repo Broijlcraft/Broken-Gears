@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CryoGunTower : GunTowerBase {
 
@@ -11,6 +9,7 @@ public class CryoGunTower : GunTowerBase {
     [HideInInspector] public bool isSpraying;
 
     public override void AttackBehaviour() {
+        isHitting = false;
         base.AttackBehaviour();
         if (currentTarget) {
             if (!isSpraying) {
@@ -27,8 +26,7 @@ public class CryoGunTower : GunTowerBase {
                     fx.shouldFX = true;
                 } else {
                     fx.durationSpendInSeconds = 0;
-                }
-                
+                }                
             }
         } else if (isSpraying) {
             Tools.tools.StartStopParticleSystemsFromArray(attackParticles, false);

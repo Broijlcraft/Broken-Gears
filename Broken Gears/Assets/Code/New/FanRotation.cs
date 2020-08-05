@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class OldFanRotation : MonoBehaviour {
+public class FanRotation : MonoBehaviour {
 
     public Vector3 rot;
     public float speed;

@@ -5,6 +5,7 @@ public class Movement : MonoBehaviour {
     public bool mouseClickUnlock;
     [Space]
     public Transform topdownCameraHolder;
+    public Transform cameraBeam, cameraBlock;
     public Camera topdownCamera;
     public float speed, mouseSensitivity, maxZoomIn, maxZoomOut;
     public Range cameraBlockMoverange, beamMoverange;
@@ -14,10 +15,12 @@ public class Movement : MonoBehaviour {
     [Header("WIP"), Space]
     public bool canMove;
     public float currentZoom = 50, zoomSensitivity;
+    Vector3 beamStartPos;
 
     private void Awake() {
         m_Single = this;
         xRotationAxisAngle = topdownCamera.transform.rotation.eulerAngles.x * -1;
+        beamStartPos = cameraBeam.position;
     }
 
     private void Update() {
@@ -58,6 +61,9 @@ public class Movement : MonoBehaviour {
         pos.x = Mathf.Clamp(pos.x, cameraBlockMoverange.min, cameraBlockMoverange.max);
         pos.z = Mathf.Clamp(pos.z, beamMoverange.min, beamMoverange.max);
         transform.position = pos;
+
+        cameraBeam.position = new Vector3(beamStartPos.x , cameraBeam.position.y, transform.position.z);
+        cameraBlock.position = new Vector3(transform.position.x, cameraBlock.position.y, transform.position.z);
     }
 
     void RotateCam() {
@@ -66,14 +72,14 @@ public class Movement : MonoBehaviour {
 
         xRotationAxisAngle += mouseY;
 
-        if (xRotationAxisAngle > maxVerticalBottomViewAngle) {
-            xRotationAxisAngle = maxVerticalBottomViewAngle;
+        if (xRotationAxisAngle > maxVerticalTopViewAngle) {
+            xRotationAxisAngle = maxVerticalTopViewAngle;
             mouseY = 0f;
-            ClampXRotationAxisToValue(topdownCamera.transform, -maxVerticalBottomViewAngle);
-        } else if (xRotationAxisAngle < -maxVerticalTopViewAngle) {
-            xRotationAxisAngle = -maxVerticalTopViewAngle;
+            ClampXRotationAxisToValue(topdownCamera.transform, -maxVerticalTopViewAngle);
+        } else if (xRotationAxisAngle < -maxVerticalBottomViewAngle) {
+            xRotationAxisAngle = -maxVerticalBottomViewAngle;
             mouseY = 0f;
-            ClampXRotationAxisToValue(topdownCamera.transform, maxVerticalTopViewAngle);
+            ClampXRotationAxisToValue(topdownCamera.transform, maxVerticalBottomViewAngle);
         }
 
         topdownCamera.transform.Rotate(Vector3.left * mouseY);

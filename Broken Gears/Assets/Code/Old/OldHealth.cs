@@ -39,19 +39,19 @@ public class OldHealth : MonoBehaviour {
     }
 
     public void Death() {
-        if (OldWaveSpawn.old_wv_Single.onTheField.Contains(gameObject)) {
-            OldWaveSpawn.old_wv_Single.onTheField.Remove(gameObject);
-        }
-        if (!GameManager.gm_Single.rework) {
-            gA = Instantiate(OldScrapEconomy.old_se_Single.scrapFab, transform.position + OldScrapEconomy.old_se_Single.scrapFab.GetComponent<OldMobileUiParts>().offSet, Quaternion.identity);
-            gA.transform.GetComponent<OldMobileUiParts>().parent = transform;
-            gA.transform.SetParent(OldManager.old_m_Single.scrapCanvas);
-            int value;
-            value = scrapAdd;
-            value += OldTowerManager.old_tm_Single.activeScrapTower;
-            OldScrapEconomy.old_se_Single.AddScrap(value);
-            gA.transform.GetComponentInChildren<Text>().text = "+ " + value;
-        }
+        //if (OldWaveSpawn.old_wv_Single.onTheField.Contains(gameObject)) {
+        //    OldWaveSpawn.old_wv_Single.onTheField.Remove(gameObject);
+        //}
+        //if (!GameManager.gm_Single.rework) {
+        //    gA = Instantiate(OldScrapEconomy.old_se_Single.scrapFab, transform.position + OldScrapEconomy.old_se_Single.scrapFab.GetComponent<OldMobileUiParts>().offSet, Quaternion.identity);
+        //    gA.transform.GetComponent<OldMobileUiParts>().parent = transform;
+        //    gA.transform.SetParent(OldManager.old_m_Single.scrapCanvas);
+        //    int value;
+        //    value = scrapAdd;
+        //    value += OldTowerManager.old_tm_Single.activeScrapTower;
+        //    OldScrapEconomy.old_se_Single.AddScrap(value);
+        //    gA.transform.GetComponentInChildren<Text>().text = "+ " + value;
+        //}
         GetComponent<EnemyPathing>().speed = 0;
         GetComponentInChildren<Animator>().SetBool("Death", true);
         GetComponent<EnemyPathing>().enemyChild.transform.SetParent(null);

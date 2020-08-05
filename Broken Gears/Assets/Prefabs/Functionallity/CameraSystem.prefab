@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 6153059232647272951}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 3, y: 15.66, z: 11.522009}
-  m_LocalScale: {x: 1.3000042, y: 1.3, z: 1.3000042}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6153059233060777136}
   m_Father: {fileID: 5845212106308292602}
@@ -80,6 +80,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseClickUnlock: 0
   topdownCameraHolder: {fileID: 6153059232647272950}
+  cameraBeam: {fileID: 1469556388889465215}
+  cameraBlock: {fileID: 1469556389111983270}
   topdownCamera: {fileID: 6153059233060777137}
   speed: 0.17
   mouseSensitivity: 1
@@ -91,9 +93,9 @@ MonoBehaviour:
   beamMoverange:
     max: 26
     min: 1
-  maxVerticalTopViewAngle: 90
-  maxVerticalBottomViewAngle: 0
-  canMove: 1
+  maxVerticalTopViewAngle: 20
+  maxVerticalBottomViewAngle: 90
+  canMove: 0
   currentZoom: 50
   zoomSensitivity: 0
 --- !u!1 &6153059233060777143

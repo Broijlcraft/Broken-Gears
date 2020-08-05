@@ -13,7 +13,7 @@ public class OldSalvageTower : MonoBehaviour {
         bought = true;
         OldTowerManager.old_tm_Single.activeScrapTower++;
         vfx.SetActive(true);
-        OldMenuScript.old_ms_Single.MenuSwitch("none");
-        OldScrapEconomy.old_se_Single.RemoveScrap(price);
+        //OldMenuScript.old_ms_Single.MenuSwitch("none");
+        //OldScrapEconomy.old_se_Single.RemoveScrap(price);
     }
 }

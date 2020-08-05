@@ -17,13 +17,13 @@ public class OldTowerManager : MonoBehaviour {
     }
 
     public void SelectTower(GameObject tower) {
-        if (OldMenuScript.old_ms_Single.menuState == OldMenuScript.MenuState.none) {
-            if (tower.GetComponent<OldSelectTowerPlacement>().scrapCost <= OldScrapEconomy.old_se_Single.currentScrap || OldManager.old_m_Single.devMode == true) {
-                if (selectedTower != null) {
-                    Destroy(selectedTower);
-                }
-                selectedTower = Instantiate(tower);
-            }
-        }
+        //if (OldMenuScript.old_ms_Single.menuState == OldMenuScript.MenuState.none) {
+        //    //if (tower.GetComponent<OldSelectTowerPlacement>().scrapCost <= OldScrapEconomy.old_se_Single.currentScrap || OldManager.old_m_Single.devMode == true) {
+        //        if (selectedTower != null) {
+        //            Destroy(selectedTower);
+        //        }
+        //        selectedTower = Instantiate(tower);
+        //    //}
+        //}
     }
 }

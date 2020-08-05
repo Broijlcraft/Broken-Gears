@@ -6,7 +6,7 @@ public class OldSelectTowerPlacement : MonoBehaviour {
 
     public int scrapCost, salvageValue;
     public LayerMask layerMask;
-    public OldTurret turret;
+    //public OldTurret turret;
     RaycastHit hit;
     Vector3 pos;
     Tile tile, childTile, parentTile;
@@ -38,9 +38,9 @@ public class OldSelectTowerPlacement : MonoBehaviour {
                             }
                             if (Input.GetMouseButtonDown(0)) {
                                 if (OldManager.old_m_Single.devMode == false) {
-                                    OldScrapEconomy.old_se_Single.RemoveScrap(scrapCost);
+                                    //OldScrapEconomy.old_se_Single.RemoveScrap(scrapCost);
                                 }
-                                transform.GetComponent<OldTurret>().coll.SetActive(true);
+                                //transform.GetComponent<OldTurret>().coll.SetActive(true);
                                 OldTowerManager.old_tm_Single.selectedTower = null;
                                 tile.buildable = false;
                                 if (tile.buildableParent != null) {
@@ -76,16 +76,16 @@ public class OldSelectTowerPlacement : MonoBehaviour {
         if (parentTile != null) {
             parentTile.buildable = true;
         }
-        OldScrapEconomy.old_se_Single.AddScrap(salvageValue);
-        OldMenuScript.old_ms_Single.MenuSwitch("none");
+        //OldScrapEconomy.old_se_Single.AddScrap(salvageValue);
+        //OldMenuScript.old_ms_Single.MenuSwitch("none");
         Destroy(gameObject);
     }
 
     void ChangeColor(Vector4 v) {
-        for (int i = 0; i < turret.weaponParts.Count; i++) {
-            turret.weaponParts[i].material.EnableKeyword("_EmissionColor");
-            turret.weaponParts[i].material.SetColor("_EmissionColor", new Color(v.x, v.y, v.z, v.w));
-        }
+        //for (int i = 0; i < turret.weaponParts.Count; i++) {
+        //    turret.weaponParts[i].material.EnableKeyword("_EmissionColor");
+        //    turret.weaponParts[i].material.SetColor("_EmissionColor", new Color(v.x, v.y, v.z, v.w));
+        //}
     }
 
     Vector3 setPos(Vector3 v) {

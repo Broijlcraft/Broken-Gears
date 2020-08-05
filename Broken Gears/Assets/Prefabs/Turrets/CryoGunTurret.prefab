@@ -184,12 +184,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerName: Cryo Gun
+  activeTowerParticles: []
+  testEmmision: 0
+  mats: []
   range: 4
   damagePerAttack: 1
   attackDelay: 0.2
   enemyInRangeCheckPerSecond: 5
   checkEnemiesFromHere: {fileID: 3375208666521254944}
-  weaponFollows:
+  attackOrigin: {fileID: 3189382665022839529}
+  weaponParts:
   - axis: 1
     turnSpeed: 3
     useLocal: 0
@@ -200,16 +204,14 @@ MonoBehaviour:
     turnSpeed: 3
     useLocal: 1
     towerPart: {fileID: 3375208665505304983}
-    defaultTarget: {fileID: 3375208666072439294}
+    defaultTarget: {fileID: 3375208665505304983}
     tower: {fileID: 0}
   attackParticles:
   - {fileID: 3189382665172792900}
   - {fileID: 3189382665170095890}
-  testEmmision: 0
   attackTimer: 0
   currentTarget: {fileID: 0}
   enemiesInRange: []
-  barrel: {fileID: 3189382665022839529}
   isHitting: 0
   freezeStrength: 50
   freezeDuration: 3
@@ -432,11 +434,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2930625323113887820, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: caad3deefe5eba54391f221befaf87db, type: 2}
     - target: {fileID: 186284502390972855, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
         type: 3}
       propertyPath: playOnAwake
@@ -543,6 +540,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 2930625323113887820, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: caad3deefe5eba54391f221befaf87db, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b7b1c4038d7d7849a7c10f20ff76030, type: 3}
 --- !u!4 &2540980118221178490 stripped
@@ -597,11 +599,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5628292564031452634, guid: 75ed7ca6697e8554280a4a037db4242e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: caad3deefe5eba54391f221befaf87db, type: 2}
     - target: {fileID: 1272156840030374814, guid: 75ed7ca6697e8554280a4a037db4242e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -657,6 +654,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5628292564031452634, guid: 75ed7ca6697e8554280a4a037db4242e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: caad3deefe5eba54391f221befaf87db, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75ed7ca6697e8554280a4a037db4242e, type: 3}
 --- !u!1 &4568886211812435940 stripped
@@ -681,7 +683,7 @@ PrefabInstance:
     - target: {fileID: 4828057980559534730, guid: 8264a9e81cb49294da8b0857c55069b1,
         type: 3}
       propertyPath: m_Name
-      value: smoke1
+      value: Par_smoke
       objectReference: {fileID: 0}
     - target: {fileID: 4828057980559534730, guid: 8264a9e81cb49294da8b0857c55069b1,
         type: 3}
