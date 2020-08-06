@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class FreezeFX : StatusFX {
+﻿public class FreezeFX : StatusFX {
 
     private void Update() {
         if (shouldFX) {

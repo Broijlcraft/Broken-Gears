@@ -135,6 +135,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 0.5339316, z: 1}
   m_Center: {x: -0.5, y: -0.3330342, z: 0}
+--- !u!65 &5238569252354085407
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855036205321407971}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1772883, y: 0.9405878, z: 0.38052213}
+  m_Center: {x: 0.068593346, y: 0.29657316, z: 1.859692e-14}
 --- !u!1 &3375208666778781725
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +180,7 @@ Transform:
   - {fileID: 4746910703199816231}
   - {fileID: 3375208667067849288}
   - {fileID: 3375208667227094264}
-  - {fileID: 7827411828401834195}
+  - {fileID: 2763297333214666980}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -184,7 +197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerName: Cryo Gun
-  activeTowerParticles: []
+  activeTowerParticles:
+  - {fileID: 0}
   testEmmision: 0
   mats: []
   range: 4
@@ -547,6 +561,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: caad3deefe5eba54391f221befaf87db, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b7b1c4038d7d7849a7c10f20ff76030, type: 3}
+--- !u!1 &5855036205321407971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9193643502118363974, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+    type: 3}
+  m_PrefabInstance: {fileID: 3375208666648817317}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2540980118221178490 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 978540688050972895, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
@@ -661,19 +681,19 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: caad3deefe5eba54391f221befaf87db, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75ed7ca6697e8554280a4a037db4242e, type: 3}
---- !u!1 &4568886211812435940 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1274755824273992569, guid: 75ed7ca6697e8554280a4a037db4242e,
-    type: 3}
-  m_PrefabInstance: {fileID: 3375208667068796061}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4571361985944127235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1272156840030374814, guid: 75ed7ca6697e8554280a4a037db4242e,
     type: 3}
   m_PrefabInstance: {fileID: 3375208667068796061}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &3431805249196171868
+--- !u!1 &4568886211812435940 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1274755824273992569, guid: 75ed7ca6697e8554280a4a037db4242e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3375208667068796061}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7303010586734283371
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -683,12 +703,7 @@ PrefabInstance:
     - target: {fileID: 4828057980559534730, guid: 8264a9e81cb49294da8b0857c55069b1,
         type: 3}
       propertyPath: m_Name
-      value: Par_smoke
-      objectReference: {fileID: 0}
-    - target: {fileID: 4828057980559534730, guid: 8264a9e81cb49294da8b0857c55069b1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
+      value: Par_TowerSmoke
       objectReference: {fileID: 0}
     - target: {fileID: 4828057980559534735, guid: 8264a9e81cb49294da8b0857c55069b1,
         type: 3}
@@ -713,12 +728,12 @@ PrefabInstance:
     - target: {fileID: 4828057980559534735, guid: 8264a9e81cb49294da8b0857c55069b1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4828057980559534735, guid: 8264a9e81cb49294da8b0857c55069b1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4828057980559534735, guid: 8264a9e81cb49294da8b0857c55069b1,
         type: 3}
@@ -730,26 +745,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 4828057980559534735, guid: 8264a9e81cb49294da8b0857c55069b1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4828057980559534735, guid: 8264a9e81cb49294da8b0857c55069b1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4828057980559534735, guid: 8264a9e81cb49294da8b0857c55069b1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8264a9e81cb49294da8b0857c55069b1, type: 3}
---- !u!4 &7827411828401834195 stripped
+--- !u!4 &2763297333214666980 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4828057980559534735, guid: 8264a9e81cb49294da8b0857c55069b1,
     type: 3}
-  m_PrefabInstance: {fileID: 3431805249196171868}
+  m_PrefabInstance: {fileID: 7303010586734283371}
   m_PrefabAsset: {fileID: 0}

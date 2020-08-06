@@ -1927,12 +1927,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 283222879}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -960, y: -540, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1501428647}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &288781362
 GameObject:
@@ -4893,7 +4893,7 @@ PrefabInstance:
     - target: {fileID: 1823145441805337678, guid: 56e22d39d50151a49a65d0cf0b5f2768,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1823145441805337678, guid: 56e22d39d50151a49a65d0cf0b5f2768,
         type: 3}
@@ -4944,6 +4944,11 @@ PrefabInstance:
         type: 3}
       propertyPath: devSpin
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838422067218925642, guid: 56e22d39d50151a49a65d0cf0b5f2768,
+        type: 3}
+      propertyPath: testEmmision
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56e22d39d50151a49a65d0cf0b5f2768, type: 3}
@@ -10691,6 +10696,7 @@ RectTransform:
   - {fileID: 777398341}
   - {fileID: 805829490}
   - {fileID: 690763967}
+  - {fileID: 283222882}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14194,7 +14200,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2044363781
 MonoBehaviour:
@@ -14211,7 +14217,7 @@ MonoBehaviour:
   waves:
   - {fileID: 11400000, guid: 480fea6021e5fa742826716d727505e8, type: 2}
   endlessWave: 1
-  onlySpawnOne: 1
+  onlySpawnOne: 0
   spawnDelay: 3
   waveDelay: 5
   waveFunctionality: 1
