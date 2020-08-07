@@ -2,7 +2,6 @@
 
 public class Movement : MonoBehaviour {
     public static Movement m_Single;
-    public bool mouseClickUnlock;
     [Space]
     public Transform topdownCameraHolder;
     public Transform cameraBeam, cameraBlock;
@@ -54,7 +53,7 @@ public class Movement : MonoBehaviour {
             } else {
                 transform.Translate(translatePos * speed);
             }
-            if (mouseClickUnlock) { if (!Input.GetMouseButton(2)) { return; } }
+            if (!GameManager.gm_Single.devMode) { if (!Input.GetMouseButton(2)) { return; } }
             RotateCam();
         }
         Vector3 pos = transform.position;

@@ -12,10 +12,10 @@ public class WeaponizedTower : Tower {
     [Space]
     public ParticleSystem[] attackParticles;
 
+    [HideInInspector] public bool isHitting;
     [HideInInspector] public float attackTimer;
     [HideInInspector] public Enemy currentTarget;
     [HideInInspector] public List<Enemy> enemiesInRange = new List<Enemy>();
-    [HideInInspector] public bool isHitting;
 
     private void Start() {
         for (int i = 0; i < weaponParts.Length; i++) {
@@ -30,7 +30,6 @@ public class WeaponizedTower : Tower {
                 weaponParts[i].RotateParts();
             }
         }
-        ChangeTowerColor(TowerManager.tm_Single.canPlaceColor, true);
         AttackBehaviour();
     }
 

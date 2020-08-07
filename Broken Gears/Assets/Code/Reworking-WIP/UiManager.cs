@@ -23,7 +23,7 @@ public class UiManager : MonoBehaviour {
     public void CheckPricesSetInteractableAndNot() {
         for (int i = 0; i < buyTowerButtons.Length; i++) {
             if(buyTowerButtons[i] && buyTowerButtons[i].tower) {
-                if(buyTowerButtons[i].tower.buyScrapPrice <= ScrapManager.sm_single.currentScrap) {
+                if(buyTowerButtons[i].tower.buyScrapPrice <= ScrapManager.sm_single.currentScrap || GameManager.gm_Single.devMode) {
                     buyTowerButtons[i].button.interactable = true;
                 } else {
                     buyTowerButtons[i].button.interactable = false;

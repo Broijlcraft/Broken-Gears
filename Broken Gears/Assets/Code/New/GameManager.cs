@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
         if (Input.GetButtonDown("DevMode")) {
             devMode = !devMode;
             devmodeText.SetActive(devMode);
+            UiManager.um_single.CheckPricesSetInteractableAndNot();
         }
     }
 }

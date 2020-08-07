@@ -3,6 +3,7 @@
 public class TowerManager : MonoBehaviour {
     public static TowerManager tm_Single;
     public LayerMask layersToIgnoreWhenAttacking = (1 << 8), tileMask;
+    public string buildableTileTag = "BuildableTile";
     public Color canPlaceColor, canNotPlaceColor;
 
     public TowerRotations towerRotations;
@@ -15,6 +16,14 @@ public class TowerManager : MonoBehaviour {
         tm_Single = this;
     }
 
+    public void Update() {
+        ray = Movement.m_Single.topdownCamera.ScreenPointToRay(Input.mousePosition);
+        if (Input.GetMouseButtonDown(1)) {
+            RemoveTower(selectedTower, false);
+        }
+        SelectedTowerAction();
+    }
+
     public void PickTower(Tower pickedTower) {
         Tower tower = Instantiate(pickedTower, Vector3.zero, Quaternion.identity);
         SelectTower(tower);
@@ -25,52 +34,49 @@ public class TowerManager : MonoBehaviour {
         selectedTower = tower;
     }
 
-    public void Update() {
-        ray = Movement.m_Single.topdownCamera.ScreenPointToRay(Input.mousePosition);
-        if (Input.GetMouseButtonDown(1)) {
-            RemoveTower(selectedTower, false);
-        }
-        MoveTower();
-    }
-
-    void MoveTower() {
+    void SelectedTowerAction() {
         if (selectedTower) {
             if (!selectedTower.placedOnParentTile) {
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, tileMask)) {
                     Vector3 newPos = hit.transform.position;
                     Vector3 newRot = hit.transform.rotation.eulerAngles;
-                    Tile tile = hit.transform.GetComponent<Tile>();
-                    if (tile) {
-                        if (tile.buildable == true) {
-                            selectedTower.ChangeTowerColor(canPlaceColor, true);
-                            if (tile.buildableParent == null) {
-                                newPos = tile.transform.position;
-                                newRot = tile.setRotation;
+                    if (hit.transform.CompareTag(buildableTileTag)) {
+                        Tile tile = hit.transform.GetComponent<Tile>();
+                        if (tile) {
+                            if (tile.buildable == true) {
+                                selectedTower.ChangeTowerColor(canPlaceColor);
+                                if (tile.buildableParent == null) {
+                                    newPos = tile.transform.position;
+                                    newRot = tile.setRotation;
+                                } else {
+                                    newPos = tile.buildableParent.transform.position;
+                                    newRot = tile.buildableParent.setRotation;
+                                }
+                                //if (Input.GetMouseButtonDown(0)) {
+                                //    if (OldManager.old_m_Single.devMode == false) {
+                                //        //OldScrapEconomy.old_se_Single.RemoveScrap(scrapCost);
+                                //    }
+                                //    //transform.GetComponent<OldTurret>().coll.SetActive(true);
+                                //    OldTowerManager.old_tm_Single.selectedTower = null;
+                                //    tile.buildable = false;
+                                //    if (tile.buildableParent != null) {
+                                //        tile.buildableParent.GetComponent<Tile>().buildable = false;
+                                //        parentTile = tile.buildableParent.GetComponent<Tile>();
+                                //    } else {
+                                //        tile.child.GetComponent<Tile>().buildable = false;
+                                //        childTile = tile.child.GetComponent<Tile>();
+                                //    }
+                                //    selectedTower.ChangeTowerColor(Color.white, false);
+                                //}
                             } else {
-                                newPos = tile.buildableParent.transform.position;
-                                newRot = tile.buildableParent.setRotation;
+                                newPos = tile.setPosition;
+                                newRot = selectedTower.transform.rotation.eulerAngles;
+                                selectedTower.ChangeTowerColor(canNotPlaceColor);
                             }
-                            //if (Input.GetMouseButtonDown(0)) {
-                            //    if (OldManager.old_m_Single.devMode == false) {
-                            //        //OldScrapEconomy.old_se_Single.RemoveScrap(scrapCost);
-                            //    }
-                            //    //transform.GetComponent<OldTurret>().coll.SetActive(true);
-                            //    OldTowerManager.old_tm_Single.selectedTower = null;
-                            //    tile.buildable = false;
-                            //    if (tile.buildableParent != null) {
-                            //        tile.buildableParent.GetComponent<Tile>().buildable = false;
-                            //        parentTile = tile.buildableParent.GetComponent<Tile>();
-                            //    } else {
-                            //        tile.child.GetComponent<Tile>().buildable = false;
-                            //        childTile = tile.child.GetComponent<Tile>();
-                            //    }
-                            //    selectedTower.ChangeTowerColor(Color.white, false);
-                            //}
-                        } else {
-                            newPos = tile.setPosition;
-                            selectedTower.ChangeTowerColor(canNotPlaceColor, true); ;
                         }
+                    } else {
+                        selectedTower.ChangeTowerColor(canNotPlaceColor);
                     }
                     selectedTower.transform.eulerAngles = newRot;
                     selectedTower.transform.position = newPos;

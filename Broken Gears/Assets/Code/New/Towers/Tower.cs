@@ -11,29 +11,21 @@ public class Tower : MonoBehaviour {
     public Tile placedOnParentTile, oldParentTile;
     public bool isActive;
 
-    private void Start() {
-        print("start");
+    private void Awake() {
         SetMaterials();
     }
 
     public void SetMaterials() {
         MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
-        print(meshRenderers.Length);
         for (int i = 0; i < meshRenderers.Length; i++) {
             mats.Add(meshRenderers[i].material);
             mats[i].EnableKeyword("_EmissionColor");
         }
     }
 
-    public void ChangeTowerColor(Color color, bool useEmission) {
-        print("change");
+    public void ChangeTowerColor(Color color) {
         for (int i = 0; i < mats.Count; i++) {
-            //if (useEmission) {
-            //    mats[i].EnableKeyword("_EmissionColor");
-            //} else {
-            //    mats[i].DisableKeyword("_EmissionColor");
-            //}
-            mats[i].SetColor("_EmissionColor", Color.cyan);
+            mats[i].SetColor("_EmissionColor", color);
         }
     }
 
