@@ -33,7 +33,7 @@ public class SawTower : WeaponizedTower {
     }
 
     public void OnTriggerEnterAndExit(bool trigger) {
-        if (isHitting != trigger) {
+        if (isHitting != trigger && isActive) {
             isHitting = trigger;
             Tools.tools.StartStopParticleSystemsFromArray(attackParticles, isHitting);
         }

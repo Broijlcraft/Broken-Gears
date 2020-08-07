@@ -20,18 +20,18 @@ public class Tile : MonoBehaviour {
     }
 
     private void Start() {
-        if (buildableParent != null && !GameManager.gm_Single.rework) { 
+        if (buildableParent != null) { 
             if (buildableParent.transform.position.x == transform.position.x) {
                 if (buildableParent.transform.position.z > transform.position.z) {
-                    SetParentRotation(OldTowerManager.old_tm_Single.minZRotation);
+                    SetParentRotation(TowerManager.tm_Single.towerRotations.minZRotation);
                 } else {
-                    SetParentRotation(OldTowerManager.old_tm_Single.plusZRotation);
+                    SetParentRotation(TowerManager.tm_Single.towerRotations.plusZRotation);
                 }
             } else if (buildableParent.transform.position.z == transform.position.z) {
                 if (buildableParent.transform.position.x > transform.position.x) {
-                    SetParentRotation(OldTowerManager.old_tm_Single.plusXRotation);
+                    SetParentRotation(TowerManager.tm_Single.towerRotations.plusXRotation);
                 } else {
-                    SetParentRotation(OldTowerManager.old_tm_Single.minXRotation);
+                    SetParentRotation(TowerManager.tm_Single.towerRotations.minXRotation);
                 }
             }
         }    

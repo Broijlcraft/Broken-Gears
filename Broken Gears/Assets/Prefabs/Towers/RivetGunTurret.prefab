@@ -141,8 +141,13 @@ MonoBehaviour:
   towerName: Rivet Gun
   activeTowerParticles:
   - {fileID: 3827862329195905064}
+  buyScrapPrice: 40
+  sellScrapPrice: 0
   testEmmision: 0
   mats: []
+  placedOnParentTile: {fileID: 0}
+  oldParentTile: {fileID: 0}
+  isActive: 0
   range: 3.5
   damagePerAttack: 8
   attackDelay: 0.75

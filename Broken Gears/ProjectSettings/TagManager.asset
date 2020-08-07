@@ -19,8 +19,8 @@ TagManager:
   - 
   - Enemy
   - Tower
-  - 
-  - 
+  - Tile
+  - BuildableTile
   - 
   - 
   - 

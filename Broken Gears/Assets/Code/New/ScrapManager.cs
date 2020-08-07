@@ -22,6 +22,14 @@ public class ScrapManager : MonoBehaviour {
         UpdateScrapAmount();
     }
 
+    private void Update() {
+        if (GameManager.gm_Single.devMode) {
+            if (Input.GetButtonDown("Button1")) {
+                AddOrWithdrawScrap(1, ScrapOption.Add);
+            }
+        }
+    }
+
     public bool AddOrWithdrawScrap(int amount, ScrapOption option) {
         bool success = false;
         amount = Mathf.Abs(amount);
@@ -45,6 +53,7 @@ public class ScrapManager : MonoBehaviour {
             }
         }
         UpdateScrapAmount();
+        UiManager.um_single.CheckPricesSetInteractableAndNot();
         return success;
     }
 

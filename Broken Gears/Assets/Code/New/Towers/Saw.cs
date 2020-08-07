@@ -9,13 +9,13 @@ public class Saw : MonoBehaviour {
     }
 
     private void OnTriggerStay(Collider other) {
-        if (tower && other.gameObject.layer != TowerManager.tm_Single.layersToIgnore) {
+        if (tower && other.gameObject.layer != TowerManager.tm_Single.layersToIgnoreWhenAttacking) {
             tower.OnTriggerEnterAndExit(true);
         }
     }
 
     private void OnTriggerExit(Collider other) {
-        if (tower && other.gameObject.layer != TowerManager.tm_Single.layersToIgnore) {
+        if (tower && other.gameObject.layer != TowerManager.tm_Single.layersToIgnoreWhenAttacking) {
             tower.OnTriggerEnterAndExit(false);
         }
     }

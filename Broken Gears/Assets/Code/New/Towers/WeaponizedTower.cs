@@ -18,14 +18,6 @@ public class WeaponizedTower : Tower {
     [HideInInspector] public bool isHitting;
 
     private void Start() {
-        if (testEmmision) {
-            MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
-            for (int i = 0; i < meshRenderers.Length; i++) {
-                mats.Add(meshRenderers[i].material);
-                mats[mats.Count - 1].EnableKeyword("_EmissionColor");
-                mats[mats.Count - 1].SetColor("_EmissionColor", Color.red);
-            }
-        }
         for (int i = 0; i < weaponParts.Length; i++) {
             weaponParts[i].tower = this;
         }
@@ -33,14 +25,17 @@ public class WeaponizedTower : Tower {
     }
 
     private void Update() {
-        for (int i = 0; i < weaponParts.Length; i++) {
-            weaponParts[i].RotateParts();
+        if (isActive) {
+            for (int i = 0; i < weaponParts.Length; i++) {
+                weaponParts[i].RotateParts();
+            }
         }
+        ChangeTowerColor(TowerManager.tm_Single.canPlaceColor, true);
         AttackBehaviour();
     }
 
     public virtual void AttackBehaviour() {
-        if (currentTarget) {
+        if (currentTarget && isActive) {
             if (attackTimer > attackDelay) {
                 attackTimer = 0;
                 Attack();
@@ -51,20 +46,22 @@ public class WeaponizedTower : Tower {
     }
 
     void CheckForEnemiesInRange() {
-        for (int i = 0; i < WaveSpawner.ws_Single.enemiesOnTheField.Count; i++) {
-            Enemy enemy = WaveSpawner.ws_Single.enemiesOnTheField[i];
-            if (InRangeCheck(enemy) && !enemy.isDead) {
-                if (!enemiesInRange.Contains(enemy)) {
-                    enemiesInRange.Add(enemy);
-                    if (!currentTarget) {
-                        SetNextTarget();
+        if (isActive) {
+            for (int i = 0; i < WaveSpawner.ws_Single.enemiesOnTheField.Count; i++) {
+                Enemy enemy = WaveSpawner.ws_Single.enemiesOnTheField[i];
+                if (InRangeCheck(enemy) && !enemy.isDead) {
+                    if (!enemiesInRange.Contains(enemy)) {
+                        enemiesInRange.Add(enemy);
+                        if (!currentTarget) {
+                            SetNextTarget();
+                        }
                     }
-                }
-            } else {
-                if (enemiesInRange.Contains(enemy)) {
-                    enemiesInRange.Remove(enemy);
-                    if(currentTarget == enemy) {
-                        SetNextTarget();
+                } else {
+                    if (enemiesInRange.Contains(enemy)) {
+                        enemiesInRange.Remove(enemy);
+                        if(currentTarget == enemy) {
+                            SetNextTarget();
+                        }
                     }
                 }
             }
