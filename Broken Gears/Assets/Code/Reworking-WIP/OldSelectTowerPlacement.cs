@@ -47,8 +47,8 @@ public class OldSelectTowerPlacement : MonoBehaviour {
                                     tile.buildableParent.GetComponent<Tile>().buildable = false;
                                     parentTile = tile.buildableParent.GetComponent<Tile>();
                                 } else {
-                                    tile.child.GetComponent<Tile>().buildable = false;
-                                    childTile = tile.child.GetComponent<Tile>();
+                                    tile.buildableChild.GetComponent<Tile>().buildable = false;
+                                    childTile = tile.buildableChild.GetComponent<Tile>();
                                 }
                                 ChangeColor(Vector4.zero);
                             }

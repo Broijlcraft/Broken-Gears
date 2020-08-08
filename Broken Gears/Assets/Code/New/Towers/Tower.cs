@@ -29,12 +29,11 @@ public class Tower : MonoBehaviour {
         }
     }
 
-    public void PlaceOnTile(Tile tileToPlaceOn) {
+    public void PlaceOnParentTile(Tile tileToPlaceOn) {
         TowerManager.tm_Single.selectedTower = null;
         placedOnParentTile = tileToPlaceOn;
         oldParentTile = null;
-        transform.position = placedOnParentTile.setPosition;
-        transform.rotation = Quaternion.Euler(placedOnParentTile.setRotation);
+        ChangeTowerColor(Vector4.zero);
         isActive = true;
     }
 }

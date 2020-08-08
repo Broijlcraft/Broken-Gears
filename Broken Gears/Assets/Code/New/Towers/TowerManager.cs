@@ -53,22 +53,19 @@ public class TowerManager : MonoBehaviour {
                                     newPos = tile.buildableParent.transform.position;
                                     newRot = tile.buildableParent.setRotation;
                                 }
-                                //if (Input.GetMouseButtonDown(0)) {
-                                //    if (OldManager.old_m_Single.devMode == false) {
-                                //        //OldScrapEconomy.old_se_Single.RemoveScrap(scrapCost);
-                                //    }
-                                //    //transform.GetComponent<OldTurret>().coll.SetActive(true);
-                                //    OldTowerManager.old_tm_Single.selectedTower = null;
-                                //    tile.buildable = false;
-                                //    if (tile.buildableParent != null) {
-                                //        tile.buildableParent.GetComponent<Tile>().buildable = false;
-                                //        parentTile = tile.buildableParent.GetComponent<Tile>();
-                                //    } else {
-                                //        tile.child.GetComponent<Tile>().buildable = false;
-                                //        childTile = tile.child.GetComponent<Tile>();
-                                //    }
-                                //    selectedTower.ChangeTowerColor(Color.white, false);
-                                //}
+                                if (Input.GetMouseButtonDown(0)) {
+                                    if (GameManager.gm_Single.devMode == false) {
+                                        ScrapManager.sm_single.AddOrWithdrawScrap(selectedTower.buyScrapPrice, ScrapManager.ScrapOption.Withdraw);
+                                    }
+                                    tile.buildable = false;
+                                    if (tile.buildableParent != null) {
+                                        tile.buildableParent.buildable = false;
+                                        tile = tile.buildableParent;
+                                    } else {
+                                        tile.buildableChild.buildable = false; 
+                                    }
+                                    selectedTower.PlaceOnParentTile(tile);
+                                }
                             } else {
                                 newPos = tile.setPosition;
                                 newRot = selectedTower.transform.rotation.eulerAngles;
@@ -78,8 +75,10 @@ public class TowerManager : MonoBehaviour {
                     } else {
                         selectedTower.ChangeTowerColor(canNotPlaceColor);
                     }
-                    selectedTower.transform.eulerAngles = newRot;
-                    selectedTower.transform.position = newPos;
+                    if (selectedTower) {
+                        selectedTower.transform.eulerAngles = newRot;
+                        selectedTower.transform.position = newPos;
+                    }
                 }
             }
         }
@@ -90,7 +89,7 @@ public class TowerManager : MonoBehaviour {
         if (tower) {
             print("remove tower " + tower);
             if (selectedTower.oldParentTile && !destroyAlways) {
-                selectedTower.PlaceOnTile(selectedTower.oldParentTile);
+                selectedTower.PlaceOnParentTile(selectedTower.oldParentTile);
                 print("Reset to tile");
             } else {
                 Destroy(selectedTower.gameObject);

@@ -5,14 +5,14 @@ public class Tile : MonoBehaviour {
     public Tile buildableParent;
 
     [HideInInspector] public bool buildable;
-    [HideInInspector] public Transform child;
+    [HideInInspector] public Tile buildableChild;
     [HideInInspector] public Vector3 setPosition, setRotation;
 
     private void Awake() {
         if (buildableParent != null) {
             setPosition = buildableParent.transform.position;
             buildable = true;
-            buildableParent.child = transform;
+            buildableParent.buildableChild = this;
             buildableParent.buildable = true;
         } else {
             setPosition = transform.position;
