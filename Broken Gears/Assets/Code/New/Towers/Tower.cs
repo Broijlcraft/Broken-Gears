@@ -2,14 +2,14 @@
 using UnityEngine;
 
 public class Tower : MonoBehaviour {
-    public string towerName;
+    public string towerName, description = "This is a description";
+    public Sprite towerSprite;
     public ParticleSystem[] activeTowerParticles;
     public int buyScrapPrice, sellScrapPrice;
-    [Header("Test for towerplacement and unlock")]
-    public bool testEmmision;
-    /*[HideInInspector] */public List<Material> mats = new List<Material>();
-    public Tile placedOnParentTile, oldParentTile;
-    public bool isActive;
+
+    [HideInInspector] public bool isActive;
+    [HideInInspector] public Tile placedOnParentTile, oldParentTile;
+    [HideInInspector] public List<Material> mats = new List<Material>();
 
     private void Awake() {
         SetMaterials();
@@ -29,11 +29,24 @@ public class Tower : MonoBehaviour {
         }
     }
 
-    public void PlaceOnParentTile(Tile tileToPlaceOn) {
+    public virtual void PlaceOnParentTile(Tile tileToPlaceOn) {
         TowerManager.tm_Single.selectedTower = null;
         placedOnParentTile = tileToPlaceOn;
+        transform.position = placedOnParentTile.setPosition;
+        transform.rotation = Quaternion.Euler(placedOnParentTile.setRotation);
+        TowerManager.tm_Single.selectedTowerIsMoving = false;
         oldParentTile = null;
         ChangeTowerColor(Vector4.zero);
         isActive = true;
+    }
+
+    public virtual void DetachFromParentTile() {
+        if (placedOnParentTile) {
+            oldParentTile = placedOnParentTile;
+            placedOnParentTile = null;
+            oldParentTile.buildable = true;
+            oldParentTile.buildableChild.buildable = true;
+        }
+        isActive = false;
     }
 }

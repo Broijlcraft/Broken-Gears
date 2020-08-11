@@ -7,23 +7,23 @@ public class BuyTowerButton : UiElementHover {
     public Tower tower;
     [HideInInspector] public Button button;
 
-    private void Awake() {    
+    private void Awake() {
         button = GetComponent<Button>();
     }
 
     private void Start() {
         button.onClick.AddListener(() => TowerManager.tm_Single.PickTower(tower));
     }
-    
+
     public override void OnPointerEnter(PointerEventData eventData) {
         if (tower && button.interactable) {
-            UiManager.um_single.SetTowerNameAndValue(tower.towerName, tower.buyScrapPrice.ToString());
+            TowerManager.tm_Single.SetTowerNameAndValueOnHover(tower.towerName, tower.buyScrapPrice.ToString());
         }
     }
 
     public override void OnPointerExit(PointerEventData eventData) {
         if (tower && button.interactable) {
-            UiManager.um_single.SetTowerNameAndValue("", "");
+            TowerManager.tm_Single.SetTowerNameAndValueOnHover("", "");
         }
     }
 }

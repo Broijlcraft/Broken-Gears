@@ -32,7 +32,7 @@ public class MenuManager : MonoBehaviour {
             Time.timeScale = 0;
             if (menuHolder && firstMenu) {
                 menuHolder.SetActive(true);
-                OpenMenu(firstMenu, false);
+                OpenMenu(firstMenu);
             }
         } else {
             if (currentMenu && !currentMenu.canNotGoBackWithEsc) {
@@ -42,20 +42,24 @@ public class MenuManager : MonoBehaviour {
     }
 
     public void CloseMenu() {
-        currentMenu.gameObject.SetActive(false);
-        if (currentMenu.menuPosition == MenuState.FirstPanel) {
-            menuHolder.SetActive(false);
-            currentMenu = null;
-            currentMenuState = MenuState.Closed;
-            Movement.m_Single.canMove = true;
-            Time.timeScale = 1;
-        } else {
-            OpenMenu(currentMenu.previousMenu, Movement.m_Single.canMove);
+        if (currentMenu) {
+            currentMenu.ExtraFunctionalityOnCLose();
+            currentMenu.gameObject.SetActive(false);
+            if (currentMenu.menuPosition == MenuState.FirstPanel || currentMenu.dontOpenPreviousMenuOnJustMenuClose) {
+                menuHolder.SetActive(false);
+                currentMenu = null;
+                currentMenuState = MenuState.Closed;
+                Movement.m_Single.canMove = true;
+                Time.timeScale = 1;
+            } else {
+                OpenMenu(currentMenu.previousMenu);
+            }
         }
     }
 
-    public void OpenMenu(Menu menu, bool canPlayerMove) {
+    public void OpenMenu(Menu menu) {
         if (menu) {
+            menu.ExtraFunctionalityOnOpen();
             currentMenu = menu;
             currentMenu.gameObject.SetActive(true);
             currentMenuState = menu.menuPosition;

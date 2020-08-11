@@ -15,9 +15,9 @@ public class OldHealth : MonoBehaviour {
     private void Start() {
         currentHealth = maxHealth;
         if (!GameManager.gm_Single.devMode) {
-            g = Instantiate(OldManager.old_m_Single.healthFab, transform.position + OldManager.old_m_Single.healthFab.GetComponent<OldMobileUiParts>().offSet, Quaternion.identity);
+            //g = Instantiate(OldManager.old_m_Single.healthFab, transform.position + OldManager.old_m_Single.healthFab.GetComponent<OldMobileUiParts>().offSet, Quaternion.identity);
             g.transform.GetComponent<OldMobileUiParts>().parent = transform;
-            g.transform.SetParent(OldManager.old_m_Single.healthCanvas);
+            //g.transform.SetParent(OldManager.old_m_Single.healthCanvas);
         }
     }
 

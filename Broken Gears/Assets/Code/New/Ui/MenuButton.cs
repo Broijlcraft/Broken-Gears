@@ -5,14 +5,20 @@ public class MenuButton : MonoBehaviour {
 
     public Menu nextMenu;
     Menu menu;
+    [HideInInspector] public Button button;
 
     private void Awake() {
-        GetComponent<Button>().onClick.AddListener(OpenSpecificMenu);
         menu = GetComponentInParent<Menu>();
+        button = GetComponent<Button>();
+        button.onClick.AddListener(OpenSpecificMenu);
+    }
+
+    public void ResetButtonToDefaultOnclick() {
+        button.onClick.AddListener(OpenSpecificMenu);
     }
 
     public void OpenSpecificMenu() {
-        MenuManager.mm_Single.OpenMenu(nextMenu, false);
+        MenuManager.mm_Single.OpenMenu(nextMenu);
         if (menu) {
             menu.gameObject.SetActive(false);
         }

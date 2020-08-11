@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8367772593533593421}
   m_Layer: 9
   m_Name: ArmHolder
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 3259383529154732778}
   m_Layer: 9
   m_Name: ArmDefault
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 596967014962536723}
   m_Layer: 9
   m_Name: RivetGunTurret
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,10 +139,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerName: Rivet Gun
+  description: This is a description
   activeTowerParticles:
   - {fileID: 3827862329195905064}
   buyScrapPrice: 40
-  sellScrapPrice: 0
+  sellScrapPrice: 20
   testEmmision: 0
   mats: []
   placedOnParentTile: {fileID: 0}
@@ -168,10 +169,10 @@ MonoBehaviour:
     defaultTarget: {fileID: 129691608171309772}
     tower: {fileID: 0}
   attackParticles: []
+  isHitting: 0
   attackTimer: 0
   currentTarget: {fileID: 0}
   enemiesInRange: []
-  isHitting: 0
 --- !u!1 &3259383530758022766
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +184,7 @@ GameObject:
   - component: {fileID: 3259383530758022767}
   m_Layer: 9
   m_Name: Barrel
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -213,7 +214,7 @@ GameObject:
   - component: {fileID: 129691608171309772}
   m_Layer: 9
   m_Name: WeaponDefault
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -243,7 +244,7 @@ GameObject:
   - component: {fileID: 2714264955863189880}
   m_Layer: 9
   m_Name: WeaponHolder
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -275,7 +276,7 @@ GameObject:
   - component: {fileID: 5136660454076507076}
   m_Layer: 9
   m_Name: TurretCollider
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -318,7 +319,7 @@ GameObject:
   - component: {fileID: 6015186196337731471}
   m_Layer: 9
   m_Name: EnemyCheck
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -344,6 +345,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2714264955863189880}
     m_Modifications:
+    - target: {fileID: 1349023726648851104, guid: 7c8d1bc472775b54da4095b93be74890,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 42da89997c32de24b9bd5009fe381894, type: 2}
     - target: {fileID: 3834564000837576889, guid: 7c8d1bc472775b54da4095b93be74890,
         type: 3}
       propertyPath: m_Name
@@ -353,6 +359,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834564000837576889, guid: 7c8d1bc472775b54da4095b93be74890,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 7037264551834890477, guid: 7c8d1bc472775b54da4095b93be74890,
         type: 3}
@@ -409,11 +420,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1349023726648851104, guid: 7c8d1bc472775b54da4095b93be74890,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 42da89997c32de24b9bd5009fe381894, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c8d1bc472775b54da4095b93be74890, type: 3}
 --- !u!1 &1732957496754283871 stripped
@@ -445,6 +451,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 892478403422722510, guid: 2d05f48bbff45734bbfa412fdd8e6e8b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831711885456921447, guid: 2d05f48bbff45734bbfa412fdd8e6e8b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 42da89997c32de24b9bd5009fe381894, type: 2}
     - target: {fileID: 7027927207232110397, guid: 2d05f48bbff45734bbfa412fdd8e6e8b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -500,11 +516,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3831711885456921447, guid: 2d05f48bbff45734bbfa412fdd8e6e8b,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 42da89997c32de24b9bd5009fe381894, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d05f48bbff45734bbfa412fdd8e6e8b, type: 3}
 --- !u!4 &5526935449459194726 stripped
@@ -526,6 +537,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3259383529904023206}
     m_Modifications:
+    - target: {fileID: 1464083022201033919, guid: b62af125fd967a74cb4e271c6b74a587,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 42da89997c32de24b9bd5009fe381894, type: 2}
     - target: {fileID: 3848989472722791232, guid: b62af125fd967a74cb4e271c6b74a587,
         type: 3}
       propertyPath: m_Name
@@ -535,6 +551,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3848989472722791232, guid: b62af125fd967a74cb4e271c6b74a587,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 7802095051633993812, guid: b62af125fd967a74cb4e271c6b74a587,
         type: 3}
@@ -591,11 +612,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1464083022201033919, guid: b62af125fd967a74cb4e271c6b74a587,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 42da89997c32de24b9bd5009fe381894, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b62af125fd967a74cb4e271c6b74a587, type: 3}
 --- !u!4 &4718985234367383639 stripped
@@ -615,6 +631,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Par_TowerSmoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828057980559534730, guid: 8264a9e81cb49294da8b0857c55069b1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 4828057980559534735, guid: 8264a9e81cb49294da8b0857c55069b1,
         type: 3}
@@ -710,6 +731,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828057980559534730, guid: 8264a9e81cb49294da8b0857c55069b1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 4828057980559534735, guid: 8264a9e81cb49294da8b0857c55069b1,
         type: 3}

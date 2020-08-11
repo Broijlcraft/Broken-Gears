@@ -6,7 +6,7 @@ public class ScrapManager : MonoBehaviour {
 
     public int startScrapAmount, maxScrap;
     public Text scrapTextObject;
-    [Header("private / HideInInspector")] public int currentScrap;
+    [HideInInspector] public int currentScrap;
 
     public enum ScrapOption {
         Add,
@@ -15,10 +15,11 @@ public class ScrapManager : MonoBehaviour {
 
     private void Awake() {
         sm_single = this;
+        currentScrap = 0;
     }
 
     private void Start() {
-        currentScrap = startScrapAmount;
+        AddOrWithdrawScrap(startScrapAmount, ScrapOption.Add);
         UpdateScrapAmount();
     }
 
@@ -53,7 +54,7 @@ public class ScrapManager : MonoBehaviour {
             }
         }
         UpdateScrapAmount();
-        UiManager.um_single.CheckPricesSetInteractableAndNot();
+        TowerManager.tm_Single.CheckPricesSetInteractableAndNot();
         return success;
     }
 

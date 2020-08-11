@@ -25,10 +25,8 @@ public class WeaponizedTower : Tower {
     }
 
     private void Update() {
-        if (isActive) {
-            for (int i = 0; i < weaponParts.Length; i++) {
-                weaponParts[i].RotateParts();
-            }
+        for (int i = 0; i < weaponParts.Length; i++) {
+            weaponParts[i].RotateParts();
         }
         AttackBehaviour();
     }
@@ -45,27 +43,25 @@ public class WeaponizedTower : Tower {
     }
 
     void CheckForEnemiesInRange() {
-        if (isActive) {
-            for (int i = 0; i < WaveSpawner.ws_Single.enemiesOnTheField.Count; i++) {
-                Enemy enemy = WaveSpawner.ws_Single.enemiesOnTheField[i];
-                if (InRangeCheck(enemy) && !enemy.isDead) {
-                    if (!enemiesInRange.Contains(enemy)) {
-                        enemiesInRange.Add(enemy);
-                        if (!currentTarget) {
-                            SetNextTarget();
-                        }
+        for (int i = 0; i < WaveSpawner.ws_Single.enemiesOnTheField.Count; i++) {
+            Enemy enemy = WaveSpawner.ws_Single.enemiesOnTheField[i];
+            if (InRangeCheck(enemy) && !enemy.isDead && TowerManager.tm_Single.selectedTower != this) {
+                if (!enemiesInRange.Contains(enemy)) {
+                    enemiesInRange.Add(enemy);
+                    if (!currentTarget) {
+                        SetNextTarget();
                     }
-                } else {
-                    if (enemiesInRange.Contains(enemy)) {
-                        enemiesInRange.Remove(enemy);
-                        if(currentTarget == enemy) {
-                            SetNextTarget();
-                        }
+                }
+            } else {
+                if (enemiesInRange.Contains(enemy)) {
+                    enemiesInRange.Remove(enemy);
+                    if (currentTarget == enemy) {
+                        SetNextTarget();
                     }
                 }
             }
         }
-    }    
+    }
 
     void SetNextTarget() {
         currentTarget = null;
@@ -126,7 +122,7 @@ public class WeaponFollow {
     public Transform towerPart, defaultTarget;
     [HideInInspector] public WeaponizedTower tower;
 
-    public void RotateParts () {
+    public void RotateParts() {
         Transform tp;
         if (tower.currentTarget != null) {
             tp = Tools.tools.GetTarget(tower.currentTarget);
@@ -134,7 +130,10 @@ public class WeaponFollow {
             tp = defaultTarget;
         }
         Vector3 dir = tp.position - towerPart.position;
-        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Quaternion lookRotation = Quaternion.Euler(Vector3.zero);
+        if (dir != Vector3.zero) {
+            lookRotation = Quaternion.LookRotation(dir);
+        }
         Vector3 newFullRot = Quaternion.Lerp(towerPart.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         Quaternion newPartRotation = Quaternion.identity;
         switch (axis) {

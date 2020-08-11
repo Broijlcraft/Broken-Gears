@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6320094125784578498}
   m_Layer: 9
   m_Name: EnemyCheck
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 1823145441069527054}
   m_Layer: 9
   m_Name: WeaponDefault
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 1823145441125587985}
   m_Layer: 9
   m_Name: ArmHolder
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 1823145441458980769}
   m_Layer: 9
   m_Name: WeaponHolder
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 2838422067218925642}
   m_Layer: 9
   m_Name: Saw Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,15 +176,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerName: Saw Tower
+  description: This is a description
+  towerSprite: {fileID: 21300000, guid: f2bd7e9092c9e0e4b9be457e235ac28e, type: 3}
   activeTowerParticles:
   - {fileID: 7073541533241615136}
   buyScrapPrice: 52
-  sellScrapPrice: 0
-  testEmmision: 0
-  mats: []
+  sellScrapPrice: 10
+  isActive: 0
   placedOnParentTile: {fileID: 0}
   oldParentTile: {fileID: 0}
-  isActive: 0
+  mats: []
   range: 2.7
   damagePerAttack: 2
   attackDelay: 0.2
@@ -209,10 +210,10 @@ MonoBehaviour:
   - {fileID: 2739635713762531729}
   - {fileID: 421529490983946244}
   - {fileID: 3083253646436614672}
+  isHitting: 0
   attackTimer: 0
   currentTarget: {fileID: 0}
   enemiesInRange: []
-  isHitting: 0
   sawSize: 0.4
   maxSpeed: -10
   divider: 50
@@ -228,7 +229,7 @@ GameObject:
   - component: {fileID: 1823145442551970553}
   m_Layer: 9
   m_Name: ArmDefault
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -260,7 +261,7 @@ GameObject:
   - component: {fileID: 8538646597236386239}
   m_Layer: 9
   m_Name: TurretCollider
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -316,7 +317,7 @@ GameObject:
   - component: {fileID: 6687106584597150915}
   m_Layer: 9
   m_Name: SawBladeArmHolder
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,7 +348,7 @@ GameObject:
   - component: {fileID: 235099065227682890}
   m_Layer: 9
   m_Name: SawHolder
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -379,7 +380,7 @@ GameObject:
   - component: {fileID: 2064677912515095960}
   m_Layer: 9
   m_Name: Particles
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -586,7 +587,7 @@ GameObject:
   - component: {fileID: 6028697008791373044}
   m_Layer: 9
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -652,6 +653,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2252529395760311306, guid: bf83cc230e78a8c42a70821cb9884165,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 3695779877050926732, guid: bf83cc230e78a8c42a70821cb9884165,
         type: 3}
@@ -728,16 +734,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6687106584597150915}
     m_Modifications:
-    - target: {fileID: 3471554276477479522, guid: af140f8058044e5438c059c6c0712dfd,
-        type: 3}
-      propertyPath: m_Name
-      value: MovableArmSaw
-      objectReference: {fileID: 0}
-    - target: {fileID: 3471554276477479522, guid: af140f8058044e5438c059c6c0712dfd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 2882067673417834757, guid: af140f8058044e5438c059c6c0712dfd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -793,6 +789,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 62
       objectReference: {fileID: 0}
+    - target: {fileID: 3471554276477479522, guid: af140f8058044e5438c059c6c0712dfd,
+        type: 3}
+      propertyPath: m_Name
+      value: MovableArmSaw
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471554276477479522, guid: af140f8058044e5438c059c6c0712dfd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471554276477479522, guid: af140f8058044e5438c059c6c0712dfd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
     - target: {fileID: 8266385361130198628, guid: af140f8058044e5438c059c6c0712dfd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -813,16 +824,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1823145441125587985}
     m_Modifications:
-    - target: {fileID: 8561498624610293589, guid: 466b55a14022dfd428887a4b33b26882,
+    - target: {fileID: 2511275381673941014, guid: 466b55a14022dfd428887a4b33b26882,
         type: 3}
-      propertyPath: m_Name
-      value: StaticArmSaw
-      objectReference: {fileID: 0}
-    - target: {fileID: 8561498624610293589, guid: 466b55a14022dfd428887a4b33b26882,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1759d78b502c25440baf21bbd6d1db6f, type: 2}
     - target: {fileID: 6858603048158228844, guid: 466b55a14022dfd428887a4b33b26882,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -878,11 +884,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2511275381673941014, guid: 466b55a14022dfd428887a4b33b26882,
+    - target: {fileID: 8561498624610293589, guid: 466b55a14022dfd428887a4b33b26882,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 1759d78b502c25440baf21bbd6d1db6f, type: 2}
+      propertyPath: m_Name
+      value: StaticArmSaw
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561498624610293589, guid: 466b55a14022dfd428887a4b33b26882,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561498624610293589, guid: 466b55a14022dfd428887a4b33b26882,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 466b55a14022dfd428887a4b33b26882, type: 3}
 --- !u!4 &5072102376271157606 stripped
@@ -904,16 +920,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1823145441125587985}
     m_Modifications:
-    - target: {fileID: 7427862404563643149, guid: 01b85ef4d95fb5a4c8e45b2c7d075402,
-        type: 3}
-      propertyPath: m_Name
-      value: RotationBodySaw
-      objectReference: {fileID: 0}
-    - target: {fileID: 7427862404563643149, guid: 01b85ef4d95fb5a4c8e45b2c7d075402,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 1567735848063294634, guid: 01b85ef4d95fb5a4c8e45b2c7d075402,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -974,6 +980,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1759d78b502c25440baf21bbd6d1db6f, type: 2}
+    - target: {fileID: 7427862404563643149, guid: 01b85ef4d95fb5a4c8e45b2c7d075402,
+        type: 3}
+      propertyPath: m_Name
+      value: RotationBodySaw
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427862404563643149, guid: 01b85ef4d95fb5a4c8e45b2c7d075402,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427862404563643149, guid: 01b85ef4d95fb5a4c8e45b2c7d075402,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01b85ef4d95fb5a4c8e45b2c7d075402, type: 3}
 --- !u!4 &904285007558877367 stripped
@@ -999,6 +1020,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Par_TowerSmoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828057980559534730, guid: 8264a9e81cb49294da8b0857c55069b1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 4828057980559534735, guid: 8264a9e81cb49294da8b0857c55069b1,
         type: 3}
@@ -1085,6 +1111,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2064677912515095960}
     m_Modifications:
+    - target: {fileID: 1659563090823462791, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2468792253432432550, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
         type: 3}
       propertyPath: m_Name
@@ -1095,47 +1126,27 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 6889262762437947674, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
+    - target: {fileID: 3919474348343243319, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
         type: 3}
-      propertyPath: playOnAwake
-      value: 0
+      propertyPath: delay
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8955167097920004239, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
+    - target: {fileID: 3949245477951736408, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
         type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8109835000088361742, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
-        type: 3}
-      propertyPath: looping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8109835000088361742, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4547736341586354576, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
         type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5242412711466490632, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5614471925673893076, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8789908734161092904, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1659563090823462791, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3949245477951736408, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
         type: 3}
       propertyPath: m_Layer
       value: 9
@@ -1195,14 +1206,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3919474348343243319, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
+    - target: {fileID: 6889262762437947674, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
         type: 3}
-      propertyPath: delay
-      value: 0.5
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5242412711466490632, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
+    - target: {fileID: 8109835000088361742, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
+        type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8109835000088361742, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789908734161092904, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
         type: 3}
       propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8955167097920004239, guid: 3dbaaaf9b5ac81b478c447b819a62c15,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:

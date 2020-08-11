@@ -9,7 +9,7 @@ public class StartScreen : MonoBehaviour {
     [HideInInspector] public int currentIndex;
 
     private void Start() {
-        MenuManager.mm_Single.OpenMenu(GetComponent<Menu>(), false);
+        MenuManager.mm_Single.OpenMenu(GetComponent<Menu>());
         NextText();
     }
 
