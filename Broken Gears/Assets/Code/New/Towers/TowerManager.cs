@@ -181,6 +181,7 @@ public class TowerInteractions {
 
         ia_Cancel.onClick.RemoveAllListeners();
         ia_MoveTower.onClick.RemoveAllListeners();
+        ia_SellConfirm.onClick.RemoveAllListeners();
 
         ia_Cancel.onClick.AddListener(() => TowerManager.tm_Single.UnSelectTower(false));
         ia_MoveTower.onClick.AddListener(() => TowerManager.tm_Single.MoveTower(selectedTower));
