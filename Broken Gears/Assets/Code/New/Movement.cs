@@ -41,6 +41,7 @@ public class Movement : MonoBehaviour {
             }
             topdownCamera.fieldOfView = currentZoom;
         }
+        ClampPosition();
     }
 
     private void FixedUpdate() {
@@ -56,13 +57,16 @@ public class Movement : MonoBehaviour {
             if (!GameManager.gm_Single.devMode) { if (!Input.GetMouseButton(2)) { return; } }
             RotateCam();
         }
+
+        cameraBeam.position = new Vector3(beamStartPos.x , cameraBeam.position.y, transform.position.z);
+        cameraBlock.position = new Vector3(transform.position.x, cameraBlock.position.y, transform.position.z);
+    }
+
+    void ClampPosition() {
         Vector3 pos = transform.position;
         pos.x = Mathf.Clamp(pos.x, cameraBlockMoverange.min, cameraBlockMoverange.max);
         pos.z = Mathf.Clamp(pos.z, beamMoverange.min, beamMoverange.max);
         transform.position = pos;
-
-        cameraBeam.position = new Vector3(beamStartPos.x , cameraBeam.position.y, transform.position.z);
-        cameraBlock.position = new Vector3(transform.position.x, cameraBlock.position.y, transform.position.z);
     }
 
     void RotateCam() {
