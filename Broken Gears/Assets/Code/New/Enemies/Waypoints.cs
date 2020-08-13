@@ -6,7 +6,7 @@ public class Waypoints : MonoBehaviour {
 
     public static Waypoints wp_Single;
 
-    [HideInInspector] public Transform[] waypoints;
+    [HideInInspector] public List<Transform> waypoints = new List<Transform>();
 
     private void Awake() {
         wp_Single = this;
@@ -30,7 +30,7 @@ public class WaypointEditor : Editor {
                 waypointsList.Add(waypointsScript.transform.GetChild(i));
                 EditorUtility.SetDirty(waypointsList[i]);
             }
-            waypointsScript.waypoints = waypointsList.ToArray();
+            waypointsScript.waypoints = waypointsList;
             Debug.LogWarning("Successfully set waypoints, don't forget to save!");
         }
     }

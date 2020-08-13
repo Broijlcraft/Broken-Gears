@@ -42,7 +42,7 @@ public class EnemyPathing : MonoBehaviour {
     }
 
     public void SetTarget() {
-        if (Waypoints.wp_Single.waypoints.Length > targetValue) {
+        if (Waypoints.wp_Single.waypoints.Count > targetValue) {
             targetPoint = Waypoints.wp_Single.waypoints[targetValue];
             targetValue++;
         } else {

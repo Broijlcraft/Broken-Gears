@@ -176,7 +176,7 @@ public class TowerInteractions {
 
         ia_TowerDescription.text = selectedTower.description;
         string newSellConfirm = ia_ConfirmationTextString.Replace(towerIdentifier, selectedTower.towerName);
-        newSellConfirm = newSellConfirm.Replace(priceIdentifier, selectedTower.buyScrapPrice.ToString());
+        newSellConfirm = newSellConfirm.Replace(priceIdentifier, selectedTower.sellScrapPrice.ToString());
         ia_ConfirmationText.text = newSellConfirm;
 
         ia_Cancel.onClick.RemoveAllListeners();
