@@ -3,7 +3,7 @@
 public class MenuManager : MonoBehaviour {
 
     public static MenuManager mm_Single;
-
+    public bool isMainMenu;
     public enum MenuState {
         Closed,
         FirstPanel,
@@ -63,7 +63,9 @@ public class MenuManager : MonoBehaviour {
             currentMenu = menu;
             currentMenu.gameObject.SetActive(true);
             currentMenuState = menu.menuPosition;
-            Movement.m_Single.canMove = false;
+            if (!isMainMenu) {
+                Movement.m_Single.canMove = false;
+            }
         }
     }
 

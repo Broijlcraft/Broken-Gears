@@ -10,7 +10,7 @@ public class OldHealth : MonoBehaviour {
     public int scrapAdd;
     public GameObject targetInemy;
 
-    GameObject g, gA;
+    GameObject g = null/*, gA*/;
 
     private void Start() {
         currentHealth = maxHealth;

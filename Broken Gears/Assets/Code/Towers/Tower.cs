@@ -16,9 +16,9 @@ public class Tower : MonoBehaviour {
     }
 
     public void SetMaterials() {
-        MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
-        for (int i = 0; i < meshRenderers.Length; i++) {
-            mats.Add(meshRenderers[i].material);
+        MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+        mats = Tools.tools.GetAllMaterialInstancesFromMeshRenderers(renderers);
+        for (int i = 0; i < mats.Count; i++) {
             mats[i].EnableKeyword("_EmissionColor");
         }
     }
