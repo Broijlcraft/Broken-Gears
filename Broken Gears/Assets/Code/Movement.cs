@@ -23,7 +23,7 @@ public class Movement : MonoBehaviour {
     }
 
     private void Update() {
-        if (MenuManager.mm_Single.currentMenuState == MenuManager.MenuState.Closed && canMove == true) {
+        if (!GameManager.gm_Single.gameIsOver && MenuManager.mm_Single.currentMenuState == MenuManager.MenuState.Closed && canMove == true) {
             if (Input.GetAxis("Mouse ScrollWheel") > 0) {
                 if (currentZoom > maxZoomIn) {
                     currentZoom -= zoomSensitivity;
@@ -45,7 +45,7 @@ public class Movement : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (canMove == true) {
+        if (!GameManager.gm_Single.gameIsOver && canMove == true) {
             Vector3 translatePos = Vector3.zero;
             translatePos.z = Input.GetAxis("Vertical");
             translatePos.x = Input.GetAxis("Horizontal"); 

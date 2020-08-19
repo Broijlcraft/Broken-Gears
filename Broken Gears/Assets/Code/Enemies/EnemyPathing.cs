@@ -46,9 +46,6 @@ public class EnemyPathing : MonoBehaviour {
             targetPoint = Waypoints.wp_Single.waypoints[targetValue];
             targetValue++;
         } else {
-            if (!GameManager.gm_Single.devMode) {
-                //OldUiManager.old_um_Single.IncreaseEscaped(1);
-            }
             if (enemy && WaveSpawner.ws_Single.enemiesOnTheField.Contains(enemy)) {
                 WaveSpawner.ws_Single.enemiesOnTheField.Remove(enemy);
             }

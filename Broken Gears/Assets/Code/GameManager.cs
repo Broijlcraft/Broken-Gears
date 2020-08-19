@@ -5,16 +5,38 @@ public class GameManager : MonoBehaviour {
     public bool devMode = true;
     public GameObject devmodeText;
 
+    [Header("HideInInspector")] public bool gameIsOver;
+
+    public enum GameOverState {
+        Success,
+        Failure
+    }
+
+    public GameOverState gameOverState;
+
     private void Awake() {
         gm_Single = this;
-        devmodeText.SetActive(devMode);
+        DevModeTextOnOff();
     }
 
     private void Update() {
         if (Input.GetButtonDown("DevMode")) {
             devMode = !devMode;
-            devmodeText.SetActive(devMode);
+            DevModeTextOnOff();
             TowerManager.tm_Single.CheckPricesSetInteractableAndNot();
+        }
+    }
+
+    public void SetGameOver(GameOverState gameOverState) {
+        if (!gameIsOver) {
+            this.gameOverState = gameOverState;
+            gameIsOver = true;
+        }
+    }
+
+    void DevModeTextOnOff() {
+        if (devmodeText) {
+            devmodeText.SetActive(devMode);
         }
     }
 }

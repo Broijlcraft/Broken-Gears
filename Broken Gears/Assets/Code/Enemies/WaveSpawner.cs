@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using UnityEditor;
 using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour {
@@ -13,14 +15,24 @@ public class WaveSpawner : MonoBehaviour {
     [Header("HideInInspector")] public bool waveFunctionality;
     int currentWave, currentEnemy;
     float spawnDelayTimer, waveDelayTimer;
-
     [HideInInspector] public List<Enemy> enemiesOnTheField = new List<Enemy>();
+
+
+    [Header("Workers")]
+    public Transform uiWorkersHolder;
+    public int maxEnemyEscapes;
+    int enemiesEscaped;
+    [HideInInspector] public List<Image> workerImages = new List<Image>();
 
     private void Awake() {
         ws_Single = this;
     }
 
     private void Update() {
+        if (GameManager.gm_Single.devMode && Input.GetButtonDown("Jump")) {
+            IncreaseEscaped();
+        }
+
         if (waveFunctionality) {
             if(currentWave < waves.Count) {
                 if(currentEnemy < waves[currentWave].enemies.Count) {
@@ -45,14 +57,31 @@ public class WaveSpawner : MonoBehaviour {
         }
     }
 
+    public void StartSpawnSequence() {
+
+    }
+
     public void SpawnNextEnemy() {
         if (waves[currentWave] && waves[currentWave].enemies[currentEnemy]) {
-            enemiesOnTheField.Add(Instantiate(waves[currentWave].enemies[currentEnemy], transform.position, Quaternion.identity).GetComponent<Enemy>());
+            //enemiesOnTheField.Add(Instantiate(waves[currentWave].enemies[currentEnemy], transform.position, Quaternion.identity).GetComponent<Enemy>());
+            GameObject go = Instantiate(waves[currentWave].enemies[currentEnemy], transform.position, Quaternion.identity);
+            Enemy enemy = go.GetComponent<Enemy>();
+            enemiesOnTheField.Add(enemy);
         }
         if (onlySpawnOne) {
             waveFunctionality = false;
         }
         currentEnemy++;
+    }
+
+    public void IncreaseEscaped() {
+        if(enemiesEscaped < maxEnemyEscapes) {
+            workerImages[workerImages.Count - (1 + enemiesEscaped)].color = Color.red;
+        }
+        enemiesEscaped++;
+        if(enemiesEscaped == maxEnemyEscapes) {
+            Dialogue.d_Single.GameOverDialogue(GameManager.GameOverState.Failure);
+        }
     }
 
     public void ResetWave() {
@@ -65,3 +94,30 @@ public class WaveSpawner : MonoBehaviour {
         currentWave++;
     }
 }
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(WaveSpawner))]
+public class WorkerEditor : Editor {
+    WaveSpawner waveSpawnerScript;
+
+    private void OnEnable() {
+        waveSpawnerScript = (WaveSpawner)target;
+    }
+
+    public override void OnInspectorGUI() {
+        DrawDefaultInspector();
+        if (GUILayout.Button("Set workers")) {
+            List<Image> workerImages = new List<Image>();
+            if (waveSpawnerScript.uiWorkersHolder) {
+                for (int i = 0; i < waveSpawnerScript.uiWorkersHolder.childCount; i++) {
+                    Image workerImage = waveSpawnerScript.uiWorkersHolder.GetChild(i).GetComponent<Image>();
+                    workerImages.Add(workerImage);
+                    EditorUtility.SetDirty(workerImage);
+                }
+            }
+            waveSpawnerScript.workerImages = workerImages;
+            Debug.LogWarning("Successfully set workers, don't forget to save!");
+        }
+    }
+}
+#endif
