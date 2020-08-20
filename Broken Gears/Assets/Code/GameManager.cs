@@ -5,14 +5,13 @@ public class GameManager : MonoBehaviour {
     public bool devMode = true;
     public GameObject devmodeText;
 
-    [Header("HideInInspector")] public bool gameIsOver;
-
     public enum GameOverState {
         Success,
         Failure
     }
 
-    public GameOverState gameOverState;
+    [HideInInspector] public bool gameIsOver;
+    [HideInInspector] public GameOverState gameOverState;
 
     private void Awake() {
         gm_Single = this;
@@ -31,6 +30,7 @@ public class GameManager : MonoBehaviour {
         if (!gameIsOver) {
             this.gameOverState = gameOverState;
             gameIsOver = true;
+            Dialogue.d_Single.GameOverDialogue(gameOverState);
         }
     }
 

@@ -59,7 +59,7 @@ public class Movement : MonoBehaviour {
         }
 
         cameraBeam.position = new Vector3(beamStartPos.x , cameraBeam.position.y, transform.position.z);
-        cameraBlock.position = new Vector3(transform.position.x, cameraBlock.position.y, transform.position.z);
+        cameraBlock.position = new Vector3(transform.position.x, cameraBlock.position.y, cameraBlock.position.z);
     }
 
     void ClampPosition() {

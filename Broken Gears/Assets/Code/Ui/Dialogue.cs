@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 using UnityEngine;
 using System;
 
@@ -87,7 +85,7 @@ public class TutorialSettings {
             currentTextIndex++;
         } else {
             Dialogue.d_Single.CloseDialogue();
-            WaveSpawner.ws_Single.waveFunctionality = true;
+            WaveSpawner.ws_Single.StartSpawnSequence();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEditor;
 using UnityEngine;
@@ -23,9 +22,14 @@ public class WaveSpawner : MonoBehaviour {
     public int maxEnemyEscapes;
     int enemiesEscaped;
     [HideInInspector] public List<Image> workerImages = new List<Image>();
+    public AlarmLight factoryWarningLight;
 
     private void Awake() {
         ws_Single = this;
+    }
+
+    private void Start() {
+        factoryWarningLight = FindObjectOfType<AlarmLight>();
     }
 
     private void Update() {
@@ -58,12 +62,15 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     public void StartSpawnSequence() {
-
+        if (factoryWarningLight) {
+            factoryWarningLight.soundAlarm = true;
+        } else {
+            waveFunctionality = true;
+        }
     }
 
     public void SpawnNextEnemy() {
         if (waves[currentWave] && waves[currentWave].enemies[currentEnemy]) {
-            //enemiesOnTheField.Add(Instantiate(waves[currentWave].enemies[currentEnemy], transform.position, Quaternion.identity).GetComponent<Enemy>());
             GameObject go = Instantiate(waves[currentWave].enemies[currentEnemy], transform.position, Quaternion.identity);
             Enemy enemy = go.GetComponent<Enemy>();
             enemiesOnTheField.Add(enemy);
@@ -80,7 +87,7 @@ public class WaveSpawner : MonoBehaviour {
         }
         enemiesEscaped++;
         if(enemiesEscaped == maxEnemyEscapes) {
-            Dialogue.d_Single.GameOverDialogue(GameManager.GameOverState.Failure);
+            GameManager.gm_Single.SetGameOver(GameManager.GameOverState.Failure);
         }
     }
 
