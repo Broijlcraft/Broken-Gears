@@ -29,8 +29,8 @@ public class Tools : MonoBehaviour{
 
     public Transform GetTarget(Enemy enemy) {
         Transform tp = enemy.transform;
-        if (enemy.targetingPoint) {
-            tp = enemy.targetingPoint;
+        if (enemy.attackTargetingPoint) {
+            tp = enemy.attackTargetingPoint;
         }
         return tp;
     }

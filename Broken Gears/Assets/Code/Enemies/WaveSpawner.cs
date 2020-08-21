@@ -11,25 +11,27 @@ public class WaveSpawner : MonoBehaviour {
     public bool endlessWave, onlySpawnOne;
     public float spawnDelay, waveDelay;
 
-    [Header("HideInInspector")] public bool waveFunctionality;
     int currentWave, currentEnemy;
     float spawnDelayTimer, waveDelayTimer;
+    [Header("HideInInspector")] public bool waveFunctionality;
     [HideInInspector] public List<Enemy> enemiesOnTheField = new List<Enemy>();
 
-
+    [Space]
+    public GameObject mobileUiHealthPrefab;
+    
     [Header("Workers")]
     public Transform uiWorkersHolder;
     public int maxEnemyEscapes;
     int enemiesEscaped;
     [HideInInspector] public List<Image> workerImages = new List<Image>();
-    public AlarmLight factoryWarningLight;
+    AlarmLight alarmLight;
 
     private void Awake() {
         ws_Single = this;
     }
 
     private void Start() {
-        factoryWarningLight = FindObjectOfType<AlarmLight>();
+        alarmLight = FindObjectOfType<AlarmLight>();
     }
 
     private void Update() {
@@ -62,8 +64,8 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     public void StartSpawnSequence() {
-        if (factoryWarningLight) {
-            factoryWarningLight.soundAlarm = true;
+        if (alarmLight) {
+            alarmLight.soundAlarm = true;
         } else {
             waveFunctionality = true;
         }

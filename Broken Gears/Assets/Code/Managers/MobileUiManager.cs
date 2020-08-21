@@ -1,0 +1,18 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
+using UnityEngine;
+
+public class MobileUiManager : MonoBehaviour {
+    public static MobileUiManager um_single;
+
+    public Canvas mobileUiCanvas;
+
+    private void Awake() {
+        um_single = this;
+    }
+
+    private void Start() {
+        mobileUiCanvas.worldCamera = Movement.m_Single.topdownCamera;
+    }
+}

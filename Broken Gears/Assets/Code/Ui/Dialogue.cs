@@ -5,8 +5,9 @@ using System;
 public class Dialogue : MonoBehaviour {
     public static Dialogue d_Single;
     public Menu dialogueHolder;
-    public Text titleTextObject, dialogueTextObject;
     public Button continueButton;
+    public Text continueButtonText, titleTextObject, dialogueTextObject;
+
     [Space]
     public GameOverSettings gameOverSettings;
     [Header("Tutorial")]

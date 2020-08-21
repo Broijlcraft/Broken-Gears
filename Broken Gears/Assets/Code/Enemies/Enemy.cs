@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour {
-    public Transform targetingPoint;
-    public float maxHealth, destroyAfter;
+    public Transform attackTargetingPoint;
+    public float maxHealth, destroyAfter, verticalHealthBarOffSet;
     public Range scrapDroppedOnDeathBetween;
 
     Animator anim;
+    public float currentHealth;
     Collider[] colliders;
-    [Header("HideInInspector")] public float currentHealth;
+    MobileUiHealth mobileUiHealth;
     [HideInInspector] public bool isDead;
     [HideInInspector] public EnemyPathing pathfinding;
 
@@ -18,9 +19,17 @@ public class Enemy : MonoBehaviour {
         pathfinding = GetComponent<EnemyPathing>();
     }
 
+    private void Start() {
+        GameObject health = Instantiate(WaveSpawner.ws_Single.mobileUiHealthPrefab, transform.position, Quaternion.identity);
+        mobileUiHealth = health.GetComponent<MobileUiHealth>();
+        mobileUiHealth.target = this;
+        mobileUiHealth.transform.SetParent(MobileUiManager.um_single.mobileUiCanvas.transform);
+    }
+
     public void DoDamage(float amount) {
         if(!isDead) {
             currentHealth -= amount;
+            mobileUiHealth.UpdateValue(currentHealth / maxHealth);
             if(currentHealth <= 0) {
                 Death();
             }
@@ -28,6 +37,7 @@ public class Enemy : MonoBehaviour {
     }
 
     public void Death() {
+        Destroy(mobileUiHealth.gameObject);
         for (int i = 0; i < colliders.Length; i++) {
             colliders[i].enabled = false;
         }

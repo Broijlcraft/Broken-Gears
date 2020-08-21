@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DevWave
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 192699176735543579, guid: a95d7137220199a478c05fa6b122261f, type: 3}
+  - {fileID: 1341296680530579544, guid: 2c92d5432bfd081489fcdb3f9a62084b, type: 3}
