@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: DevWave
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 1341296680530579544, guid: 2c92d5432bfd081489fcdb3f9a62084b, type: 3}
+  - {fileID: 1604040956675304251, guid: 5bfbe2c614f8b97469fee1a95ba953c8, type: 3}
+  - {fileID: 192699176735543579, guid: a95d7137220199a478c05fa6b122261f, type: 3}
+  - {fileID: 6745634952976653004, guid: 1b93fc2a461aeb64f8c91a7e4e9f53ca, type: 3}

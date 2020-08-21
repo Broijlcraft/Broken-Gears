@@ -1030,7 +1030,7 @@ MonoBehaviour:
   onlySpawnOne: 0
   spawnDelay: 3
   waveDelay: 5
-  waveFunctionality: 0
+  waveFunctionality: 1
   enemiesOnTheField: []
   mobileUiHealthPrefab: {fileID: 6937356202144930492, guid: 6a512583d861c5c45a043f9882dc69c6,
     type: 3}
