@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7194451286309696306}
   - component: {fileID: 3525010334049669067}
   m_Layer: 0
-  m_Name: SP5
+  m_Name: 4-WayPipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
