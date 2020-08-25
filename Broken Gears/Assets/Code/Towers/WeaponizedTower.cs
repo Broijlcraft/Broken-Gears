@@ -77,7 +77,7 @@ public class WeaponizedTower : Tower {
     public bool InRangeCheck(Enemy enemy) {
         bool inRange = false;
         if (enemy) {
-            Transform target = Tools.tools.GetTarget(enemy);
+            Transform target = Tools.GetTarget(enemy);
             if(Vector3.Distance(target.position, checkEnemiesFromHere.position) < range) {
                 inRange = true;
             }
@@ -125,7 +125,7 @@ public class WeaponFollow {
     public void RotateParts() {
         Transform tp;
         if (tower.currentTarget != null) {
-            tp = Tools.tools.GetTarget(tower.currentTarget);
+            tp = Tools.GetTarget(tower.currentTarget);
         } else {
             tp = defaultTarget;
         }

@@ -396,7 +396,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5304124075511093655}
-  - component: {fileID: 5304124075511093865}
   - component: {fileID: 5304124075511093864}
   - component: {fileID: 5304124075511093652}
   - component: {fileID: 5304124075511093654}
@@ -425,18 +424,6 @@ Transform:
   m_Father: {fileID: 5304124076431294034}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5304124075511093865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5304124075511093653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e09aa5baf2103d34195bd684614de394, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5304124075511093864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,12 +543,15 @@ MonoBehaviour:
     ia_ConfirmationText: {fileID: 5304124077456286567}
     towerIdentifier: tower
     priceIdentifier: price
-    ia_ConfirmationTextString: Are you sure you want to sell tower for price scrap?
+    actionIdentifier: action
+    ia_ConfirmationTextString: Are you sure you want to action tower for price scrap?
     ia_MoveTower: {fileID: 5304124077480792578}
+    ia_SellTower: {fileID: 5304124077508899675}
     ia_Cancel: {fileID: 5304124077007202202}
     ia_SellConfirm: {fileID: 5304124076131147485}
-  selectedTower: {fileID: 0}
+    ia_SellCancel: {fileID: 5304124076288296305}
   selectedTowerIsMoving: 0
+  selectedTower: {fileID: 0}
 --- !u!114 &5304124075511093866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5491,6 +5481,7 @@ GameObject:
   - component: {fileID: 5304124076474425459}
   - component: {fileID: 5304124076474425461}
   - component: {fileID: 5304124076474425458}
+  - component: {fileID: 4844217948525714780}
   m_Layer: 5
   m_Name: Text_InteractionTowerName
   m_TagString: Untagged
@@ -5557,6 +5548,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Towername
+--- !u!114 &4844217948525714780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5304124076474425456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0.2, y: -0.2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5304124076474660599
 GameObject:
   m_ObjectHideFlags: 0
@@ -5718,6 +5724,7 @@ GameObject:
   - component: {fileID: 5304124076499046174}
   - component: {fileID: 5304124076499046160}
   - component: {fileID: 5304124076499046161}
+  - component: {fileID: 1574694226857013603}
   m_Layer: 5
   m_Name: Text_IAConfirm
   m_TagString: Untagged
@@ -5784,6 +5791,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Confirm
+--- !u!114 &1574694226857013603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5304124076499046175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0.2, y: -0.2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5304124076518975467
 GameObject:
   m_ObjectHideFlags: 0
@@ -5795,6 +5817,7 @@ GameObject:
   - component: {fileID: 5304124076518975466}
   - component: {fileID: 5304124076518975468}
   - component: {fileID: 5304124076518975469}
+  - component: {fileID: 7025550652915211635}
   m_Layer: 5
   m_Name: Text_IASell
   m_TagString: Untagged
@@ -5861,6 +5884,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Sell Tower
+--- !u!114 &7025550652915211635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5304124076518975467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0.2, y: -0.2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5304124076540770024
 GameObject:
   m_ObjectHideFlags: 0
@@ -6560,6 +6598,7 @@ GameObject:
   - component: {fileID: 5304124076663231546}
   - component: {fileID: 5304124076663231548}
   - component: {fileID: 5304124076663231549}
+  - component: {fileID: 1432281188812126553}
   m_Layer: 5
   m_Name: Text_IACancel
   m_TagString: Untagged
@@ -6626,6 +6665,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Cancel
+--- !u!114 &1432281188812126553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5304124076663231547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0.2, y: -0.2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5304124076668582583
 GameObject:
   m_ObjectHideFlags: 0
@@ -8032,6 +8086,7 @@ GameObject:
   - component: {fileID: 5304124076874555940}
   - component: {fileID: 5304124076874555942}
   - component: {fileID: 5304124076874555943}
+  - component: {fileID: 1330721829148736365}
   m_Layer: 5
   m_Name: Text_IACancel
   m_TagString: Untagged
@@ -8098,6 +8153,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Cancel
+--- !u!114 &1330721829148736365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5304124076874555941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0.2, y: -0.2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5304124076894599860
 GameObject:
   m_ObjectHideFlags: 0
@@ -9707,6 +9777,7 @@ GameObject:
   - component: {fileID: 5304124077077409249}
   - component: {fileID: 5304124077077409251}
   - component: {fileID: 5304124077077409248}
+  - component: {fileID: 1876036996468468605}
   m_Layer: 5
   m_Name: Text_IAMove
   m_TagString: Untagged
@@ -9773,6 +9844,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Move Tower
+--- !u!114 &1876036996468468605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5304124077077409262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0.2, y: -0.2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5304124077114166845
 GameObject:
   m_ObjectHideFlags: 0
@@ -11750,7 +11836,7 @@ MonoBehaviour:
   menuPosition: 2
   canNotGoBackWithEsc: 0
   saveSettingsOnClose: 0
-  dontOpenPreviousMenuOnJustMenuClose: 0
+  dontOpenPreviousMenuOnJustMenuClose: 1
   previousMenu: {fileID: 5304124077222631373}
 --- !u!1 &5304124077394101100
 GameObject:
@@ -11763,6 +11849,7 @@ GameObject:
   - component: {fileID: 5304124077394101103}
   - component: {fileID: 5304124077394101089}
   - component: {fileID: 5304124077394101102}
+  - component: {fileID: 6667527557983786576}
   m_Layer: 5
   m_Name: Text_InteractionTowerDescription
   m_TagString: Untagged
@@ -11829,6 +11916,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Description
+--- !u!114 &6667527557983786576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5304124077394101100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0.2, y: -0.2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5304124077408172874
 GameObject:
   m_ObjectHideFlags: 0
@@ -12155,6 +12257,7 @@ GameObject:
   - component: {fileID: 5304124077456286564}
   - component: {fileID: 5304124077456286566}
   - component: {fileID: 5304124077456286567}
+  - component: {fileID: 1214852389881026860}
   m_Layer: 5
   m_Name: Text_IAConfirmDescription
   m_TagString: Untagged
@@ -12221,6 +12324,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Are you sure you want to sell the Cryo Gun for 500 Scrap?
+--- !u!114 &1214852389881026860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5304124077456286565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0.2, y: -0.2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5304124077463992730
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,9 @@ public class WaveSpawner : MonoBehaviour {
 
     public List<Wave> waves = new List<Wave>();
 
+    [Space]
+    public float globalEnemySpeedMultiplier = 1f;
+
     public bool endlessWave, onlySpawnOne;
     public float spawnDelay, waveDelay;
 

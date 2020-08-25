@@ -12,8 +12,8 @@ public class TowerManager : MonoBehaviour {
     public BuyTowerButton[] buyTowerButtons;
     public TowerInteractions towerInteractions;
 
-    [HideInInspector] public Tower selectedTower;
     [HideInInspector] public bool selectedTowerIsMoving;
+    [HideInInspector] public Tower selectedTower;
     Ray ray;
 
     private void Awake() {
@@ -60,7 +60,7 @@ public class TowerManager : MonoBehaviour {
 
     void SelectedTowerPlacing() {
         if (selectedTower) {
-            if (!selectedTower.placedOnParentTile) {
+            if (!selectedTower.placedOnParentTile && !selectedTower.canNeverMove) {
                 RaycastHit hit;
                 selectedTowerIsMoving = true;
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, tileMask)) {
@@ -79,9 +79,7 @@ public class TowerManager : MonoBehaviour {
                                     newRot = tile.buildableParent.setRotation;
                                 }
                                 if (Input.GetMouseButtonDown(0)) {
-                                    if (GameManager.gm_Single.devMode == false && !selectedTower.oldParentTile) {
-                                        ScrapManager.sm_single.AddOrWithdrawScrap(selectedTower.buyScrapPrice, ScrapManager.ScrapOption.Withdraw);
-                                    }
+                                    BuyTower();
                                     tile.buildable = false;
                                     if (tile.buildableParent != null) {
                                         tile.buildableParent.buildable = false;
@@ -109,6 +107,12 @@ public class TowerManager : MonoBehaviour {
         }
     }
 
+    public void BuyTower() {
+        if (GameManager.gm_Single.devMode == false && !selectedTower.oldParentTile) {
+            ScrapManager.sm_single.AddOrWithdrawScrap(selectedTower.buyScrapPrice, ScrapManager.ScrapOption.Withdraw);
+        }
+    }
+
     public void SellTower(Tower tower) {
         ScrapManager.sm_single.AddOrWithdrawScrap(tower.sellScrapPrice, ScrapManager.ScrapOption.Add);
         tower.DetachFromParentTile();
@@ -126,10 +130,19 @@ public class TowerManager : MonoBehaviour {
 
     public void UnSelectTower(bool destroyAlways) {
         if (selectedTower) {
-            if((selectedTower.oldParentTile || !selectedTowerIsMoving) && !destroyAlways) {
-                selectedTower.PlaceOnParentTile(selectedTower.oldParentTile);
+            print("selected");
+            if (!selectedTower.canNeverMove) {
+            print("can move");
+                if((selectedTower.oldParentTile || !selectedTowerIsMoving) && !destroyAlways) {
+                    selectedTower.PlaceOnParentTile(selectedTower.oldParentTile);
+            print("tile or not moving and not destroy always");
+                } else {
+                    Destroy(selectedTower.gameObject);
+            print("destroy");
+                }
             } else {
-                Destroy(selectedTower.gameObject);
+            print("can not move");
+                selectedTower = null;
             }
         }
     }
@@ -161,14 +174,14 @@ public class TowerRotations {
 
 [System.Serializable]
 public class TowerInteractions {
-    //ia = InterActions
+    //ia == InterActions
     public Menu ia_Menu;
     public Image ia_TowerImage;
     public Text ia_TowerName, ia_TowerDescription, ia_ConfirmationText;
-    public string towerIdentifier = "tower", priceIdentifier = "price";
+    public string towerIdentifier = "tower", priceIdentifier = "price", actionIdentifier = "action";
     [TextArea]
-    public string ia_ConfirmationTextString = "Example tower for price";
-    public Button ia_MoveTower, ia_Cancel, ia_SellConfirm;
+    public string ia_ConfirmationTextString = "Example action tower for price";
+    public Button ia_MoveTower, ia_SellTower, ia_Cancel, ia_SellConfirm, ia_SellCancel;
 
     public void UpdateInterActionUi(Tower selectedTower) {
         ia_TowerImage.sprite = selectedTower.towerSprite;
@@ -179,13 +192,22 @@ public class TowerInteractions {
         newSellConfirm = newSellConfirm.Replace(priceIdentifier, selectedTower.sellScrapPrice.ToString());
         ia_ConfirmationText.text = newSellConfirm;
 
+        if (!selectedTower.canNeverMove) {
+            ia_MoveTower.gameObject.SetActive(true);
+            ia_SellTower.gameObject.SetActive(true);
+        } else {
+            ia_MoveTower.gameObject.SetActive(false);
+            ia_SellTower.gameObject.SetActive(false);
+        }
+
         ia_Cancel.onClick.RemoveAllListeners();
-        ia_MoveTower.onClick.RemoveAllListeners();
         ia_SellConfirm.onClick.RemoveAllListeners();
+        ia_MoveTower.onClick.RemoveAllListeners();
 
         ia_Cancel.onClick.AddListener(() => TowerManager.tm_Single.UnSelectTower(false));
         ia_MoveTower.onClick.AddListener(() => TowerManager.tm_Single.MoveTower(selectedTower));
         ia_SellConfirm.onClick.AddListener(() => TowerManager.tm_Single.SellTower(selectedTower));
+        ia_SellCancel.onClick.AddListener(() => TowerManager.tm_Single.UnSelectTower(false));
 
         MenuManager.mm_Single.OpenMenu(ia_Menu);
     }

@@ -55,8 +55,8 @@ public class AngleTest : MonoBehaviour {
                         enemy = collidersInRange[i].GetComponentInParent<Enemy>();
                     }
                 }
-                if (enemy && !targetingPoints.Contains(Tools.tools.GetTarget(enemy))) {
-                    targetingPoints.Add(Tools.tools.GetTarget(enemy));
+                if (enemy && !targetingPoints.Contains(Tools.GetTarget(enemy))) {
+                    targetingPoints.Add(Tools.GetTarget(enemy));
                 }
             }
         }

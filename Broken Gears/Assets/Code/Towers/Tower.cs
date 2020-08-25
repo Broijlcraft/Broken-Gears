@@ -2,25 +2,34 @@
 using UnityEngine;
 
 public class Tower : MonoBehaviour {
-    public string towerName, description = "This is a description";
-    public Sprite towerSprite;
+    public string towerName;
+    [TextArea]
+    public string description = "This is a description";
+    public Sprite towerSprite = null;
     public ParticleSystem[] activeTowerParticles;
     public int buyScrapPrice, sellScrapPrice;
 
-    [HideInInspector] public bool isActive;
+    public bool canNeverMove;
+
+    /*[HideInInspector]*/ public bool isActive;
     [HideInInspector] public Tile placedOnParentTile, oldParentTile;
     [HideInInspector] public List<Material> mats = new List<Material>();
 
     private void Awake() {
         SetMaterials();
+        SetParticles();
     }
 
     public void SetMaterials() {
         MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
-        mats = Tools.tools.GetAllMaterialInstancesFromMeshRenderers(renderers);
+        mats = Tools.GetAllMaterialInstancesFromMeshRenderers(renderers);
         for (int i = 0; i < mats.Count; i++) {
             mats[i].EnableKeyword("_EmissionColor");
         }
+    }
+
+    public void SetParticles() {
+        activeTowerParticles = GetComponentsInChildren<ParticleSystem>();
     }
 
     public void ChangeTowerColor(Color color) {
@@ -31,9 +40,11 @@ public class Tower : MonoBehaviour {
 
     public virtual void PlaceOnParentTile(Tile tileToPlaceOn) {
         TowerManager.tm_Single.selectedTower = null;
-        placedOnParentTile = tileToPlaceOn;
-        transform.position = placedOnParentTile.setPosition;
-        transform.rotation = Quaternion.Euler(placedOnParentTile.setRotation);
+        if (tileToPlaceOn) {
+            placedOnParentTile = tileToPlaceOn;
+            transform.position = placedOnParentTile.setPosition;
+            transform.rotation = Quaternion.Euler(placedOnParentTile.setRotation);
+        }
         TowerManager.tm_Single.selectedTowerIsMoving = false;
         oldParentTile = null;
         ChangeTowerColor(Vector4.zero);

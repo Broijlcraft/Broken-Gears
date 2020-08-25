@@ -11346,6 +11346,95 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 493865454}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &495886169
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 225825684433897481, guid: 0cff74015817e9f48b87332877837ae3,
+        type: 3}
+      propertyPath: m_Name
+      value: Salvage Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 225825684433897486, guid: 0cff74015817e9f48b87332877837ae3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 225825684433897486, guid: 0cff74015817e9f48b87332877837ae3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 225825684433897486, guid: 0cff74015817e9f48b87332877837ae3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 225825684433897486, guid: 0cff74015817e9f48b87332877837ae3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 225825684433897486, guid: 0cff74015817e9f48b87332877837ae3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 225825684433897486, guid: 0cff74015817e9f48b87332877837ae3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 225825684433897486, guid: 0cff74015817e9f48b87332877837ae3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 225825684433897486, guid: 0cff74015817e9f48b87332877837ae3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 225825684433897486, guid: 0cff74015817e9f48b87332877837ae3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 225825684433897486, guid: 0cff74015817e9f48b87332877837ae3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 225825684433897486, guid: 0cff74015817e9f48b87332877837ae3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0cff74015817e9f48b87332877837ae3, type: 3}
 --- !u!1001 &500185776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34587,6 +34676,35 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1556370420}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1557774469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 225825684433897481, guid: 0cff74015817e9f48b87332877837ae3,
+    type: 3}
+  m_PrefabInstance: {fileID: 495886169}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1557774470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557774469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ac9fad1e72e2dd45b96e7d01f0be875, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerName: Salvage Tower
+  description: This tower doubles the amount of scrap dropped by all enemies
+  towerSprite: {fileID: 21300000, guid: 886efd5252b1d214a9c27c7d4565027e, type: 3}
+  activeTowerParticles: []
+  buyScrapPrice: 50
+  sellScrapPrice: 0
+  canNeverMove: 1
+  isActive: 0
+  placedOnParentTile: {fileID: 0}
+  oldParentTile: {fileID: 0}
+  mats: []
 --- !u!1001 &1557910402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44516,11 +44634,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - {fileID: 11400000, guid: e01c201c81e902549a58b548ad67ff8d, type: 2}
+  globalEnemySpeedMultiplier: 1
   endlessWave: 1
   onlySpawnOne: 0
   spawnDelay: 3
   waveDelay: 5
-  waveFunctionality: 1
+  waveFunctionality: 0
   enemiesOnTheField: []
   mobileUiHealthPrefab: {fileID: 6937356202144930492, guid: 6a512583d861c5c45a043f9882dc69c6,
     type: 3}
@@ -46107,6 +46226,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2127248782}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2134921475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2134921476}
+  m_Layer: 0
+  m_Name: '------------------'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2134921476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134921475}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.0461173, y: 0.8328125, z: 3.3764818}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2136904601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46652,12 +46801,12 @@ PrefabInstance:
     - target: {fileID: 5304124075511093864, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
         type: 3}
       propertyPath: devMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5304124075511093869, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
         type: 3}
       propertyPath: isTutorial
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5304124075803084717, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
         type: 3}
@@ -46829,6 +46978,26 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5304124077007202203, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304124077007202203, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304124077007202203, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304124077007202203, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5304124077214223123, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -46949,7 +47118,48 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5304124077480792579, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304124077480792579, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304124077480792579, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304124077480792579, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304124077508899672, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304124077508899672, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304124077508899672, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304124077508899672, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5304124075511093865, guid: 1b241bef7751c5a4ea8469dc1d4b3f68, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1b241bef7751c5a4ea8469dc1d4b3f68, type: 3}
 --- !u!1001 &5845212106460599488
 PrefabInstance:

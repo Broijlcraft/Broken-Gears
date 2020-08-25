@@ -1,15 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Tools : MonoBehaviour{
+public static class Tools {
 
-    public static Tools tools;
-
-    private void Awake() {
-        tools = this;
-    }
-
-    public void EnableDisableGameObjectsFromArray(GameObject[] go, bool newState) {
+    public static void EnableDisableGameObjectsFromArray(GameObject[] go, bool newState) {
         for (int i = 0; i < go.Length; i++) {
             if (go[i]) {
                 go[i].SetActive(newState);
@@ -17,7 +11,7 @@ public class Tools : MonoBehaviour{
         }
     }
 
-    public void StartStopParticleSystemsFromArray(ParticleSystem[] systems, bool start) {
+    public static void StartStopParticleSystemsFromArray(ParticleSystem[] systems, bool start) {
         for (int i = 0; i < systems.Length; i++) {
             if (start) {
                 systems[i].Play();
@@ -27,7 +21,7 @@ public class Tools : MonoBehaviour{
         }
     }
 
-    public Transform GetTarget(Enemy enemy) {
+    public static Transform GetTarget(Enemy enemy) {
         Transform tp = enemy.transform;
         if (enemy.attackTargetingPoint) {
             tp = enemy.attackTargetingPoint;
@@ -35,7 +29,7 @@ public class Tools : MonoBehaviour{
         return tp;
     }
 
-    public List<Material> GetAllMaterialInstancesFromMeshRenderers(MeshRenderer[] renderers) {
+    public static List<Material> GetAllMaterialInstancesFromMeshRenderers(MeshRenderer[] renderers) {
         List<Material> mats = new List<Material>();
         for (int i = 0; i < renderers.Length; i++) {
             for (int iB = 0; iB < renderers[i].materials.Length; iB++) {

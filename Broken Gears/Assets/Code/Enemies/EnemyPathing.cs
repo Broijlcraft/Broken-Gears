@@ -22,7 +22,7 @@ public class EnemyPathing : MonoBehaviour {
         if (targetPoint != null && !enemy.isDead) {
             Vector3 direction = abs(targetPoint.position, transform.position);
             Vector3 directionToGo = targetPoint.position - transform.position;
-            transform.Translate(directionToGo.normalized * speed * Time.deltaTime);
+            transform.Translate(directionToGo.normalized * speed * WaveSpawner.ws_Single.globalEnemySpeedMultiplier * Time.deltaTime);
             if (direction.z < maxDistance && direction.x < maxDistance) {
                 SetTarget();
             }

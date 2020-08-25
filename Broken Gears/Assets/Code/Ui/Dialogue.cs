@@ -52,7 +52,8 @@ public class Dialogue : MonoBehaviour {
     }
 
     public void SetDialogue(string newTitle, string newDialogue) {
-        if(MenuManager.mm_Single.currentMenuState == MenuManager.MenuState.Closed) {
+        Debug.LogWarning(this + ": " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+        if (MenuManager.mm_Single.currentMenuState == MenuManager.MenuState.Closed) {
             MenuManager.mm_Single.OpenMenu(dialogueHolder);
         }
 

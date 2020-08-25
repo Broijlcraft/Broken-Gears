@@ -14,7 +14,7 @@ public class CryoGunTower : GunTowerBase {
             base.AttackBehaviour();
             if (currentTarget) {
                 if (!isSpraying) {
-                    Tools.tools.StartStopParticleSystemsFromArray(attackParticles, true);
+                    Tools.StartStopParticleSystemsFromArray(attackParticles, true);
                     isSpraying = true;
                 }
                 if (isHitting) {
@@ -30,7 +30,7 @@ public class CryoGunTower : GunTowerBase {
                     }                
                 }
             } else if (isSpraying) {
-                Tools.tools.StartStopParticleSystemsFromArray(attackParticles, false);
+                Tools.StartStopParticleSystemsFromArray(attackParticles, false);
                 isSpraying = false;
             }
         }
