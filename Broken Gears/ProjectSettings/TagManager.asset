@@ -9,6 +9,7 @@ TagManager:
   - EnemyTarget
   - BuildableTile
   - Tower
+  - Tile
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Enemy
   - Tower
   - Tile
-  - 
+  - PostProcessing
   - 
   - 
   - 

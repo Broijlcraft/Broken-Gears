@@ -2,14 +2,14 @@
 
     private void Update() {
         if (shouldFX) {
-            enemyAffected.pathfinding.speed = freezeStrength / 100 * enemyAffected.pathfinding.defaultSpeed;
+            enemyAffected.pathing.speed = freezeStrength / 100 * enemyAffected.pathing.defaultSpeed;
             Timer();
         }
     }
 
     public override void StopUsing() {
         shouldFX = false;
-        enemyAffected.pathfinding.speed = enemyAffected.pathfinding.defaultSpeed;
+        enemyAffected.pathing.speed = enemyAffected.pathing.defaultSpeed;
         base.StopUsing();
     }
 }

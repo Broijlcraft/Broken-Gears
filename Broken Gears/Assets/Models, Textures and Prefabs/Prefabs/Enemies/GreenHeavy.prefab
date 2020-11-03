@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 985f82379cd28a7429f3bd971c273466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  robotType: 1
   attackTargetingPoint: {fileID: 6745634953160837171}
   maxHealth: 100
   destroyAfter: 5
@@ -110,7 +111,7 @@ MonoBehaviour:
     min: 19
   currentHealth: 0
   isDead: 0
-  pathfinding: {fileID: 0}
+  pathing: {fileID: 0}
 --- !u!114 &6745634952976653010
 MonoBehaviour:
   m_ObjectHideFlags: 0

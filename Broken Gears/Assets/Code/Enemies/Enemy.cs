@@ -1,22 +1,24 @@
 ﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour {
+    public RobotType robotType;
     public Transform attackTargetingPoint;
     public float maxHealth, destroyAfter, verticalHealthBarOffSet;
     public Range scrapDroppedOnDeathBetween;
+    public float currentHealth;
 
     Animator anim;
-    public float currentHealth;
+    bool isActive;
     Collider[] colliders;
     MobileUiHealth mobileUiHealth;
     [HideInInspector] public bool isDead;
-    [HideInInspector] public EnemyPathing pathfinding;
+    [HideInInspector] public EnemyPathing pathing;
 
     private void Awake() {
         anim = GetComponentInChildren<Animator>();
         colliders = GetComponentsInChildren<Collider>();
         currentHealth = maxHealth;
-        pathfinding = GetComponent<EnemyPathing>();
+        pathing = GetComponent<EnemyPathing>();
     }
 
     private void Start() {
@@ -24,6 +26,11 @@ public class Enemy : MonoBehaviour {
         mobileUiHealth = health.GetComponent<MobileUiHealth>();
         mobileUiHealth.target = this;
         mobileUiHealth.transform.SetParent(MobileUiManager.um_single.mobileUiCanvas.transform);
+    }
+
+    public void Init() {
+        pathing.Init();
+        mobileUiHealth.Init();
     }
 
     public void DoDamage(float amount) {
@@ -37,13 +44,24 @@ public class Enemy : MonoBehaviour {
     }
 
     public void Death() {
-        Destroy(mobileUiHealth.gameObject);
+        mobileUiHealth.gameObject.SetActive(false);
         for (int i = 0; i < colliders.Length; i++) {
             colliders[i].enabled = false;
         }
         isDead = true;
         currentHealth = 0;
         anim.SetBool("Death", true);
-        Destroy(gameObject, destroyAfter);
+        Invoke(nameof(Disable), destroyAfter);
     }
+
+    void Disable() {
+        isActive = false;
+        gameObject.SetActive(false);
+    }
+}
+
+public enum RobotType {
+    normal,
+    heavy,
+    kamikaze
 }
