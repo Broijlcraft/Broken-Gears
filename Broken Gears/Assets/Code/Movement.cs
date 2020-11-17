@@ -49,13 +49,16 @@ public class Movement : MonoBehaviour {
             Vector3 translatePos = Vector3.zero;
             translatePos.z = Input.GetAxis("Vertical");
             translatePos.x = Input.GetAxis("Horizontal"); 
+
             if (Input.GetButton("Slow")) {
                 transform.Translate(translatePos * speed / 2);
             } else {
                 transform.Translate(translatePos * speed);
             }
-            if (!GameManager.gm_Single.devMode) { if (!Input.GetMouseButton(2)) { return; } }
-            RotateCam();
+
+            if (!GameManager.gm_Single.devMode && Input.GetMouseButton(2)) { 
+                RotateCam();
+            }
         }
 
         cameraBeam.position = new Vector3(beamStartPos.x , cameraBeam.position.y, transform.position.z);

@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour {
         pathing.Init();
         mobileUiHealth.Init();
     }
-
+    
     public void DoDamage(float amount) {
         if(!isDead) {
             currentHealth -= amount;

@@ -3,13 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RandomizeMaterial : MaterialRandomizerBase {
-    [SerializeField] protected MeshAndMats[] meshAndMats = new MeshAndMats[1];
-
-    private void Update() {
-        if (Input.GetButtonDown("Jump")) {
-            Init();
-        }
-    }
+    [SerializeField] private MeshAndMats[] meshAndMats = new MeshAndMats[1];
 
     public override void Init() {
         for (int i = 0; i < meshAndMats.Length; i++) {
