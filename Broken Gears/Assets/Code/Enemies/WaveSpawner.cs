@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine.UI;
 using UnityEditor;
 using UnityEngine;
@@ -6,8 +7,13 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour {
     public static WaveSpawner ws_Single;
 
-    public List<Wave> waves = new List<Wave>();
+    public List<RobotWave> waves = new List<RobotWave>();
 
+    public List<Enemy> enemiesOnTheField = new List<Enemy>();
+
+    public Dictionary<string, Queue<GameObject>> robotPool = new Dictionary<string, Queue<GameObject>>();
+
+    #region temp
     [Space]
     public float globalEnemySpeedMultiplier = 1f;
 
@@ -17,7 +23,6 @@ public class WaveSpawner : MonoBehaviour {
     int currentWave, currentEnemy;
     float spawnDelayTimer, waveDelayTimer;
     [Header("HideInInspector")] public bool waveFunctionality;
-    [HideInInspector] public List<Enemy> enemiesOnTheField = new List<Enemy>();
 
     [Space]
     public GameObject mobileUiHealthPrefab;
@@ -28,42 +33,99 @@ public class WaveSpawner : MonoBehaviour {
     int enemiesEscaped;
     [HideInInspector] public List<Image> workerImages = new List<Image>();
     AlarmLight alarmLight;
+    #endregion
 
     private void Awake() {
         ws_Single = this;
+
+        List<Robot> rList = new List<Robot>();
+
+        for (int i = 0; i < waves.Count; i++) {
+            waves[i].Init();
+            if (rList.Count > 0) {
+                List<Robot> tempList = waves[i].GetRobots();
+                for (int iB = 0; iB < tempList.Count; iB++) {
+                    for (int iC = 0; iC < rList.Count; iC++) {
+                        GameObject pf = tempList[iB].GetPrefab();
+                        int index = ContainsWhere(rList, pf);
+                        if (index != -1) {
+                            int tempMax = tempList[iB].GetMaxAmount();
+                            Robot old = rList[iC];
+                            if (old.GetMaxAmount() < tempMax) {
+                                old.SetMaxAmount(tempMax);
+                            }
+                        } else {
+                            rList.Add(tempList[iB]);
+                        }
+                    }
+                }
+            } else {
+                rList = waves[i].GetRobots();
+            }
+        }
+
+        for (int i = 0; i < rList.Count; i++) {
+            GameObject prefab = rList[i].GetPrefab();
+            int amount = rList[i].GetMaxAmount();
+            Queue<GameObject> tempQueue = new Queue<GameObject>();
+            for (int iB = 0; iB < amount; iB++) {
+                GameObject robot = Instantiate(prefab);
+                robot.transform.SetParent(transform);
+                robot.SetActive(false);
+                tempQueue.Enqueue(robot);
+            }
+            robotPool.Add(prefab.name, tempQueue);
+        }
     }
 
     private void Start() {
         alarmLight = FindObjectOfType<AlarmLight>();
+
+        if (alarmLight) {
+            alarmLight.soundAlarm = true;
+        } else {
+            StartCoroutine(Spawner());
+        }
+    }
+
+    int ContainsWhere(List<Robot> rList, GameObject robot) {
+        int index = -1;
+        for (int i = 0; i < rList.Count; i++) {
+            if(rList[i].GetPrefab() == robot) {
+                return i;
+            }
+        }
+        return index;
     }
 
     private void Update() {
         if (GameManager.gm_Single.devMode && Input.GetButtonDown("Jump")) {
             IncreaseEscaped();
         }
+    }
 
-        if (waveFunctionality) {
-            if(currentWave < waves.Count) {
-                if(currentEnemy < waves[currentWave].enemies.Count) {
-                    if (spawnDelayTimer == 0 || spawnDelayTimer > spawnDelay) {
-                        spawnDelayTimer = 0;
-                        SpawnNextEnemy();
-                    }
-                    spawnDelayTimer += Time.deltaTime;
+    public IEnumerator Spawner() {
+        if (currentWave < waves.Count) {
+            RobotWave wave = waves[currentWave];
+            if (currentEnemy < wave.GetMaxAmountThisWave()) {
+                SpawnNextEnemy(wave);
+            } else {
+                if (endlessWave) {
+                    ResetWave();
                 } else {
-                    waveDelayTimer += Time.deltaTime;
-                    if(waveDelayTimer > waveDelay) {
-                        waveDelayTimer = 0;
-                        spawnDelayTimer = 0;
-                        if (endlessWave) {
-                            ResetWave();
-                        } else {
-                            NextWave();
-                        }
-                    }
+                    StartCoroutine(NextWave());
                 }
             }
         }
+        yield return new WaitForSeconds(spawnDelay);
+    }
+
+    IEnumerator NextWave() {
+        StopCoroutine(Spawner());
+        yield return new WaitForSeconds(waveDelay);
+        currentEnemy = 0;
+        currentWave++;
+        StartCoroutine(Spawner());
     }
 
     public void StartSpawnSequence() {
@@ -74,16 +136,18 @@ public class WaveSpawner : MonoBehaviour {
         }
     }
 
-    public void SpawnNextEnemy() {
-        if (waves[currentWave] && waves[currentWave].enemies[currentEnemy]) {
-            GameObject go = Instantiate(waves[currentWave].enemies[currentEnemy], transform.position, Quaternion.identity);
-            Enemy enemy = go.GetComponent<Enemy>();
-            enemiesOnTheField.Add(enemy);
+    public void SpawnNextEnemy(RobotWave wave) {
+        List<Robot> robots = wave.GetRobots();
+        int rand = Random.Range(0, robots.Count);
+        Robot robot = robots[rand];
+        string tag = robot.GetPrefab().name;
+        if (robotPool.ContainsKey(tag)) {
+            GameObject robotObj = robotPool[tag].Dequeue();
+            robotPool[tag].Enqueue(robotObj);
+            robotObj.SetActive(true);
+            enemiesOnTheField.Add(robotObj.GetComponent<Enemy>());
+            wave.SetAmountUsedInRobot(rand, robot.GetUsed() + 1);
         }
-        if (onlySpawnOne) {
-            waveFunctionality = false;
-        }
-        currentEnemy++;
     }
 
     public void IncreaseEscaped() {
@@ -98,12 +162,71 @@ public class WaveSpawner : MonoBehaviour {
 
     public void ResetWave() {
         currentEnemy = 0;
-        currentEnemy = 0;
+    }
+}
+
+[System.Serializable]
+public class RobotWave {
+    [SerializeField] private List<Robot> robotsThisWave = new List<Robot>();
+    [Header("Private")] public int amountThisWave;
+
+    public void Init() {
+        for (int i = 0; i < robotsThisWave.Count; i++) {
+            amountThisWave += robotsThisWave[i].GetMaxAmount();
+        }
     }
 
-    public void NextWave() {
-        currentEnemy = 0;
-        currentWave++;
+    public List<Robot> GetRobots() {
+        return robotsThisWave;
+    }
+
+    public int GetMaxRobotAmount(GameObject prefab) {
+        int amount = 0;
+        for (int i = 0; i < robotsThisWave.Count; i++) {
+            if(robotsThisWave[i].GetPrefab() == prefab) {
+                amount = robotsThisWave[i].GetMaxAmount();
+                break;
+            }
+        }
+        return amount;
+    }
+
+    public int GetMaxAmountThisWave() {
+        return amountThisWave;
+    }
+
+    public void SetAmountUsedInRobot(int index, int amount) {
+        if(robotsThisWave[index].GetMaxAmount() > amount+1) {
+            robotsThisWave[index].SetUsed(amount);
+        } else {
+            robotsThisWave.RemoveAt(index);
+        }
+    }
+}
+
+[System.Serializable]
+public class Robot {
+    [SerializeField] private GameObject prefab;
+    [SerializeField] private int maxAmount, used;
+
+    public GameObject GetPrefab() {
+        return prefab;
+    }
+
+    public int GetMaxAmount() {
+        return maxAmount;
+    }
+
+    public void SetMaxAmount(int amount) {
+        maxAmount = amount;
+    }
+
+    public int GetUsed() {
+        return used;
+    }
+
+    public void SetUsed(int amount) {
+        used = amount;
     }
 }
 

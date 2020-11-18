@@ -1851,6 +1851,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3df7eef0209f85b43bf487cf927600ca, type: 3}
+--- !u!1 &1478011408 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1604040956675304251, guid: 3df7eef0209f85b43bf487cf927600ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1478011407}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1532947832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1925,6 +1931,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 635ed5d5fea53334988e981e1f9d7d9a, type: 3}
+--- !u!1 &1532947833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4623722020416582901, guid: 635ed5d5fea53334988e981e1f9d7d9a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1532947832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1557774469 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 225825684433897481, guid: 0cff74015817e9f48b87332877837ae3,
@@ -2158,14 +2170,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - {fileID: 11400000, guid: c56f1f34bec3ca44db2e42b923a9e661, type: 2}
+  - robotsThisWave:
+    - prefab: {fileID: 1478011408}
+      maxAmount: 5
+      used: 0
+    - prefab: {fileID: 1532947833}
+      maxAmount: 8
+      used: 0
+    amountThisWave: 0
+  enemiesOnTheField: []
   globalEnemySpeedMultiplier: 1
   endlessWave: 1
   onlySpawnOne: 0
   spawnDelay: 3
   waveDelay: 5
   waveFunctionality: 0
-  enemiesOnTheField: []
   mobileUiHealthPrefab: {fileID: 6937356202144930492, guid: 6a512583d861c5c45a043f9882dc69c6,
     type: 3}
   uiWorkersHolder: {fileID: 1916076589}

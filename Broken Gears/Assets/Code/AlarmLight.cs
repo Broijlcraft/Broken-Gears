@@ -19,7 +19,8 @@ public class AlarmLight : MonoBehaviour {
                 }
             } else {
                 if(timer > audioClip.length + spawnDelayAfterAlarm) {
-                    WaveSpawner.ws_Single.waveFunctionality = true;
+                    WaveSpawner ws = WaveSpawner.ws_Single;
+                    ws.StartCoroutine(ws.Spawner());
                     soundAlarm = false;
                 }
             }
