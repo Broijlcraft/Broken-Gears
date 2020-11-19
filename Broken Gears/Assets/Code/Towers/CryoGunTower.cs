@@ -23,10 +23,9 @@ public class CryoGunTower : GunTowerBase {
                         fx = rcHit.transform.gameObject.GetComponentInParent<Enemy>().gameObject.AddComponent<FreezeFX>();
                         fx.freezeStrength = freezeStrength;
                         fx.durationInSeconds = freezeDuration;
-                        fx.enemyAffected = currentTarget;
-                        fx.shouldFX = true;
+                        fx.SetAffected(currentTarget);
                     } else {
-                        fx.durationSpendInSeconds = 0;
+                        fx.ResetTimer();
                     }                
                 }
             } else if (isSpraying) {

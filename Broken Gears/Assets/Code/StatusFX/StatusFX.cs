@@ -3,16 +3,27 @@
 public class StatusFX : MonoBehaviour {
     public float durationInSeconds, freezeStrength;
 
-    [HideInInspector] public float durationSpendInSeconds;
-    [HideInInspector] public Enemy enemyAffected;
-    [HideInInspector] public bool shouldFX;
+    protected float durationSpendInSeconds;
+    protected Enemy enemyAffected;
+    protected EnemyPathing enemyPathing;
+    protected bool shouldFX;
 
-    public void Timer() {
+    protected void Timer() {
         if (durationSpendInSeconds < durationInSeconds) {
             durationSpendInSeconds += Time.deltaTime;
         } else {
             StopUsing();
         }
+    }
+
+    public void ResetTimer() {
+        durationSpendInSeconds = 0f;
+    }
+
+    public virtual void SetAffected(Enemy enemy) {
+        enemyAffected = enemy;
+        enemyPathing = enemy.GetEnemyPathing();
+        shouldFX = true;
     }
 
     public virtual void StopUsing() {

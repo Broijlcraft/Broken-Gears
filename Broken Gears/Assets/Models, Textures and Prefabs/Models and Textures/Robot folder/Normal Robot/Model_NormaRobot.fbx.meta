@@ -70,8 +70,8 @@ ModelImporter:
       name: metarig|robot walk ani
       takeName: metarig|robot walk ani
       internalID: 0
-      firstFrame: 0
-      lastFrame: 20
+      firstFrame: 0.1
+      lastFrame: 19.4
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

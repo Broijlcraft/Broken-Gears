@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 269862918089639881}
   - component: {fileID: 1341296680530579550}
   m_Layer: 8
-  m_Name: Kamikaze
+  m_Name: PF_RKamikaze
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,8 +141,6 @@ MonoBehaviour:
     max: 16
     min: 14
   currentHealth: 0
-  isDead: 0
-  pathing: {fileID: 0}
 --- !u!114 &1341296680530579550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +156,9 @@ MonoBehaviour:
   speed: 1.3
   rotationSpeed: 8
   maxDistance: 0.1
+  animationSpeed: 1
   enemyChild: {fileID: 1127834245296828908}
+  anim: {fileID: 6302652833811558021}
   enemy: {fileID: 0}
   defaultSpeed: 0
   targetPoint: {fileID: 0}
@@ -334,6 +334,12 @@ GameObject:
 --- !u!4 &4178644041021703167 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 4e996af60e88e154baf59cfe2fdf9666,
+    type: 3}
+  m_PrefabInstance: {fileID: 8973196115335669989}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6302652833811558021 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: 4e996af60e88e154baf59cfe2fdf9666,
     type: 3}
   m_PrefabInstance: {fileID: 8973196115335669989}
   m_PrefabAsset: {fileID: 0}

@@ -9,9 +9,11 @@ public class WaveSpawner : MonoBehaviour {
 
     public List<RobotWave> waves = new List<RobotWave>();
 
-    public List<Enemy> enemiesOnTheField = new List<Enemy>();
+    [HideInInspector] public List<Enemy> enemiesOnTheField = new List<Enemy>();
 
     public Dictionary<string, Queue<GameObject>> robotPool = new Dictionary<string, Queue<GameObject>>();
+
+    IEnumerator spawner, nextWave;
 
     #region temp
     [Space]
@@ -49,19 +51,21 @@ public class WaveSpawner : MonoBehaviour {
                         int index = ContainsWhere(rList, pf);
                         if (index != -1) {
                             int tempMax = tempList[iB].GetMaxAmount();
-                            Robot old = rList[iC];
-                            if (old.GetMaxAmount() < tempMax) {
-                                old.SetMaxAmount(tempMax);
-                            }
+                            Robot botInWave = rList[iC];
+                            int newAmount = botInWave.GetMaxAmount() + tempMax;
+                            botInWave.SetMaxAmount(newAmount);                            
                         } else {
                             rList.Add(tempList[iB]);
                         }
                     }
                 }
             } else {
-                rList = waves[i].GetRobots();
+                List<Robot> tempBots = waves[i].GetRobots();
+                for (int iB = 0; iB < tempBots.Count; iB++) {
+                    Robot bot = tempBots[iB].CopyAsNew();
+                    rList.Add(bot);
+                }
             }
-
         }
 
         for (int iB = 0; iB < rList.Count; iB++) {
@@ -79,6 +83,9 @@ public class WaveSpawner : MonoBehaviour {
 
     private void Start() {
         //alarmLight = FindObjectOfType<AlarmLight>();
+
+        spawner = Spawner();
+        nextWave = NextWave();
 
         if (alarmLight) {
             alarmLight.soundAlarm = true;
@@ -104,32 +111,30 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     public IEnumerator Spawner() {
-        if (currentWave < waves.Count) {
+        while (currentWave < waves.Count) {
             RobotWave wave = waves[currentWave];
-            if (wave.GetRobots().Count > 0) {
+            int count = wave.GetRobots().Count;
+            if (count > 0) {
                 SpawnNextEnemy(wave);
             } else {
                 if (endlessWave) {
                     ResetWave();
                 } else {
-                    StartCoroutine(NextWave());
+                    StartCoroutine(nextWave);
+                    break;
                 }
             }
             yield return new WaitForSeconds(spawnDelay);
-            StartCoroutine(Spawner());
         }
     }
 
     IEnumerator NextWave() {
-        print("Next");
-        StopCoroutine(Spawner());
-        yield return new WaitForSeconds(waveDelay);
+        StopCoroutine(spawner);
         if (currentWave < waves.Count) {
+            yield return new WaitForSeconds(waveDelay);
             currentEnemy = 0;
             currentWave++;
-            StartCoroutine(Spawner());
-        } else {
-            StopCoroutine(NextWave());
+            StartCoroutine(spawner);
         }
     }
 
@@ -150,8 +155,9 @@ public class WaveSpawner : MonoBehaviour {
             GameObject robotObj = robotPool[tag].Dequeue();
             robotPool[tag].Enqueue(robotObj);
             robotObj.SetActive(true);
-            print(robotObj.name);
-            enemiesOnTheField.Add(robotObj.GetComponent<Enemy>());
+            Enemy enemy = robotObj.GetComponent<Enemy>();
+            enemiesOnTheField.Add(enemy);
+            enemy.Init();
             wave.SetAmountUsedInRobot(rand, robot.GetUsed() + 1);
         }
     }
@@ -214,6 +220,15 @@ public class RobotWave {
 public class Robot {
     [SerializeField] private GameObject prefab;
     [SerializeField] private int maxAmount, used;
+
+    public Robot CopyAsNew() {
+        Robot bot = new Robot {
+            prefab = prefab,
+            maxAmount = maxAmount,
+            used = used
+        };
+        return bot;
+    }
 
     public GameObject GetPrefab() {
         return prefab;

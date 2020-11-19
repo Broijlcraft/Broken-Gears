@@ -45,7 +45,7 @@ public class WeaponizedTower : Tower {
     void CheckForEnemiesInRange() {
         for (int i = 0; i < WaveSpawner.ws_Single.enemiesOnTheField.Count; i++) {
             Enemy enemy = WaveSpawner.ws_Single.enemiesOnTheField[i];
-            if (InRangeCheck(enemy) && !enemy.isDead && TowerManager.tm_Single.selectedTower != this) {
+            if (InRangeCheck(enemy) && !enemy.GetIsDead() && TowerManager.tm_Single.selectedTower != this) {
                 if (!enemiesInRange.Contains(enemy)) {
                     enemiesInRange.Add(enemy);
                     if (!currentTarget) {

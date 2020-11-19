@@ -141,8 +141,6 @@ MonoBehaviour:
     max: 22
     min: 19
   currentHealth: 0
-  isDead: 0
-  pathing: {fileID: 0}
 --- !u!114 &1604040956675304229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,10 +153,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9644d710005ae0545ab962b41e1243f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.35
+  speed: 0.4
   rotationSpeed: 8
   maxDistance: 0.1
+  animationSpeed: 1
   enemyChild: {fileID: 7172863899028506511}
+  anim: {fileID: 4276866788535507174}
   enemy: {fileID: 0}
   defaultSpeed: 0
   targetPoint: {fileID: 0}
@@ -274,6 +274,12 @@ GameObject:
 --- !u!4 &6183574704843371932 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5194560772347025612, guid: eb380de1f2a502b4f97168c9fd81586e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2145597910458035536}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4276866788535507174 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2782321053315691958, guid: eb380de1f2a502b4f97168c9fd81586e,
     type: 3}
   m_PrefabInstance: {fileID: 2145597910458035536}
   m_PrefabAsset: {fileID: 0}

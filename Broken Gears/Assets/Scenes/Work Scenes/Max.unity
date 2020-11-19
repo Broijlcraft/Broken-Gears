@@ -1784,6 +1784,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1604040956675304229, guid: 3df7eef0209f85b43bf487cf927600ca,
+        type: 3}
+      propertyPath: move
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1604040956675304230, guid: 3df7eef0209f85b43bf487cf927600ca,
         type: 3}
       propertyPath: destroyAfter
@@ -1849,6 +1854,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_RHeavy
       objectReference: {fileID: 0}
+    - target: {fileID: 1604040956675304251, guid: 3df7eef0209f85b43bf487cf927600ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3df7eef0209f85b43bf487cf927600ca, type: 3}
 --- !u!1001 &1532947832
@@ -1867,6 +1877,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF_RNormal
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623722020416582901, guid: 635ed5d5fea53334988e981e1f9d7d9a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623722020416582905, guid: 635ed5d5fea53334988e981e1f9d7d9a,
+        type: 3}
+      propertyPath: move
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4623722020416582907, guid: 635ed5d5fea53334988e981e1f9d7d9a,
         type: 3}
@@ -1996,6 +2016,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_RKamikaze
       objectReference: {fileID: 0}
+    - target: {fileID: 1341296680530579544, guid: 47597439905492149ba919be33329ae5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1341296680530579548, guid: 47597439905492149ba919be33329ae5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2049,6 +2074,16 @@ PrefabInstance:
     - target: {fileID: 1341296680530579548, guid: 47597439905492149ba919be33329ae5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341296680530579550, guid: 47597439905492149ba919be33329ae5,
+        type: 3}
+      propertyPath: move
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341296680530579550, guid: 47597439905492149ba919be33329ae5,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2190,8 +2225,8 @@ MonoBehaviour:
   globalEnemySpeedMultiplier: 1
   endlessWave: 0
   onlySpawnOne: 0
-  spawnDelay: 1
-  waveDelay: 5
+  spawnDelay: 4
+  waveDelay: 10
   waveFunctionality: 0
   mobileUiHealthPrefab: {fileID: 6937356202144930492, guid: 6a512583d861c5c45a043f9882dc69c6,
     type: 3}

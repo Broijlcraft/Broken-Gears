@@ -2,10 +2,9 @@
 
 public class EnemyPathing : MonoBehaviour {
 
-    public float speed;
-    public float rotationSpeed;
-    public float maxDistance = 0.1f;
+    public float speed, rotationSpeed, maxDistance = 0.1f, animationSpeed;
     public GameObject enemyChild;
+    public Animator anim;
 
     bool isActive;
     int targetValue = 0;
@@ -13,19 +12,21 @@ public class EnemyPathing : MonoBehaviour {
     [HideInInspector] public float defaultSpeed;
     [HideInInspector] public Transform targetPoint;
 
+
     private void Start() {
         enemy = GetComponent<Enemy>();
-        defaultSpeed = speed;
-        SetTarget();
     }
 
     public void Init() {
+        defaultSpeed = speed;
         targetValue = 0;
+        SetTarget();
         isActive = true;
+        anim.speed = animationSpeed;
     }
 
     private void Update() {
-        if (targetPoint != null && !enemy.isDead && isActive) {
+        if (targetPoint != null && !enemy.GetIsDead() && isActive) {
             Vector3 direction = abs(targetPoint.position, transform.position);
             Vector3 directionToGo = targetPoint.position - transform.position;
             transform.Translate(directionToGo.normalized * speed * WaveSpawner.ws_Single.globalEnemySpeedMultiplier * Time.deltaTime);
