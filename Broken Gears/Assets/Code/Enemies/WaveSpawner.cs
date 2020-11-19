@@ -39,7 +39,6 @@ public class WaveSpawner : MonoBehaviour {
         ws_Single = this;
 
         List<Robot> rList = new List<Robot>();
-
         for (int i = 0; i < waves.Count; i++) {
             waves[i].Init();
             if (rList.Count > 0) {
@@ -62,15 +61,15 @@ public class WaveSpawner : MonoBehaviour {
             } else {
                 rList = waves[i].GetRobots();
             }
+
         }
 
-        for (int i = 0; i < rList.Count; i++) {
-            GameObject prefab = rList[i].GetPrefab();
-            int amount = rList[i].GetMaxAmount();
+        for (int iB = 0; iB < rList.Count; iB++) {
+            GameObject prefab = rList[iB].GetPrefab();
+            int amount = rList[iB].GetMaxAmount();
             Queue<GameObject> tempQueue = new Queue<GameObject>();
-            for (int iB = 0; iB < amount; iB++) {
-                GameObject robot = Instantiate(prefab);
-                robot.transform.SetParent(transform);
+            for (int iC = 0; iC < amount; iC++) {
+                GameObject robot = Instantiate(prefab, transform);
                 robot.SetActive(false);
                 tempQueue.Enqueue(robot);
             }
@@ -79,7 +78,7 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     private void Start() {
-        alarmLight = FindObjectOfType<AlarmLight>();
+        //alarmLight = FindObjectOfType<AlarmLight>();
 
         if (alarmLight) {
             alarmLight.soundAlarm = true;
@@ -107,7 +106,7 @@ public class WaveSpawner : MonoBehaviour {
     public IEnumerator Spawner() {
         if (currentWave < waves.Count) {
             RobotWave wave = waves[currentWave];
-            if (currentEnemy < wave.GetMaxAmountThisWave()) {
+            if (wave.GetRobots().Count > 0) {
                 SpawnNextEnemy(wave);
             } else {
                 if (endlessWave) {
@@ -116,16 +115,22 @@ public class WaveSpawner : MonoBehaviour {
                     StartCoroutine(NextWave());
                 }
             }
+            yield return new WaitForSeconds(spawnDelay);
+            StartCoroutine(Spawner());
         }
-        yield return new WaitForSeconds(spawnDelay);
     }
 
     IEnumerator NextWave() {
+        print("Next");
         StopCoroutine(Spawner());
         yield return new WaitForSeconds(waveDelay);
-        currentEnemy = 0;
-        currentWave++;
-        StartCoroutine(Spawner());
+        if (currentWave < waves.Count) {
+            currentEnemy = 0;
+            currentWave++;
+            StartCoroutine(Spawner());
+        } else {
+            StopCoroutine(NextWave());
+        }
     }
 
     public void StartSpawnSequence() {
@@ -145,6 +150,7 @@ public class WaveSpawner : MonoBehaviour {
             GameObject robotObj = robotPool[tag].Dequeue();
             robotPool[tag].Enqueue(robotObj);
             robotObj.SetActive(true);
+            print(robotObj.name);
             enemiesOnTheField.Add(robotObj.GetComponent<Enemy>());
             wave.SetAmountUsedInRobot(rand, robot.GetUsed() + 1);
         }
@@ -196,7 +202,7 @@ public class RobotWave {
     }
 
     public void SetAmountUsedInRobot(int index, int amount) {
-        if(robotsThisWave[index].GetMaxAmount() > amount+1) {
+        if(robotsThisWave[index].GetMaxAmount() > amount) {
             robotsThisWave[index].SetUsed(amount);
         } else {
             robotsThisWave.RemoveAt(index);

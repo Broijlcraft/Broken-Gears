@@ -1851,12 +1851,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3df7eef0209f85b43bf487cf927600ca, type: 3}
---- !u!1 &1478011408 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1604040956675304251, guid: 3df7eef0209f85b43bf487cf927600ca,
-    type: 3}
-  m_PrefabInstance: {fileID: 1478011407}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1532947832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1931,12 +1925,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 635ed5d5fea53334988e981e1f9d7d9a, type: 3}
---- !u!1 &1532947833 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4623722020416582901, guid: 635ed5d5fea53334988e981e1f9d7d9a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1532947832}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1557774469 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 225825684433897481, guid: 0cff74015817e9f48b87332877837ae3,
@@ -2171,18 +2159,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - robotsThisWave:
-    - prefab: {fileID: 1478011408}
+    - prefab: {fileID: 1604040956675304251, guid: 3df7eef0209f85b43bf487cf927600ca,
+        type: 3}
       maxAmount: 5
       used: 0
-    - prefab: {fileID: 1532947833}
+    - prefab: {fileID: 4623722020416582901, guid: 635ed5d5fea53334988e981e1f9d7d9a,
+        type: 3}
       maxAmount: 8
+      used: 0
+    - prefab: {fileID: 1341296680530579544, guid: 47597439905492149ba919be33329ae5,
+        type: 3}
+      maxAmount: 4
+      used: 0
+    amountThisWave: 0
+  - robotsThisWave:
+    - prefab: {fileID: 1604040956675304251, guid: 3df7eef0209f85b43bf487cf927600ca,
+        type: 3}
+      maxAmount: 5
+      used: 0
+    - prefab: {fileID: 4623722020416582901, guid: 635ed5d5fea53334988e981e1f9d7d9a,
+        type: 3}
+      maxAmount: 8
+      used: 0
+    - prefab: {fileID: 1341296680530579544, guid: 47597439905492149ba919be33329ae5,
+        type: 3}
+      maxAmount: 4
       used: 0
     amountThisWave: 0
   enemiesOnTheField: []
   globalEnemySpeedMultiplier: 1
-  endlessWave: 1
+  endlessWave: 0
   onlySpawnOne: 0
-  spawnDelay: 3
+  spawnDelay: 1
   waveDelay: 5
   waveFunctionality: 0
   mobileUiHealthPrefab: {fileID: 6937356202144930492, guid: 6a512583d861c5c45a043f9882dc69c6,

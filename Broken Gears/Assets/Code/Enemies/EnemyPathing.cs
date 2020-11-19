@@ -58,8 +58,4 @@ public class EnemyPathing : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-
-    private void OnDisable() {
-        print("yes");
-    }
 }
