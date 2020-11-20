@@ -2,16 +2,30 @@
 
 public class EnemyPathing : MonoBehaviour {
 
-    public float speed, rotationSpeed, maxDistance = 0.1f, animationSpeed;
-    public GameObject enemyChild;
-    public Animator anim;
+    [SerializeField] private float speed, rotationSpeed, maxDistance = 0.1f, animationSpeed;
+    [SerializeField] private GameObject enemyChild;
+    [SerializeField] private Animator anim;
 
-    bool isActive;
-    int targetValue = 0;
-    [HideInInspector] public Enemy enemy;
-    [HideInInspector] public float defaultSpeed;
-    [HideInInspector] public Transform targetPoint;
+    private Enemy enemy;
+    private bool isActive;
+    private float defaultSpeed;
+    private WaveSpawner spawner;
+    private int targetValue = 0;
+    private Transform targetPoint;
+    
+    #region Get/Set
+    public float GetDefaultSpeed() {
+        return defaultSpeed;
+    }
 
+    public void SetSpeed(float amount) {
+        speed = amount;
+    }
+    #endregion
+
+    private void Awake() {
+        spawner = WaveSpawner.ws_Single;
+    }
 
     private void Start() {
         enemy = GetComponent<Enemy>();
@@ -29,7 +43,7 @@ public class EnemyPathing : MonoBehaviour {
         if (targetPoint != null && !enemy.GetIsDead() && isActive) {
             Vector3 direction = abs(targetPoint.position, transform.position);
             Vector3 directionToGo = targetPoint.position - transform.position;
-            transform.Translate(directionToGo.normalized * speed * WaveSpawner.ws_Single.globalEnemySpeedMultiplier * Time.deltaTime);
+            transform.Translate(directionToGo.normalized * speed * spawner.GetGlobalEnemySpeedMultiplier() * Time.deltaTime);
             if (direction.z < maxDistance && direction.x < maxDistance) {
                 SetTarget();
             }
@@ -53,10 +67,10 @@ public class EnemyPathing : MonoBehaviour {
             targetPoint = Waypoints.wp_Single.waypoints[targetValue];
             targetValue++;
         } else {
-            if (enemy && WaveSpawner.ws_Single.enemiesOnTheField.Contains(enemy)) {
-                WaveSpawner.ws_Single.enemiesOnTheField.Remove(enemy);
+            if (enemy && spawner.enemiesOnTheField.Contains(enemy)) {
+                spawner.enemiesOnTheField.Remove(enemy);
             }
-            Destroy(gameObject);
+            enemy.Death(true);
         }
     }
 }

@@ -54,7 +54,7 @@ public class ScrapManager : MonoBehaviour {
             }
         }
         UpdateScrapAmount();
-        TowerManager.tm_Single.CheckPricesSetInteractableAndNot();
+        TowerManager.singleTM.CheckPricesSetInteractableAndNot();
         return success;
     }
 

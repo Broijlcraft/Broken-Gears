@@ -1,30 +1,26 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class AlarmLight : MonoBehaviour {
-    public AudioClip audioClip;
-    public int maxRepeat;
-    public float waitBetweenAlarms, spawnDelayAfterAlarm;
+    [SerializeField] private AudioClip audioClip;
+    [SerializeField] private int maxRepeat;
+    [SerializeField] private float waitBetweenAlarms, spawnDelayAfterAlarm;
 
-    int timesRepeated;
-    float timer;
-    [HideInInspector] public bool soundAlarm;
+    private int timesRepeated;
+    private WaveSpawner spawner;
 
-    private void Update() {
-        if (soundAlarm) {
-            if(timesRepeated < maxRepeat) {
-                if (timer == 0 || timer > audioClip.length + waitBetweenAlarms) {
-                    timer = 0f;
-                    timesRepeated++;
-                    AudioManager.PlaySound(audioClip, AudioManager.AudioGroups.SFX, 1, transform.position);
-                }
-            } else {
-                if(timer > audioClip.length + spawnDelayAfterAlarm) {
-                    WaveSpawner ws = WaveSpawner.ws_Single;
-                    ws.StartCoroutine(ws.Spawner());
-                    soundAlarm = false;
-                }
-            }
-            timer += Time.deltaTime;
+    public void SoundAlarm(WaveSpawner ws) {
+        spawner = ws;
+        StartCoroutine(Alarming());
+    }
+
+    private IEnumerator Alarming() {
+        while (timesRepeated < maxRepeat) {
+            timesRepeated++;
+            AudioManager.PlaySound(audioClip, AudioManager.AudioGroups.SFX, 1, transform.position);
+            yield return new WaitForSeconds(audioClip.length + waitBetweenAlarms);
         }
+        yield return new WaitForSeconds(spawnDelayAfterAlarm);
+        spawner.StartSpawning();
     }
 }

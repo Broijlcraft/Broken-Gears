@@ -7,34 +7,42 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour {
     public static WaveSpawner ws_Single;
 
-    public List<RobotWave> waves = new List<RobotWave>();
+    [SerializeField] private List<RobotWave> waves = new List<RobotWave>();
+
+    [Space, SerializeField] private float globalEnemySpeedMultiplier = 1f;
+
+    [SerializeField] private float spawnDelay, waveDelay;
+
+    [Space, SerializeField] private GameObject mobileUiHealthPrefab;
+
+    [Header("Workers"), SerializeField] private Transform uiWorkersHolder;
+    [SerializeField] private int maxEnemyEscapes;
+    [HideInInspector] public List<Image> workerImages = new List<Image>();
+
+    private AlarmLight alarmLight;
+    private IEnumerator spawner, nextWave;
+    private int enemiesEscaped, currentWave;
+    [SerializeField] private bool waveFunctionality;
+    private Dictionary<string, Queue<GameObject>> robotPool = new Dictionary<string, Queue<GameObject>>();
 
     [HideInInspector] public List<Enemy> enemiesOnTheField = new List<Enemy>();
 
-    public Dictionary<string, Queue<GameObject>> robotPool = new Dictionary<string, Queue<GameObject>>();
+    #region Get/Set
+    public float GetGlobalEnemySpeedMultiplier() {
+        return globalEnemySpeedMultiplier;
+    }
 
-    IEnumerator spawner, nextWave;
+    public Transform GetUiWorkersHolder() {
+        return uiWorkersHolder;
+    }
 
-    #region temp
-    [Space]
-    public float globalEnemySpeedMultiplier = 1f;
+    public GameObject GetMobileUiHealtPrefab() {
+        return mobileUiHealthPrefab;
+    }
 
-    public bool endlessWave, onlySpawnOne;
-    public float spawnDelay, waveDelay;
-
-    int currentWave, currentEnemy;
-    float spawnDelayTimer, waveDelayTimer;
-    [Header("HideInInspector")] public bool waveFunctionality;
-
-    [Space]
-    public GameObject mobileUiHealthPrefab;
-    
-    [Header("Workers")]
-    public Transform uiWorkersHolder;
-    public int maxEnemyEscapes;
-    int enemiesEscaped;
-    [HideInInspector] public List<Image> workerImages = new List<Image>();
-    AlarmLight alarmLight;
+    public void SetWaveFunctionality(bool state) {
+        waveFunctionality = state;
+    }
     #endregion
 
     private void Awake() {
@@ -82,15 +90,50 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     private void Start() {
-        //alarmLight = FindObjectOfType<AlarmLight>();
+       // alarmLight = FindObjectOfType<AlarmLight>();
 
         spawner = Spawner();
         nextWave = NextWave();
 
         if (alarmLight) {
-            alarmLight.soundAlarm = true;
+            alarmLight.SoundAlarm(this);
         } else {
-            StartCoroutine(Spawner());
+            StartCoroutine(spawner);
+        }
+    }
+
+    private void Update() {
+        if (GameManager.gm_Single.devMode && Input.GetButtonDown("Jump")) {
+            IncreaseEscaped();
+        }
+    }
+
+    public void StartSpawning() {
+        if (waveFunctionality) {
+            StartCoroutine(spawner);
+        }
+    }
+
+    public IEnumerator Spawner() {
+        while (currentWave < waves.Count) {
+            RobotWave wave = waves[currentWave];
+            int count = wave.GetRobots().Count;
+            if (count > 0) {
+                SpawnNextEnemy(wave);
+            } else {
+                StartCoroutine(nextWave);
+                break;
+            }
+            yield return new WaitForSeconds(spawnDelay);
+        }
+    }
+
+    IEnumerator NextWave() {
+        StopCoroutine(spawner);
+        if (currentWave < waves.Count) {
+            yield return new WaitForSeconds(waveDelay);
+            currentWave++;
+            StartCoroutine(spawner);
         }
     }
 
@@ -104,45 +147,11 @@ public class WaveSpawner : MonoBehaviour {
         return index;
     }
 
-    private void Update() {
-        if (GameManager.gm_Single.devMode && Input.GetButtonDown("Jump")) {
-            IncreaseEscaped();
-        }
-    }
-
-    public IEnumerator Spawner() {
-        while (currentWave < waves.Count) {
-            RobotWave wave = waves[currentWave];
-            int count = wave.GetRobots().Count;
-            if (count > 0) {
-                SpawnNextEnemy(wave);
-            } else {
-                if (endlessWave) {
-                    ResetWave();
-                } else {
-                    StartCoroutine(nextWave);
-                    break;
-                }
-            }
-            yield return new WaitForSeconds(spawnDelay);
-        }
-    }
-
-    IEnumerator NextWave() {
-        StopCoroutine(spawner);
-        if (currentWave < waves.Count) {
-            yield return new WaitForSeconds(waveDelay);
-            currentEnemy = 0;
-            currentWave++;
-            StartCoroutine(spawner);
-        }
-    }
-
     public void StartSpawnSequence() {
         if (alarmLight) {
-            alarmLight.soundAlarm = true;
+            alarmLight.SoundAlarm(this);
         } else {
-            waveFunctionality = true;
+            StartSpawning();
         }
     }
 
@@ -154,10 +163,10 @@ public class WaveSpawner : MonoBehaviour {
         if (robotPool.ContainsKey(tag)) {
             GameObject robotObj = robotPool[tag].Dequeue();
             robotPool[tag].Enqueue(robotObj);
-            robotObj.SetActive(true);
             Enemy enemy = robotObj.GetComponent<Enemy>();
             enemiesOnTheField.Add(enemy);
             enemy.Init();
+            robotObj.SetActive(true);
             wave.SetAmountUsedInRobot(rand, robot.GetUsed() + 1);
         }
     }
@@ -170,10 +179,6 @@ public class WaveSpawner : MonoBehaviour {
         if(enemiesEscaped == maxEnemyEscapes) {
             GameManager.gm_Single.SetGameOver(GameManager.GameOverState.Failure);
         }
-    }
-
-    public void ResetWave() {
-        currentEnemy = 0;
     }
 }
 
@@ -264,9 +269,10 @@ public class WorkerEditor : Editor {
         DrawDefaultInspector();
         if (GUILayout.Button("Set workers")) {
             List<Image> workerImages = new List<Image>();
-            if (waveSpawnerScript.uiWorkersHolder) {
-                for (int i = 0; i < waveSpawnerScript.uiWorkersHolder.childCount; i++) {
-                    Image workerImage = waveSpawnerScript.uiWorkersHolder.GetChild(i).GetComponent<Image>();
+            Transform holder = waveSpawnerScript.GetUiWorkersHolder();
+            if (holder) {
+                for (int i = 0; i < holder.childCount; i++) {
+                    Image workerImage = holder.GetChild(i).GetComponent<Image>();
                     workerImages.Add(workerImage);
                     EditorUtility.SetDirty(workerImage);
                 }

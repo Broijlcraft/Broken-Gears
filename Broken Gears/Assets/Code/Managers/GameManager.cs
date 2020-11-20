@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour {
         if (Input.GetButtonDown("DevMode")) {
             devMode = !devMode;
             DevModeTextOnOff();
-            TowerManager.tm_Single.CheckPricesSetInteractableAndNot();
+            TowerManager.singleTM.CheckPricesSetInteractableAndNot();
         }
     }
 

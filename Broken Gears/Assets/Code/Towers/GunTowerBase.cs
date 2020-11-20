@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
 public class GunTowerBase : WeaponizedTower {
-    [HideInInspector] public RaycastHit rcHit;
+    protected RaycastHit rcHit;
     
     public override void Attack() {
-        if(Physics.Raycast(attackOrigin.position, attackOrigin.forward, out rcHit, range, ~TowerManager.tm_Single.layersToIgnoreWhenAttacking)) {
+        if(Physics.Raycast(attackOrigin.position, attackOrigin.forward, out rcHit, range, ~ignoreLayers)) {
             if (rcHit.transform.CompareTag("Enemy")) {
                 isHitting = true;
                 DoDamage(rcHit.transform.GetComponentInParent<Enemy>());

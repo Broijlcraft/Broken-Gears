@@ -2,20 +2,22 @@
 
 public class Saw : MonoBehaviour {
 
-    SawTower tower;
+    private SawTower tower;
+    private LayerMask ignoreLayers;
 
-    private void Start() {
+    private void Awake() {
         tower = GetComponentInParent<SawTower>();
+        ignoreLayers = TowerManager.singleTM.GetIgnoreLayers();
     }
 
     private void OnTriggerStay(Collider other) {
-        if (tower && other.gameObject.layer != TowerManager.tm_Single.layersToIgnoreWhenAttacking) {
+        if (tower && other.gameObject.layer != ignoreLayers) {
             tower.OnTriggerEnterAndExit(true);
         }
     }
 
     private void OnTriggerExit(Collider other) {
-        if (tower && other.gameObject.layer != TowerManager.tm_Single.layersToIgnoreWhenAttacking) {
+        if (tower && other.gameObject.layer != ignoreLayers) {
             tower.OnTriggerEnterAndExit(false);
         }
     }

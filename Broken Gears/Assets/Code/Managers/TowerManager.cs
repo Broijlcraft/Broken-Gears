@@ -2,22 +2,63 @@
 using UnityEngine;
 
 public class TowerManager : MonoBehaviour {
-    public static TowerManager tm_Single;
-    public LayerMask layersToIgnoreWhenAttacking, tileMask;
-    public string buildableTileTag = "BuildableTile", towerTag = "Tower";
-    public Color canPlaceColor, canNotPlaceColor;
+    public static TowerManager singleTM;
 
-    public TowerRotations towerRotations;
-    public Text towerNameTextForPurchase, towerValueTextForPurchase;
-    public BuyTowerButton[] buyTowerButtons;
-    public TowerInteractions towerInteractions;
+    [SerializeField] private LayerMask layersToIgnoreWhenAttacking, tileMask;
+    [SerializeField] private string buildableTileTag = "BuildableTile", towerTag = "Tower";
+    [SerializeField] private Color canPlaceColor, canNotPlaceColor;
 
-    [HideInInspector] public bool selectedTowerIsMoving;
-    [HideInInspector] public Tower selectedTower;
-    Ray ray;
+    [SerializeField] private TowerRotations towerRotations;
+    [SerializeField] private Text towerNameTextForPurchase, towerValueTextForPurchase;
+    [SerializeField] private BuyTowerButton[] buyTowerButtons;
+    [SerializeField] private TowerInteractions towerInteractions;
+
+    private bool selectedTowerIsMoving;
+    private Tower selectedTower;
+    private Ray ray;
+
+    #region Get/Set
+    public Vector3 GetTowerRotation(Transform parent, Transform child) {
+        Vector3 towerRotation = Vector3.zero;
+        if (parent.position.x == child.position.x) {
+            if (parent.position.z > transform.position.z) {
+                towerRotation = towerRotations.minZRotation;
+            } else {
+                towerRotation = towerRotations.plusZRotation;
+            }
+        } else if (parent.position.z == transform.position.z) {
+            if (parent.position.x > child.position.x) {
+                towerRotation = towerRotations.plusXRotation;
+            } else {
+                towerRotation = towerRotations.minXRotation;
+            }
+        }
+        return towerRotation;
+    }
+
+    public LayerMask GetIgnoreLayers() {
+        return layersToIgnoreWhenAttacking;
+    }
+
+    public Tower GetSelectedTower() {
+        return selectedTower;
+    }
+
+    public void SetSelectedTower(Tower tower) {
+        selectedTower = tower;
+    }
+
+    public bool GetSelectedTowerIsMoving() {
+        return selectedTowerIsMoving;
+    }
+
+    public void SetSelectedTowerIsMoving(bool state) {
+        selectedTowerIsMoving = state;
+    }
+    #endregion
 
     private void Awake() {
-        tm_Single = this;
+        singleTM = this;
     }
 
     private void Start() {
@@ -60,7 +101,7 @@ public class TowerManager : MonoBehaviour {
 
     void SelectedTowerPlacing() {
         if (selectedTower) {
-            if (!selectedTower.placedOnParentTile && !selectedTower.canNeverMove) {
+            if (!selectedTower.placedOnParentTile && !selectedTower.GetCanNeverMove()) {
                 RaycastHit hit;
                 selectedTowerIsMoving = true;
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, tileMask)) {
@@ -109,12 +150,12 @@ public class TowerManager : MonoBehaviour {
 
     public void BuyTower() {
         if (GameManager.gm_Single.devMode == false && !selectedTower.oldParentTile) {
-            ScrapManager.sm_single.AddOrWithdrawScrap(selectedTower.buyScrapPrice, ScrapManager.ScrapOption.Withdraw);
+            ScrapManager.sm_single.AddOrWithdrawScrap(selectedTower.GetBuyScrapPrice(), ScrapManager.ScrapOption.Withdraw);
         }
     }
 
     public void SellTower(Tower tower) {
-        ScrapManager.sm_single.AddOrWithdrawScrap(tower.sellScrapPrice, ScrapManager.ScrapOption.Add);
+        ScrapManager.sm_single.AddOrWithdrawScrap(tower.GetSellScrapPrice(), ScrapManager.ScrapOption.Add);
         tower.DetachFromParentTile();
         selectedTowerIsMoving = false;
         MenuManager.mm_Single.CloseMenu();
@@ -131,7 +172,7 @@ public class TowerManager : MonoBehaviour {
     public void UnSelectTower(bool destroyAlways) {
         if (selectedTower) {
             print("selected");
-            if (!selectedTower.canNeverMove) {
+            if (!selectedTower.GetCanNeverMove()) {
             print("can move");
                 if((selectedTower.oldParentTile || !selectedTowerIsMoving) && !destroyAlways) {
                     selectedTower.PlaceOnParentTile(selectedTower.oldParentTile);
@@ -154,14 +195,21 @@ public class TowerManager : MonoBehaviour {
 
     public void CheckPricesSetInteractableAndNot() {
         for (int i = 0; i < buyTowerButtons.Length; i++) {
-            if (buyTowerButtons[i] && buyTowerButtons[i].tower) {
-                if (buyTowerButtons[i].tower.buyScrapPrice <= ScrapManager.sm_single.currentScrap || GameManager.gm_Single.devMode) {
-                    buyTowerButtons[i].button.interactable = true;
+            BuyTowerButton towerButton = buyTowerButtons[i];
+
+            if (towerButton) {
+                Tower tower = towerButton.GetTower();
+                Button button = towerButton.GetButton();
+
+                if (tower) {
+                    if (tower.GetBuyScrapPrice() <= ScrapManager.sm_single.currentScrap || GameManager.gm_Single.devMode) {
+                        button.interactable = true;
+                    } else {
+                        button.interactable = false;
+                    }
                 } else {
-                    buyTowerButtons[i].button.interactable = false;
+                    button.interactable = false;
                 }
-            } else {
-                buyTowerButtons[i].button.interactable = false;
             }
         }
     }
@@ -184,15 +232,17 @@ public class TowerInteractions {
     public Button ia_MoveTower, ia_SellTower, ia_Cancel, ia_SellConfirm, ia_SellCancel;
 
     public void UpdateInterActionUi(Tower selectedTower) {
-        ia_TowerImage.sprite = selectedTower.towerSprite;
-        ia_TowerName.text = selectedTower.towerName;
+        string towerName = selectedTower.GetTowerName();
 
-        ia_TowerDescription.text = selectedTower.description;
-        string newSellConfirm = ia_ConfirmationTextString.Replace(towerIdentifier, selectedTower.towerName);
-        newSellConfirm = newSellConfirm.Replace(priceIdentifier, selectedTower.sellScrapPrice.ToString());
+        ia_TowerImage.sprite = selectedTower.GetTowerSprite();
+        ia_TowerName.text = towerName;
+
+        ia_TowerDescription.text = selectedTower.GetDescription();
+        string newSellConfirm = ia_ConfirmationTextString.Replace(towerIdentifier, towerName);
+        newSellConfirm = newSellConfirm.Replace(priceIdentifier, selectedTower.GetSellScrapPrice().ToString());
         ia_ConfirmationText.text = newSellConfirm;
 
-        if (!selectedTower.canNeverMove) {
+        if (!selectedTower.GetCanNeverMove()) {
             ia_MoveTower.gameObject.SetActive(true);
             ia_SellTower.gameObject.SetActive(true);
         } else {
@@ -204,10 +254,10 @@ public class TowerInteractions {
         ia_SellConfirm.onClick.RemoveAllListeners();
         ia_MoveTower.onClick.RemoveAllListeners();
 
-        ia_Cancel.onClick.AddListener(() => TowerManager.tm_Single.UnSelectTower(false));
-        ia_MoveTower.onClick.AddListener(() => TowerManager.tm_Single.MoveTower(selectedTower));
-        ia_SellConfirm.onClick.AddListener(() => TowerManager.tm_Single.SellTower(selectedTower));
-        ia_SellCancel.onClick.AddListener(() => TowerManager.tm_Single.UnSelectTower(false));
+        ia_Cancel.onClick.AddListener(() => TowerManager.singleTM.UnSelectTower(false));
+        ia_MoveTower.onClick.AddListener(() => TowerManager.singleTM.MoveTower(selectedTower));
+        ia_SellConfirm.onClick.AddListener(() => TowerManager.singleTM.SellTower(selectedTower));
+        ia_SellCancel.onClick.AddListener(() => TowerManager.singleTM.UnSelectTower(false));
 
         MenuManager.mm_Single.OpenMenu(ia_Menu);
     }

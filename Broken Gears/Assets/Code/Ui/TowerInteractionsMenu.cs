@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class TowerInteractionsMenu : Menu {
 
+    private TowerManager tManager;
+
+    private void Start() {
+        tManager = TowerManager.singleTM;
+    }
+
     public override void ExtraFunctionalityOnCLose() {
-        if (menuPosition == MenuManager.MenuState.FirstPanel && !TowerManager.tm_Single.selectedTowerIsMoving) {
-            TowerManager.tm_Single.selectedTower = null;
+        if (menuPosition == MenuManager.MenuState.FirstPanel && !tManager.GetSelectedTowerIsMoving()) {
+            tManager.SetSelectedTower(null);
         }
     }
 }

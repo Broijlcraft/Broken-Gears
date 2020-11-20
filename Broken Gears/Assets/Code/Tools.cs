@@ -23,8 +23,9 @@ public static class Tools {
 
     public static Transform GetTarget(Enemy enemy) {
         Transform tp = enemy.transform;
-        if (enemy.attackTargetingPoint) {
-            tp = enemy.attackTargetingPoint;
+        Transform enemyPoint = enemy.GetAttackTargetingPoint();
+        if (enemyPoint) {
+            tp = enemyPoint;
         }
         return tp;
     }

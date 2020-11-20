@@ -8,6 +8,8 @@ public class Tile : MonoBehaviour {
     [HideInInspector] public Tile buildableChild;
     [HideInInspector] public Vector3 setPosition, setRotation;
 
+    private TowerManager tManager;
+
     private void Awake() {
         if (buildableParent != null) {
             setPosition = buildableParent.transform.position;
@@ -20,20 +22,10 @@ public class Tile : MonoBehaviour {
     }
 
     private void Start() {
-        if (buildableParent != null) { 
-            if (buildableParent.transform.position.x == transform.position.x) {
-                if (buildableParent.transform.position.z > transform.position.z) {
-                    SetParentRotation(TowerManager.tm_Single.towerRotations.minZRotation);
-                } else {
-                    SetParentRotation(TowerManager.tm_Single.towerRotations.plusZRotation);
-                }
-            } else if (buildableParent.transform.position.z == transform.position.z) {
-                if (buildableParent.transform.position.x > transform.position.x) {
-                    SetParentRotation(TowerManager.tm_Single.towerRotations.plusXRotation);
-                } else {
-                    SetParentRotation(TowerManager.tm_Single.towerRotations.minXRotation);
-                }
-            }
+        tManager = TowerManager.singleTM;
+        if (buildableParent != null) {
+            Vector3 newRot = tManager.GetTowerRotation(buildableParent.transform, transform);
+            SetParentRotation(newRot);
         }    
     }
 

@@ -4,9 +4,15 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class MobileUiHealth : MonoBehaviour {
-    public Image fillImage;
-    [HideInInspector] public Enemy target;
-    bool isActive;
+    [SerializeField] private Image fillImage;
+    private Enemy target;
+    private bool isActive;
+
+    #region Get/Set
+    public void SetTarget(Enemy enemy) {
+        target = enemy;
+    }
+    #endregion
 
     public void Init() {
         isActive = true;
@@ -15,7 +21,7 @@ public class MobileUiHealth : MonoBehaviour {
     private void Update() {
         if (isActive) {
             if (target) {
-                transform.position = new Vector3(target.transform.position.x, target.transform.position.y + target.verticalHealthBarOffSet, target.transform.position.z);
+                transform.position = new Vector3(target.transform.position.x, target.transform.position.y + target.GetVerticalHealthBarOffSet(), target.transform.position.z);
             }
             transform.LookAt(Movement.m_Single.topdownCamera.transform);
         }

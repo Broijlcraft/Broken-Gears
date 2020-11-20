@@ -3,10 +3,10 @@
 public class CryoGunTower : GunTowerBase {
 
     [Tooltip("New speed for hit enemies by percentage")]
-    public float freezeStrength;
-    public float freezeDuration, fovAngle;
+    [SerializeField] private float freezeStrength;
+    [SerializeField] private float freezeDuration, fovAngle;
 
-    [HideInInspector] public bool isSpraying;
+    private bool isSpraying;
 
     public override void AttackBehaviour() {
         if (isActive) {
@@ -21,9 +21,7 @@ public class CryoGunTower : GunTowerBase {
                     FreezeFX fx = rcHit.transform.GetComponentInParent<FreezeFX>();
                     if (!fx) {
                         fx = rcHit.transform.gameObject.GetComponentInParent<Enemy>().gameObject.AddComponent<FreezeFX>();
-                        fx.freezeStrength = freezeStrength;
-                        fx.durationInSeconds = freezeDuration;
-                        fx.SetAffected(currentTarget);
+                        fx.SetAffected(currentTarget, freezeStrength, freezeDuration);
                     } else {
                         fx.ResetTimer();
                     }                

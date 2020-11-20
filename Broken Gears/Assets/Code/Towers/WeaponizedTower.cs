@@ -3,25 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponizedTower : Tower {
-    [Space]
-    public float range, damagePerAttack, attackDelay;
-    public int enemyInRangeCheckPerSecond = 5;
-    public Transform checkEnemiesFromHere, attackOrigin;
-    [Space]
-    public WeaponFollow[] weaponParts;
-    [Space]
-    public ParticleSystem[] attackParticles;
+    [Space, SerializeField] int enemyInRangeCheckPerSecond = 5;
+    [SerializeField] protected float range, damagePerAttack, attackDelay;
+    [SerializeField] protected Transform checkEnemiesFromHere, attackOrigin;
+    [Space, SerializeField] protected WeaponFollow[] weaponParts;
+    [Space, SerializeField] protected ParticleSystem[] attackParticles;
 
-    [HideInInspector] public bool isHitting;
-    [HideInInspector] public float attackTimer;
-    [HideInInspector] public Enemy currentTarget;
-    [HideInInspector] public List<Enemy> enemiesInRange = new List<Enemy>();
+    protected bool isHitting;
+    protected Enemy currentTarget;
+    protected LayerMask ignoreLayers;
+
+    private float attackTimer;
+    private WaveSpawner spawner;
+    private List<Enemy> enemiesInRange = new List<Enemy>();
+
+    #region Get/Set
+    public Enemy GetCurrentTarget() {
+        return currentTarget;
+    }
+    #endregion
+
+    private void Awake() {
+        spawner = WaveSpawner.ws_Single;
+        ignoreLayers = TowerManager.singleTM.GetIgnoreLayers();
+    }
 
     private void Start() {
         for (int i = 0; i < weaponParts.Length; i++) {
             weaponParts[i].tower = this;
         }
-        InvokeRepeating("CheckForEnemiesInRange", 0, 1f / enemyInRangeCheckPerSecond);
+        InvokeRepeating(nameof(CheckForEnemiesInRange), 0, 1f / enemyInRangeCheckPerSecond);
     }
 
     private void Update() {
@@ -43,9 +54,10 @@ public class WeaponizedTower : Tower {
     }
 
     void CheckForEnemiesInRange() {
-        for (int i = 0; i < WaveSpawner.ws_Single.enemiesOnTheField.Count; i++) {
-            Enemy enemy = WaveSpawner.ws_Single.enemiesOnTheField[i];
-            if (InRangeCheck(enemy) && !enemy.GetIsDead() && TowerManager.tm_Single.selectedTower != this) {
+        for (int i = 0; i < spawner.enemiesOnTheField.Count; i++) {
+            Enemy enemy = spawner.enemiesOnTheField[i];
+            if (InRangeCheck(enemy) && !enemy.GetIsDead() && tManager.GetSelectedTower() != this) {
+            print(enemy.GetIsDead() + " In range");
                 if (!enemiesInRange.Contains(enemy)) {
                     enemiesInRange.Add(enemy);
                     if (!currentTarget) {
@@ -61,13 +73,17 @@ public class WeaponizedTower : Tower {
                 }
             }
         }
+
+        if(currentTarget && (!InRangeCheck(currentTarget) || currentTarget.GetIsDead())) {
+            SetNextTarget();
+        }
     }
 
     void SetNextTarget() {
         currentTarget = null;
         for (int i = 0; i < enemiesInRange.Count; i++) {
             Enemy enemy = enemiesInRange[i];
-            if (InRangeCheck(enemy)) {
+            if (InRangeCheck(enemy) && !enemy.GetIsDead()) {
                 SetTarget(enemy);
                 break;
             }
@@ -124,8 +140,9 @@ public class WeaponFollow {
 
     public void RotateParts() {
         Transform tp;
-        if (tower.currentTarget != null) {
-            tp = Tools.GetTarget(tower.currentTarget);
+        Enemy current = tower.GetCurrentTarget();
+        if (current != null) {
+            tp = Tools.GetTarget(current);
         } else {
             tp = defaultTarget;
         }

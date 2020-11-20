@@ -4,24 +4,22 @@ using System;
 
 public class Dialogue : MonoBehaviour {
     public static Dialogue d_Single;
-    public Menu dialogueHolder;
-    public Button continueButton;
-    public Text continueButtonText, titleTextObject, dialogueTextObject;
 
-    [Space]
-    public GameOverSettings gameOverSettings;
-    [Header("Tutorial")]
-    public bool isTutorial;
-    [Space]
-    public TutorialSettings tutorialSettings;
+    [SerializeField] private Menu dialogueHolder;
+    [SerializeField] private Button continueButton;
+    [SerializeField] private Text continueButtonText, titleTextObject, dialogueTextObject;
+
+    [Space, SerializeField] private GameOverSettings gameOverSettings;
+    [Header("Tutorial"), SerializeField] private bool isTutorial;
+    [Space, SerializeField] private TutorialSettings tutorialSettings;
 
     private void Awake() {
         d_Single = this;
     }
 
     private void Start() {
-        if (isTutorial && !GameManager.gm_Single.devMode) {
-            WaveSpawner.ws_Single.waveFunctionality = false;
+        if (isTutorial) {
+            WaveSpawner.ws_Single.SetWaveFunctionality(false);
             continueButton.onClick.RemoveAllListeners();
             continueButton.onClick.AddListener(tutorialSettings.NextTutorialIntroText);
             tutorialSettings.NextTutorialIntroText();

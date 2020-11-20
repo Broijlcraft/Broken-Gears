@@ -135,7 +135,7 @@ MonoBehaviour:
   robotType: 1
   attackTargetingPoint: {fileID: 1604040955406169868}
   maxHealth: 100
-  destroyAfter: 5
+  disableAfter: 5
   verticalHealthBarOffSet: 2.5
   scrapDroppedOnDeathBetween:
     max: 22
@@ -159,9 +159,6 @@ MonoBehaviour:
   animationSpeed: 1
   enemyChild: {fileID: 7172863899028506511}
   anim: {fileID: 4276866788535507174}
-  enemy: {fileID: 0}
-  defaultSpeed: 0
-  targetPoint: {fileID: 0}
 --- !u!114 &-5845541364232969145
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8723,7 +8723,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &283288803 stripped
 Transform:
@@ -18132,7 +18132,7 @@ Transform:
   - {fileID: 1469879698}
   - {fileID: 589053295}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &590274170
 MonoBehaviour:
@@ -30162,7 +30162,7 @@ PrefabInstance:
     - target: {fileID: 5304124075511093869, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
         type: 3}
       propertyPath: isTutorial
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5304124075803084717, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
         type: 3}
@@ -30262,7 +30262,7 @@ PrefabInstance:
     - target: {fileID: 5304124076431294034, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5304124076431294034, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
         type: 3}
@@ -48903,16 +48903,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - {fileID: 11400000, guid: 64962bc5008aedd46a1adeb35c01b607, type: 2}
-  - {fileID: 11400000, guid: d390cf51cd918a14790d197c6dfad31d, type: 2}
-  - {fileID: 11400000, guid: 380601fae46d9a74a96ac513e96ac977, type: 2}
+  - robotsThisWave:
+    - prefab: {fileID: 4623722020416582901, guid: 635ed5d5fea53334988e981e1f9d7d9a,
+        type: 3}
+      maxAmount: 5
+      used: 0
+    amountThisWave: 0
+  - robotsThisWave:
+    - prefab: {fileID: 4623722020416582901, guid: 635ed5d5fea53334988e981e1f9d7d9a,
+        type: 3}
+      maxAmount: 5
+      used: 0
+    - prefab: {fileID: 1341296680530579544, guid: 47597439905492149ba919be33329ae5,
+        type: 3}
+      maxAmount: 1
+      used: 0
+    amountThisWave: 0
+  - robotsThisWave:
+    - prefab: {fileID: 4623722020416582901, guid: 635ed5d5fea53334988e981e1f9d7d9a,
+        type: 3}
+      maxAmount: 8
+      used: 0
+    - prefab: {fileID: 1604040956675304251, guid: 3df7eef0209f85b43bf487cf927600ca,
+        type: 3}
+      maxAmount: 1
+      used: 0
+    - prefab: {fileID: 1341296680530579544, guid: 47597439905492149ba919be33329ae5,
+        type: 3}
+      maxAmount: 1
+      used: 0
+    amountThisWave: 0
+  enemiesOnTheField: []
   globalEnemySpeedMultiplier: 1
   endlessWave: 0
   onlySpawnOne: 0
-  spawnDelay: 3
+  spawnDelay: 4
   waveDelay: 5
   waveFunctionality: 0
-  enemiesOnTheField: []
   mobileUiHealthPrefab: {fileID: 6937356202144930492, guid: 6a512583d861c5c45a043f9882dc69c6,
     type: 3}
   uiWorkersHolder: {fileID: 58051186}
@@ -59794,7 +59821,7 @@ PrefabInstance:
     - target: {fileID: 5845212106308292602, guid: ec94bfebf1d7d2c4cbffc72f85d2db6c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5845212106308292602, guid: ec94bfebf1d7d2c4cbffc72f85d2db6c,
         type: 3}
@@ -60838,6 +60865,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809691952266928824, guid: 13c0919e260d1b14098ee4fe2f29a412,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13c0919e260d1b14098ee4fe2f29a412, type: 3}

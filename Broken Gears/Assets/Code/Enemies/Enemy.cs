@@ -2,24 +2,24 @@
 using System.Collections;
 
 public class Enemy : MonoBehaviour {
-    public RobotType robotType;
-    public Transform attackTargetingPoint;
-    public float maxHealth, destroyAfter, verticalHealthBarOffSet;
-    public Range scrapDroppedOnDeathBetween;
-    public float currentHealth;
+    [SerializeField] private RobotType robotType;
+    [SerializeField] private Transform attackTargetingPoint;
+    [SerializeField] private float maxHealth, disableAfter, verticalHealthBarOffSet;
+    [SerializeField] private Range scrapDroppedOnDeathBetween;
 
-    private Animator anim;
-    private bool isActive;
-    private Collider[] colliders;
-    private MobileUiHealth mobileUiHealth;
     private bool isDead;
-    private EnemyPathing pathing;
-
-    private MaterialRandomizerBase randomizer;
-
+    private Animator anim;
+    private float currentHealth;
     private WaveSpawner spawner;
-
+    private Collider[] colliders;
+    private EnemyPathing pathing;
+    private MobileUiHealth mobileUiHealth;
+    private MaterialRandomizerBase randomizer;
+    
     #region Get/Set
+    public float GetVerticalHealthBarOffSet() {
+        return verticalHealthBarOffSet;
+    }
 
     public bool GetIsDead() {
         return isDead;
@@ -29,6 +29,9 @@ public class Enemy : MonoBehaviour {
         return pathing;
     }
 
+    public Transform GetAttackTargetingPoint() {
+        return attackTargetingPoint;
+    }
     #endregion
 
 
@@ -39,21 +42,20 @@ public class Enemy : MonoBehaviour {
         randomizer = GetComponent<MaterialRandomizerBase>();
 
         if (CheckForSpawner()) {
-            GameObject health = Instantiate(spawner.mobileUiHealthPrefab, transform.position, Quaternion.identity);
+            GameObject health = Instantiate(spawner.GetMobileUiHealtPrefab(), transform.position, Quaternion.identity);
             mobileUiHealth = health.GetComponent<MobileUiHealth>();
-            mobileUiHealth.target = this;
+            mobileUiHealth.SetTarget(this);
             mobileUiHealth.transform.SetParent(MobileUiManager.um_single.mobileUiCanvas.transform);
         }
     }
 
     public void Init() {
-        pathing.Init();
-        mobileUiHealth.Init();
-        currentHealth = maxHealth;
-
         if (randomizer) {
             randomizer.Init();
         }
+        pathing.Init();
+        mobileUiHealth.Init();
+        currentHealth = maxHealth;
     }
     
     public void DoDamage(float amount) {
@@ -61,12 +63,14 @@ public class Enemy : MonoBehaviour {
             currentHealth -= amount;
             mobileUiHealth.UpdateValue(currentHealth / maxHealth);
             if(currentHealth <= 0) {
-                Death();
+                Death(false);
             }
+        } else {
+            print(isDead);
         }
     }
 
-    public void Death() {
+    public void Death(bool instant) {
         if (CheckForSpawner()) {
             spawner.enemiesOnTheField.Remove(this);
         }
@@ -76,12 +80,13 @@ public class Enemy : MonoBehaviour {
         }
         isDead = true;
         currentHealth = 0;
-        anim.SetBool("Death", true);
-        Invoke(nameof(Disable), destroyAfter);
+        if (!instant) {
+            anim.SetBool("Death", true);
+        }
+        Invoke(nameof(Disable), disableAfter);
     }
 
     void Disable() {
-        isActive = false;
         gameObject.SetActive(false);
     }
 

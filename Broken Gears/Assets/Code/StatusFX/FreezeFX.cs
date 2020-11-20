@@ -2,14 +2,14 @@
 
     private void Update() {
         if (shouldFX) {
-            enemyPathing.speed = freezeStrength / 100 * enemyPathing.defaultSpeed;
+            enemyPathing.SetSpeed(freezeStrength / 100 * enemyPathing.GetDefaultSpeed());
             Timer();
         }
     }
 
-    public override void StopUsing() {
+    protected override void StopUsing() {
         shouldFX = false;
-        enemyPathing.speed = enemyPathing.defaultSpeed;
+        enemyPathing.SetSpeed(enemyPathing.GetDefaultSpeed());
         base.StopUsing();
     }
 }
