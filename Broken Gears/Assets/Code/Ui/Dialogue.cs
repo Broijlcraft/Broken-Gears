@@ -10,19 +10,30 @@ public class Dialogue : MonoBehaviour {
     [SerializeField] private Text continueButtonText, titleTextObject, dialogueTextObject;
 
     [Space, SerializeField] private GameOverSettings gameOverSettings;
-    [Header("Tutorial"), SerializeField] private bool isTutorial;
-    [Space, SerializeField] private TutorialSettings tutorialSettings;
+    [Header("Tutorial"), SerializeField] private bool isTutorial, isDemo;
+    [Space, SerializeField] private TutorialSettings tutorialSettings, demoSettings;
+    private delegate void Listener();
 
     private void Awake() {
         d_Single = this;
     }
 
     private void Start() {
-        if (isTutorial) {
+        if (isTutorial || isDemo) {
             WaveSpawner.ws_Single.SetWaveFunctionality(false);
+
+            Listener l;
+            TutorialSettings settings;
+
+            if (isTutorial) {
+                settings = tutorialSettings;
+            } else {
+                settings = demoSettings;
+            }
+
+            settings.NextTutorialIntroText();
             continueButton.onClick.RemoveAllListeners();
-            continueButton.onClick.AddListener(tutorialSettings.NextTutorialIntroText);
-            tutorialSettings.NextTutorialIntroText();
+            continueButton.onClick.AddListener(settings.NextTutorialIntroText);
         }
     }
 
@@ -77,13 +88,14 @@ public class TutorialSettings {
     public string[] tutorialIntroTexts;
     [Space]
     public GameOverSettings tutorialGameOverSettings;
-    int currentTextIndex;
+    public int currentTextIndex;
 
     public void NextTutorialIntroText() {
-        if(currentTextIndex < tutorialIntroTexts.Length) {
+        if (currentTextIndex < tutorialIntroTexts.Length) {
             Dialogue.d_Single.SetDialogue(dialogueTitle, tutorialIntroTexts[currentTextIndex]);
             currentTextIndex++;
         } else {
+            Debug.Log("yes");
             Dialogue.d_Single.CloseDialogue();
             WaveSpawner.ws_Single.StartSpawnSequence();
         }

@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour {
     [SerializeField] private RobotType robotType;
     [SerializeField] private Transform attackTargetingPoint;
     [SerializeField] private float maxHealth, disableAfter, verticalHealthBarOffSet;
     [SerializeField] private Range scrapDroppedOnDeathBetween;
+
+    [SerializeField] private float fadeTime, fadeSmooth;
+    [SerializeField] private List<Material> fadeMats = new List<Material>();
 
     private bool isDead;
     private Animator anim;
@@ -14,8 +18,8 @@ public class Enemy : MonoBehaviour {
     private Collider[] colliders;
     private EnemyPathing pathing;
     private MobileUiHealth mobileUiHealth;
-    private MaterialRandomizerBase randomizer;
-    
+    public MaterialRandomizerBase randomizer;
+
     #region Get/Set
     public float GetVerticalHealthBarOffSet() {
         return verticalHealthBarOffSet;
@@ -34,12 +38,22 @@ public class Enemy : MonoBehaviour {
     }
     #endregion
 
-
     private void Awake() {
         anim = GetComponentInChildren<Animator>();
         colliders = GetComponentsInChildren<Collider>();
         pathing = GetComponent<EnemyPathing>();
         randomizer = GetComponent<MaterialRandomizerBase>();
+
+        if (!randomizer) {
+            MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+            for (int i = 0; i < renderers.Length; i++) {
+                Material[] mats = renderers[i].sharedMaterials;
+                for (int iB = 0; iB < mats.Length; iB++) {
+                    Material mat = new Material(mats[iB]);
+                    fadeMats.Add(mat);
+                }
+            }
+        }
 
         if (CheckForSpawner()) {
             GameObject health = Instantiate(spawner.GetMobileUiHealtPrefab(), transform.position, Quaternion.identity);
@@ -57,12 +71,12 @@ public class Enemy : MonoBehaviour {
         mobileUiHealth.Init();
         currentHealth = maxHealth;
     }
-    
+
     public void DoDamage(float amount) {
-        if(!isDead) {
+        if (!isDead) {
             currentHealth -= amount;
             mobileUiHealth.UpdateValue(currentHealth / maxHealth);
-            if(currentHealth <= 0) {
+            if (currentHealth <= 0) {
                 Death(false);
             }
         } else {
@@ -74,7 +88,9 @@ public class Enemy : MonoBehaviour {
         if (CheckForSpawner()) {
             spawner.enemiesOnTheField.Remove(this);
         }
-        mobileUiHealth.gameObject.SetActive(false);
+        if (mobileUiHealth) {
+            mobileUiHealth.gameObject.SetActive(false);
+        }
         for (int i = 0; i < colliders.Length; i++) {
             colliders[i].enabled = false;
         }
@@ -83,6 +99,8 @@ public class Enemy : MonoBehaviour {
         if (!instant) {
             anim.SetBool("Death", true);
         }
+        anim.speed = 1;
+        StartFading();
         Invoke(nameof(Disable), disableAfter);
     }
 
@@ -99,6 +117,23 @@ public class Enemy : MonoBehaviour {
             hasSpawner = spawner;
         }
         return hasSpawner;
+    }
+
+    void StartFading() {
+        if (randomizer) { 
+            fadeMats = randomizer.GetCurrentRandomizedMaterials();
+        }
+
+        InvokeRepeating(nameof(Fade), fadeTime, 1f/fadeSmooth);
+    }
+    
+    void Fade() {
+        for (int i = 0; i < fadeMats.Count; i++) {
+            Material material = fadeMats[i];
+            Color color = material.color;
+            color.a = 1-1/fadeSmooth;
+            material.color = color;
+        }
     }
 }
 

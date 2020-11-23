@@ -28,12 +28,16 @@ public class TowerManager : MonoBehaviour {
             }
         } else if (parent.position.z == transform.position.z) {
             if (parent.position.x > child.position.x) {
-                towerRotation = towerRotations.plusXRotation;
-            } else {
                 towerRotation = towerRotations.minXRotation;
+            } else {
+                towerRotation = towerRotations.plusXRotation;
             }
         }
         return towerRotation;
+    }
+
+    public TowerRotations GetTowerRotations() {
+        return towerRotations;
     }
 
     public LayerMask GetIgnoreLayers() {
@@ -58,7 +62,7 @@ public class TowerManager : MonoBehaviour {
     #endregion
 
     private void Awake() {
-        singleTM = this;
+        TowerManager.singleTM = this;
     }
 
     private void Start() {
@@ -110,28 +114,31 @@ public class TowerManager : MonoBehaviour {
                     if (hit.transform.CompareTag(buildableTileTag)) {
                         Tile tile = hit.transform.GetComponent<Tile>();
                         if (tile) {
-                            if (tile.buildable == true) {
+                            if (tile.GetIsBuildable() == true) {
                                 selectedTower.ChangeTowerColor(canPlaceColor);
-                                if (tile.buildableParent == null) {
+
+                                Tile bParent = tile.GetBuildableParent();
+                                if (!bParent) {
                                     newPos = tile.transform.position;
-                                    newRot = tile.setRotation;
+                                    newRot = tile.GetTargetRotation();
                                 } else {
-                                    newPos = tile.buildableParent.transform.position;
-                                    newRot = tile.buildableParent.setRotation;
+                                    newPos = bParent.transform.position;
+                                    newRot = bParent.GetTargetRotation();
                                 }
+
                                 if (Input.GetMouseButtonDown(0)) {
                                     BuyTower();
-                                    tile.buildable = false;
-                                    if (tile.buildableParent != null) {
-                                        tile.buildableParent.buildable = false;
-                                        tile = tile.buildableParent;
+                                    tile.SetBuildable(false);
+                                    if (bParent) {
+                                        bParent.SetBuildable(false);
+                                        tile = bParent;
                                     } else {
-                                        tile.buildableChild.buildable = false; 
+                                        tile.GetBuildableChild().SetBuildable(false); 
                                     }
                                     selectedTower.PlaceOnParentTile(tile);
                                 }
                             } else {
-                                newPos = tile.setPosition;
+                                newPos = tile.GetTargetPosition();
                                 newRot = selectedTower.transform.rotation.eulerAngles;
                                 selectedTower.ChangeTowerColor(canNotPlaceColor);
                             }

@@ -13,7 +13,7 @@ public class Tower : MonoBehaviour {
     protected bool isActive;
     protected TowerManager tManager;
     [HideInInspector] public Tile placedOnParentTile, oldParentTile;
-    [HideInInspector] public List<Material> mats = new List<Material>();
+     public List<Material> mats = new List<Material>();
 
     #region Get/Set
     public string GetTowerName() {
@@ -42,13 +42,19 @@ public class Tower : MonoBehaviour {
     #endregion
 
     private void Awake() {
-        tManager = TowerManager.singleTM;
-        SetMaterials();
         SetParticles();
     }
 
+    protected virtual void Start() {
+        SetMaterials();
+        tManager = TowerManager.singleTM;
+    }
+
+    public MeshRenderer[] rends;
+
     public void SetMaterials() {
         MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+        rends = renderers;
         mats = Tools.GetAllMaterialInstancesFromMeshRenderers(renderers);
         for (int i = 0; i < mats.Count; i++) {
             mats[i].EnableKeyword("_EmissionColor");
@@ -69,8 +75,8 @@ public class Tower : MonoBehaviour {
         tManager.SetSelectedTower(null);
         if (tileToPlaceOn) {
             placedOnParentTile = tileToPlaceOn;
-            transform.position = placedOnParentTile.setPosition;
-            transform.rotation = Quaternion.Euler(placedOnParentTile.setRotation);
+            transform.position = placedOnParentTile.GetTargetPosition();
+            transform.rotation = Quaternion.Euler(placedOnParentTile.GetTargetRotation());
         }
         tManager.SetSelectedTowerIsMoving(false);
         oldParentTile = null;
@@ -82,8 +88,8 @@ public class Tower : MonoBehaviour {
         if (placedOnParentTile) {
             oldParentTile = placedOnParentTile;
             placedOnParentTile = null;
-            oldParentTile.buildable = true;
-            oldParentTile.buildableChild.buildable = true;
+            oldParentTile.SetBuildable(true);
+            oldParentTile.GetBuildableChild().SetBuildable(true);
         }
         isActive = false;
     }

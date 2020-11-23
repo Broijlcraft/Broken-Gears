@@ -4,13 +4,41 @@ using UnityEngine;
 
 public class MaterialRandomizerBase : MonoBehaviour {
 
-    public virtual void Init() { }
-       
-    protected Material[] GetRamdomizedMaterials(Mats[] mats) {
-        int rand = Random.Range(0, mats.Length);
-        return mats[rand].GetSharedMaterials();
+    public List<Material> currentRandomizedMaterials = new List<Material>();
+
+    public virtual void Init() {
+        currentRandomizedMaterials.Clear();
     }
 
+    #region Get/Set
+    private Material[] GetInstancedMaterials(Material[] materials) {
+        List<Material> sharedMaterials = new List<Material>();
+        for (int iB = 0; iB < materials.Length; iB++) {
+            Material mat = new Material(materials[iB]);
+            sharedMaterials.Add(mat);
+        }
+        return sharedMaterials.ToArray();
+    }
+
+    protected Material[] GetRamdomizedMaterials(Mats[] mats) {
+        int rand = Random.Range(0, mats.Length);
+        Material[] materials = mats[rand].GetSharedMaterials();
+        materials = GetInstancedMaterials(materials);
+        return materials;
+    }
+
+    public List<Material> GetCurrentRandomizedMaterials() {
+        return currentRandomizedMaterials;
+    }
+    #endregion
+
+    protected void AddMaterialToCurrentList(Material[]materials) {
+        for (int i = 0; i < materials.Length; i++) {
+            currentRandomizedMaterials.Add(materials[i]);
+        }
+    }
+
+    #region Classes
     [System.Serializable]
     protected class MeshAndMats {
         [SerializeField] private string meshName = $"Example: {"DoorFrame"}";
@@ -50,4 +78,5 @@ public class MaterialRandomizerBase : MonoBehaviour {
             return sharedMaterials;
         }
     }
+    #endregion
 }

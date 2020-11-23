@@ -2,34 +2,75 @@
 
 public class Tile : MonoBehaviour {
 
-    public Tile buildableParent;
+    [SerializeField] private Tile buildableParent;
 
-    [HideInInspector] public bool buildable;
-    [HideInInspector] public Tile buildableChild;
-    [HideInInspector] public Vector3 setPosition, setRotation;
+    private bool buildable;
+    private Tile buildableChild;
+    private Vector3 targetPosition, targetRotation;
 
     private TowerManager tManager;
 
+    #region Get/Set
+    public bool GetIsBuildable() {
+        return buildable;
+    }
+
+    public Vector3 GetTargetRotation() {
+        return targetRotation;
+    }
+
+    public Vector3 GetTargetPosition() {
+        return targetPosition;
+    } 
+
+    public void SetBuildable(bool state) {
+        buildable = state;
+    }
+
+    public Tile GetBuildableChild() {
+        return buildableChild;
+    }
+
+    public void SetBuildableChild(Tile child) {
+        buildableChild = child;
+    }
+
+    public Tile GetBuildableParent() {
+        return buildableParent;
+    }
+    #endregion
+
     private void Awake() {
-        if (buildableParent != null) {
-            setPosition = buildableParent.transform.position;
+        if (buildableParent) {
+            targetPosition = buildableParent.transform.position;
             buildable = true;
-            buildableParent.buildableChild = this;
-            buildableParent.buildable = true;
+            buildableChild = this;
+            buildableParent.SetBuildableChild(this);
+            buildableParent.SetBuildable(true);
         } else {
-            setPosition = transform.position;
+            targetPosition = transform.position;
+            buildableParent = this;
         }
     }
 
     private void Start() {
         tManager = TowerManager.singleTM;
-        if (buildableParent != null) {
-            Vector3 newRot = tManager.GetTowerRotation(buildableParent.transform, transform);
-            SetParentRotation(newRot);
-        }    
+        if (buildableParent.transform.position.x == buildableChild.transform.position.x) {
+            if (buildableParent.transform.position.z > buildableChild.transform.position.z) {
+                SetParentRotation(tManager.GetTowerRotations().minZRotation);
+            } else {
+                SetParentRotation(tManager.GetTowerRotations().plusZRotation);
+            }
+        } else if (buildableParent.transform.position.z == buildableChild.transform.position.z) {
+            if (buildableParent.transform.position.x > buildableChild.transform.position.x) {
+                SetParentRotation(tManager.GetTowerRotations().plusXRotation);
+            } else {
+                SetParentRotation(tManager.GetTowerRotations().minXRotation);
+            }
+        }
     }
 
     void SetParentRotation(Vector3 rot) {
-        buildableParent.setRotation = rot;
+        buildableParent.targetRotation = rot;
     }
 }

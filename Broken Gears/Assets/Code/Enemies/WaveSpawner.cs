@@ -19,7 +19,7 @@ public class WaveSpawner : MonoBehaviour {
     [SerializeField] private int maxEnemyEscapes;
     [HideInInspector] public List<Image> workerImages = new List<Image>();
 
-    private AlarmLight alarmLight;
+    public AlarmLight alarmLight;
     private IEnumerator spawner, nextWave;
     private int enemiesEscaped, currentWave;
     [SerializeField] private bool waveFunctionality;
@@ -90,16 +90,19 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     private void Start() {
-       // alarmLight = FindObjectOfType<AlarmLight>();
+        alarmLight = FindObjectOfType<AlarmLight>();
 
         spawner = Spawner();
         nextWave = NextWave();
 
-        if (alarmLight) {
-            alarmLight.SoundAlarm(this);
-        } else {
-            StartCoroutine(spawner);
-        }
+        //StopCoroutine(spawner);
+        //StopCoroutine(nextWave);
+
+        //if (alarmLight) {
+        //    alarmLight.SoundAlarm(this);
+        //} else {
+        //    StartSpawning();
+        //}
     }
 
     private void Update() {
@@ -115,7 +118,9 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     public IEnumerator Spawner() {
+        print("Spawn");
         while (currentWave < waves.Count) {
+            print("Curr < ");
             RobotWave wave = waves[currentWave];
             int count = wave.GetRobots().Count;
             if (count > 0) {
@@ -129,11 +134,18 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     IEnumerator NextWave() {
+        print("next");
         StopCoroutine(spawner);
+        print("next1");
         if (currentWave < waves.Count) {
+            print("Enough");
             yield return new WaitForSeconds(waveDelay);
+            print("Enough1");
             currentWave++;
+            spawner = Spawner();
             StartCoroutine(spawner);
+        } else {
+            print("Not Enough");
         }
     }
 
@@ -148,6 +160,7 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     public void StartSpawnSequence() {
+        waveFunctionality = true;
         if (alarmLight) {
             alarmLight.SoundAlarm(this);
         } else {

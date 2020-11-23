@@ -24,11 +24,12 @@ public class WeaponizedTower : Tower {
     #endregion
 
     private void Awake() {
-        spawner = WaveSpawner.ws_Single;
         ignoreLayers = TowerManager.singleTM.GetIgnoreLayers();
     }
 
-    private void Start() {
+    protected override void Start() {
+        base.Start();
+        spawner = WaveSpawner.ws_Single;
         for (int i = 0; i < weaponParts.Length; i++) {
             weaponParts[i].tower = this;
         }
@@ -57,7 +58,6 @@ public class WeaponizedTower : Tower {
         for (int i = 0; i < spawner.enemiesOnTheField.Count; i++) {
             Enemy enemy = spawner.enemiesOnTheField[i];
             if (InRangeCheck(enemy) && !enemy.GetIsDead() && tManager.GetSelectedTower() != this) {
-            print(enemy.GetIsDead() + " In range");
                 if (!enemiesInRange.Contains(enemy)) {
                     enemiesInRange.Add(enemy);
                     if (!currentTarget) {

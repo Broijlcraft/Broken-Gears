@@ -36,7 +36,9 @@ public class EnemyPathing : MonoBehaviour {
         targetValue = 0;
         SetTarget();
         isActive = true;
-        anim.speed = animationSpeed;
+        if (anim) {
+            anim.speed = animationSpeed;
+        }
     }
 
     private void Update() {

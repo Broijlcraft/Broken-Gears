@@ -56,7 +56,6 @@ MonoBehaviour:
   scrapDroppedOnDeathBetween:
     max: 12
     min: 8
-  currentHealth: 0
 --- !u!114 &4623722020416582905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,10 +68,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9644d710005ae0545ab962b41e1243f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.7
+  speed: 0.5
   rotationSpeed: 8
   maxDistance: 0.1
-  animationSpeed: 1
+  animationSpeed: 0.3
   enemyChild: {fileID: 2185297056075147728}
   anim: {fileID: 5080876223300810425}
 --- !u!114 &3421497138921164050

@@ -2426,7 +2426,7 @@ PrefabInstance:
     - target: {fileID: 1604040956675304231, guid: 3df7eef0209f85b43bf487cf927600ca,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1604040956675304231, guid: 3df7eef0209f85b43bf487cf927600ca,
         type: 3}
@@ -2476,7 +2476,7 @@ PrefabInstance:
     - target: {fileID: 1604040956675304251, guid: 3df7eef0209f85b43bf487cf927600ca,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3df7eef0209f85b43bf487cf927600ca, type: 3}
@@ -2500,17 +2500,12 @@ PrefabInstance:
     - target: {fileID: 4623722020416582901, guid: 635ed5d5fea53334988e981e1f9d7d9a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4623722020416582905, guid: 635ed5d5fea53334988e981e1f9d7d9a,
         type: 3}
       propertyPath: move
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4623722020416582905, guid: 635ed5d5fea53334988e981e1f9d7d9a,
-        type: 3}
-      propertyPath: animationSpeed
-      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4623722020416582907, guid: 635ed5d5fea53334988e981e1f9d7d9a,
         type: 3}
@@ -2597,6 +2592,7 @@ MonoBehaviour:
   placedOnParentTile: {fileID: 0}
   oldParentTile: {fileID: 0}
   mats: []
+  rends: []
   scrapMultiplier: 2
 --- !u!1 &1585669429
 GameObject:
@@ -2766,7 +2762,7 @@ PrefabInstance:
     - target: {fileID: 1341296680530579544, guid: 47597439905492149ba919be33329ae5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1341296680530579548, guid: 47597439905492149ba919be33329ae5,
         type: 3}
@@ -2781,7 +2777,7 @@ PrefabInstance:
     - target: {fileID: 1341296680530579548, guid: 47597439905492149ba919be33329ae5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1341296680530579548, guid: 47597439905492149ba919be33329ae5,
         type: 3}
@@ -2826,11 +2822,6 @@ PrefabInstance:
     - target: {fileID: 1341296680530579550, guid: 47597439905492149ba919be33329ae5,
         type: 3}
       propertyPath: move
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1341296680530579550, guid: 47597439905492149ba919be33329ae5,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3249,7 +3240,8 @@ MonoBehaviour:
   - {fileID: 1802575418}
   - {fileID: 1631648565}
   - {fileID: 1658606213}
-  waveFunctionality: 1
+  alarmLight: {fileID: 0}
+  waveFunctionality: 0
   enemiesOnTheField: []
 --- !u!1 &2134921475
 GameObject:
