@@ -100,6 +100,7 @@ public class Enemy : MonoBehaviour {
             anim.SetBool("Death", true);
         }
         anim.speed = 1;
+        
         StartFading();
         Invoke(nameof(Disable), disableAfter);
     }
@@ -109,7 +110,7 @@ public class Enemy : MonoBehaviour {
     }
 
     bool CheckForSpawner() {
-        bool hasSpawner = false;
+        bool hasSpawner;
         if (spawner) {
             hasSpawner = true;
         } else {
@@ -134,6 +135,12 @@ public class Enemy : MonoBehaviour {
             color.a = 1-1/fadeSmooth;
             material.color = color;
         }
+    }
+
+    void DropScrap() {
+        Range r = scrapDroppedOnDeathBetween;
+        int amount = Random.Range((int)r.min, (int)r.max);
+        ScrapManager.sm_single.AddOrWithdrawScrap(amount, ScrapManager.ScrapOption.Add);
     }
 }
 

@@ -140,6 +140,10 @@ MonoBehaviour:
   scrapDroppedOnDeathBetween:
     max: 22
     min: 19
+  fadeTime: 0
+  fadeSmooth: 0
+  fadeMats: []
+  randomizer: {fileID: 0}
 --- !u!114 &1604040956675304229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +159,7 @@ MonoBehaviour:
   speed: 0.3
   rotationSpeed: 8
   maxDistance: 0.1
-  animationSpeed: 0.4
+  animationSpeed: 0.8
   enemyChild: {fileID: 7172863899028506511}
   anim: {fileID: 4276866788535507174}
 --- !u!114 &-5845541364232969145
@@ -170,6 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8e85cdcddc50d46a7aa23b4de25d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentRandomizedMaterials: []
   skinnedMeshAndMats:
   - meshName: Heavy Robot
     skinnedRenderers:

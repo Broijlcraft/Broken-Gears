@@ -56,6 +56,10 @@ MonoBehaviour:
   scrapDroppedOnDeathBetween:
     max: 12
     min: 8
+  fadeTime: 0
+  fadeSmooth: 0
+  fadeMats: []
+  randomizer: {fileID: 0}
 --- !u!114 &4623722020416582905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,7 +75,7 @@ MonoBehaviour:
   speed: 0.5
   rotationSpeed: 8
   maxDistance: 0.1
-  animationSpeed: 0.3
+  animationSpeed: 0.6
   enemyChild: {fileID: 2185297056075147728}
   anim: {fileID: 5080876223300810425}
 --- !u!114 &3421497138921164050
@@ -86,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8e85cdcddc50d46a7aa23b4de25d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentRandomizedMaterials: []
   skinnedMeshAndMats:
   - meshName: Normal Robot
     skinnedRenderers:

@@ -140,6 +140,10 @@ MonoBehaviour:
   scrapDroppedOnDeathBetween:
     max: 16
     min: 14
+  fadeTime: 0
+  fadeSmooth: 0
+  fadeMats: []
+  randomizer: {fileID: 0}
 --- !u!114 &1341296680530579550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +159,7 @@ MonoBehaviour:
   speed: 0.75
   rotationSpeed: 8
   maxDistance: 0.1
-  animationSpeed: 0.4
+  animationSpeed: 1.6
   enemyChild: {fileID: 1127834245296828908}
   anim: {fileID: 6302652833811558021}
 --- !u!1 &2338030580757323358

@@ -209,7 +209,7 @@ public class TowerManager : MonoBehaviour {
                 Button button = towerButton.GetButton();
 
                 if (tower) {
-                    if (tower.GetBuyScrapPrice() <= ScrapManager.sm_single.currentScrap || GameManager.gm_Single.devMode) {
+                    if (tower.GetBuyScrapPrice() <= ScrapManager.sm_single.GetCurrentScrap() || GameManager.gm_Single.devMode) {
                         button.interactable = true;
                     } else {
                         button.interactable = false;
@@ -223,7 +223,7 @@ public class TowerManager : MonoBehaviour {
 }
 
 [System.Serializable]
-public class TowerRotations {
+public struct TowerRotations {
     public Vector3 plusXRotation, minXRotation, plusZRotation, minZRotation;
 }
 

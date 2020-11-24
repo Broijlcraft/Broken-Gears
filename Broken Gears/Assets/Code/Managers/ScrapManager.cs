@@ -4,14 +4,20 @@ using UnityEngine;
 public class ScrapManager : MonoBehaviour {
     public static ScrapManager sm_single;
 
-    public int startScrapAmount, maxScrap;
-    public Text scrapTextObject;
-    [HideInInspector] public int currentScrap;
+    [SerializeField] private int startScrapAmount, maxScrap;
+    [SerializeField] private Text scrapTextObject;
+    private int currentScrap;
 
     public enum ScrapOption {
         Add,
         Withdraw
     }
+
+    #region Get/Set
+    public int GetCurrentScrap() {
+        return currentScrap;
+    }
+    #endregion
 
     private void Awake() {
         sm_single = this;

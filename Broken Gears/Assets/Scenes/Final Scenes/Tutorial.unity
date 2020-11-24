@@ -30280,43 +30280,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5304124075511093864, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
-        type: 3}
-      propertyPath: devMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5304124075511093869, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
-        type: 3}
-      propertyPath: demoSettings.tutorialIntroTexts.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5304124075511093869, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
-        type: 3}
-      propertyPath: isTutorial
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5304124075511093869, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
-        type: 3}
-      propertyPath: isDemo
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5304124075511093869, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
-        type: 3}
-      propertyPath: demoSettings.dialogueTitle
-      value: Demo
-      objectReference: {fileID: 0}
-    - target: {fileID: 5304124075511093869, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
-        type: 3}
-      propertyPath: demoSettings.tutorialIntroTexts.Array.data[0]
-      value: 'This is a demo version of the first game i''ve ever made, recently an
-        artist and i have begun reworkin it for a release some time in the future.
-
-
-        I hope you like this small demo.
-
-
-        - Max Broijl.'
-      objectReference: {fileID: 0}
     - target: {fileID: 5304124075803084717, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -49171,7 +49134,7 @@ MonoBehaviour:
         type: 3}
       maxAmount: 3
       used: 0
-    - prefab: {fileID: 1341296680530579544, guid: 2c92d5432bfd081489fcdb3f9a62084b,
+    - prefab: {fileID: 1341296680530579544, guid: 47597439905492149ba919be33329ae5,
         type: 3}
       maxAmount: 3
       used: 0

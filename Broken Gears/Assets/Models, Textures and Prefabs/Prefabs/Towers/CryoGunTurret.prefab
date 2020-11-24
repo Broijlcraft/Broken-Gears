@@ -188,16 +188,17 @@ MonoBehaviour:
   towerSprite: {fileID: 21300000, guid: 51324ff77e8ee4444855175a94e8a2d5, type: 3}
   activeTowerParticles:
   - {fileID: 0}
-  buyScrapPrice: 40
+  buyScrapPrice: 35
   sellScrapPrice: 0
-  isActive: 0
+  canNeverMove: 0
   placedOnParentTile: {fileID: 0}
   oldParentTile: {fileID: 0}
   mats: []
+  rends: []
+  enemyInRangeCheckPerSecond: 5
   range: 4
   damagePerAttack: 1
   attackDelay: 0.2
-  enemyInRangeCheckPerSecond: 5
   checkEnemiesFromHere: {fileID: 3375208666521254944}
   attackOrigin: {fileID: 3189382665022839529}
   weaponParts:
@@ -216,14 +217,9 @@ MonoBehaviour:
   attackParticles:
   - {fileID: 3189382665172792900}
   - {fileID: 3189382665170095890}
-  isHitting: 0
-  attackTimer: 0
-  currentTarget: {fileID: 0}
-  enemiesInRange: []
   freezeStrength: 50
   freezeDuration: 3
   fovAngle: 0
-  isSpraying: 0
 --- !u!1 &3375208667067849287
 GameObject:
   m_ObjectHideFlags: 0

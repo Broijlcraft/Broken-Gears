@@ -562,10 +562,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac24c14125f4894e87a9af23218d84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScrapAmount: 2147483647
+  startScrapAmount: 40
   maxScrap: 99999
   scrapTextObject: {fileID: 5304124075640312570}
-  currentScrap: 0
 --- !u!114 &5304124075511093869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,9 +616,18 @@ MonoBehaviour:
       lostSettings:
         gameOverTitle: Critical Failure
         gameOverText: You failed, humanity is lost...
+    currentTextIndex: 0
   demoSettings:
-    dialogueTitle: 
-    tutorialIntroTexts: []
+    dialogueTitle: Demo
+    tutorialIntroTexts:
+    - 'This is a demo version of the first game i''ve ever made, recently an artist
+      and i have begun reworkin it for a release some time in the future.
+
+
+      I hope you like this small demo.
+
+
+      - Max Broijl.'
     tutorialGameOverSettings:
       winSettings:
         gameOverTitle: 
@@ -627,6 +635,7 @@ MonoBehaviour:
       lostSettings:
         gameOverTitle: 
         gameOverText: 
+    currentTextIndex: 0
 --- !u!114 &5304124075511093868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1948,6 +1957,7 @@ GameObject:
   - component: {fileID: 5304124075803084719}
   - component: {fileID: 5304124075803084705}
   - component: {fileID: 5304124075803084704}
+  - component: {fileID: 5222712521561967486}
   m_Layer: 5
   m_Name: Button_HammerTower
   m_TagString: Untagged
@@ -1973,7 +1983,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5304124075803084718
 CanvasRenderer:
@@ -2001,7 +2011,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 46e2810d74b0ab9418b22be81c661845, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2067,6 +2077,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 0}
+--- !u!114 &5222712521561967486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5304124075803084714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5304124075811627863
 GameObject:
   m_ObjectHideFlags: 0
@@ -3344,6 +3369,7 @@ GameObject:
   - component: {fileID: 5304124076098847893}
   - component: {fileID: 5304124076098847895}
   - component: {fileID: 5304124076098847894}
+  - component: {fileID: 6337494880926164189}
   m_Layer: 5
   m_Name: Button_SawTower
   m_TagString: Untagged
@@ -3369,7 +3395,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5304124076098847892
 CanvasRenderer:
@@ -3397,7 +3423,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 46e2810d74b0ab9418b22be81c661845, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3463,6 +3489,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 2838422067218925642, guid: 56e22d39d50151a49a65d0cf0b5f2768, type: 3}
+--- !u!114 &6337494880926164189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5304124076098847888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5304124076131147483
 GameObject:
   m_ObjectHideFlags: 0
@@ -3610,6 +3651,7 @@ GameObject:
   - component: {fileID: 5304124076135218695}
   - component: {fileID: 5304124076135218713}
   - component: {fileID: 5304124076135218712}
+  - component: {fileID: 3412550213802429036}
   m_Layer: 5
   m_Name: Button_CryoTower
   m_TagString: Untagged
@@ -3635,7 +3677,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5304124076135218694
 CanvasRenderer:
@@ -3663,7 +3705,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 46e2810d74b0ab9418b22be81c661845, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3729,6 +3771,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 8645522905053743492, guid: cf0f7af42d881494c88a7388971893b2, type: 3}
+--- !u!114 &3412550213802429036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5304124076135218690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5304124076159126590
 GameObject:
   m_ObjectHideFlags: 0
@@ -4045,6 +4102,7 @@ GameObject:
   - component: {fileID: 5304124076276572732}
   - component: {fileID: 5304124076276572735}
   - component: {fileID: 5304124076276572734}
+  - component: {fileID: 6204833174891837844}
   m_Layer: 5
   m_Name: Text_TowerValue
   m_TagString: Untagged
@@ -4069,7 +4127,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0.075042725, y: 27}
-  m_SizeDelta: {x: 427.45, y: 40}
+  m_SizeDelta: {x: 427.45, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5304124076276572735
 CanvasRenderer:
@@ -4092,7 +4150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4111,6 +4169,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'cost : 59'
+--- !u!114 &6204833174891837844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5304124076276572733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5304124076288296319
 GameObject:
   m_ObjectHideFlags: 0
@@ -6058,7 +6131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.48235294}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -6160,6 +6233,7 @@ GameObject:
   - component: {fileID: 5304124076568568779}
   - component: {fileID: 5304124076568568781}
   - component: {fileID: 5304124076568568780}
+  - component: {fileID: 2361550884180406638}
   m_Layer: 5
   m_Name: Button_RivetTower
   m_TagString: Untagged
@@ -6185,7 +6259,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5304124076568568778
 CanvasRenderer:
@@ -6213,7 +6287,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 46e2810d74b0ab9418b22be81c661845, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6279,6 +6353,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 596967014962536723, guid: 0abea651cb45e9d468b00b274fac4ba2, type: 3}
+--- !u!114 &2361550884180406638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5304124076568568822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5304124076574007278
 GameObject:
   m_ObjectHideFlags: 0
@@ -6400,6 +6489,7 @@ GameObject:
   - component: {fileID: 5304124076632115350}
   - component: {fileID: 5304124076632115560}
   - component: {fileID: 5304124076632115561}
+  - component: {fileID: 1928097260766920135}
   m_Layer: 5
   m_Name: ButtonHolder
   m_TagString: Untagged
@@ -6463,6 +6553,34 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &1928097260766920135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5304124076632115351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.48235294}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &5304124076635862701
 GameObject:
   m_ObjectHideFlags: 0
@@ -6836,6 +6954,7 @@ GameObject:
   - component: {fileID: 5304124076683416592}
   - component: {fileID: 5304124076683416595}
   - component: {fileID: 5304124076683416594}
+  - component: {fileID: 3713433797085955519}
   m_Layer: 5
   m_Name: Text_TowerName
   m_TagString: Untagged
@@ -6883,7 +7002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -6902,6 +7021,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Turret
+--- !u!114 &3713433797085955519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5304124076683416593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5304124076683468653
 GameObject:
   m_ObjectHideFlags: 0
@@ -7879,7 +8013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.15686275, g: 0.7830189, b: 0.15686275, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -10894,7 +11028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.15686275, g: 0.7830189, b: 0.15686275, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -11582,7 +11716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.15686275, g: 0.7830189, b: 0.15686275, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -11805,7 +11939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.15686275, g: 0.7830189, b: 0.15686275, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -12268,7 +12402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.15686275, g: 0.7830189, b: 0.15686275, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
