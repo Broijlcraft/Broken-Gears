@@ -95,7 +95,6 @@ public class TutorialSettings {
             Dialogue.d_Single.SetDialogue(dialogueTitle, tutorialIntroTexts[currentTextIndex]);
             currentTextIndex++;
         } else {
-            Debug.Log("yes");
             Dialogue.d_Single.CloseDialogue();
             WaveSpawner.ws_Single.StartSpawnSequence();
         }

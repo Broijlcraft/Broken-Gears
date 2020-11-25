@@ -45,10 +45,11 @@ public class WaveSpawner : MonoBehaviour {
     }
     #endregion
 
+    List<Robot> rList = new List<Robot>();
+
     private void Awake() {
         ws_Single = this;
 
-        List<Robot> rList = new List<Robot>();
         for (int i = 0; i < waves.Count; i++) {
             waves[i].Init();
             if (rList.Count > 0) {
@@ -75,7 +76,9 @@ public class WaveSpawner : MonoBehaviour {
                 }
             }
         }
+    }
 
+    private void Start() {
         for (int iB = 0; iB < rList.Count; iB++) {
             GameObject prefab = rList[iB].GetPrefab();
             int amount = rList[iB].GetMaxAmount();
@@ -87,22 +90,11 @@ public class WaveSpawner : MonoBehaviour {
             }
             robotPool.Add(prefab.name, tempQueue);
         }
-    }
 
-    private void Start() {
         alarmLight = FindObjectOfType<AlarmLight>();
 
         spawner = Spawner();
         nextWave = NextWave();
-
-        //StopCoroutine(spawner);
-        //StopCoroutine(nextWave);
-
-        //if (alarmLight) {
-        //    alarmLight.SoundAlarm(this);
-        //} else {
-        //    StartSpawning();
-        //}
     }
 
     private void Update() {
@@ -118,9 +110,7 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     public IEnumerator Spawner() {
-        print("Spawn");
         while (currentWave < waves.Count) {
-            print("Curr < ");
             RobotWave wave = waves[currentWave];
             int count = wave.GetRobots().Count;
             if (count > 0) {
@@ -134,18 +124,12 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     IEnumerator NextWave() {
-        print("next");
         StopCoroutine(spawner);
-        print("next1");
         if (currentWave < waves.Count) {
-            print("Enough");
             yield return new WaitForSeconds(waveDelay);
-            print("Enough1");
             currentWave++;
             spawner = Spawner();
             StartCoroutine(spawner);
-        } else {
-            print("Not Enough");
         }
     }
 

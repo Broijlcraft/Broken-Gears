@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour {
             anim.SetBool("Death", true);
         }
         anim.speed = 1;
-        
+        DropScrap();
         StartFading();
         Invoke(nameof(Disable), disableAfter);
     }

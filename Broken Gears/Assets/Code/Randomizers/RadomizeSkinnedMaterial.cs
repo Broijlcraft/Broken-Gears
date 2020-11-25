@@ -16,7 +16,6 @@ public class RadomizeSkinnedMaterial : MaterialRandomizerBase {
         for (int i = 0; i < skinnedMeshAndMats.Length; i++) {
             Material[] sharedMaterials = GetRamdomizedMaterials(skinnedMeshAndMats[i].GetMats());
             AddMaterialToCurrentList(sharedMaterials);
-            print(currentRandomizedMaterials.Count);
             SkinnedMeshRenderer[] renderers = skinnedMeshAndMats[i].GetSkinnedMeshRenderers();
 
             for (int iB = 0; iB < renderers.Length; iB++) {
