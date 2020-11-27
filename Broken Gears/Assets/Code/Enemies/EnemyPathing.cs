@@ -72,6 +72,7 @@ public class EnemyPathing : MonoBehaviour {
             if (enemy && spawner.enemiesOnTheField.Contains(enemy)) {
                 spawner.enemiesOnTheField.Remove(enemy);
             }
+            WaveSpawner.ws_Single.IncreaseEscaped();
             enemy.Death(true);
         }
     }

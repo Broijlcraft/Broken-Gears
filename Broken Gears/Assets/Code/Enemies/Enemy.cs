@@ -60,7 +60,9 @@ public class Enemy : MonoBehaviour {
             mobileUiHealth = health.GetComponent<MobileUiHealth>();
             mobileUiHealth.SetTarget(this);
             mobileUiHealth.transform.SetParent(MobileUiManager.um_single.mobileUiCanvas.transform);
+            mobileUiHealth.gameObject.SetActive(false);
         }
+        gameObject.SetActive(false);
     }
 
     public void Init() {
@@ -79,30 +81,34 @@ public class Enemy : MonoBehaviour {
             if (currentHealth <= 0) {
                 Death(false);
             }
-        } else {
-            print(isDead);
         }
     }
 
     public void Death(bool instant) {
+        isDead = true;
+        currentHealth = 0;
+
         if (CheckForSpawner()) {
-            spawner.enemiesOnTheField.Remove(this);
+            spawner.RemoveEnemy(this, !instant);
         }
+
         if (mobileUiHealth) {
             mobileUiHealth.gameObject.SetActive(false);
         }
+
         for (int i = 0; i < colliders.Length; i++) {
             colliders[i].enabled = false;
         }
-        isDead = true;
-        currentHealth = 0;
+
+        float disableTime = 0;
         if (!instant) {
+            anim.speed = 1;
             anim.SetBool("Death", true);
+            DropScrap();
+            StartFading();
+            disableTime = disableAfter;
         }
-        anim.speed = 1;
-        DropScrap();
-        StartFading();
-        Invoke(nameof(Disable), disableAfter);
+        Invoke(nameof(Disable), disableTime);
     }
 
     void Disable() {

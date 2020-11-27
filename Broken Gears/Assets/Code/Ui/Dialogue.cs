@@ -22,7 +22,6 @@ public class Dialogue : MonoBehaviour {
         if (isTutorial || isDemo) {
             WaveSpawner.ws_Single.SetWaveFunctionality(false);
 
-            Listener l;
             TutorialSettings settings;
 
             if (isTutorial) {
@@ -46,13 +45,18 @@ public class Dialogue : MonoBehaviour {
     public void SetDialogue(GameOverSettings specificGameOverSettings, GameManager.GameOverState gameOverState) {
         continueButton.onClick.RemoveAllListeners();
         SpecificGameOverDetails details;
-        if(gameOverState == GameManager.GameOverState.Failure) {
+        if (gameOverState == GameManager.GameOverState.Failure) {
             details = specificGameOverSettings.lostSettings;
-            continueButton.onClick.AddListener(() => DummyVoid("This button does nothing, all hope is lost anyways"));
+            if (!isDemo) {
+                continueButton.onClick.AddListener(() => DummyVoid("This button does nothing, all hope is lost anyways"));
+            }
         } else {
             details = specificGameOverSettings.winSettings;
-            continueButton.onClick.AddListener(() => DummyVoid("gg"));
+            if (!isDemo) {
+                continueButton.onClick.AddListener(() => DummyVoid("gg"));
+            }
         }
+
         SetDialogue(details.gameOverTitle, details.gameOverText);
     }
 
@@ -75,6 +79,8 @@ public class Dialogue : MonoBehaviour {
     public void GameOverDialogue(GameManager.GameOverState gameOverState) {
         if (isTutorial) {
             SetDialogue(tutorialSettings.tutorialGameOverSettings, gameOverState);
+        } else if (isDemo) {
+            SetDialogue(demoSettings.tutorialGameOverSettings, gameOverState);
         } else {
             SetDialogue(gameOverSettings, gameOverState);
         }

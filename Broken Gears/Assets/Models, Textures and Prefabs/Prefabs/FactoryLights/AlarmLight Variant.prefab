@@ -15,8 +15,7 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: 37b7dc809a87ece42b742b02dcaf62e7, type: 3}
   maxRepeat: 3
   waitBetweenAlarms: -0.005
-  spawnDelayAfterAlarm: 0.8
-  soundAlarm: 0
+  spawnDelayAfterAlarm: 0
 --- !u!1001 &404707644410172212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63,26 +62,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.70710784
-      objectReference: {fileID: 0}
-    - target: {fileID: 874608104629521749, guid: 33f27fcc68996924e9808a3b1c994df5,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 874608104629521749, guid: 33f27fcc68996924e9808a3b1c994df5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 874608104629521749, guid: 33f27fcc68996924e9808a3b1c994df5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 874608104629521749, guid: 33f27fcc68996924e9808a3b1c994df5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8497165866404725644, guid: 33f27fcc68996924e9808a3b1c994df5,
         type: 3}

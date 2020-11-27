@@ -56,7 +56,7 @@ public class Movement : MonoBehaviour {
                 transform.Translate(translatePos * speed);
             }
 
-            if (!GameManager.gm_Single.devMode && Input.GetMouseButton(2)) { 
+            if (Input.GetMouseButton(2)) { 
                 RotateCam();
             }
         }

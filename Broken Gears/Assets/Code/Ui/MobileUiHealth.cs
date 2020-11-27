@@ -15,6 +15,7 @@ public class MobileUiHealth : MonoBehaviour {
     #endregion
 
     public void Init() {
+        gameObject.SetActive(true);
         isActive = true;
     }
 

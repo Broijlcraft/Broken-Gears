@@ -8,13 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Final Scenes/MainMenu.unity
     guid: f53dd4c32bdd30c43a3a3ed715a564c5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Final Scenes/Tutorial.unity
     guid: b3ef80a552cf59f4c816d92cf28ebfe4
   - enabled: 0
     path: Assets/Scenes/Final Scenes/Level 1.unity
     guid: ac843e73e35a5a54fb80f07744be77d8
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Work Scenes/Max.unity
     guid: 328becfefddfd004bbc51b95c0287e6a
   m_configObjects: {}

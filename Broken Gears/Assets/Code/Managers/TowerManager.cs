@@ -8,10 +8,10 @@ public class TowerManager : MonoBehaviour {
     [SerializeField] private string buildableTileTag = "BuildableTile", towerTag = "Tower";
     [SerializeField] private Color canPlaceColor, canNotPlaceColor;
 
-    [SerializeField] private TowerRotations towerRotations;
+    [SerializeField] private TowerRotations towerRotations = new TowerRotations();
     [SerializeField] private Text towerNameTextForPurchase, towerValueTextForPurchase;
-    [SerializeField] private BuyTowerButton[] buyTowerButtons;
-    [SerializeField] private TowerInteractions towerInteractions;
+    [SerializeField] private BuyTowerButton[] buyTowerButtons = new BuyTowerButton[0];
+    [SerializeField] private TowerInteractions towerInteractions = new TowerInteractions();
 
     private bool selectedTowerIsMoving;
     private Tower selectedTower;

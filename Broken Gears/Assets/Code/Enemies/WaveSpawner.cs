@@ -16,13 +16,14 @@ public class WaveSpawner : MonoBehaviour {
     [Space, SerializeField] private GameObject mobileUiHealthPrefab;
 
     [Header("Workers"), SerializeField] private Transform uiWorkersHolder;
-    [SerializeField] private int maxEnemyEscapes;
-    [HideInInspector] public List<Image> workerImages = new List<Image>();
+    [SerializeField] private List<Image> workerImages = new List<Image>();
 
-    public AlarmLight alarmLight;
+    private int maxEnemyEscapes;
+    private AlarmLight alarmLight;
+    private bool waveFunctionality;
     private IEnumerator spawner, nextWave;
     private int enemiesEscaped, currentWave;
-    [SerializeField] private bool waveFunctionality;
+    [SerializeField] private List<Robot> rList = new List<Robot>();
     private Dictionary<string, Queue<GameObject>> robotPool = new Dictionary<string, Queue<GameObject>>();
 
     [HideInInspector] public List<Enemy> enemiesOnTheField = new List<Enemy>();
@@ -43,15 +44,16 @@ public class WaveSpawner : MonoBehaviour {
     public void SetWaveFunctionality(bool state) {
         waveFunctionality = state;
     }
-    #endregion
 
-    List<Robot> rList = new List<Robot>();
+    public void SetWorkerImages(List<Image> images) {
+        workerImages = images;
+    }
+    #endregion
 
     private void Awake() {
         ws_Single = this;
 
         for (int i = 0; i < waves.Count; i++) {
-            waves[i].Init();
             if (rList.Count > 0) {
                 List<Robot> tempList = waves[i].GetRobots();
                 for (int iB = 0; iB < tempList.Count; iB++) {
@@ -85,7 +87,7 @@ public class WaveSpawner : MonoBehaviour {
             Queue<GameObject> tempQueue = new Queue<GameObject>();
             for (int iC = 0; iC < amount; iC++) {
                 GameObject robot = Instantiate(prefab, transform);
-                robot.SetActive(false);
+                //robots disable on their own in Start()
                 tempQueue.Enqueue(robot);
             }
             robotPool.Add(prefab.name, tempQueue);
@@ -95,12 +97,7 @@ public class WaveSpawner : MonoBehaviour {
 
         spawner = Spawner();
         nextWave = NextWave();
-    }
-
-    private void Update() {
-        if (GameManager.gm_Single.devMode && Input.GetButtonDown("Jump")) {
-            IncreaseEscaped();
-        }
+        maxEnemyEscapes = workerImages.Count;
     }
 
     public void StartSpawning() {
@@ -168,6 +165,15 @@ public class WaveSpawner : MonoBehaviour {
         }
     }
 
+    public void RemoveEnemy(Enemy enemy, bool wasKilled) {
+        if (enemiesOnTheField.Contains(enemy)) {
+            enemiesOnTheField.Remove(enemy);
+            if (wasKilled) {
+
+            }
+        }
+    }
+
     public void IncreaseEscaped() {
         if(enemiesEscaped < maxEnemyEscapes) {
             workerImages[workerImages.Count - (1 + enemiesEscaped)].color = Color.red;
@@ -182,31 +188,9 @@ public class WaveSpawner : MonoBehaviour {
 [System.Serializable]
 public class RobotWave {
     [SerializeField] private List<Robot> robotsThisWave = new List<Robot>();
-    [Header("Private")] public int amountThisWave;
-
-    public void Init() {
-        for (int i = 0; i < robotsThisWave.Count; i++) {
-            amountThisWave += robotsThisWave[i].GetMaxAmount();
-        }
-    }
 
     public List<Robot> GetRobots() {
         return robotsThisWave;
-    }
-
-    public int GetMaxRobotAmount(GameObject prefab) {
-        int amount = 0;
-        for (int i = 0; i < robotsThisWave.Count; i++) {
-            if(robotsThisWave[i].GetPrefab() == prefab) {
-                amount = robotsThisWave[i].GetMaxAmount();
-                break;
-            }
-        }
-        return amount;
-    }
-
-    public int GetMaxAmountThisWave() {
-        return amountThisWave;
     }
 
     public void SetAmountUsedInRobot(int index, int amount) {
@@ -274,7 +258,7 @@ public class WorkerEditor : Editor {
                     EditorUtility.SetDirty(workerImage);
                 }
             }
-            waveSpawnerScript.workerImages = workerImages;
+            waveSpawnerScript.SetWorkerImages(workerImages);
             Debug.LogWarning("Successfully set workers, don't forget to save!");
         }
     }
