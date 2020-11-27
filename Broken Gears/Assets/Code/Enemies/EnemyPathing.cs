@@ -24,7 +24,7 @@ public class EnemyPathing : MonoBehaviour {
     #endregion
 
     private void Awake() {
-        spawner = WaveSpawner.ws_Single;
+        spawner = WaveSpawner.singleWS;
     }
 
     private void Start() {
@@ -72,7 +72,7 @@ public class EnemyPathing : MonoBehaviour {
             if (enemy && spawner.enemiesOnTheField.Contains(enemy)) {
                 spawner.enemiesOnTheField.Remove(enemy);
             }
-            WaveSpawner.ws_Single.IncreaseEscaped();
+            WaveSpawner.singleWS.IncreaseEscaped();
             enemy.Death(true);
         }
     }

@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour {
     private Collider[] colliders;
     private EnemyPathing pathing;
     private MobileUiHealth mobileUiHealth;
-    public MaterialRandomizerBase randomizer;
+    private MaterialRandomizerBase randomizer;
 
     #region Get/Set
     public float GetVerticalHealthBarOffSet() {
@@ -35,6 +35,10 @@ public class Enemy : MonoBehaviour {
 
     public Transform GetAttackTargetingPoint() {
         return attackTargetingPoint;
+    }
+
+    public RobotType GetRobotType() {
+        return robotType;
     }
     #endregion
 
@@ -70,8 +74,8 @@ public class Enemy : MonoBehaviour {
             randomizer.Init();
         }
         pathing.Init();
-        mobileUiHealth.Init();
         currentHealth = maxHealth;
+        mobileUiHealth.Init();
     }
 
     public void DoDamage(float amount) {
@@ -89,7 +93,7 @@ public class Enemy : MonoBehaviour {
         currentHealth = 0;
 
         if (CheckForSpawner()) {
-            spawner.RemoveEnemy(this, !instant);
+            spawner.RemoveEnemy(this);
         }
 
         if (mobileUiHealth) {
@@ -100,15 +104,15 @@ public class Enemy : MonoBehaviour {
             colliders[i].enabled = false;
         }
 
-        float disableTime = 0;
         if (!instant) {
             anim.speed = 1;
             anim.SetBool("Death", true);
             DropScrap();
             StartFading();
-            disableTime = disableAfter;
+            Invoke(nameof(Disable), disableAfter);
+        } else {
+            Disable();
         }
-        Invoke(nameof(Disable), disableTime);
     }
 
     void Disable() {
@@ -120,7 +124,7 @@ public class Enemy : MonoBehaviour {
         if (spawner) {
             hasSpawner = true;
         } else {
-            spawner = WaveSpawner.ws_Single;
+            spawner = WaveSpawner.singleWS;
             hasSpawner = spawner;
         }
         return hasSpawner;

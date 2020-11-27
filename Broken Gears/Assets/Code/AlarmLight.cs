@@ -6,7 +6,6 @@ public class AlarmLight : MonoBehaviour {
     [SerializeField] private int maxRepeat;
     [SerializeField] private float waitBetweenAlarms, spawnDelayAfterAlarm;
 
-    private int timesRepeated;
     private WaveSpawner spawner;
 
     public void SoundAlarm(WaveSpawner ws) {
@@ -15,6 +14,7 @@ public class AlarmLight : MonoBehaviour {
     }
 
     private IEnumerator Alarming() {
+        int timesRepeated = 0;
         while (timesRepeated < maxRepeat) {
             timesRepeated++;
             AudioManager.PlaySound(audioClip, AudioManager.AudioGroups.SFX, 1, transform.position);

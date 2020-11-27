@@ -6702,7 +6702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuPosition: 1
-  canNotGoBackWithEsc: 0
+  canNotGoBackWithEsc: 1
   saveSettingsOnClose: 0
   dontOpenPreviousMenuOnJustMenuClose: 0
   previousMenu: {fileID: 0}

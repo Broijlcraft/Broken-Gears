@@ -1,4 +1,5 @@
-﻿using UnityEngine.UI;
+﻿using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class TowerManager : MonoBehaviour {
@@ -16,6 +17,7 @@ public class TowerManager : MonoBehaviour {
     private bool selectedTowerIsMoving;
     private Tower selectedTower;
     private Ray ray;
+    private List<Tower> towersOnTheField = new List<Tower>();
 
     #region Get/Set
     public Vector3 GetTowerRotation(Transform parent, Transform child) {
@@ -72,15 +74,21 @@ public class TowerManager : MonoBehaviour {
 
     public void Update() {
         ray = Movement.m_Single.topdownCamera.ScreenPointToRay(Input.mousePosition);
-        if (Input.GetMouseButtonDown(1) && MenuManager.mm_Single.currentMenuState == MenuManager.MenuState.Closed) {
+        if (Input.GetMouseButtonDown(1) && MenuManager.mm_Single.currentMenuState == MenuState.Closed) {
             UnSelectTower(false);
         }
         TowerSelectCheck();
         SelectedTowerPlacing();
     }
 
+    public void Restart() {
+        for (int i = 0; i < towersOnTheField.Count; i++) {
+            Destroy(towersOnTheField[i].gameObject);
+        }
+    }
+
     public void PickTower(Tower pickedTower) {
-        if (MenuManager.mm_Single.currentMenuState == MenuManager.MenuState.Closed) {
+        if (MenuManager.mm_Single.currentMenuState == MenuState.Closed) {
             Tower tower = Instantiate(pickedTower, Vector3.zero, Quaternion.identity);
             SelectTower(tower);
         }
@@ -92,7 +100,7 @@ public class TowerManager : MonoBehaviour {
     }
 
     void TowerSelectCheck() {
-        if (Input.GetMouseButtonDown(0) && !selectedTower && MenuManager.mm_Single.currentMenuState == MenuManager.MenuState.Closed) {
+        if (Input.GetMouseButtonDown(0) && !selectedTower && MenuManager.mm_Single.currentMenuState == MenuState.Closed) {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
                 if (hit.transform.CompareTag(towerTag)) {
@@ -127,6 +135,7 @@ public class TowerManager : MonoBehaviour {
                                 }
 
                                 if (Input.GetMouseButtonDown(0)) {
+                                    towersOnTheField.Add(selectedTower);
                                     BuyTower();
                                     tile.SetBuildable(false);
                                     if (bParent) {
@@ -178,18 +187,13 @@ public class TowerManager : MonoBehaviour {
 
     public void UnSelectTower(bool destroyAlways) {
         if (selectedTower) {
-            print("selected");
             if (!selectedTower.GetCanNeverMove()) {
-            print("can move");
                 if((selectedTower.oldParentTile || !selectedTowerIsMoving) && !destroyAlways) {
                     selectedTower.PlaceOnParentTile(selectedTower.oldParentTile);
-            print("tile or not moving and not destroy always");
                 } else {
                     Destroy(selectedTower.gameObject);
-            print("destroy");
                 }
             } else {
-            print("can not move");
                 selectedTower = null;
             }
         }

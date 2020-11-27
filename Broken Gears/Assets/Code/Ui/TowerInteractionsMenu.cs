@@ -11,7 +11,7 @@ public class TowerInteractionsMenu : Menu {
     }
 
     public override void ExtraFunctionalityOnCLose() {
-        if (menuPosition == MenuManager.MenuState.FirstPanel && !tManager.GetSelectedTowerIsMoving()) {
+        if (menuPosition == MenuState.FirstPanel && !tManager.GetSelectedTowerIsMoving()) {
             tManager.SetSelectedTower(null);
         }
     }

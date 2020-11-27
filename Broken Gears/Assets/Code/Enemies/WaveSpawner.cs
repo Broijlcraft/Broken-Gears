@@ -5,9 +5,10 @@ using UnityEditor;
 using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour {
-    public static WaveSpawner ws_Single;
+    public static WaveSpawner singleWS;
 
     [SerializeField] private List<RobotWave> waves = new List<RobotWave>();
+    [SerializeField] private List<RobotWave> wavesBackUp = new List<RobotWave>();
 
     [Space, SerializeField] private float globalEnemySpeedMultiplier = 1f;
 
@@ -20,13 +21,12 @@ public class WaveSpawner : MonoBehaviour {
 
     private int maxEnemyEscapes;
     private AlarmLight alarmLight;
-    private bool waveFunctionality;
-    private IEnumerator spawner, nextWave;
+    private IEnumerator spawner;
     private int enemiesEscaped, currentWave;
-    [SerializeField] private List<Robot> rList = new List<Robot>();
+    private List<Robot> rList = new List<Robot>();
+    public List<Enemy> enemiesOnTheField = new List<Enemy>();
     private Dictionary<string, Queue<GameObject>> robotPool = new Dictionary<string, Queue<GameObject>>();
 
-    [HideInInspector] public List<Enemy> enemiesOnTheField = new List<Enemy>();
 
     #region Get/Set
     public float GetGlobalEnemySpeedMultiplier() {
@@ -41,33 +41,28 @@ public class WaveSpawner : MonoBehaviour {
         return mobileUiHealthPrefab;
     }
 
-    public void SetWaveFunctionality(bool state) {
-        waveFunctionality = state;
-    }
-
     public void SetWorkerImages(List<Image> images) {
         workerImages = images;
     }
     #endregion
 
     private void Awake() {
-        ws_Single = this;
+        singleWS = this;
 
         for (int i = 0; i < waves.Count; i++) {
+            wavesBackUp.Add(waves[i].CopyAsNew());
             if (rList.Count > 0) {
                 List<Robot> tempList = waves[i].GetRobots();
                 for (int iB = 0; iB < tempList.Count; iB++) {
-                    for (int iC = 0; iC < rList.Count; iC++) {
-                        GameObject pf = tempList[iB].GetPrefab();
-                        int index = ContainsWhere(rList, pf);
-                        if (index != -1) {
-                            int tempMax = tempList[iB].GetMaxAmount();
-                            Robot botInWave = rList[iC];
-                            int newAmount = botInWave.GetMaxAmount() + tempMax;
-                            botInWave.SetMaxAmount(newAmount);                            
-                        } else {
-                            rList.Add(tempList[iB]);
-                        }
+                    GameObject pf = tempList[iB].GetPrefab();
+                    int index = ContainsWhere(rList, pf);
+                    if (index > -1) {
+                        int tempMax = tempList[iB].GetMaxAmount();
+                        Robot botInWave = rList[index];
+                        int newAmount = botInWave.GetMaxAmount() + tempMax;
+                        botInWave.SetMaxAmount(newAmount);
+                    } else {
+                        rList.Add(tempList[iB].CopyAsNew());
                     }
                 }
             } else {
@@ -87,7 +82,7 @@ public class WaveSpawner : MonoBehaviour {
             Queue<GameObject> tempQueue = new Queue<GameObject>();
             for (int iC = 0; iC < amount; iC++) {
                 GameObject robot = Instantiate(prefab, transform);
-                //robots disable on their own in Start()
+                //robots disable in their Start()
                 tempQueue.Enqueue(robot);
             }
             robotPool.Add(prefab.name, tempQueue);
@@ -95,15 +90,33 @@ public class WaveSpawner : MonoBehaviour {
 
         alarmLight = FindObjectOfType<AlarmLight>();
 
-        spawner = Spawner();
-        nextWave = NextWave();
         maxEnemyEscapes = workerImages.Count;
     }
 
-    public void StartSpawning() {
-        if (waveFunctionality) {
-            StartCoroutine(spawner);
+    private void Update() {
+        if (Input.GetButtonDown("Jump")) {
+            Restart();
         }
+    }
+
+    public void Restart() {
+        StopAllCoroutines();
+        waves.Clear();
+        for (int i = 0; i < wavesBackUp.Count; i++) {
+            waves.Add(wavesBackUp[i].CopyAsNew());
+        }
+        while(enemiesOnTheField.Count > 0) {
+            enemiesOnTheField[0].Death(true);
+        }
+        currentWave = 0;
+        //TowerManager.singleTM.Restart();
+        ScrapManager.sm_single.Restart();
+        StartSpawnSequence();
+    }
+
+    public void StartSpawning() {
+        spawner = Spawner();
+        StartCoroutine(spawner);
     }
 
     public IEnumerator Spawner() {
@@ -113,7 +126,7 @@ public class WaveSpawner : MonoBehaviour {
             if (count > 0) {
                 SpawnNextEnemy(wave);
             } else {
-                StartCoroutine(nextWave);
+                StartCoroutine(NextWave());
                 break;
             }
             yield return new WaitForSeconds(spawnDelay);
@@ -130,18 +143,20 @@ public class WaveSpawner : MonoBehaviour {
         }
     }
 
-    int ContainsWhere(List<Robot> rList, GameObject robot) {
+    int ContainsWhere(List<Robot> robotList, GameObject robot) {
         int index = -1;
-        for (int i = 0; i < rList.Count; i++) {
-            if(rList[i].GetPrefab() == robot) {
-                return i;
+        RobotType type = robot.GetComponent<Enemy>().GetRobotType();
+        for (int i = 0; i < robotList.Count; i++) {
+            RobotType rType = robotList[i].GetPrefab().GetComponent<Enemy>().GetRobotType();
+            if (rType == type) { 
+                index = i;
+                break;
             }
         }
         return index;
     }
 
     public void StartSpawnSequence() {
-        waveFunctionality = true;
         if (alarmLight) {
             alarmLight.SoundAlarm(this);
         } else {
@@ -165,12 +180,9 @@ public class WaveSpawner : MonoBehaviour {
         }
     }
 
-    public void RemoveEnemy(Enemy enemy, bool wasKilled) {
+    public void RemoveEnemy(Enemy enemy) {
         if (enemiesOnTheField.Contains(enemy)) {
             enemiesOnTheField.Remove(enemy);
-            if (wasKilled) {
-
-            }
         }
     }
 
@@ -189,8 +201,20 @@ public class WaveSpawner : MonoBehaviour {
 public class RobotWave {
     [SerializeField] private List<Robot> robotsThisWave = new List<Robot>();
 
+    public RobotWave CopyAsNew() {
+        RobotWave wave = new RobotWave();
+        wave.SetRobotsThisWave(robotsThisWave);
+        return wave;
+    }
+
     public List<Robot> GetRobots() {
         return robotsThisWave;
+    }
+
+    public void SetRobotsThisWave(List<Robot>robots) {
+        for (int i = 0; i < robots.Count; i++) {
+            robotsThisWave.Add(robots[i].CopyAsNew());
+        }
     }
 
     public void SetAmountUsedInRobot(int index, int amount) {
@@ -207,15 +231,7 @@ public class Robot {
     [SerializeField] private GameObject prefab;
     [SerializeField] private int maxAmount, used;
 
-    public Robot CopyAsNew() {
-        Robot bot = new Robot {
-            prefab = prefab,
-            maxAmount = maxAmount,
-            used = used
-        };
-        return bot;
-    }
-
+    #region Get/Set
     public GameObject GetPrefab() {
         return prefab;
     }
@@ -234,6 +250,16 @@ public class Robot {
 
     public void SetUsed(int amount) {
         used = amount;
+    }
+    #endregion
+
+    public Robot CopyAsNew() {
+        Robot bot = new Robot {
+            prefab = prefab,
+            maxAmount = maxAmount,
+            used = used
+        };
+        return bot;
     }
 }
 

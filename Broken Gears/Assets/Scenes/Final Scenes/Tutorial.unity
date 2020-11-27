@@ -30081,6 +30081,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5304124075511093652, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
+        type: 3}
+      propertyPath: resetButton
+      value: 
+      objectReference: {fileID: 2019199557}
     - target: {fileID: 5304124075511093869, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
         type: 3}
       propertyPath: isDemo
@@ -48810,8 +48815,9 @@ MonoBehaviour:
         type: 3}
       maxAmount: 3
       used: 0
+  wavesBackUp: []
   globalEnemySpeedMultiplier: 1
-  spawnDelay: 4
+  spawnDelay: 1
   waveDelay: 5
   mobileUiHealthPrefab: {fileID: 6937356202144930492, guid: 6a512583d861c5c45a043f9882dc69c6,
     type: 3}
@@ -48822,7 +48828,6 @@ MonoBehaviour:
   - {fileID: 716454295}
   - {fileID: 1915231156}
   - {fileID: 1561083723}
-  waveFunctionality: 1
   enemiesOnTheField: []
 --- !u!1001 &1579481015
 PrefabInstance:
@@ -62022,6 +62027,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2018718887}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2019199557 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5304124077196752414, guid: 1b241bef7751c5a4ea8469dc1d4b3f68,
+    type: 3}
+  m_PrefabInstance: {fileID: 1005580147}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2021526411
 PrefabInstance:
   m_ObjectHideFlags: 0

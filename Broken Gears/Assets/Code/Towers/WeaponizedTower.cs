@@ -29,7 +29,7 @@ public class WeaponizedTower : Tower {
 
     protected override void Start() {
         base.Start();
-        spawner = WaveSpawner.ws_Single;
+        spawner = WaveSpawner.singleWS;
         for (int i = 0; i < weaponParts.Length; i++) {
             weaponParts[i].tower = this;
         }

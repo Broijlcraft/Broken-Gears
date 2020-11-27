@@ -9,8 +9,8 @@ public class ScrapManager : MonoBehaviour {
     private int currentScrap;
 
     public enum ScrapOption {
-        Add,
-        Withdraw
+        Add = 1,
+        Withdraw = -1
     }
 
     #region Get/Set
@@ -35,6 +35,18 @@ public class ScrapManager : MonoBehaviour {
                 AddOrWithdrawScrap(1, ScrapOption.Add);
             }
         }
+    }
+
+    public void Restart() {
+        int difference = currentScrap - startScrapAmount;
+        difference *= -1;
+
+        int index = (int)Mathf.Sign(difference);
+        ScrapOption option = (ScrapOption)index;
+
+        difference = Mathf.Abs(difference);
+
+        AddOrWithdrawScrap(difference, option);
     }
 
     public bool AddOrWithdrawScrap(int amount, ScrapOption option) {

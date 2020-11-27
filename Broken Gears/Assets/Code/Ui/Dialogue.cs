@@ -20,8 +20,6 @@ public class Dialogue : MonoBehaviour {
 
     private void Start() {
         if (isTutorial || isDemo) {
-            WaveSpawner.ws_Single.SetWaveFunctionality(false);
-
             TutorialSettings settings;
 
             if (isTutorial) {
@@ -66,7 +64,7 @@ public class Dialogue : MonoBehaviour {
 
     public void SetDialogue(string newTitle, string newDialogue) {
         //Debug.LogWarning(this + ": " + System.Reflection.MethodBase.GetCurrentMethod().Name);
-        if (MenuManager.mm_Single.currentMenuState == MenuManager.MenuState.Closed) {
+        if (MenuManager.mm_Single.currentMenuState == MenuState.Closed) {
             MenuManager.mm_Single.OpenMenu(dialogueHolder);
         }
 
@@ -102,7 +100,7 @@ public class TutorialSettings {
             currentTextIndex++;
         } else {
             Dialogue.d_Single.CloseDialogue();
-            WaveSpawner.ws_Single.StartSpawnSequence();
+            WaveSpawner.singleWS.StartSpawnSequence();
         }
     }
 }

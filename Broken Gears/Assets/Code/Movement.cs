@@ -23,7 +23,7 @@ public class Movement : MonoBehaviour {
     }
 
     private void Update() {
-        if (!GameManager.gm_Single.gameIsOver && MenuManager.mm_Single.currentMenuState == MenuManager.MenuState.Closed && canMove == true) {
+        if (!GameManager.gm_Single.gameIsOver && MenuManager.mm_Single.currentMenuState == MenuState.Closed && canMove == true) {
             if (Input.GetAxis("Mouse ScrollWheel") > 0) {
                 if (currentZoom > maxZoomIn) {
                     currentZoom -= zoomSensitivity;

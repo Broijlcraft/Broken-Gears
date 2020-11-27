@@ -1,14 +1,10 @@
-﻿using UnityEngine;
+﻿using UnityEngine.UI;
+using UnityEngine;
 
 public class MenuManager : MonoBehaviour {
 
     public static MenuManager mm_Single;
     public bool isMainMenu;
-    public enum MenuState {
-        Closed,
-        FirstPanel,
-        DeeperPanel
-    }
 
     [HideInInspector] public Menu currentMenu;
     /*[HideInInspector]*/ public MenuState currentMenuState;
@@ -16,9 +12,18 @@ public class MenuManager : MonoBehaviour {
     [Space, Header("EscapeMenu")]
     public GameObject menuHolder;
     public Menu firstMenu;
+    public Button resetButton;
 
     private void Awake() {
         mm_Single = this;
+    }
+
+    private void Start() {
+        if (resetButton) {
+            resetButton.onClick.AddListener(WaveSpawner.singleWS.Restart);
+            resetButton.onClick.AddListener(MoveUpOrCloseMenu);
+            resetButton.interactable = true;
+        }
     }
 
     private void Update() {
@@ -76,4 +81,9 @@ public class MenuManager : MonoBehaviour {
     public void QuitGame() {
         Application.Quit();
     }
+}
+public enum MenuState {
+    Closed,
+    FirstPanel,
+    DeeperPanel
 }

@@ -2,7 +2,7 @@
 
 public class Menu : MonoBehaviour {
 
-    public MenuManager.MenuState menuPosition;
+    public MenuState menuPosition;
     public bool canNotGoBackWithEsc, saveSettingsOnClose, dontOpenPreviousMenuOnJustMenuClose;
     public Menu previousMenu;
 
