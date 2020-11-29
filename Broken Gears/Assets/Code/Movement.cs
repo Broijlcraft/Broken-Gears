@@ -16,14 +16,20 @@ public class Movement : MonoBehaviour {
     public float currentZoom = 50, zoomSensitivity;
     Vector3 beamStartPos;
 
+    GameManager gameManager;
+
     private void Awake() {
         m_Single = this;
         xRotationAxisAngle = topdownCamera.transform.rotation.eulerAngles.x * -1;
         beamStartPos = cameraBeam.position;
     }
 
+    private void Start() {
+        gameManager = GameManager.gm_Single;
+    }
+
     private void Update() {
-        if (!GameManager.gm_Single.gameIsOver && MenuManager.mm_Single.currentMenuState == MenuState.Closed && canMove == true) {
+        if (!gameManager.GetGameIsOver() && MenuManager.mm_Single.currentMenuState == MenuState.Closed && canMove == true) {
             if (Input.GetAxis("Mouse ScrollWheel") > 0) {
                 if (currentZoom > maxZoomIn) {
                     currentZoom -= zoomSensitivity;
@@ -46,7 +52,7 @@ public class Movement : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (!GameManager.gm_Single.gameIsOver && canMove == true) {
+        if (!gameManager.GetGameIsOver() && canMove == true) {
             Vector3 translatePos = Vector3.zero;
             translatePos.z = Input.GetAxis("Vertical");
             translatePos.x = Input.GetAxis("Horizontal"); 

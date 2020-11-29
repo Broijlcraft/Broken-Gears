@@ -46,10 +46,10 @@ public class Dialogue : MonoBehaviour {
         }
     }
 
-    public void SetDialogue(GameOverSettings specificGameOverSettings, GameManager.GameOverState gameOverState) {
+    public void SetDialogue(GameOverSettings specificGameOverSettings, GameOverState gameOverState) {
         continueButton.onClick.RemoveAllListeners();
         SpecificGameOverDetails details;
-        if (gameOverState == GameManager.GameOverState.Failure) {
+        if (gameOverState == GameOverState.Failure) {
             details = specificGameOverSettings.lostSettings;
             if (!isDemo) {
                 continueButton.onClick.AddListener(() => DummyVoid("This button does nothing, all hope is lost anyways"));
@@ -80,7 +80,7 @@ public class Dialogue : MonoBehaviour {
         }
     }
 
-    public void GameOverDialogue(GameManager.GameOverState gameOverState) {
+    public void GameOverDialogue(GameOverState gameOverState) {
         if (isTutorial) {
             SetDialogue(tutorialSettings.tutorialGameOverSettings, gameOverState);
         } else if (isDemo) {

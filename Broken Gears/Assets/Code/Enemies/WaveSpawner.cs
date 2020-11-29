@@ -200,7 +200,7 @@ public class WaveSpawner : MonoBehaviour {
         }
         enemiesEscaped++;
         if(enemiesEscaped == maxEnemyEscapes) {
-            GameManager.gm_Single.SetGameOver(GameManager.GameOverState.Failure);
+            GameManager.gm_Single.SetGameOver(GameOverState.Failure);
         }
     }
 }

@@ -30,7 +30,7 @@ public class ScrapManager : MonoBehaviour {
     }
 
     private void Update() {
-        if (GameManager.gm_Single.devMode) {
+        if (GameManager.gm_Single.DevMode()) {
             if (Input.GetButtonDown("Button1")) {
                 AddOrWithdrawScrap(1, ScrapOption.Add);
             }

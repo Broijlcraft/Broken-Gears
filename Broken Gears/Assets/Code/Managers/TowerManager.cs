@@ -165,7 +165,7 @@ public class TowerManager : MonoBehaviour {
     }
 
     public void BuyTower() {
-        if (GameManager.gm_Single.devMode == false && !selectedTower.oldParentTile) {
+        if (GameManager.gm_Single.DevMode() == false && !selectedTower.oldParentTile) {
             ScrapManager.sm_single.AddOrWithdrawScrap(selectedTower.GetBuyScrapPrice(), ScrapManager.ScrapOption.Withdraw);
         }
     }
@@ -213,7 +213,7 @@ public class TowerManager : MonoBehaviour {
                 Button button = towerButton.GetButton();
 
                 if (tower) {
-                    if (tower.GetBuyScrapPrice() <= ScrapManager.sm_single.GetCurrentScrap() || GameManager.gm_Single.devMode) {
+                    if (tower.GetBuyScrapPrice() <= ScrapManager.sm_single.GetCurrentScrap() || GameManager.gm_Single.DevMode()) {
                         button.interactable = true;
                     } else {
                         button.interactable = false;

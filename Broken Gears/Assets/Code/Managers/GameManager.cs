@@ -2,16 +2,22 @@
 
 public class GameManager : MonoBehaviour {
     public static GameManager gm_Single;
-    public bool devMode = true;
-    public GameObject devmodeText;
 
-    public enum GameOverState {
-        Success,
-        Failure
+    private bool devMode = true;
+    [SerializeField] private GameObject devmodeText;
+
+    private bool gameIsOver;
+    private GameOverState gameOverState;
+
+    #region Get/Set
+    public bool DevMode() {
+        return devMode;
     }
 
-    [HideInInspector] public bool gameIsOver;
-    [HideInInspector] public GameOverState gameOverState;
+    public bool GetGameIsOver() {
+        return gameIsOver;
+    }
+    #endregion
 
     private void Awake() {
         gm_Single = this;
@@ -39,4 +45,9 @@ public class GameManager : MonoBehaviour {
             devmodeText.SetActive(devMode);
         }
     }
+}
+
+public enum GameOverState {
+    Success,
+    Failure
 }

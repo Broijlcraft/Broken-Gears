@@ -675,7 +675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   devMode: 0
-  devmodeText: {fileID: 0}
+  devmodeText: {fileID: 1955984362735732760}
   gameIsOver: 0
   gameOverState: 0
 --- !u!114 &5304124075511093652
@@ -695,7 +695,6 @@ MonoBehaviour:
   currentMenuState: 0
   menuHolder: {fileID: 5304124075423033841}
   firstMenu: {fileID: 5304124076297442034}
-  resetButton: {fileID: 0}
 --- !u!114 &5304124075511093654
 MonoBehaviour:
   m_ObjectHideFlags: 0
