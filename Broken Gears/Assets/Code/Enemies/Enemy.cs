@@ -7,9 +7,7 @@ public class Enemy : MonoBehaviour {
     [SerializeField] private Transform attackTargetingPoint;
     [SerializeField] private float maxHealth, disableAfter, verticalHealthBarOffSet;
     [SerializeField] private Range scrapDroppedOnDeathBetween;
-
-    [SerializeField] private float fadeTime, fadeSmooth;
-    [SerializeField] private List<Material> fadeMats = new List<Material>();
+    [SerializeField] private GameObject scrapPrefab;
 
     private bool isDead;
     private Animator anim;
@@ -19,6 +17,7 @@ public class Enemy : MonoBehaviour {
     private EnemyPathing pathing;
     private MobileUiHealth mobileUiHealth;
     private MaterialRandomizerBase randomizer;
+    [SerializeField] private MobileUiScrap scrap;
 
     #region Get/Set
     public float GetVerticalHealthBarOffSet() {
@@ -48,16 +47,9 @@ public class Enemy : MonoBehaviour {
         pathing = GetComponent<EnemyPathing>();
         randomizer = GetComponent<MaterialRandomizerBase>();
 
-        if (!randomizer) {
-            MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
-            for (int i = 0; i < renderers.Length; i++) {
-                Material[] mats = renderers[i].sharedMaterials;
-                for (int iB = 0; iB < mats.Length; iB++) {
-                    Material mat = new Material(mats[iB]);
-                    fadeMats.Add(mat);
-                }
-            }
-        }
+        scrapPrefab = Instantiate(scrapPrefab, MobileUiManager.um_single.scrapCanvas.transform);
+        scrap = scrapPrefab.GetComponent<MobileUiScrap>();
+        scrap.Init(Movement.m_Single.topdownCamera.transform);
 
         if (CheckForSpawner()) {
             GameObject health = Instantiate(spawner.GetMobileUiHealtPrefab(), transform.position, Quaternion.identity);
@@ -70,6 +62,8 @@ public class Enemy : MonoBehaviour {
     }
 
     public void Init() {
+        transform.localPosition = Vector3.zero;
+        isDead = false;
         if (randomizer) {
             randomizer.Init();
         }
@@ -108,7 +102,6 @@ public class Enemy : MonoBehaviour {
             anim.speed = 1;
             anim.SetBool("Death", true);
             DropScrap();
-            StartFading();
             Invoke(nameof(Disable), disableAfter);
         } else {
             Disable();
@@ -130,26 +123,10 @@ public class Enemy : MonoBehaviour {
         return hasSpawner;
     }
 
-    void StartFading() {
-        if (randomizer) { 
-            fadeMats = randomizer.GetCurrentRandomizedMaterials();
-        }
-
-        InvokeRepeating(nameof(Fade), fadeTime, 1f/fadeSmooth);
-    }
-    
-    void Fade() {
-        for (int i = 0; i < fadeMats.Count; i++) {
-            Material material = fadeMats[i];
-            Color color = material.color;
-            color.a = 1-1/fadeSmooth;
-            material.color = color;
-        }
-    }
-
     void DropScrap() {
         Range r = scrapDroppedOnDeathBetween;
         int amount = Random.Range((int)r.min, (int)r.max);
+        scrap.SetValueAndEnable(amount, transform.position);
         ScrapManager.sm_single.AddOrWithdrawScrap(amount, ScrapManager.ScrapOption.Add);
     }
 }

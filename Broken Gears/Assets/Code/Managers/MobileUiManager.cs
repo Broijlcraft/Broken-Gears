@@ -6,7 +6,7 @@ using UnityEngine;
 public class MobileUiManager : MonoBehaviour {
     public static MobileUiManager um_single;
 
-    public Canvas mobileUiCanvas;
+    public Canvas mobileUiCanvas, scrapCanvas;
 
     private void Awake() {
         um_single = this;

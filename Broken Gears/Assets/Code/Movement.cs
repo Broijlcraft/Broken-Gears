@@ -5,7 +5,7 @@ public class Movement : MonoBehaviour {
     [Space]
     public Transform topdownCameraHolder;
     public Transform cameraBeam, cameraBlock;
-    public Camera topdownCamera;
+    public Camera topdownCamera, scrapCamera;
     public float speed, mouseSensitivity, maxZoomIn, maxZoomOut;
     public Range cameraBlockMoverange, beamMoverange;
     [Range(0, 90)]
@@ -40,6 +40,7 @@ public class Movement : MonoBehaviour {
                 }
             }
             topdownCamera.fieldOfView = currentZoom;
+            scrapCamera.fieldOfView = currentZoom;
         }
         ClampPosition();
     }

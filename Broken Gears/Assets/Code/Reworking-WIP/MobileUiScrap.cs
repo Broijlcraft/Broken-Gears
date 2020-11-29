@@ -5,18 +5,38 @@ using UnityEngine;
 
 public class MobileUiScrap : MonoBehaviour {
 
-    public float destroyAfter;
-    public Text scrapText;
+    [SerializeField] private float disableAfter;
+    [SerializeField] private Text scrapText;
 
-    private void Start() {
-        Destroy(gameObject, destroyAfter);
-    }
+    [SerializeField] private Animator anim;
 
-    public void SetValue(int value) {
-        scrapText.text = value.ToString();
+    private Transform lookAt;
+
+    public void Init(Transform target) {
+        lookAt = target;
+        gameObject.SetActive(false);
     }
 
     void Update() {
-        transform.LookAt(Movement.m_Single.topdownCamera.transform);
+        transform.LookAt(lookAt);
+    }
+
+    public void Reset() {
+        anim.SetTrigger("Reset");
+    }
+
+    public void SetValueAndEnable(int value, Vector3 position) {
+        transform.position = position;
+        transform.LookAt(lookAt);
+
+        scrapText.text = value.ToString();
+        gameObject.SetActive(true);
+        anim.SetTrigger("Fade");
+
+        Invoke(nameof(Disable), disableAfter);
+    }
+
+    void Disable() {
+        gameObject.SetActive(false);
     }
 }

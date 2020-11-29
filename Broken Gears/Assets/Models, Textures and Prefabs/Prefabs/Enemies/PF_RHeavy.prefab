@@ -140,10 +140,8 @@ MonoBehaviour:
   scrapDroppedOnDeathBetween:
     max: 22
     min: 19
-  fadeTime: 0
-  fadeSmooth: 0
-  fadeMats: []
-  randomizer: {fileID: 0}
+  scrapPrefab: {fileID: 4936635517947201077, guid: 54fca3bca80a21a4bb42e85de542b438,
+    type: 3}
 --- !u!114 &1604040956675304229
 MonoBehaviour:
   m_ObjectHideFlags: 0

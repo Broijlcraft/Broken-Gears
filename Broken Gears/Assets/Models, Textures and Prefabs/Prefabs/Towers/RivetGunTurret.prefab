@@ -140,19 +140,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: Rivet Gun
   description: This is a description
+  towerSprite: {fileID: 0}
   activeTowerParticles:
   - {fileID: 3827862329195905064}
   buyScrapPrice: 40
   sellScrapPrice: 20
-  testEmmision: 0
-  mats: []
+  canNeverMove: 0
   placedOnParentTile: {fileID: 0}
   oldParentTile: {fileID: 0}
-  isActive: 0
-  range: 3.5
-  damagePerAttack: 8
-  attackDelay: 0.75
+  mats: []
+  rends: []
   enemyInRangeCheckPerSecond: 5
+  range: 3.5
+  damagePerAttack: 50
+  attackDelay: 0.75
   checkEnemiesFromHere: {fileID: 6015186196337731471}
   attackOrigin: {fileID: 3259383530758022767}
   weaponParts:
@@ -169,10 +170,6 @@ MonoBehaviour:
     defaultTarget: {fileID: 129691608171309772}
     tower: {fileID: 0}
   attackParticles: []
-  isHitting: 0
-  attackTimer: 0
-  currentTarget: {fileID: 0}
-  enemiesInRange: []
 --- !u!1 &3259383530758022766
 GameObject:
   m_ObjectHideFlags: 0

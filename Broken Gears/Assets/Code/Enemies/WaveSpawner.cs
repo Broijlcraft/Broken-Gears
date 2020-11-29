@@ -24,8 +24,12 @@ public class WaveSpawner : MonoBehaviour {
     private IEnumerator spawner;
     private int enemiesEscaped, currentWave;
     private List<Robot> rList = new List<Robot>();
-    public List<Enemy> enemiesOnTheField = new List<Enemy>();
+    [HideInInspector] public List<Enemy> enemiesOnTheField = new List<Enemy>();
+    private List<Enemy> allEnemies = new List<Enemy>();
     private Dictionary<string, Queue<GameObject>> robotPool = new Dictionary<string, Queue<GameObject>>();
+
+    [SerializeField] private Button restartButton;
+    [SerializeField] private GameObject restartButtonHolder;
 
 
     #region Get/Set
@@ -76,6 +80,10 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     private void Start() {
+        if (restartButton) {
+            restartButton.onClick.AddListener(Restart);
+        }
+        restartButtonHolder.SetActive(false);
         for (int iB = 0; iB < rList.Count; iB++) {
             GameObject prefab = rList[iB].GetPrefab();
             int amount = rList[iB].GetMaxAmount();
@@ -83,6 +91,8 @@ public class WaveSpawner : MonoBehaviour {
             for (int iC = 0; iC < amount; iC++) {
                 GameObject robot = Instantiate(prefab, transform);
                 //robots disable in their Start()
+                Enemy enemy = robot.GetComponent<Enemy>();
+                allEnemies.Add(enemy);
                 tempQueue.Enqueue(robot);
             }
             robotPool.Add(prefab.name, tempQueue);
@@ -93,20 +103,17 @@ public class WaveSpawner : MonoBehaviour {
         maxEnemyEscapes = workerImages.Count;
     }
 
-    private void Update() {
-        if (Input.GetButtonDown("Jump")) {
-            Restart();
-        }
-    }
-
     public void Restart() {
+        print("restart");
+        restartButtonHolder.SetActive(false);
         StopAllCoroutines();
         waves.Clear();
         for (int i = 0; i < wavesBackUp.Count; i++) {
             waves.Add(wavesBackUp[i].CopyAsNew());
         }
-        while(enemiesOnTheField.Count > 0) {
-            enemiesOnTheField[0].Death(true);
+        for (int i = 0; i < allEnemies.Count; i++) {
+            Enemy enemy = allEnemies[i];
+            enemy.Death(true);
         }
         currentWave = 0;
         //TowerManager.singleTM.Restart();
@@ -120,6 +127,7 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     public IEnumerator Spawner() {
+        //restartButtonHolder.SetActive(true);
         while (currentWave < waves.Count) {
             RobotWave wave = waves[currentWave];
             int count = wave.GetRobots().Count;

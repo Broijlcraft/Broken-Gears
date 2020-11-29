@@ -14,6 +14,12 @@ public class Dialogue : MonoBehaviour {
     [Space, SerializeField] private TutorialSettings tutorialSettings, demoSettings;
     private delegate void Listener();
 
+    #region Get/Set
+    public bool IsDemo() {
+        return isDemo;
+    }
+    #endregion
+
     private void Awake() {
         d_Single = this;
     }

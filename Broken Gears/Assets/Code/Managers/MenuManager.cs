@@ -12,22 +12,19 @@ public class MenuManager : MonoBehaviour {
     [Space, Header("EscapeMenu")]
     public GameObject menuHolder;
     public Menu firstMenu;
-    public Button resetButton;
+
+    Dialogue dialogue;
 
     private void Awake() {
         mm_Single = this;
     }
 
     private void Start() {
-        if (resetButton) {
-            resetButton.onClick.AddListener(WaveSpawner.singleWS.Restart);
-            resetButton.onClick.AddListener(MoveUpOrCloseMenu);
-            resetButton.interactable = true;
-        }
+        dialogue = Dialogue.d_Single;
     }
 
     private void Update() {
-        if (Input.GetButtonDown("Cancel")) {
+        if (Input.GetButtonDown("Cancel") && !dialogue.IsDemo()) {
             MoveUpOrCloseMenu();
         }
     }
