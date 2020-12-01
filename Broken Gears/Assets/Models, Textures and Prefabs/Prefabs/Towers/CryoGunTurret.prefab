@@ -191,6 +191,7 @@ MonoBehaviour:
   buyScrapPrice: 35
   sellScrapPrice: 0
   canNeverMove: 0
+  isActive: 0
   placedOnParentTile: {fileID: 0}
   oldParentTile: {fileID: 0}
   mats: []
@@ -212,11 +213,12 @@ MonoBehaviour:
     turnSpeed: 3
     useLocal: 1
     towerPart: {fileID: 3375208665505304983}
-    defaultTarget: {fileID: 3375208665505304983}
+    defaultTarget: {fileID: 3375208666072439294}
     tower: {fileID: 0}
   attackParticles:
   - {fileID: 3189382665172792900}
   - {fileID: 3189382665170095890}
+  impactPart: {fileID: 0}
   freezeStrength: 50
   freezeDuration: 3
   fovAngle: 0

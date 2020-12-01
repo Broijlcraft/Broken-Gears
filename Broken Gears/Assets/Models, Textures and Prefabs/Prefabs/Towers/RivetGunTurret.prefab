@@ -146,13 +146,14 @@ MonoBehaviour:
   buyScrapPrice: 40
   sellScrapPrice: 20
   canNeverMove: 0
+  isActive: 0
   placedOnParentTile: {fileID: 0}
   oldParentTile: {fileID: 0}
   mats: []
   rends: []
   enemyInRangeCheckPerSecond: 5
   range: 3.5
-  damagePerAttack: 50
+  damagePerAttack: 8
   attackDelay: 0.75
   checkEnemiesFromHere: {fileID: 6015186196337731471}
   attackOrigin: {fileID: 3259383530758022767}

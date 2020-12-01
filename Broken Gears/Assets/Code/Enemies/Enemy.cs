@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour {
     [SerializeField] private float maxHealth, disableAfter, verticalHealthBarOffSet;
     [SerializeField] private Range scrapDroppedOnDeathBetween;
     [SerializeField] private GameObject scrapPrefab;
+    [SerializeField] private List<ParticleSystem> particleSystems = new List<ParticleSystem>();
 
     private bool isDead;
     private Animator anim;
@@ -85,6 +86,10 @@ public class Enemy : MonoBehaviour {
     public void Death(bool instant) {
         isDead = true;
         currentHealth = 0;
+
+        for (int i = 0; i < particleSystems.Count; i++) {
+            particleSystems[i].Stop();
+        }
 
         if (CheckForSpawner()) {
             spawner.RemoveEnemy(this);

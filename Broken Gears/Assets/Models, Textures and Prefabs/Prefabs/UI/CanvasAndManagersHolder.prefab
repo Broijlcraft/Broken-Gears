@@ -674,10 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430034a8417528f4eb76d02742967769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  devMode: 0
   devmodeText: {fileID: 1955984362735732760}
-  gameIsOver: 0
-  gameOverState: 0
 --- !u!114 &5304124075511093652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2275,6 +2272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 0}
+  button: {fileID: 5304124075803084705}
 --- !u!114 &5222712521561967486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3687,6 +3685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 2838422067218925642, guid: 56e22d39d50151a49a65d0cf0b5f2768, type: 3}
+  button: {fileID: 5304124076098847895}
 --- !u!114 &3370648254806845546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3970,6 +3969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 8645522905053743492, guid: cf0f7af42d881494c88a7388971893b2, type: 3}
+  button: {fileID: 5304124076135218713}
 --- !u!114 &3412550213802429036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6569,6 +6569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 596967014962536723, guid: 0abea651cb45e9d468b00b274fac4ba2, type: 3}
+  button: {fileID: 5304124076568568781}
 --- !u!114 &2361550884180406638
 MonoBehaviour:
   m_ObjectHideFlags: 0

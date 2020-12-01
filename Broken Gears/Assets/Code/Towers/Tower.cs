@@ -10,7 +10,7 @@ public class Tower : MonoBehaviour {
 
     [SerializeField] private bool canNeverMove;
 
-    protected bool isActive;
+    [SerializeField] protected bool isActive;
     protected TowerManager tManager;
     [HideInInspector] public Tile placedOnParentTile, oldParentTile;
      public List<Material> mats = new List<Material>();

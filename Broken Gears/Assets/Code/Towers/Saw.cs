@@ -2,12 +2,12 @@
 
 public class Saw : MonoBehaviour {
 
-    private SawTower tower;
-    private LayerMask ignoreLayers;
+    [SerializeField] private SawTower tower;
+    [SerializeField] private LayerMask ignoreLayers;
 
     private bool overlap = false, lastOverlap = false;
 
-    private void Awake() {
+    private void Start() {
         tower = GetComponentInParent<SawTower>();
         ignoreLayers = TowerManager.singleTM.GetIgnoreLayers();
     }
@@ -21,7 +21,9 @@ public class Saw : MonoBehaviour {
     }
 
     private void OnTriggerStay(Collider other) {
+        print(other.gameObject.layer);
         if (tower && other.gameObject.layer != ignoreLayers) {
+            print("Overlap");
             overlap = true;
         }
     }

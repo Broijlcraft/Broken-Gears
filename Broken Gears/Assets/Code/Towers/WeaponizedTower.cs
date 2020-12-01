@@ -23,12 +23,9 @@ public class WeaponizedTower : Tower {
     }
     #endregion
 
-    private void Awake() {
-        ignoreLayers = TowerManager.singleTM.GetIgnoreLayers();
-    }
-
     protected override void Start() {
         base.Start();
+        ignoreLayers = TowerManager.singleTM.GetIgnoreLayers();
         spawner = WaveSpawner.singleWS;
         for (int i = 0; i < weaponParts.Length; i++) {
             weaponParts[i].tower = this;

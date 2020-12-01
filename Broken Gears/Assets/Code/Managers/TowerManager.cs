@@ -64,7 +64,7 @@ public class TowerManager : MonoBehaviour {
     #endregion
 
     private void Awake() {
-        TowerManager.singleTM = this;
+        singleTM = this;
     }
 
     private void Start() {

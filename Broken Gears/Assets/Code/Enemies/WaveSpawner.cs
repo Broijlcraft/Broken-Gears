@@ -7,6 +7,8 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour {
     public static WaveSpawner singleWS;
 
+    public bool cinematic;
+
     [SerializeField] private List<RobotWave> waves = new List<RobotWave>();
     [SerializeField] private List<RobotWave> wavesBackUp = new List<RobotWave>();
 
@@ -82,8 +84,8 @@ public class WaveSpawner : MonoBehaviour {
     private void Start() {
         if (restartButton) {
             restartButton.onClick.AddListener(Restart);
+            restartButtonHolder.SetActive(false);
         }
-        restartButtonHolder.SetActive(false);
         for (int iB = 0; iB < rList.Count; iB++) {
             GameObject prefab = rList[iB].GetPrefab();
             int amount = rList[iB].GetMaxAmount();
@@ -99,7 +101,9 @@ public class WaveSpawner : MonoBehaviour {
         }
 
         alarmLight = FindObjectOfType<AlarmLight>();
-
+        //if (cinematic) {
+        //    StartSpawnSequence();
+        //}
         maxEnemyEscapes = workerImages.Count;
     }
 
