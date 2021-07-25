@@ -14,7 +14,7 @@ namespace BrokenGears {
         private void Start() {
 
         }
-        private void OnDrawGizmos() {
+        private void OnDrawGizmosSelected() {
             Vector3 size = new Vector3(gridSize.x, 0, gridSize.y);
             Gizmos.DrawWireCube(transform.position, size);
         }
