@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+namespace BrokenGears.editor {
 using UnityEditor;
 using UnityEngine;
+using System.Collections.Generic;
 
-namespace BrokenGears.editor {
     [CustomEditor(typeof(GridManager))]
     public class GridManagerEditor : Editor {
         private GridManager gridManager;

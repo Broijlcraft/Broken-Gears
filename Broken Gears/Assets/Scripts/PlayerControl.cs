@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+namespace BrokenGears {
 using UnityEngine;
 
-namespace BrokenGears {
     public class PlayerControl : MonoBehaviour {
 
         [SerializeField] private ControlType controlType;

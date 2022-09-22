@@ -1,13 +1,8 @@
-﻿// Made by Max Broijl
-// Editor tool to make screenshots in editor
-// Resolution comes from editor resolution
-
+﻿namespace BrokenGears.Tools {
 using UnityEngine;
 using UnityEditor;
 
-namespace BrokenGears.Tools {
     public class ScreenShotScript : MonoBehaviour {
-
         public void MakeScreenShot() {
             print(Application.dataPath);
             string s = System.DateTime.Now.Year.ToString();

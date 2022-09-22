@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+namespace BrokenGears {
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace BrokenGears {
     public class InputManager : MonoBehaviour {
-        public static InputManager single { get; private set; }
+        public static InputManager Instance { get; private set; }
 
         private Inputs inputs;
         private InputAction movement;
@@ -15,12 +13,12 @@ namespace BrokenGears {
         public Vector3 RotationDeltaAxis;
 
         private void Awake() {
-            if(single != null) {
+            if(Instance != null) {
                 Destroy(this);
                 return;
             }
 
-            single = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
 
             inputs = new Inputs();

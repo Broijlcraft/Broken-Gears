@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace BrokenGears {
+    using UnityEngine;
+
     public class Tile : MonoBehaviour {
 
     }

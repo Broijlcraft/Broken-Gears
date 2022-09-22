@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace BrokenGears {
+using UnityEngine;
+using System.Collections;
+
     public class InputsTest : MonoBehaviour {
 
         [SerializeField] private Transform player;
