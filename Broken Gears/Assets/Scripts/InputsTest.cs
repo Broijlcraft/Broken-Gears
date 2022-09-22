@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace BrokenGears {
-    public class NewInputsTest : MonoBehaviour {
+    public class InputsTest : MonoBehaviour {
 
         [SerializeField] private Transform player;
         [SerializeField] private new Camera camera;
