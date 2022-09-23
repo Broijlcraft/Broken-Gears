@@ -29,6 +29,11 @@ namespace BrokenGears.Combat {
             [SerializeField] private bool useLocal;
             [SerializeField] private float turnSpeed;
 
+            public Transform Origin => origin;
+            public Axis Axis => axis;
+            public bool UseLocal => useLocal;
+            public float TurnSpeed => turnSpeed;
+
             public void Rotate(Transform target) {
                 Vector3 direction = (target.position - origin.position).normalized;
                 Quaternion lookRotation = GetLookRotation(direction);
@@ -72,10 +77,10 @@ namespace BrokenGears.Combat {
 
                 origin.rotation = newRotation;
             }
+        }
 
-            private enum Axis {
-                x, y, z
-            }
+        protected enum Axis {
+            x, y, z
         }
     }
 }
