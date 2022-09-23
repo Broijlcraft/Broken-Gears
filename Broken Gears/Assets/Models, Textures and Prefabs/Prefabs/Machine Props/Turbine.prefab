@@ -41,7 +41,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1663420630679741336}
-  - component: {fileID: 4413137466991182884}
   m_Layer: 0
   m_Name: TurbineFanAxle
   m_TagString: Untagged
@@ -64,20 +63,6 @@ Transform:
   m_Father: {fileID: 3240674100066551805}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.00001}
---- !u!114 &4413137466991182884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3721010684749778392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab94aed9584ac434d8c6461cf0e8dff4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rot: {x: 50, y: 0, z: 0}
-  speed: 1
 --- !u!1 &3848251675759473539
 GameObject:
   m_ObjectHideFlags: 0
