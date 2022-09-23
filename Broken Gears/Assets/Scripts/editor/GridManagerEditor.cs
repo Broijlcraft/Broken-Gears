@@ -1,7 +1,7 @@
 namespace BrokenGears.editor {
-using UnityEditor;
-using UnityEngine;
-using System.Collections.Generic;
+    using UnityEditor;
+    using UnityEngine;
+    using System.Collections.Generic;
 
     [CustomEditor(typeof(GridManager))]
     public class GridManagerEditor : Editor {
@@ -9,19 +9,15 @@ using System.Collections.Generic;
 
         public override void OnInspectorGUI() {
             serializedObject.Update();
-            string s = gridManager.tiles.Count == 0 ? "tiles" : "";
-            string[] exclude = new string[] { s };
-            DrawPropertiesExcluding(serializedObject, exclude);
+            DrawDefaultInspector();
 
-            List<Tile> tiles = gridManager.tiles;
-
-            if(GUILayout.Button("Create Grid")) {
-                ClearGrid(tiles);
-                gridManager.tiles = CreateGrid(gridManager.GridSize, gridManager.TilePrefab, gridManager.transform);
+            if (GUILayout.Button("Create Grid")) {
+                ClearGrid();
+                CreateGrid(gridManager.GridSize, gridManager.TilePrefab, gridManager.transform);
             }
 
-            if(GUILayout.Button("Clear Grid")) {
-                gridManager.tiles = ClearGrid(tiles);
+            if (GUILayout.Button("Clear Grid")) {
+                ClearGrid();
             }
 
             serializedObject.ApplyModifiedProperties();
@@ -45,7 +41,17 @@ using System.Collections.Generic;
             return tiles;
         }
 
-        private List<Tile> ClearGrid(List<Tile> tiles) {
+        private List<Tile> ClearGrid() {
+            List<Tile> tiles = new List<Tile>();
+            int tileCount = gridManager.transform.childCount;
+
+            for (int i = 0; i < tileCount; i++) {
+                Tile tile = gridManager.transform.GetChild(i).GetComponent<Tile>();
+                if (tile && !tile.CanNotBeDestroyedOnGridClear) {
+                    tiles.Add(tile);
+                }
+            }
+
             for (int i = 0; i < tiles.Count; i++) {
                 if (tiles[i]) {
                     EditorUtility.SetDirty(tiles[i]);
