@@ -117,11 +117,11 @@ MonoBehaviour:
   - origin: {fileID: 8367772593533593421}
     axis: 1
     useLocal: 0
-    turnSpeed: 3
+    turnSpeed: 5
   - origin: {fileID: 2714264955863189880}
     axis: 0
     useLocal: 1
-    turnSpeed: 3
+    turnSpeed: 5
 --- !u!1 &3259383530758022766
 GameObject:
   m_ObjectHideFlags: 0
