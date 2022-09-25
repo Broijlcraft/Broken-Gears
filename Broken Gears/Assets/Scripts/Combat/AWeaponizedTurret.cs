@@ -4,10 +4,10 @@ namespace BrokenGears.Combat {
     using System.Collections.Generic;
 
     public abstract class AWeaponizedTurret : ATurret {
-        [SerializeField, ReadOnly] protected Transform target;
+        [SerializeField, ReadOnly] protected AEnemy target;
         [SerializeField, ReadOnly] private List<AEnemy> enemiesInRange = new List<AEnemy>();
         [Space]
-        [SerializeField] protected Transform defaultTarget;
+        [SerializeField] protected AEnemy defaultTarget;
         [SerializeField] protected float range;
         [SerializeField] protected Vector3 rangeOrigin;
         [SerializeField] protected Bone[] bones;
@@ -40,7 +40,7 @@ namespace BrokenGears.Combat {
             }
 
             if(enemiesInRange.Count > 0) {
-                target = enemiesInRange[0].transform;
+                target = enemiesInRange[0];
                 return;
             }
 
