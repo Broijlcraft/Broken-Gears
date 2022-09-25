@@ -1,6 +1,5 @@
 namespace BrokenGears.Pathing {
     using UnityEngine;
-    using System.Collections.Generic;
 
     public class PathFinding : MonoBehaviour {
 
@@ -8,8 +7,9 @@ namespace BrokenGears.Pathing {
         [SerializeField] private float rotationSpeed = 1f;
         [SerializeField] private Transform model;
 
-        private Queue<Transform> waypoints;
+        private Transform[] waypoints;
         private Transform currentWaypoint;
+        private int waypointIndex;
         
         void Start() {
             TryGetWaypoints();
@@ -38,13 +38,12 @@ namespace BrokenGears.Pathing {
         }
 
         private void SetNextWaypoint() {
-            if (waypoints != null) {
-                if(waypoints.Count != 0) {
-                    currentWaypoint = waypoints.Dequeue();
-                    return;
-                }
-                currentWaypoint = null;
+            if (waypoints.Length > 0 && waypointIndex < waypoints.Length) {
+                currentWaypoint = waypoints[waypointIndex];
+                waypointIndex++;
+                return;
             }
+            currentWaypoint = null;
         }
     }
 }
