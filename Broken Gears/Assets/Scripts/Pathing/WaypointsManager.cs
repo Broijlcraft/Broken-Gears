@@ -15,7 +15,12 @@ namespace BrokenGears.Pathing {
             Waypoints = new Queue<Transform>();
             for (int i = 0; i < waypoints.Length; i++) {
                 Waypoints.Enqueue(waypoints[i]);
+            if (Instance) {
+                Destroy(this);
+                return;
             }
+
+            Instance = this;
         }
     }
 }
