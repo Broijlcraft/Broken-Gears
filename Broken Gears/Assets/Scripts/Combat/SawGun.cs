@@ -1,6 +1,4 @@
 namespace BrokenGears.Combat {
-    using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
 
     public class SawGun : AWeaponizedTurret {

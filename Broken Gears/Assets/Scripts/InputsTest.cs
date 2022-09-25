@@ -1,6 +1,6 @@
 namespace BrokenGears {
-using UnityEngine;
-using System.Collections;
+    using UnityEngine;
+    using System.Collections;
 
     public class InputsTest : MonoBehaviour {
 

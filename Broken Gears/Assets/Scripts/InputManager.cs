@@ -1,6 +1,6 @@
 namespace BrokenGears {
-using UnityEngine;
-using UnityEngine.InputSystem;
+    using UnityEngine;
+    using UnityEngine.InputSystem;
 
     public class InputManager : MonoBehaviour {
         public static InputManager Instance { get; private set; }
@@ -13,7 +13,7 @@ using UnityEngine.InputSystem;
         public Vector3 RotationDeltaAxis;
 
         private void Awake() {
-            if(Instance != null) {
+            if (Instance != null) {
                 Destroy(this);
                 return;
             }

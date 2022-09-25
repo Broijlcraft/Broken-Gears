@@ -1,5 +1,5 @@
 namespace BrokenGears {
-using UnityEngine;
+    using UnityEngine;
 
     public class PlayerControl : MonoBehaviour {
 
@@ -11,7 +11,7 @@ using UnityEngine;
             switch (controlType) {
                 case ControlType.mm_cameraControl:
                     mm_cameraControl.RotateCamera(true);
-                break;
+                    break;
             }
         }
 
@@ -19,7 +19,7 @@ using UnityEngine;
             switch (controlType) {
                 case ControlType.mm_cameraControl:
                     mm_cameraControl.Move(true);
-                break;
+                    break;
             }
         }
 

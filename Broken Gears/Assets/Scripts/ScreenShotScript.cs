@@ -1,6 +1,6 @@
 ﻿namespace BrokenGears.Tools {
-using UnityEngine;
-using UnityEditor;
+    using UnityEngine;
+    using UnityEditor;
 
     public class ScreenShotScript : MonoBehaviour {
         public void MakeScreenShot() {
