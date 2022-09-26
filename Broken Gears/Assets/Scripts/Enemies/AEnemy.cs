@@ -3,14 +3,15 @@ namespace BrokenGears.Enemies {
     using UnityEngine.Events;
 
     public abstract class AEnemy : MonoBehaviour {
-        [SerializeField, ReadOnly] protected float currentHealth;
         [SerializeField] private Transform targetpoint;
 
-        protected abstract float DefaultHealth();
-        public abstract HealthEvent Events();
+        protected float currentHealth;
 
         public Transform Targetpoint => targetpoint;
         public bool IsAlive { get; private set; }
+        
+        protected abstract float DefaultHealth();
+        public abstract HealthEvent Events();
 
         private void Awake() {
             if (!targetpoint) {
