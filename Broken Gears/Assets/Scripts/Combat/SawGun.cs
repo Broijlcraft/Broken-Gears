@@ -1,5 +1,6 @@
 namespace BrokenGears.Combat {
     using UnityEngine;
+    using UnityEngine.Events;
 
     public class SawGun : AWeaponizedTurret {
         [SerializeField] private Bone blade;
@@ -24,6 +25,10 @@ namespace BrokenGears.Combat {
 
         private int IsAxisRotation(Axis axis) {
             return blade.Axis == axis ? 1 : 0;
+        }
+
+        public override UnityEvent OnAttack() {
+            throw new System.NotImplementedException();
         }
     }
 }

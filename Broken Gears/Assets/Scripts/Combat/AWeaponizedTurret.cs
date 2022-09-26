@@ -1,25 +1,45 @@
 namespace BrokenGears.Combat {
     using Enemies;
     using UnityEngine;
+    using UnityEngine.Events;
     using System.Collections.Generic;
 
     public abstract class AWeaponizedTurret : ATurret {
-        [SerializeField, ReadOnly] protected AEnemy target;
-        [SerializeField, ReadOnly] private List<AEnemy> enemiesInRange = new List<AEnemy>();
-        [Space]
         [SerializeField] protected AEnemy defaultTarget;
         [SerializeField] protected float range;
+        [SerializeField] protected float attackDelay;
+        [SerializeField] protected float damage;
+        [SerializeField] protected Transform attackOrigin;
         [SerializeField] protected Vector3 rangeOrigin;
         [SerializeField] protected Bone[] bones;
+        public abstract UnityEvent OnAttack();
+
+        protected List<AEnemy> enemiesInRange = new List<AEnemy>();
+        protected AEnemy target;
+
+        private float attackTimer;
+
+        private void Awake() {
+            attackTimer = attackDelay;
+        }
 
         protected virtual void Update() {
             RotateParts();
             CheckTargets();
+            AttackLogic();
+        }
+
+        protected void RotateParts() {
+            if (target) {
+                for (int i = 0; i < bones.Length; i++) {
+                    bones[i].Rotate(target.Targetpoint);
+                }
+            }
         }
 
         protected void CheckTargets() {
-            if(!TryGetOverlappingEnemies(out List<AEnemy> enemies)) {
-                target = default;
+            if (!TryGetOverlappingEnemies(out List<AEnemy> enemies)) {
+                target = defaultTarget;
                 return;
             }
 
@@ -33,15 +53,19 @@ namespace BrokenGears.Combat {
 
             for (int i = 0; i < enemies.Count; i++) {
                 AEnemy enemy = enemies[i];
-                
+
                 if (!enemiesInRange.Contains(enemy)) {
                     enemiesInRange.Add(enemy);
                 }
             }
 
-            if(enemiesInRange.Count > 0) {
-                target = enemiesInRange[0];
-                return;
+            if (enemiesInRange.Count > 0) {
+                for (int i = 0; i < enemiesInRange.Count; i++) {
+                    if (enemies[i].IsAlive) {
+                        target = enemies[i];
+                        return;
+                    }
+                }
             }
 
             target = defaultTarget;
@@ -66,15 +90,26 @@ namespace BrokenGears.Combat {
             return true;
         }
 
-        protected void RotateParts() {
-            if (target) {
-                for (int i = 0; i < bones.Length; i++) {
-                    bones[i].Rotate(target.transform);
+        protected void AttackLogic() {
+            if (target != defaultTarget && attackTimer >= attackDelay && EnemyManager.Instance) {
+                if (Physics.Raycast(attackOrigin.position, attackOrigin.forward, out RaycastHit hit, EnemyManager.Instance.Enemylayer)) {
+                    AEnemy enemy = hit.transform.GetComponentInParent<AEnemy>();
+                    if (enemy) {
+                        enemy.DoHit(hit.point, damage);
+                        OnAttack()?.Invoke();
+                    }
                 }
+
+                attackTimer = 0f;
+            }
+
+            if (attackTimer < attackDelay) {
+                attackTimer += Time.deltaTime;
             }
         }
 
-        private void OnDrawGizmosSelected() {
+        protected virtual void OnDrawGizmosSelected() {
+            Debug.DrawRay(attackOrigin.position, attackOrigin.forward * range, Color.red);
             Gizmos.DrawWireSphere(transform.position + rangeOrigin, range);
         }
 

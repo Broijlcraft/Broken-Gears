@@ -4,25 +4,38 @@ namespace BrokenGears.Enemies {
 
     public abstract class AEnemy : MonoBehaviour {
         [SerializeField, ReadOnly] protected float currentHealth;
-        protected abstract float DefaultHealth();
-        public abstract HealthEvent Events(); 
+        [SerializeField] private Transform targetpoint;
 
+        protected abstract float DefaultHealth();
+        public abstract HealthEvent Events();
+
+        public Transform Targetpoint => targetpoint;
         public bool IsAlive { get; private set; }
+
+        private void Awake() {
+            if (!targetpoint) {
+                targetpoint = transform;
+            }
+        }
 
         private void Start() {
             if (Events() != null) {
                 currentHealth = DefaultHealth();
                 IsAlive = true;
 
+                Events().OnHit.AddListener(OnHit_Internal);
                 Events().OnDamage.AddListener(OnDamage_Internal);
                 Events().OnDeath.AddListener(OnDeath_Internal);
             }
         }
 
-        public void DoDamage(int amount) {
+        public void DoHit(Vector3 position, float amount) {
+            Events()?.OnHit?.Invoke(position, amount);
+        }
+
+        public void DoDamage(float amount) {
             if (IsAlive) {
-                HealthArgs args = new HealthArgs(amount);
-                Events()?.OnDamage?.Invoke(args);
+                Events()?.OnDamage?.Invoke(amount);
             }
         }        
 
@@ -30,8 +43,12 @@ namespace BrokenGears.Enemies {
             Events()?.OnDeath?.Invoke();
         }
 
-        private void OnDamage_Internal(HealthArgs args) {
-            currentHealth = Mathf.Clamp(currentHealth - args.amount, 0, DefaultHealth());
+        private void OnHit_Internal(Vector3 position, float amount) {
+            DoDamage(amount);
+        }
+
+        private void OnDamage_Internal(float amount) {
+            currentHealth = Mathf.Clamp(currentHealth - amount, 0, DefaultHealth());
 
             if(currentHealth == 0) {
                 DoDeath();
@@ -40,22 +57,13 @@ namespace BrokenGears.Enemies {
 
         private void OnDeath_Internal() {
             IsAlive = false;
-            print("died");
-        }
-
-        [System.Serializable]
-        public class HealthArgs : UnityEvent {
-            public float amount;
-
-            public HealthArgs(float amount) {
-                this.amount = amount;
-            }
         }
 
         [System.Serializable]
         public class HealthEvent {
             public UnityEvent OnDeath;
-            public UnityEvent<HealthArgs> OnDamage;
+            public UnityEvent<float> OnDamage;
+            public UnityEvent<Vector3, float> OnHit;
         }
     }
 }

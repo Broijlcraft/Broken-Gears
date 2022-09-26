@@ -7,5 +7,13 @@ namespace BrokenGears.Enemies {
 
         protected override float DefaultHealth() => defaultHealth;
         public override HealthEvent Events() => events;
+
+        private void Awake() {
+            events.OnDeath.AddListener(OnDeath);
+        }
+
+        private void OnDeath() {
+            Destroy(gameObject, 1f);
+        }
     }
 }
