@@ -3,7 +3,9 @@ namespace BrokenGears.Enemies {
 
     public class EnemyManager : MonoBehaviour {
 
-        [SerializeField] private LayerMask enemylayer; 
+        [SerializeField] private LayerMask enemylayer;
+        [SerializeField] private Transform spawnpoint;
+
         public static EnemyManager Instance { get; private set; }
         public LayerMask Enemylayer => enemylayer;
 
