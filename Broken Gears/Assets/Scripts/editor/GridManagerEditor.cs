@@ -47,7 +47,7 @@ namespace BrokenGears.editor {
 
             for (int i = 0; i < tileCount; i++) {
                 Tile tile = gridManager.transform.GetChild(i).GetComponent<Tile>();
-                if (tile && !tile.CanNotBeDestroyedOnGridClear) {
+                if (tile) {
                     tiles.Add(tile);
                 }
             }
