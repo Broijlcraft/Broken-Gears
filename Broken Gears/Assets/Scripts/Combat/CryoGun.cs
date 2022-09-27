@@ -1,9 +1,10 @@
 namespace BrokenGears.Combat {
+    using UnityEngine;
     using UnityEngine.Events;
 
     public class CryoGun : AWeaponizedTurret {
-        public override UnityEvent OnAttack() {
-            throw new System.NotImplementedException();
-        }
+        [SerializeField] private Transform attackOrigin;
+        protected override Transform AttackOrigin() => attackOrigin;
+        public override UnityEvent OnAttack() => null;
     }
 }

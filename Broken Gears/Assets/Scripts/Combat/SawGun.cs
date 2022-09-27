@@ -5,6 +5,8 @@ namespace BrokenGears.Combat {
     public class SawGun : AWeaponizedTurret {
         [SerializeField] private Bone blade;
 
+        protected override Transform AttackOrigin() => null;
+
         protected override void Update() {
             base.Update();
 

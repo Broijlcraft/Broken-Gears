@@ -9,10 +9,11 @@ namespace BrokenGears.Combat {
         [SerializeField] protected float range;
         [SerializeField] protected float attackDelay;
         [SerializeField] protected float damage;
-        [SerializeField] protected Transform attackOrigin;
         [SerializeField] protected Vector3 rangeOrigin;
         [SerializeField] protected Bone[] bones;
+
         public abstract UnityEvent OnAttack();
+        protected abstract Transform AttackOrigin();
 
         protected List<AEnemy> enemiesInRange = new List<AEnemy>();
         protected AEnemy target;
@@ -90,16 +91,9 @@ namespace BrokenGears.Combat {
             return true;
         }
 
-        protected void AttackLogic() {
+        private void AttackLogic() {
             if (target != defaultTarget && attackTimer >= attackDelay && EnemyManager.Instance) {
-                if (Physics.Raycast(attackOrigin.position, attackOrigin.forward, out RaycastHit hit, EnemyManager.Instance.Enemylayer)) {
-                    AEnemy enemy = hit.transform.GetComponentInParent<AEnemy>();
-                    if (enemy) {
-                        enemy.DoHit(hit.point, damage);
-                        OnAttack()?.Invoke();
-                    }
-                }
-
+                DoAttack();
                 attackTimer = 0f;
             }
 
@@ -108,8 +102,24 @@ namespace BrokenGears.Combat {
             }
         }
 
+        protected virtual void DoAttack() {
+            if (AttackOrigin()) {
+                if (Physics.Raycast(AttackOrigin().position, AttackOrigin().forward, out RaycastHit hit, EnemyManager.Instance.Enemylayer)) {
+                    AEnemy enemy = hit.transform.GetComponentInParent<AEnemy>();
+                    if (enemy) {
+                        enemy.DoHit(hit.point, damage);
+                        if(OnAttack() != null) {
+                            OnAttack()?.Invoke();
+                        }
+                    }
+                }
+            }
+        }
+
         protected virtual void OnDrawGizmosSelected() {
-            Debug.DrawRay(attackOrigin.position, attackOrigin.forward * range, Color.red);
+            if (AttackOrigin()) {
+                Debug.DrawRay(AttackOrigin().position, AttackOrigin().forward * range, Color.red);
+            }
             Gizmos.DrawWireSphere(transform.position + rangeOrigin, range);
         }
 
@@ -128,8 +138,8 @@ namespace BrokenGears.Combat {
             public void Rotate(Transform target) {
                 Vector3 direction = (target.position - origin.position).normalized;
                 Quaternion lookRotation = GetLookRotation(direction);
-
                 Vector3 lerpedRotation = Quaternion.Lerp(origin.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+
                 Quaternion newRotation = GetNewPartRotation(lerpedRotation);
                 ApplyPartRotation(newRotation);
             }
