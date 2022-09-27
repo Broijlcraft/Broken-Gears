@@ -37,7 +37,7 @@ namespace BrokenGears.Combat {
             }
         }
 
-        protected void CheckTargets() {
+        protected virtual void CheckTargets() {
             if (!TryGetOverlappingEnemies(out List<AEnemy> enemies)) {
                 target = defaultTarget;
                 return;
@@ -61,8 +61,8 @@ namespace BrokenGears.Combat {
 
             if (enemiesInRange.Count > 0) {
                 for (int i = 0; i < enemiesInRange.Count; i++) {
-                    if (enemies[i].IsAlive) {
-                        target = enemies[i];
+                    if (enemiesInRange[i].IsAlive) {
+                        target = enemiesInRange[i];
                         return;
                     }
                 }
