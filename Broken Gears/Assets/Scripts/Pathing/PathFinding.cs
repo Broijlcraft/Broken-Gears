@@ -2,7 +2,6 @@ namespace BrokenGears.Pathing {
     using UnityEngine;
 
     public class PathFinding : MonoBehaviour {
-
         [SerializeField] private float movementSpeed = 1f;
         [SerializeField] private float rotationSpeed = 1f;
         [SerializeField] private Transform model;

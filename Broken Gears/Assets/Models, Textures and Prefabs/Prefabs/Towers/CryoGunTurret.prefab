@@ -153,10 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0ac1eca3d9ce9499fb2bf1b05b42a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  enemiesInRange: []
   defaultTarget: {fileID: 6879359922535116853}
   range: 4
+  attackDelay: 0
+  damage: 0
   rangeOrigin: {x: 0, y: 0, z: 0}
   bones:
   - origin: {fileID: 3375208667227094264}
@@ -167,6 +167,7 @@ MonoBehaviour:
     axis: 2
     useLocal: 1
     turnSpeed: 5
+  attackOrigin: {fileID: 3189382665022839529}
 --- !u!1 &3375208667067849287
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a4cbcd3b972d24987d7c0f5308433b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetpoint: {fileID: 0}
 --- !u!1 &3375208667227094263
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,6 +544,12 @@ GameObject:
 --- !u!4 &2540980118221178490 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 978540688050972895, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
+    type: 3}
+  m_PrefabInstance: {fileID: 3375208666648817317}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3189382665022839529 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 186284502305584204, guid: 6b7b1c4038d7d7849a7c10f20ff76030,
     type: 3}
   m_PrefabInstance: {fileID: 3375208666648817317}
   m_PrefabAsset: {fileID: 0}
