@@ -13,7 +13,7 @@ namespace BrokenGears.Enemies {
         protected abstract float DefaultHealth();
         public abstract HealthEvent Events();
 
-        private void Awake() {
+        protected virtual void Awake() {
             if (!targetpoint) {
                 targetpoint = transform;
             }
